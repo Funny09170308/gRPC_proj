@@ -1,0 +1,140 @@
+syntax = "proto3";
+
+import "common_cmd.proto";
+
+package silicon_based;
+
+// 定义服务（RPC接口）
+service QACMDService {
+    rpc SetTrigSour(SetTrigSourRequest) returns (ParamResponse);
+    rpc SetSoftTrig(SetSoftTrigRequest) returns (ParamResponse);
+    rpc SetDACDDSConfig(SetDACDDSConfigRequest) returns (ParamResponse);
+    rpc GetDACDDSConfig(GetDACDDSConfigRequest) returns (GetDACDDSConfigResponse);
+    rpc SetDACPlayParam(SetDACPlayParamRequest) returns (ParamResponse);
+    rpc GetDACPlayParam(GetDACPlayParamRequest) returns (GetDACPlayParamResponse);
+    rpc SetDACStartStop(SetDACStartStopRequest) returns (ParamResponse);
+    rpc GetDACStartStop(GetDACStartStopRequest) returns (GetDACStartStopResponse);
+    rpc SetSampleParam(SetSampleParamRequest) returns (ParamResponse);
+    rpc GetSampleParam(GetSampleParamRequest) returns (GetSampleParamResponse);
+    rpc SetSampleStartStop(SetSampleStartStopRequest) returns (ParamResponse);
+    rpc GetSampleStartStop(GetSampleStartStopRequest) returns (GetSampleStartStopResponse);
+    rpc SetADCConfig(SetADCConfigRequest) returns (ParamResponse);
+    rpc GetADCConfig(GetADCConfigRequest) returns (GetADCConfigResponse);
+    rpc SetADCPlayParam(SetADCPlayParamRequest) returns (ParamResponse);
+    rpc GetADCPlayParam(GetADCPlayParamRequest) returns (GetADCPlayParamResponse);
+    rpc SetADCStartStop(SetADCStartStopRequest) returns (ParamResponse);
+    rpc GetADCStartStop(GetADCStartStopRequest) returns (GetADCStartStopResponse);
+}
+
+message SetTrigSourRequest {
+    uint32 logicCh = 1;
+    uint32 source = 2;
+}
+message SetSoftTrigRequest {
+    uint32 logicCh = 1;
+}
+message SetDACDDSConfigRequest {
+    uint32 logicCh = 1;
+    uint32 index = 2;
+    float DACFreq = 3;
+    float DACPhase = 4;
+    float DACAMP = 5;
+}
+message GetDACDDSConfigRequest {
+    uint32 logicCh = 1;
+}
+message GetDACDDSConfigResponse
+{
+    repeated float DACFreq = 1;
+    repeated float DACPhase = 2;
+    repeated float DACAMP = 3;
+}
+message SetDACPlayParamRequest {
+    uint32 logicCh = 1;
+    uint32 dataLen = 2;
+    uint32 playTimes = 3;
+    uint32 playDelay = 4;
+    uint32 playMode = 5;
+}
+message GetDACPlayParamRequest {
+    uint32 logicCh = 1;
+}
+message GetDACPlayParamResponse {
+    uint32 dataLen = 1;
+    uint32 playTimes = 2;
+    uint32 playDelay = 3;
+    uint32 playMode = 4;
+}
+message SetDACStartStopRequest {
+    uint32 logicCh = 1;
+    uint32 chEnable = 2;
+}
+message GetDACStartStopRequest {
+    uint32 logicCh = 1;
+}
+message GetDACStartStopResponse {
+    uint32 chEnable = 1;
+}
+message SetSampleParamRequest {
+    uint32 logicCh = 1;
+    uint32 sampleLength = 2;
+    uint32 sampleDelay = 3;
+    uint32 sampleNum = 4;
+}
+message GetSampleParamRequest {
+    uint32 logicCh = 1;
+}
+message GetSampleParamResponse {
+    uint32 sampleLength = 1;
+    uint32 sampleDelay = 2;
+    uint32 sampleNum = 3;
+}
+message SetSampleStartStopRequest {
+    uint32 logicCh = 1;
+    uint32 chEnable = 2;
+}
+message GetSampleStartStopRequest {
+    uint32 logicCh = 1;
+}
+message GetSampleStartStopResponse {
+    uint32 chEnable = 1;
+}
+message SetADCConfigRequest {
+    uint32 logicCh = 1;
+    uint32 index = 2;
+    float ADCFreq = 3;
+    float ADCPhase = 4;
+}
+message GetADCConfigRequest {
+    uint32 logicCh = 1;
+}
+message GetADCConfigResponse {
+    repeated float ADCFreq = 1;
+    repeated float ADCPhase = 2;
+}
+message SetADCPlayParamRequest {
+    uint32 logicCh = 1;
+    uint32 dataLen = 2;
+    uint32 playTimes = 3;
+    uint32 playDelay = 4;
+    uint32 playMode = 5;
+}
+message GetADCPlayParamRequest {
+    uint32 logicCh = 1;
+}
+message GetADCPlayParamResponse {
+    uint32 dataLen = 1;
+    uint32 playTimes = 2;
+    uint32 playDelay = 3;
+    uint32 playMode = 4;
+}
+message SetADCStartStopRequest {
+    uint32 logicCh = 1;
+    uint32 chEnable = 2;
+}
+message GetADCStartStopRequest {
+    uint32 logicCh = 1;
+}
+message GetADCStartStopResponse {
+    uint32 chEnable = 1;
+}

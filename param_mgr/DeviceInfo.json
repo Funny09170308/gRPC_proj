@@ -1,0 +1,12 @@
+{
+    "dhcpen":0,
+    "interface":"eth0",
+    "ip":"192.168.1.10",
+    "mask":"255.255.255.0",
+    "gw":"192.168.1.1",
+    "mac":"00:0A:35:00:58:46",
+    "vendors":"ZWDX",
+    "model":"SILICON_BASED",
+    "serial":"202603100001",
+    "version":"0.1.0"
+}

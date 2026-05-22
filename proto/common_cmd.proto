@@ -1,0 +1,171 @@
+syntax = "proto3";
+
+package silicon_based;
+
+// 定义服务（RPC接口）
+service CommonCMDService {
+    rpc GetIDN(GetIDNRequest) returns (GetIDNResponse);
+    rpc GetDeviceInfo(GetDeviceInfoRequest) returns (GetDeviceInfoResponse);
+
+    rpc SetDebugParam(DebugParamRequest) returns (ParamResponse);
+    rpc SetGPIOStatus(GPIOStatusRequest) returns (ParamResponse);
+
+    rpc SetNetCfgAddr(SetNetCfgRequest) returns (ParamResponse);
+    rpc GetNetCfgAddr(GetNetCfgRequest) returns (NetCfgResponse);
+
+    rpc SetRegValue(RegSetRequest) returns (ParamResponse);
+    rpc GetRegValue(RegGetRequest) returns (RegValueResponse);
+    rpc SetPCIERegValue(PCIERegSetRequest) returns (ParamResponse);
+    rpc GetPCIERegValue(PCIERegGetRequest) returns (PCIERegValueResponse);
+
+    rpc StreamDataSet(stream SetStreamDataRequest) returns (SetStreamResult);
+    rpc StreamDataGet(GetStreamDataRequest) returns (stream GetStreamResult);
+
+    rpc SetDevTrigSource(SetTrigSourceRequest) returns (ParamResponse);
+    rpc GetDevTrigSource(GetTrigSourceRequest) returns (GetTrigSourceResponse);
+    rpc SetDevTrigParam(SetTrigParamRequest) returns (ParamResponse);
+    rpc GetDevTrigParam(GetTrigParamRequest) returns (GetTrigParamResponse);
+    rpc SetTrigStart(SetTrigStartRequest) returns (ParamResponse);
+}
+
+message GetIDNRequest {
+}
+
+message GetIDNResponse {
+    string idn = 1;
+}
+
+message GetDeviceInfoRequest {
+
+}
+message GetDeviceInfoResponse {
+    optional uint32 awgChCount = 1;
+    optional uint32 qaInChCount = 2;
+    optional uint32 qaOutChCount = 3;
+    repeated uint32 qaSubType = 4;
+}
+
+message DebugParamRequest {
+    uint32 debug_level = 1;
+}
+
+message GPIOStatusRequest {
+    uint32 ioNum = 1;
+    uint32 ioStatus = 2;
+}
+
+message SetNetCfgRequest
+{
+    uint32 dhcpEn = 1;
+    string ipAddr = 2;
+    string gateWay = 3;
+    string macAddr = 4;
+}
+
+message NetCfgResponse
+{
+    uint32 dhcpEn = 1;
+    string ipAddr = 2;
+    string gateWay = 3;
+    string macAddr = 4;
+}
+
+
+message GetNetCfgRequest
+{
+}
+
+message RegSetRequest {
+    uint64 regAddr = 1;
+    uint32 regVal = 2;
+}
+
+message RegGetRequest {
+    uint64 regAddr = 1;
+}
+
+message PCIERegSetRequest {
+    uint32 chip = 1;
+    uint64 regAddr = 2;
+    uint32 regVal = 3;
+}
+
+
+message PCIERegGetRequest {
+    uint32 chip = 1;
+    uint64 regAddr = 2;
+}
+
+message PCIERegValueResponse {
+    uint32 PCIERegValue = 1;
+}
+
+message RegValueResponse {
+    uint32 regValue = 1;
+}
+
+message ParamResponse {
+    bool success = 1;
+}
+
+message SetStreamDataRequest {
+    uint32 chip = 1;
+    uint32 streamID = 2;
+    uint32 totalPackages = 3;
+    uint32 currentPackage = 4;
+    uint32 currentPackBytes = 5;
+    uint64 startAddr = 6;
+    bytes data = 7;
+}
+
+message SetStreamResult {
+    uint32 resvTotal = 1;
+}
+
+message GetStreamDataRequest {
+    uint32 chip = 1;
+    uint64 startAddr = 2;
+    uint32 requestLen = 3;
+}
+
+message GetStreamResult {
+    uint32 streamID = 1;
+    uint32 totalPackages = 2;
+    uint32 currentPackage = 3;
+    uint32 currentPackBytes = 4;
+    uint64 startAddr = 5;
+    bytes data = 6;
+}
+
+
+message SetTrigSourceRequest {
+
+}
+
+message GetTrigSourceRequest {
+
+}
+message GetTrigSourceResponse {
+
+}
+
+message SetTrigParamRequest {
+    uint32 trigSource = 1;
+    uint32 trigContinue = 2;
+    uint32 trigTimes = 3;
+    uint32 trigPeriod = 4;
+    uint32 trigDelay = 5;
+}
+message GetTrigParamRequest {
+
+}
+message GetTrigParamResponse {
+    uint32 trigSource = 1;
+    uint32 trigContinue = 2;
+    uint32 trigTimes = 3;
+    uint32 trigPeriod = 4;
+    uint32 trigDelay = 5;
+}
+message SetTrigStartRequest {
+    uint32 state = 1;
+}

@@ -1,0 +1,199 @@
+syntax = "proto3";
+
+package silicon_based;
+
+import "common_cmd.proto";
+
+// 定义服务（RPC接口）
+service LNAWGCMDService {
+    rpc SetMode(ModeSetRequest) returns (ParamResponse);
+    rpc GetMode(ModeGetRequest) returns (ModeGetResponse);
+
+    rpc SetRun(RunSetRequest) returns (ParamResponse);
+    rpc GetRun(RunGetRequest) returns (RunGetResponse);
+
+    rpc SetExtSource(ExtSourceSetRequest) returns (ParamResponse);
+    rpc GetExtSource(ExtSourceGetRequest) returns (ExtSourceGetResponse);
+
+    rpc SetRange(RangeSetRequest) returns (ParamResponse);
+    rpc GetRange(RangeGetRequest) returns (RangeGetResponse);
+
+    rpc SetOffset(OffsetSetRequest) returns (ParamResponse);
+    rpc GetOffset(OffsetGetRequest) returns (OffsetGetResponse);
+
+    rpc SetSegmentCount(SegmentCountSetRequest) returns (ParamResponse);
+    rpc GetSegmentCount(SegmentCountGetRequest) returns (SegmentCountGetResponse);
+
+    rpc SetLoopCount(LoopCountSetRequest) returns (ParamResponse);
+    rpc GetLoopCount(LoopCountGetRequest) returns (LoopCountGetResponse);
+
+    rpc SetDDSParam(DDSParamSetRequest) returns (ParamResponse);
+    rpc GetDDSParam(DDSParamGetRequest) returns (DDSParamGetResponse);
+
+    rpc SetChirpOutParam(ChirpOutParamSetRequest) returns (ParamResponse);
+    rpc GetChirpOutParam(ChirpOutParamGetRequest) returns (ChirpOutParamGetResponse);
+
+    rpc SetDDSEnable(DDSEnableSetRequest) returns (ParamResponse);
+    rpc GetDDSEnable(DDSEnableGetRequest) returns (DDSEnableGetResponse);
+}
+
+// -----------------AWG Mode-----------------------
+message ModeSetRequest {
+    uint32 logical_ch = 1;
+    uint64 mode = 2;
+}
+
+message ModeGetRequest {
+    uint32 logical_ch = 1;
+}
+
+message ModeGetResponse {
+    uint64 mode = 1;
+}
+
+// -----------------AWG Run-----------------------
+message RunSetRequest {
+    uint32 logical_ch = 1;
+    uint32 state = 2;
+}
+
+message RunGetRequest {
+    uint32 logical_ch = 1;
+}
+
+message RunGetResponse {
+    uint32 state = 1;
+}
+
+// -----------------AWG ExtSource-----------------------
+message ExtSourceSetRequest {
+    uint32 logical_ch = 1;
+    uint32 source = 2;
+}
+
+message ExtSourceGetRequest {
+    uint32 logical_ch = 1;
+}
+
+message ExtSourceGetResponse {
+    uint32 source = 1;
+}
+
+// -----------------AWG Range-----------------------
+message RangeSetRequest {
+    uint32 logical_ch = 1;
+    uint32 range = 2;
+}
+
+message RangeGetRequest {
+    uint32 logical_ch = 1;
+}
+
+message RangeGetResponse {
+    uint32 range = 1;
+}
+
+// -----------------AWG Offset-----------------------
+message OffsetSetRequest {
+    uint32 logical_ch = 1;
+    double offset = 2;
+}
+
+message OffsetGetRequest {
+    uint32 logical_ch = 1;
+}
+
+message OffsetGetResponse {
+    double offset = 1;
+}
+
+// -----------------AWG SegmentCount-----------------------
+message SegmentCountSetRequest {
+    uint32 logical_ch = 1;
+    uint32 segment_count = 2;
+}
+
+message SegmentCountGetRequest {
+    uint32 logical_ch = 1;
+}
+
+message SegmentCountGetResponse {
+    uint32 segment_count = 1;
+}
+
+// -----------------AWG SegmentLoopCount-----------------------
+message LoopCountSetRequest {
+    int32 logical_ch = 1;
+    int32 loop_count = 2;
+}
+
+message LoopCountGetRequest {
+    int32 logical_ch = 1;
+}
+
+message LoopCountGetResponse {
+    uint32 loop_count = 1;
+}
+
+// -----------------AWG DDSParam-----------------------
+message DDSConfigParam {
+    uint32 index = 1;
+    uint32 len = 2;
+    uint32 trig_delay = 3;
+    double freq = 4;
+    double phase = 5;
+    double AMP = 6;
+}
+
+message DDSParamSetRequest {
+    uint32 logical_ch = 1;
+    DDSConfigParam config = 2;
+}
+
+message DDSParamGetRequest {
+    uint32 logical_ch = 1;
+    uint32 index = 2;
+}
+
+message DDSParamGetResponse {
+    DDSConfigParam config = 1;
+}
+
+// -----------------AWG ChirpOutParam-----------------------
+message ChirpOutParam {
+    uint32 index = 1;
+    uint32 len = 2;
+    uint32 trig_delay = 3;
+    double freq_start = 4;
+    double freq_end = 5;
+    double phase = 6;
+    double AMP = 7;
+}
+
+message ChirpOutParamSetRequest {
+    uint32 logical_ch = 1;
+    ChirpOutParam config = 2;
+}
+
+message ChirpOutParamGetRequest {
+    uint32 logical_ch = 1;
+    uint32 index = 2;
+}
+
+message ChirpOutParamGetResponse {
+    ChirpOutParam config = 1;
+}
+
+// -----------------AWG DDSEnable-----------------------
+message DDSEnableSetRequest {
+    uint32 logical_ch = 1;
+    uint32 enable = 2;
+}
+
+message DDSEnableGetRequest {
+    uint32 logical_ch = 1;
+}
+
+message DDSEnableGetResponse {
+    uint32 enable = 1;
+}
