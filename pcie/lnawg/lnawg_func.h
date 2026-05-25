@@ -126,7 +126,7 @@ extern "C"
         uint32_t m_trig_delay;
         double m_freq;
         double m_phase;
-        double m_AMP;
+        double m_amp;
     } DDSConfigParam_t;
 
     typedef struct
@@ -137,7 +137,7 @@ extern "C"
         double m_freq_start;
         double m_freq_end;
         double m_phase;
-        double m_AMP;
+        double m_amp;
     } ChirpOutParam_t;
 
     typedef struct
@@ -148,7 +148,7 @@ extern "C"
         uint32_t m_trig_delay_addr[LNAWG_CH_DDS_NUM];
         uint32_t m_freq_addr[LNAWG_CH_DDS_NUM];
         uint32_t m_phase_addr[LNAWG_CH_DDS_NUM];
-        uint32_t m_AMP_addr[LNAWG_CH_DDS_NUM];
+        uint32_t m_amp_addr[LNAWG_CH_DDS_NUM];
         uint32_t m_delt_x_addr[LNAWG_CH_DDS_NUM];
     } DDSAddrMap_t;
 

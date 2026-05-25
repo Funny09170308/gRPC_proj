@@ -332,6 +332,7 @@ Status LNAWGCMDServiceImpl::SetMode(ServerContext *context,
                                     ParamResponse *response)
 {
     set_awg_ch_mode(request->logical_ch(), request->mode());
+    P_LOG_DEBUG("Set awg ch mode, ch:%d, mode:%d", request->logical_ch(), request->mode());
     return Status::OK;
 }
 
@@ -341,6 +342,7 @@ Status LNAWGCMDServiceImpl::GetMode(ServerContext *context,
 {
     uint32_t mode = get_awg_ch_mode(request->logical_ch());
     response->set_mode(mode);
+    P_LOG_DEBUG("Get awg ch mode, ch:%d, mode:%d", request->logical_ch(), mode);
     return Status::OK;
 }
 
@@ -349,6 +351,7 @@ Status LNAWGCMDServiceImpl::SetRun(ServerContext *context,
                                    ParamResponse *response)
 {
     set_awg_ch_run(request->logical_ch(), request->state());
+    P_LOG_DEBUG("Set awg ch run state, ch:%d, state:%d", request->logical_ch(), request->state());
     return Status::OK;
 }
 
@@ -362,6 +365,7 @@ Status LNAWGCMDServiceImpl::GetRun(ServerContext *context,
         return Status(grpc::StatusCode::INVALID_ARGUMENT, "Get run state failed: invalid mode or channel");
     }
     response->set_state(state);
+    P_LOG_DEBUG("Get awg run state, ch:%d, state:%d", request->logical_ch(), state);
     return Status::OK;
 }
 
@@ -370,6 +374,7 @@ Status LNAWGCMDServiceImpl::SetExtSource(ServerContext *context,
                                          ParamResponse *response)
 {
     set_awg_ch_ext_src(request->logical_ch(), request->source());
+    P_LOG_DEBUG("Set awg ext source, ch:%d, source:%d", request->logical_ch(), request->source());
     return Status::OK;
 }
 
@@ -379,6 +384,7 @@ Status LNAWGCMDServiceImpl::GetExtSource(ServerContext *context,
 {
     uint32_t source = get_awg_ch_ext_src(request->logical_ch());
     response->set_source(source);
+    P_LOG_DEBUG("Get awg ext source, ch:%d, source:%d", request->logical_ch(), source);
     return Status::OK;
 }
 
@@ -387,6 +393,7 @@ Status LNAWGCMDServiceImpl::SetRange(ServerContext *context,
                                      ParamResponse *response)
 {
     set_awg_ch_range(request->logical_ch(), request->range());
+    P_LOG_DEBUG("Set awg range, ch:%d, range:%d", request->logical_ch(), request->range());
     return Status::OK;
 }
 
@@ -396,6 +403,7 @@ Status LNAWGCMDServiceImpl::GetRange(ServerContext *context,
 {
     uint32_t range = get_awg_ch_range(request->logical_ch());
     response->set_range(range);
+    P_LOG_DEBUG("Get awg range, ch:%d, range:%d", request->logical_ch(), range);
     return Status::OK;
 }
 
@@ -404,6 +412,7 @@ Status LNAWGCMDServiceImpl::SetOffset(ServerContext *context,
                                       ParamResponse *response)
 {
     set_awg_ch_offset(request->logical_ch(), request->offset());
+    P_LOG_DEBUG("Set awg offset, ch:%d, offset:%d", request->logical_ch(), request->offset());
     return Status::OK;
 }
 
@@ -413,6 +422,7 @@ Status LNAWGCMDServiceImpl::GetOffset(ServerContext *context,
 {
     double offset = get_awg_ch_offset(request->logical_ch());
     response->set_offset(offset);
+    P_LOG_DEBUG("Get awg offset, ch:%d, offset:%d", request->logical_ch(), offset);
     return Status::OK;
 }
 
@@ -421,6 +431,7 @@ Status LNAWGCMDServiceImpl::SetSegmentCount(ServerContext *context,
                                             ParamResponse *response)
 {
     set_awg_ch_segment_count(request->logical_ch(), request->segment_count());
+    P_LOG_DEBUG("Set awg ch segment count, ch:%d, segment cnt:%d", request->logical_ch(), request->segment_count());
     return Status::OK;
 }
 
@@ -430,6 +441,7 @@ Status LNAWGCMDServiceImpl::GetSegmentCount(ServerContext *context,
 {
     uint32_t segment_count = get_awg_ch_segment_count(request->logical_ch());
     response->set_segment_count(segment_count);
+    P_LOG_DEBUG("Get awg ch segment count, ch:%d, segment cnt:%d", request->logical_ch(), segment_count);
     return Status::OK;
 }
 
@@ -438,6 +450,7 @@ Status LNAWGCMDServiceImpl::SetLoopCount(ServerContext *context,
                                          ParamResponse *response)
 {
     set_awg_ch_segment_loop(request->logical_ch(), request->loop_count());
+    P_LOG_DEBUG("Set awg ch segment loop, ch:%d, segment loop:%d", request->logical_ch(), request->loop_count());
     return Status::OK;
 }
 
@@ -447,6 +460,7 @@ Status LNAWGCMDServiceImpl::GetLoopCount(ServerContext *context,
 {
     uint32_t loop_count = get_awg_ch_segment_loop(request->logical_ch());
     response->set_loop_count(loop_count);
+    P_LOG_DEBUG("Get awg ch segment loop, ch:%d, segment loop:%d", request->logical_ch(), loop_count);
     return Status::OK;
 }
 
@@ -460,8 +474,16 @@ Status LNAWGCMDServiceImpl::SetDDSParam(ServerContext *context,
     config_param.m_trig_delay = request->config().trig_delay();
     config_param.m_freq = request->config().freq();
     config_param.m_phase = request->config().phase();
-    config_param.m_AMP = request->config().amp();
+    config_param.m_amp = request->config().amp();
     set_awg_dds_config(request->logical_ch(), config_param);
+    P_LOG_DEBUG("Set awg dds config, ch:%u, index:%u, len:%u, trig_delay:%u, freq:%lf, phase:%lf, amp:%lf",
+                request->logical_ch(),
+                config_param.m_index,
+                config_param.m_len,
+                config_param.m_trig_delay,
+                config_param.m_freq,
+                config_param.m_phase,
+                config_param.m_amp);
     return Status::OK;
 }
 
@@ -470,19 +492,21 @@ Status LNAWGCMDServiceImpl::GetDDSParam(ServerContext *context,
                                         DDSParamGetResponse *response)
 {
     DDSConfigParam_t config_param = get_awg_dds_config(request->logical_ch(), request->index());
-    // response->set_config->set_index(config_param.m_index);
-    // response->set_config->set_len(config_param.m_len);
-    // response->set_config->set_trig_delay(config_param.m_trig_delay);
-    // response->set_config->set_freq(config_param.m_freq);
-    // response->set_config->set_phase(config_param.m_phase);
-    // response->set_config->set_amp(config_param.m_AMP);
     auto *cfg = response->mutable_config();
     cfg->set_index(config_param.m_index);
     cfg->set_len(config_param.m_len);
     cfg->set_trig_delay(config_param.m_trig_delay);
     cfg->set_freq(config_param.m_freq);
     cfg->set_phase(config_param.m_phase);
-    cfg->set_amp(config_param.m_AMP);
+    cfg->set_amp(config_param.m_amp);
+    P_LOG_DEBUG("Get awg dds config, ch:%u, index:%u, len:%u, trig_delay:%u, freq:%lf, phase:%lf, amp:%lf",
+                request->logical_ch(),
+                config_param.m_index,
+                config_param.m_len,
+                config_param.m_trig_delay,
+                config_param.m_freq,
+                config_param.m_phase,
+                config_param.m_amp);
     return Status::OK;
 }
 
@@ -505,6 +529,7 @@ Status LNAWGCMDServiceImpl::SetDDSEnable(ServerContext *context,
                                          ParamResponse *response)
 {
     set_awg_dds_enable(request->logical_ch(), request->enable());
+    P_LOG_DEBUG("Set awg ch dds enable status, ch:%d, enable:%d", request->logical_ch(), request->enable());
     return Status::OK;
 }
 
@@ -514,6 +539,7 @@ Status LNAWGCMDServiceImpl::GetDDSEnable(ServerContext *context,
 {
     uint32_t enable = get_awg_dds_enable(request->logical_ch());
     response->set_enable(enable);
+    P_LOG_DEBUG("Get awg ch dds enable status, ch:%d, enable:%d", request->logical_ch(), enable);
     return Status::OK;
 }
 
@@ -686,6 +712,8 @@ Status QACMDServiceImpl::SetADCPlayParam(ServerContext *context,
     ADCPlayParam.m_adc_play_mode = request->playmode();
     qa_adc_play_param(ch, ADCPlayParam);
     response->set_success(true);
+    P_LOG_DEBUG("SetADCPlayParam: Set qa play param...ch:%d, data_len:%d, play_times, play_delay, play_mode.",
+        ch, ADCPlayParam.m_adc_data_len, ADCPlayParam.m_adc_play_times, ADCPlayParam.m_adc_play_delay, ADCPlayParam.m_adc_play_mode);
     return Status::OK;
 }
 
