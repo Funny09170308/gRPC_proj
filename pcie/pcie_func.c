@@ -573,3 +573,20 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
     P_LOG_DEBUG("PCIe DMA Read count: %d, expect: %d.", count, bytes);
     return count;
 }
+
+void chip_dac_sync_init(uint32_t chip)
+{
+#define DAC_SYNC_OFFSET 0x101 << 2
+    xdma_write_user_space(chip, DAC_SYNC_OFFSET, 0);
+    usleep(10);
+    xdma_write_user_space(chip, DAC_SYNC_OFFSET, 1);
+    usleep(10);
+    xdma_write_user_space(chip, DAC_SYNC_OFFSET, 0);
+}
+void dac_sync_init(void)
+{
+    for (uint8_t i = 0; i < g_pcie_board_info.awg_board_num; ++i)
+    {
+        chip_dac_sync_init(i);
+    }
+}

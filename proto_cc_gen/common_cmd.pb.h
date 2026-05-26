@@ -3143,19 +3143,11 @@ class GetStreamDataRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kStartAddrFieldNumber = 2,
     kChipFieldNumber = 1,
-    kRequestLenFieldNumber = 3,
+    kStreamIDFieldNumber = 2,
+    kStartAddrFieldNumber = 3,
+    kRequestLenFieldNumber = 4,
   };
-  // uint64 startAddr = 2;
-  void clear_startaddr();
-  uint64_t startaddr() const;
-  void set_startaddr(uint64_t value);
-  private:
-  uint64_t _internal_startaddr() const;
-  void _internal_set_startaddr(uint64_t value);
-  public:
-
   // uint32 chip = 1;
   void clear_chip();
   uint32_t chip() const;
@@ -3165,7 +3157,25 @@ class GetStreamDataRequest final :
   void _internal_set_chip(uint32_t value);
   public:
 
-  // uint32 requestLen = 3;
+  // uint32 streamID = 2;
+  void clear_streamid();
+  uint32_t streamid() const;
+  void set_streamid(uint32_t value);
+  private:
+  uint32_t _internal_streamid() const;
+  void _internal_set_streamid(uint32_t value);
+  public:
+
+  // uint64 startAddr = 3;
+  void clear_startaddr();
+  uint64_t startaddr() const;
+  void set_startaddr(uint64_t value);
+  private:
+  uint64_t _internal_startaddr() const;
+  void _internal_set_startaddr(uint64_t value);
+  public:
+
+  // uint32 requestLen = 4;
   void clear_requestlen();
   uint32_t requestlen() const;
   void set_requestlen(uint32_t value);
@@ -3182,8 +3192,9 @@ class GetStreamDataRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    uint64_t startaddr_;
     uint32_t chip_;
+    uint32_t streamid_;
+    uint64_t startaddr_;
     uint32_t requestlen_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
@@ -5496,7 +5507,27 @@ inline void GetStreamDataRequest::set_chip(uint32_t value) {
   // @@protoc_insertion_point(field_set:silicon_based.GetStreamDataRequest.chip)
 }
 
-// uint64 startAddr = 2;
+// uint32 streamID = 2;
+inline void GetStreamDataRequest::clear_streamid() {
+  _impl_.streamid_ = 0u;
+}
+inline uint32_t GetStreamDataRequest::_internal_streamid() const {
+  return _impl_.streamid_;
+}
+inline uint32_t GetStreamDataRequest::streamid() const {
+  // @@protoc_insertion_point(field_get:silicon_based.GetStreamDataRequest.streamID)
+  return _internal_streamid();
+}
+inline void GetStreamDataRequest::_internal_set_streamid(uint32_t value) {
+  
+  _impl_.streamid_ = value;
+}
+inline void GetStreamDataRequest::set_streamid(uint32_t value) {
+  _internal_set_streamid(value);
+  // @@protoc_insertion_point(field_set:silicon_based.GetStreamDataRequest.streamID)
+}
+
+// uint64 startAddr = 3;
 inline void GetStreamDataRequest::clear_startaddr() {
   _impl_.startaddr_ = uint64_t{0u};
 }
@@ -5516,7 +5547,7 @@ inline void GetStreamDataRequest::set_startaddr(uint64_t value) {
   // @@protoc_insertion_point(field_set:silicon_based.GetStreamDataRequest.startAddr)
 }
 
-// uint32 requestLen = 3;
+// uint32 requestLen = 4;
 inline void GetStreamDataRequest::clear_requestlen() {
   _impl_.requestlen_ = 0u;
 }

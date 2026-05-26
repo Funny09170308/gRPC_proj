@@ -337,7 +337,7 @@ void temp_monitor(void)
 #define QA_TEMP_OFFSET 0x00010000 + (1 << 2)
     s_boardInfo = get_pcie_board_info();
     float kernel_temp = read_temperature();
-    // P_LOG_DEBUG("Kernel temp: %.2f", kernel_temp);
+    P_LOG_DEBUG("Kernel temp: %.2f", kernel_temp);
     if (kernel_temp >= TEMPERATURE_WALL)
     {
         cut_off_slave_power();

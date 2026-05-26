@@ -24,6 +24,9 @@ service QACMDService {
     rpc GetADCPlayParam(GetADCPlayParamRequest) returns (GetADCPlayParamResponse);
     rpc SetADCStartStop(SetADCStartStopRequest) returns (ParamResponse);
     rpc GetADCStartStop(GetADCStartStopRequest) returns (GetADCStartStopResponse);
+
+    rpc GetSampleState(GetSampleStateRequest) returns (ParamResponse);
+    rpc GetDemodeState(GetDemodeStateRequest) returns (ParamResponse);
 }
 
 message SetTrigSourRequest {
@@ -137,4 +140,12 @@ message GetADCStartStopRequest {
 }
 message GetADCStartStopResponse {
     uint32 chEnable = 1;
+}
+
+message GetSampleStateRequest {
+    uint32 logicCh = 1;
+}
+
+message GetDemodeStateRequest {
+    uint32 logicCh = 1;
 }

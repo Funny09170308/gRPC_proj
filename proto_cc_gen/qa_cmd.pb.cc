@@ -392,8 +392,34 @@ struct GetADCStartStopResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetADCStartStopResponseDefaultTypeInternal _GetADCStartStopResponse_default_instance_;
+PROTOBUF_CONSTEXPR GetSampleStateRequest::GetSampleStateRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.logicch_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct GetSampleStateRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetSampleStateRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetSampleStateRequestDefaultTypeInternal() {}
+  union {
+    GetSampleStateRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetSampleStateRequestDefaultTypeInternal _GetSampleStateRequest_default_instance_;
+PROTOBUF_CONSTEXPR GetDemodeStateRequest::GetDemodeStateRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.logicch_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct GetDemodeStateRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetDemodeStateRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetDemodeStateRequestDefaultTypeInternal() {}
+  union {
+    GetDemodeStateRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetDemodeStateRequestDefaultTypeInternal _GetDemodeStateRequest_default_instance_;
 }  // namespace silicon_based
-static ::_pb::Metadata file_level_metadata_qa_5fcmd_2eproto[26];
+static ::_pb::Metadata file_level_metadata_qa_5fcmd_2eproto[28];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_qa_5fcmd_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_qa_5fcmd_2eproto = nullptr;
 
@@ -613,6 +639,20 @@ const uint32_t TableStruct_qa_5fcmd_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::silicon_based::GetADCStartStopResponse, _impl_.chenable_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::silicon_based::GetSampleStateRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::silicon_based::GetSampleStateRequest, _impl_.logicch_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::silicon_based::GetDemodeStateRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::silicon_based::GetDemodeStateRequest, _impl_.logicch_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::silicon_based::SetTrigSourRequest)},
@@ -641,6 +681,8 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 193, -1, -1, sizeof(::silicon_based::SetADCStartStopRequest)},
   { 201, -1, -1, sizeof(::silicon_based::GetADCStartStopRequest)},
   { 208, -1, -1, sizeof(::silicon_based::GetADCStartStopResponse)},
+  { 215, -1, -1, sizeof(::silicon_based::GetSampleStateRequest)},
+  { 222, -1, -1, sizeof(::silicon_based::GetDemodeStateRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -670,6 +712,8 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::silicon_based::_SetADCStartStopRequest_default_instance_._instance,
   &::silicon_based::_GetADCStartStopRequest_default_instance_._instance,
   &::silicon_based::_GetADCStartStopResponse_default_instance_._instance,
+  &::silicon_based::_GetSampleStateRequest_default_instance_._instance,
+  &::silicon_based::_GetDemodeStateRequest_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_qa_5fcmd_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -717,57 +761,64 @@ const char descriptor_table_protodef_qa_5fcmd_2eproto[] PROTOBUF_SECTION_VARIABL
   "quest\022\017\n\007logicCh\030\001 \001(\r\022\020\n\010chEnable\030\002 \001(\r"
   "\")\n\026GetADCStartStopRequest\022\017\n\007logicCh\030\001 "
   "\001(\r\"+\n\027GetADCStartStopResponse\022\020\n\010chEnab"
-  "le\030\001 \001(\r2\371\014\n\014QACMDService\022N\n\013SetTrigSour"
-  "\022!.silicon_based.SetTrigSourRequest\032\034.si"
-  "licon_based.ParamResponse\022N\n\013SetSoftTrig"
-  "\022!.silicon_based.SetSoftTrigRequest\032\034.si"
-  "licon_based.ParamResponse\022V\n\017SetDACDDSCo"
-  "nfig\022%.silicon_based.SetDACDDSConfigRequ"
-  "est\032\034.silicon_based.ParamResponse\022`\n\017Get"
-  "DACDDSConfig\022%.silicon_based.GetDACDDSCo"
-  "nfigRequest\032&.silicon_based.GetDACDDSCon"
-  "figResponse\022V\n\017SetDACPlayParam\022%.silicon"
-  "_based.SetDACPlayParamRequest\032\034.silicon_"
-  "based.ParamResponse\022`\n\017GetDACPlayParam\022%"
-  ".silicon_based.GetDACPlayParamRequest\032&."
-  "silicon_based.GetDACPlayParamResponse\022V\n"
-  "\017SetDACStartStop\022%.silicon_based.SetDACS"
-  "tartStopRequest\032\034.silicon_based.ParamRes"
-  "ponse\022`\n\017GetDACStartStop\022%.silicon_based"
-  ".GetDACStartStopRequest\032&.silicon_based."
-  "GetDACStartStopResponse\022T\n\016SetSamplePara"
-  "m\022$.silicon_based.SetSampleParamRequest\032"
-  "\034.silicon_based.ParamResponse\022]\n\016GetSamp"
-  "leParam\022$.silicon_based.GetSampleParamRe"
-  "quest\032%.silicon_based.GetSampleParamResp"
-  "onse\022\\\n\022SetSampleStartStop\022(.silicon_bas"
-  "ed.SetSampleStartStopRequest\032\034.silicon_b"
-  "ased.ParamResponse\022i\n\022GetSampleStartStop"
-  "\022(.silicon_based.GetSampleStartStopReque"
-  "st\032).silicon_based.GetSampleStartStopRes"
-  "ponse\022P\n\014SetADCConfig\022\".silicon_based.Se"
-  "tADCConfigRequest\032\034.silicon_based.ParamR"
-  "esponse\022W\n\014GetADCConfig\022\".silicon_based."
-  "GetADCConfigRequest\032#.silicon_based.GetA"
-  "DCConfigResponse\022V\n\017SetADCPlayParam\022%.si"
-  "licon_based.SetADCPlayParamRequest\032\034.sil"
-  "icon_based.ParamResponse\022`\n\017GetADCPlayPa"
-  "ram\022%.silicon_based.GetADCPlayParamReque"
-  "st\032&.silicon_based.GetADCPlayParamRespon"
-  "se\022V\n\017SetADCStartStop\022%.silicon_based.Se"
-  "tADCStartStopRequest\032\034.silicon_based.Par"
-  "amResponse\022`\n\017GetADCStartStop\022%.silicon_"
-  "based.GetADCStartStopRequest\032&.silicon_b"
-  "ased.GetADCStartStopResponseb\006proto3"
+  "le\030\001 \001(\r\"(\n\025GetSampleStateRequest\022\017\n\007log"
+  "icCh\030\001 \001(\r\"(\n\025GetDemodeStateRequest\022\017\n\007l"
+  "ogicCh\030\001 \001(\r2\245\016\n\014QACMDService\022N\n\013SetTrig"
+  "Sour\022!.silicon_based.SetTrigSourRequest\032"
+  "\034.silicon_based.ParamResponse\022N\n\013SetSoft"
+  "Trig\022!.silicon_based.SetSoftTrigRequest\032"
+  "\034.silicon_based.ParamResponse\022V\n\017SetDACD"
+  "DSConfig\022%.silicon_based.SetDACDDSConfig"
+  "Request\032\034.silicon_based.ParamResponse\022`\n"
+  "\017GetDACDDSConfig\022%.silicon_based.GetDACD"
+  "DSConfigRequest\032&.silicon_based.GetDACDD"
+  "SConfigResponse\022V\n\017SetDACPlayParam\022%.sil"
+  "icon_based.SetDACPlayParamRequest\032\034.sili"
+  "con_based.ParamResponse\022`\n\017GetDACPlayPar"
+  "am\022%.silicon_based.GetDACPlayParamReques"
+  "t\032&.silicon_based.GetDACPlayParamRespons"
+  "e\022V\n\017SetDACStartStop\022%.silicon_based.Set"
+  "DACStartStopRequest\032\034.silicon_based.Para"
+  "mResponse\022`\n\017GetDACStartStop\022%.silicon_b"
+  "ased.GetDACStartStopRequest\032&.silicon_ba"
+  "sed.GetDACStartStopResponse\022T\n\016SetSample"
+  "Param\022$.silicon_based.SetSampleParamRequ"
+  "est\032\034.silicon_based.ParamResponse\022]\n\016Get"
+  "SampleParam\022$.silicon_based.GetSamplePar"
+  "amRequest\032%.silicon_based.GetSampleParam"
+  "Response\022\\\n\022SetSampleStartStop\022(.silicon"
+  "_based.SetSampleStartStopRequest\032\034.silic"
+  "on_based.ParamResponse\022i\n\022GetSampleStart"
+  "Stop\022(.silicon_based.GetSampleStartStopR"
+  "equest\032).silicon_based.GetSampleStartSto"
+  "pResponse\022P\n\014SetADCConfig\022\".silicon_base"
+  "d.SetADCConfigRequest\032\034.silicon_based.Pa"
+  "ramResponse\022W\n\014GetADCConfig\022\".silicon_ba"
+  "sed.GetADCConfigRequest\032#.silicon_based."
+  "GetADCConfigResponse\022V\n\017SetADCPlayParam\022"
+  "%.silicon_based.SetADCPlayParamRequest\032\034"
+  ".silicon_based.ParamResponse\022`\n\017GetADCPl"
+  "ayParam\022%.silicon_based.GetADCPlayParamR"
+  "equest\032&.silicon_based.GetADCPlayParamRe"
+  "sponse\022V\n\017SetADCStartStop\022%.silicon_base"
+  "d.SetADCStartStopRequest\032\034.silicon_based"
+  ".ParamResponse\022`\n\017GetADCStartStop\022%.sili"
+  "con_based.GetADCStartStopRequest\032&.silic"
+  "on_based.GetADCStartStopResponse\022T\n\016GetS"
+  "ampleState\022$.silicon_based.GetSampleStat"
+  "eRequest\032\034.silicon_based.ParamResponse\022T"
+  "\n\016GetDemodeState\022$.silicon_based.GetDemo"
+  "deStateRequest\032\034.silicon_based.ParamResp"
+  "onseb\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_qa_5fcmd_2eproto_deps[1] = {
   &::descriptor_table_common_5fcmd_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_qa_5fcmd_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_qa_5fcmd_2eproto = {
-    false, false, 3436, descriptor_table_protodef_qa_5fcmd_2eproto,
+    false, false, 3692, descriptor_table_protodef_qa_5fcmd_2eproto,
     "qa_cmd.proto",
-    &descriptor_table_qa_5fcmd_2eproto_once, descriptor_table_qa_5fcmd_2eproto_deps, 1, 26,
+    &descriptor_table_qa_5fcmd_2eproto_once, descriptor_table_qa_5fcmd_2eproto_deps, 1, 28,
     schemas, file_default_instances, TableStruct_qa_5fcmd_2eproto::offsets,
     file_level_metadata_qa_5fcmd_2eproto, file_level_enum_descriptors_qa_5fcmd_2eproto,
     file_level_service_descriptors_qa_5fcmd_2eproto,
@@ -6407,6 +6458,362 @@ void GetADCStartStopResponse::InternalSwap(GetADCStartStopResponse* other) {
       file_level_metadata_qa_5fcmd_2eproto[25]);
 }
 
+// ===================================================================
+
+class GetSampleStateRequest::_Internal {
+ public:
+};
+
+GetSampleStateRequest::GetSampleStateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.GetSampleStateRequest)
+}
+GetSampleStateRequest::GetSampleStateRequest(const GetSampleStateRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  GetSampleStateRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.logicch_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.logicch_ = from._impl_.logicch_;
+  // @@protoc_insertion_point(copy_constructor:silicon_based.GetSampleStateRequest)
+}
+
+inline void GetSampleStateRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.logicch_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+GetSampleStateRequest::~GetSampleStateRequest() {
+  // @@protoc_insertion_point(destructor:silicon_based.GetSampleStateRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void GetSampleStateRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void GetSampleStateRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void GetSampleStateRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.GetSampleStateRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.logicch_ = 0u;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GetSampleStateRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint32 logicCh = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.logicch_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* GetSampleStateRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:silicon_based.GetSampleStateRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 logicCh = 1;
+  if (this->_internal_logicch() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_logicch(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:silicon_based.GetSampleStateRequest)
+  return target;
+}
+
+size_t GetSampleStateRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:silicon_based.GetSampleStateRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint32 logicCh = 1;
+  if (this->_internal_logicch() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_logicch());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetSampleStateRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    GetSampleStateRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetSampleStateRequest::GetClassData() const { return &_class_data_; }
+
+
+void GetSampleStateRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<GetSampleStateRequest*>(&to_msg);
+  auto& from = static_cast<const GetSampleStateRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.GetSampleStateRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_logicch() != 0) {
+    _this->_internal_set_logicch(from._internal_logicch());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetSampleStateRequest::CopyFrom(const GetSampleStateRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.GetSampleStateRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetSampleStateRequest::IsInitialized() const {
+  return true;
+}
+
+void GetSampleStateRequest::InternalSwap(GetSampleStateRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.logicch_, other->_impl_.logicch_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GetSampleStateRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_qa_5fcmd_2eproto_getter, &descriptor_table_qa_5fcmd_2eproto_once,
+      file_level_metadata_qa_5fcmd_2eproto[26]);
+}
+
+// ===================================================================
+
+class GetDemodeStateRequest::_Internal {
+ public:
+};
+
+GetDemodeStateRequest::GetDemodeStateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.GetDemodeStateRequest)
+}
+GetDemodeStateRequest::GetDemodeStateRequest(const GetDemodeStateRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  GetDemodeStateRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.logicch_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.logicch_ = from._impl_.logicch_;
+  // @@protoc_insertion_point(copy_constructor:silicon_based.GetDemodeStateRequest)
+}
+
+inline void GetDemodeStateRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.logicch_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+GetDemodeStateRequest::~GetDemodeStateRequest() {
+  // @@protoc_insertion_point(destructor:silicon_based.GetDemodeStateRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void GetDemodeStateRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void GetDemodeStateRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void GetDemodeStateRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.GetDemodeStateRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.logicch_ = 0u;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GetDemodeStateRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint32 logicCh = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.logicch_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* GetDemodeStateRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:silicon_based.GetDemodeStateRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 logicCh = 1;
+  if (this->_internal_logicch() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_logicch(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:silicon_based.GetDemodeStateRequest)
+  return target;
+}
+
+size_t GetDemodeStateRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:silicon_based.GetDemodeStateRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint32 logicCh = 1;
+  if (this->_internal_logicch() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_logicch());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetDemodeStateRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    GetDemodeStateRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetDemodeStateRequest::GetClassData() const { return &_class_data_; }
+
+
+void GetDemodeStateRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<GetDemodeStateRequest*>(&to_msg);
+  auto& from = static_cast<const GetDemodeStateRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.GetDemodeStateRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_logicch() != 0) {
+    _this->_internal_set_logicch(from._internal_logicch());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetDemodeStateRequest::CopyFrom(const GetDemodeStateRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.GetDemodeStateRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetDemodeStateRequest::IsInitialized() const {
+  return true;
+}
+
+void GetDemodeStateRequest::InternalSwap(GetDemodeStateRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.logicch_, other->_impl_.logicch_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GetDemodeStateRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_qa_5fcmd_2eproto_getter, &descriptor_table_qa_5fcmd_2eproto_once,
+      file_level_metadata_qa_5fcmd_2eproto[27]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace silicon_based
 PROTOBUF_NAMESPACE_OPEN
@@ -6513,6 +6920,14 @@ Arena::CreateMaybeMessage< ::silicon_based::GetADCStartStopRequest >(Arena* aren
 template<> PROTOBUF_NOINLINE ::silicon_based::GetADCStartStopResponse*
 Arena::CreateMaybeMessage< ::silicon_based::GetADCStartStopResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::silicon_based::GetADCStartStopResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::silicon_based::GetSampleStateRequest*
+Arena::CreateMaybeMessage< ::silicon_based::GetSampleStateRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::silicon_based::GetSampleStateRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::silicon_based::GetDemodeStateRequest*
+Arena::CreateMaybeMessage< ::silicon_based::GetDemodeStateRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::silicon_based::GetDemodeStateRequest >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

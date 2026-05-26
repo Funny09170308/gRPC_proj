@@ -82,6 +82,9 @@ extern GetDACStartStopRequestDefaultTypeInternal _GetDACStartStopRequest_default
 class GetDACStartStopResponse;
 struct GetDACStartStopResponseDefaultTypeInternal;
 extern GetDACStartStopResponseDefaultTypeInternal _GetDACStartStopResponse_default_instance_;
+class GetDemodeStateRequest;
+struct GetDemodeStateRequestDefaultTypeInternal;
+extern GetDemodeStateRequestDefaultTypeInternal _GetDemodeStateRequest_default_instance_;
 class GetSampleParamRequest;
 struct GetSampleParamRequestDefaultTypeInternal;
 extern GetSampleParamRequestDefaultTypeInternal _GetSampleParamRequest_default_instance_;
@@ -94,6 +97,9 @@ extern GetSampleStartStopRequestDefaultTypeInternal _GetSampleStartStopRequest_d
 class GetSampleStartStopResponse;
 struct GetSampleStartStopResponseDefaultTypeInternal;
 extern GetSampleStartStopResponseDefaultTypeInternal _GetSampleStartStopResponse_default_instance_;
+class GetSampleStateRequest;
+struct GetSampleStateRequestDefaultTypeInternal;
+extern GetSampleStateRequestDefaultTypeInternal _GetSampleStateRequest_default_instance_;
 class SetADCConfigRequest;
 struct SetADCConfigRequestDefaultTypeInternal;
 extern SetADCConfigRequestDefaultTypeInternal _SetADCConfigRequest_default_instance_;
@@ -138,10 +144,12 @@ template<> ::silicon_based::GetDACPlayParamRequest* Arena::CreateMaybeMessage<::
 template<> ::silicon_based::GetDACPlayParamResponse* Arena::CreateMaybeMessage<::silicon_based::GetDACPlayParamResponse>(Arena*);
 template<> ::silicon_based::GetDACStartStopRequest* Arena::CreateMaybeMessage<::silicon_based::GetDACStartStopRequest>(Arena*);
 template<> ::silicon_based::GetDACStartStopResponse* Arena::CreateMaybeMessage<::silicon_based::GetDACStartStopResponse>(Arena*);
+template<> ::silicon_based::GetDemodeStateRequest* Arena::CreateMaybeMessage<::silicon_based::GetDemodeStateRequest>(Arena*);
 template<> ::silicon_based::GetSampleParamRequest* Arena::CreateMaybeMessage<::silicon_based::GetSampleParamRequest>(Arena*);
 template<> ::silicon_based::GetSampleParamResponse* Arena::CreateMaybeMessage<::silicon_based::GetSampleParamResponse>(Arena*);
 template<> ::silicon_based::GetSampleStartStopRequest* Arena::CreateMaybeMessage<::silicon_based::GetSampleStartStopRequest>(Arena*);
 template<> ::silicon_based::GetSampleStartStopResponse* Arena::CreateMaybeMessage<::silicon_based::GetSampleStartStopResponse>(Arena*);
+template<> ::silicon_based::GetSampleStateRequest* Arena::CreateMaybeMessage<::silicon_based::GetSampleStateRequest>(Arena*);
 template<> ::silicon_based::SetADCConfigRequest* Arena::CreateMaybeMessage<::silicon_based::SetADCConfigRequest>(Arena*);
 template<> ::silicon_based::SetADCPlayParamRequest* Arena::CreateMaybeMessage<::silicon_based::SetADCPlayParamRequest>(Arena*);
 template<> ::silicon_based::SetADCStartStopRequest* Arena::CreateMaybeMessage<::silicon_based::SetADCStartStopRequest>(Arena*);
@@ -4431,6 +4439,302 @@ class GetADCStartStopResponse final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_qa_5fcmd_2eproto;
 };
+// -------------------------------------------------------------------
+
+class GetSampleStateRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:silicon_based.GetSampleStateRequest) */ {
+ public:
+  inline GetSampleStateRequest() : GetSampleStateRequest(nullptr) {}
+  ~GetSampleStateRequest() override;
+  explicit PROTOBUF_CONSTEXPR GetSampleStateRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GetSampleStateRequest(const GetSampleStateRequest& from);
+  GetSampleStateRequest(GetSampleStateRequest&& from) noexcept
+    : GetSampleStateRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline GetSampleStateRequest& operator=(const GetSampleStateRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetSampleStateRequest& operator=(GetSampleStateRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetSampleStateRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetSampleStateRequest* internal_default_instance() {
+    return reinterpret_cast<const GetSampleStateRequest*>(
+               &_GetSampleStateRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    26;
+
+  friend void swap(GetSampleStateRequest& a, GetSampleStateRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GetSampleStateRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetSampleStateRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetSampleStateRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GetSampleStateRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GetSampleStateRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const GetSampleStateRequest& from) {
+    GetSampleStateRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetSampleStateRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "silicon_based.GetSampleStateRequest";
+  }
+  protected:
+  explicit GetSampleStateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kLogicChFieldNumber = 1,
+  };
+  // uint32 logicCh = 1;
+  void clear_logicch();
+  uint32_t logicch() const;
+  void set_logicch(uint32_t value);
+  private:
+  uint32_t _internal_logicch() const;
+  void _internal_set_logicch(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:silicon_based.GetSampleStateRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    uint32_t logicch_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_qa_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetDemodeStateRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:silicon_based.GetDemodeStateRequest) */ {
+ public:
+  inline GetDemodeStateRequest() : GetDemodeStateRequest(nullptr) {}
+  ~GetDemodeStateRequest() override;
+  explicit PROTOBUF_CONSTEXPR GetDemodeStateRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GetDemodeStateRequest(const GetDemodeStateRequest& from);
+  GetDemodeStateRequest(GetDemodeStateRequest&& from) noexcept
+    : GetDemodeStateRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline GetDemodeStateRequest& operator=(const GetDemodeStateRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetDemodeStateRequest& operator=(GetDemodeStateRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetDemodeStateRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetDemodeStateRequest* internal_default_instance() {
+    return reinterpret_cast<const GetDemodeStateRequest*>(
+               &_GetDemodeStateRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    27;
+
+  friend void swap(GetDemodeStateRequest& a, GetDemodeStateRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GetDemodeStateRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetDemodeStateRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetDemodeStateRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GetDemodeStateRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GetDemodeStateRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const GetDemodeStateRequest& from) {
+    GetDemodeStateRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetDemodeStateRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "silicon_based.GetDemodeStateRequest";
+  }
+  protected:
+  explicit GetDemodeStateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kLogicChFieldNumber = 1,
+  };
+  // uint32 logicCh = 1;
+  void clear_logicch();
+  uint32_t logicch() const;
+  void set_logicch(uint32_t value);
+  private:
+  uint32_t _internal_logicch() const;
+  void _internal_set_logicch(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:silicon_based.GetDemodeStateRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    uint32_t logicch_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_qa_5fcmd_2eproto;
+};
 // ===================================================================
 
 
@@ -5857,9 +6161,61 @@ inline void GetADCStartStopResponse::set_chenable(uint32_t value) {
   // @@protoc_insertion_point(field_set:silicon_based.GetADCStartStopResponse.chEnable)
 }
 
+// -------------------------------------------------------------------
+
+// GetSampleStateRequest
+
+// uint32 logicCh = 1;
+inline void GetSampleStateRequest::clear_logicch() {
+  _impl_.logicch_ = 0u;
+}
+inline uint32_t GetSampleStateRequest::_internal_logicch() const {
+  return _impl_.logicch_;
+}
+inline uint32_t GetSampleStateRequest::logicch() const {
+  // @@protoc_insertion_point(field_get:silicon_based.GetSampleStateRequest.logicCh)
+  return _internal_logicch();
+}
+inline void GetSampleStateRequest::_internal_set_logicch(uint32_t value) {
+  
+  _impl_.logicch_ = value;
+}
+inline void GetSampleStateRequest::set_logicch(uint32_t value) {
+  _internal_set_logicch(value);
+  // @@protoc_insertion_point(field_set:silicon_based.GetSampleStateRequest.logicCh)
+}
+
+// -------------------------------------------------------------------
+
+// GetDemodeStateRequest
+
+// uint32 logicCh = 1;
+inline void GetDemodeStateRequest::clear_logicch() {
+  _impl_.logicch_ = 0u;
+}
+inline uint32_t GetDemodeStateRequest::_internal_logicch() const {
+  return _impl_.logicch_;
+}
+inline uint32_t GetDemodeStateRequest::logicch() const {
+  // @@protoc_insertion_point(field_get:silicon_based.GetDemodeStateRequest.logicCh)
+  return _internal_logicch();
+}
+inline void GetDemodeStateRequest::_internal_set_logicch(uint32_t value) {
+  
+  _impl_.logicch_ = value;
+}
+inline void GetDemodeStateRequest::set_logicch(uint32_t value) {
+  _internal_set_logicch(value);
+  // @@protoc_insertion_point(field_set:silicon_based.GetDemodeStateRequest.logicCh)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

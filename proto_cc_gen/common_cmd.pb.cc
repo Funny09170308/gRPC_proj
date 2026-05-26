@@ -273,8 +273,9 @@ struct SetStreamResultDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetStreamResultDefaultTypeInternal _SetStreamResult_default_instance_;
 PROTOBUF_CONSTEXPR GetStreamDataRequest::GetStreamDataRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.startaddr_)*/uint64_t{0u}
-  , /*decltype(_impl_.chip_)*/0u
+    /*decltype(_impl_.chip_)*/0u
+  , /*decltype(_impl_.streamid_)*/0u
+  , /*decltype(_impl_.startaddr_)*/uint64_t{0u}
   , /*decltype(_impl_.requestlen_)*/0u
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct GetStreamDataRequestDefaultTypeInternal {
@@ -555,6 +556,7 @@ const uint32_t TableStruct_common_5fcmd_2eproto::offsets[] PROTOBUF_SECTION_VARI
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::silicon_based::GetStreamDataRequest, _impl_.chip_),
+  PROTOBUF_FIELD_OFFSET(::silicon_based::GetStreamDataRequest, _impl_.streamid_),
   PROTOBUF_FIELD_OFFSET(::silicon_based::GetStreamDataRequest, _impl_.startaddr_),
   PROTOBUF_FIELD_OFFSET(::silicon_based::GetStreamDataRequest, _impl_.requestlen_),
   ~0u,  // no _has_bits_
@@ -643,14 +645,14 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 127, -1, -1, sizeof(::silicon_based::SetStreamDataRequest)},
   { 140, -1, -1, sizeof(::silicon_based::SetStreamResult)},
   { 147, -1, -1, sizeof(::silicon_based::GetStreamDataRequest)},
-  { 156, -1, -1, sizeof(::silicon_based::GetStreamResult)},
-  { 168, -1, -1, sizeof(::silicon_based::SetTrigSourceRequest)},
-  { 174, -1, -1, sizeof(::silicon_based::GetTrigSourceRequest)},
-  { 180, -1, -1, sizeof(::silicon_based::GetTrigSourceResponse)},
-  { 186, -1, -1, sizeof(::silicon_based::SetTrigParamRequest)},
-  { 197, -1, -1, sizeof(::silicon_based::GetTrigParamRequest)},
-  { 203, -1, -1, sizeof(::silicon_based::GetTrigParamResponse)},
-  { 214, -1, -1, sizeof(::silicon_based::SetTrigStartRequest)},
+  { 157, -1, -1, sizeof(::silicon_based::GetStreamResult)},
+  { 169, -1, -1, sizeof(::silicon_based::SetTrigSourceRequest)},
+  { 175, -1, -1, sizeof(::silicon_based::GetTrigSourceRequest)},
+  { 181, -1, -1, sizeof(::silicon_based::GetTrigSourceResponse)},
+  { 187, -1, -1, sizeof(::silicon_based::SetTrigParamRequest)},
+  { 198, -1, -1, sizeof(::silicon_based::GetTrigParamRequest)},
+  { 204, -1, -1, sizeof(::silicon_based::GetTrigParamResponse)},
+  { 215, -1, -1, sizeof(::silicon_based::SetTrigStartRequest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -711,62 +713,63 @@ const char descriptor_table_protodef_common_5fcmd_2eproto[] PROTOBUF_SECTION_VAR
   " \001(\r\022\026\n\016currentPackage\030\004 \001(\r\022\030\n\020currentP"
   "ackBytes\030\005 \001(\r\022\021\n\tstartAddr\030\006 \001(\004\022\014\n\004dat"
   "a\030\007 \001(\014\"$\n\017SetStreamResult\022\021\n\tresvTotal\030"
-  "\001 \001(\r\"K\n\024GetStreamDataRequest\022\014\n\004chip\030\001 "
-  "\001(\r\022\021\n\tstartAddr\030\002 \001(\004\022\022\n\nrequestLen\030\003 \001"
-  "(\r\"\215\001\n\017GetStreamResult\022\020\n\010streamID\030\001 \001(\r"
-  "\022\025\n\rtotalPackages\030\002 \001(\r\022\026\n\016currentPackag"
-  "e\030\003 \001(\r\022\030\n\020currentPackBytes\030\004 \001(\r\022\021\n\tsta"
-  "rtAddr\030\005 \001(\004\022\014\n\004data\030\006 \001(\014\"\026\n\024SetTrigSou"
-  "rceRequest\"\026\n\024GetTrigSourceRequest\"\027\n\025Ge"
-  "tTrigSourceResponse\"y\n\023SetTrigParamReque"
-  "st\022\022\n\ntrigSource\030\001 \001(\r\022\024\n\014trigContinue\030\002"
-  " \001(\r\022\021\n\ttrigTimes\030\003 \001(\r\022\022\n\ntrigPeriod\030\004 "
-  "\001(\r\022\021\n\ttrigDelay\030\005 \001(\r\"\025\n\023GetTrigParamRe"
-  "quest\"z\n\024GetTrigParamResponse\022\022\n\ntrigSou"
-  "rce\030\001 \001(\r\022\024\n\014trigContinue\030\002 \001(\r\022\021\n\ttrigT"
-  "imes\030\003 \001(\r\022\022\n\ntrigPeriod\030\004 \001(\r\022\021\n\ttrigDe"
-  "lay\030\005 \001(\r\"$\n\023SetTrigStartRequest\022\r\n\005stat"
-  "e\030\001 \001(\r2\247\013\n\020CommonCMDService\022E\n\006GetIDN\022\034"
-  ".silicon_based.GetIDNRequest\032\035.silicon_b"
-  "ased.GetIDNResponse\022Z\n\rGetDeviceInfo\022#.s"
-  "ilicon_based.GetDeviceInfoRequest\032$.sili"
-  "con_based.GetDeviceInfoResponse\022O\n\rSetDe"
-  "bugParam\022 .silicon_based.DebugParamReque"
-  "st\032\034.silicon_based.ParamResponse\022O\n\rSetG"
-  "PIOStatus\022 .silicon_based.GPIOStatusRequ"
-  "est\032\034.silicon_based.ParamResponse\022N\n\rSet"
-  "NetCfgAddr\022\037.silicon_based.SetNetCfgRequ"
-  "est\032\034.silicon_based.ParamResponse\022O\n\rGet"
-  "NetCfgAddr\022\037.silicon_based.GetNetCfgRequ"
-  "est\032\035.silicon_based.NetCfgResponse\022I\n\013Se"
-  "tRegValue\022\034.silicon_based.RegSetRequest\032"
-  "\034.silicon_based.ParamResponse\022L\n\013GetRegV"
-  "alue\022\034.silicon_based.RegGetRequest\032\037.sil"
-  "icon_based.RegValueResponse\022Q\n\017SetPCIERe"
-  "gValue\022 .silicon_based.PCIERegSetRequest"
-  "\032\034.silicon_based.ParamResponse\022X\n\017GetPCI"
-  "ERegValue\022 .silicon_based.PCIERegGetRequ"
-  "est\032#.silicon_based.PCIERegValueResponse"
-  "\022V\n\rStreamDataSet\022#.silicon_based.SetStr"
-  "eamDataRequest\032\036.silicon_based.SetStream"
-  "Result(\001\022V\n\rStreamDataGet\022#.silicon_base"
-  "d.GetStreamDataRequest\032\036.silicon_based.G"
-  "etStreamResult0\001\022U\n\020SetDevTrigSource\022#.s"
-  "ilicon_based.SetTrigSourceRequest\032\034.sili"
-  "con_based.ParamResponse\022]\n\020GetDevTrigSou"
-  "rce\022#.silicon_based.GetTrigSourceRequest"
-  "\032$.silicon_based.GetTrigSourceResponse\022S"
-  "\n\017SetDevTrigParam\022\".silicon_based.SetTri"
-  "gParamRequest\032\034.silicon_based.ParamRespo"
-  "nse\022Z\n\017GetDevTrigParam\022\".silicon_based.G"
-  "etTrigParamRequest\032#.silicon_based.GetTr"
-  "igParamResponse\022P\n\014SetTrigStart\022\".silico"
-  "n_based.SetTrigStartRequest\032\034.silicon_ba"
-  "sed.ParamResponseb\006proto3"
+  "\001 \001(\r\"]\n\024GetStreamDataRequest\022\014\n\004chip\030\001 "
+  "\001(\r\022\020\n\010streamID\030\002 \001(\r\022\021\n\tstartAddr\030\003 \001(\004"
+  "\022\022\n\nrequestLen\030\004 \001(\r\"\215\001\n\017GetStreamResult"
+  "\022\020\n\010streamID\030\001 \001(\r\022\025\n\rtotalPackages\030\002 \001("
+  "\r\022\026\n\016currentPackage\030\003 \001(\r\022\030\n\020currentPack"
+  "Bytes\030\004 \001(\r\022\021\n\tstartAddr\030\005 \001(\004\022\014\n\004data\030\006"
+  " \001(\014\"\026\n\024SetTrigSourceRequest\"\026\n\024GetTrigS"
+  "ourceRequest\"\027\n\025GetTrigSourceResponse\"y\n"
+  "\023SetTrigParamRequest\022\022\n\ntrigSource\030\001 \001(\r"
+  "\022\024\n\014trigContinue\030\002 \001(\r\022\021\n\ttrigTimes\030\003 \001("
+  "\r\022\022\n\ntrigPeriod\030\004 \001(\r\022\021\n\ttrigDelay\030\005 \001(\r"
+  "\"\025\n\023GetTrigParamRequest\"z\n\024GetTrigParamR"
+  "esponse\022\022\n\ntrigSource\030\001 \001(\r\022\024\n\014trigConti"
+  "nue\030\002 \001(\r\022\021\n\ttrigTimes\030\003 \001(\r\022\022\n\ntrigPeri"
+  "od\030\004 \001(\r\022\021\n\ttrigDelay\030\005 \001(\r\"$\n\023SetTrigSt"
+  "artRequest\022\r\n\005state\030\001 \001(\r2\247\013\n\020CommonCMDS"
+  "ervice\022E\n\006GetIDN\022\034.silicon_based.GetIDNR"
+  "equest\032\035.silicon_based.GetIDNResponse\022Z\n"
+  "\rGetDeviceInfo\022#.silicon_based.GetDevice"
+  "InfoRequest\032$.silicon_based.GetDeviceInf"
+  "oResponse\022O\n\rSetDebugParam\022 .silicon_bas"
+  "ed.DebugParamRequest\032\034.silicon_based.Par"
+  "amResponse\022O\n\rSetGPIOStatus\022 .silicon_ba"
+  "sed.GPIOStatusRequest\032\034.silicon_based.Pa"
+  "ramResponse\022N\n\rSetNetCfgAddr\022\037.silicon_b"
+  "ased.SetNetCfgRequest\032\034.silicon_based.Pa"
+  "ramResponse\022O\n\rGetNetCfgAddr\022\037.silicon_b"
+  "ased.GetNetCfgRequest\032\035.silicon_based.Ne"
+  "tCfgResponse\022I\n\013SetRegValue\022\034.silicon_ba"
+  "sed.RegSetRequest\032\034.silicon_based.ParamR"
+  "esponse\022L\n\013GetRegValue\022\034.silicon_based.R"
+  "egGetRequest\032\037.silicon_based.RegValueRes"
+  "ponse\022Q\n\017SetPCIERegValue\022 .silicon_based"
+  ".PCIERegSetRequest\032\034.silicon_based.Param"
+  "Response\022X\n\017GetPCIERegValue\022 .silicon_ba"
+  "sed.PCIERegGetRequest\032#.silicon_based.PC"
+  "IERegValueResponse\022V\n\rStreamDataSet\022#.si"
+  "licon_based.SetStreamDataRequest\032\036.silic"
+  "on_based.SetStreamResult(\001\022V\n\rStreamData"
+  "Get\022#.silicon_based.GetStreamDataRequest"
+  "\032\036.silicon_based.GetStreamResult0\001\022U\n\020Se"
+  "tDevTrigSource\022#.silicon_based.SetTrigSo"
+  "urceRequest\032\034.silicon_based.ParamRespons"
+  "e\022]\n\020GetDevTrigSource\022#.silicon_based.Ge"
+  "tTrigSourceRequest\032$.silicon_based.GetTr"
+  "igSourceResponse\022S\n\017SetDevTrigParam\022\".si"
+  "licon_based.SetTrigParamRequest\032\034.silico"
+  "n_based.ParamResponse\022Z\n\017GetDevTrigParam"
+  "\022\".silicon_based.GetTrigParamRequest\032#.s"
+  "ilicon_based.GetTrigParamResponse\022P\n\014Set"
+  "TrigStart\022\".silicon_based.SetTrigStartRe"
+  "quest\032\034.silicon_based.ParamResponseb\006pro"
+  "to3"
   ;
 static ::_pbi::once_flag descriptor_table_common_5fcmd_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_common_5fcmd_2eproto = {
-    false, false, 3145, descriptor_table_protodef_common_5fcmd_2eproto,
+    false, false, 3163, descriptor_table_protodef_common_5fcmd_2eproto,
     "common_cmd.proto",
     &descriptor_table_common_5fcmd_2eproto_once, nullptr, 0, 27,
     schemas, file_default_instances, TableStruct_common_5fcmd_2eproto::offsets,
@@ -4376,15 +4379,16 @@ GetStreamDataRequest::GetStreamDataRequest(const GetStreamDataRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   GetStreamDataRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.startaddr_){}
-    , decltype(_impl_.chip_){}
+      decltype(_impl_.chip_){}
+    , decltype(_impl_.streamid_){}
+    , decltype(_impl_.startaddr_){}
     , decltype(_impl_.requestlen_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&_impl_.startaddr_, &from._impl_.startaddr_,
+  ::memcpy(&_impl_.chip_, &from._impl_.chip_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.requestlen_) -
-    reinterpret_cast<char*>(&_impl_.startaddr_)) + sizeof(_impl_.requestlen_));
+    reinterpret_cast<char*>(&_impl_.chip_)) + sizeof(_impl_.requestlen_));
   // @@protoc_insertion_point(copy_constructor:silicon_based.GetStreamDataRequest)
 }
 
@@ -4393,8 +4397,9 @@ inline void GetStreamDataRequest::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.startaddr_){uint64_t{0u}}
-    , decltype(_impl_.chip_){0u}
+      decltype(_impl_.chip_){0u}
+    , decltype(_impl_.streamid_){0u}
+    , decltype(_impl_.startaddr_){uint64_t{0u}}
     , decltype(_impl_.requestlen_){0u}
     , /*decltype(_impl_._cached_size_)*/{}
   };
@@ -4423,9 +4428,9 @@ void GetStreamDataRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&_impl_.startaddr_, 0, static_cast<size_t>(
+  ::memset(&_impl_.chip_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.requestlen_) -
-      reinterpret_cast<char*>(&_impl_.startaddr_)) + sizeof(_impl_.requestlen_));
+      reinterpret_cast<char*>(&_impl_.chip_)) + sizeof(_impl_.requestlen_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -4443,17 +4448,25 @@ const char* GetStreamDataRequest::_InternalParse(const char* ptr, ::_pbi::ParseC
         } else
           goto handle_unusual;
         continue;
-      // uint64 startAddr = 2;
+      // uint32 streamID = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.streamid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // uint64 startAddr = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
           _impl_.startaddr_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // uint32 requestLen = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // uint32 requestLen = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
           _impl_.requestlen_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
@@ -4494,16 +4507,22 @@ uint8_t* GetStreamDataRequest::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_chip(), target);
   }
 
-  // uint64 startAddr = 2;
-  if (this->_internal_startaddr() != 0) {
+  // uint32 streamID = 2;
+  if (this->_internal_streamid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(2, this->_internal_startaddr(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_streamid(), target);
   }
 
-  // uint32 requestLen = 3;
+  // uint64 startAddr = 3;
+  if (this->_internal_startaddr() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt64ToArray(3, this->_internal_startaddr(), target);
+  }
+
+  // uint32 requestLen = 4;
   if (this->_internal_requestlen() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_requestlen(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_requestlen(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -4522,17 +4541,22 @@ size_t GetStreamDataRequest::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // uint64 startAddr = 2;
-  if (this->_internal_startaddr() != 0) {
-    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_startaddr());
-  }
-
   // uint32 chip = 1;
   if (this->_internal_chip() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_chip());
   }
 
-  // uint32 requestLen = 3;
+  // uint32 streamID = 2;
+  if (this->_internal_streamid() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_streamid());
+  }
+
+  // uint64 startAddr = 3;
+  if (this->_internal_startaddr() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_startaddr());
+  }
+
+  // uint32 requestLen = 4;
   if (this->_internal_requestlen() != 0) {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_requestlen());
   }
@@ -4555,11 +4579,14 @@ void GetStreamDataRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, c
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_startaddr() != 0) {
-    _this->_internal_set_startaddr(from._internal_startaddr());
-  }
   if (from._internal_chip() != 0) {
     _this->_internal_set_chip(from._internal_chip());
+  }
+  if (from._internal_streamid() != 0) {
+    _this->_internal_set_streamid(from._internal_streamid());
+  }
+  if (from._internal_startaddr() != 0) {
+    _this->_internal_set_startaddr(from._internal_startaddr());
   }
   if (from._internal_requestlen() != 0) {
     _this->_internal_set_requestlen(from._internal_requestlen());
@@ -4584,9 +4611,9 @@ void GetStreamDataRequest::InternalSwap(GetStreamDataRequest* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(GetStreamDataRequest, _impl_.requestlen_)
       + sizeof(GetStreamDataRequest::_impl_.requestlen_)
-      - PROTOBUF_FIELD_OFFSET(GetStreamDataRequest, _impl_.startaddr_)>(
-          reinterpret_cast<char*>(&_impl_.startaddr_),
-          reinterpret_cast<char*>(&other->_impl_.startaddr_));
+      - PROTOBUF_FIELD_OFFSET(GetStreamDataRequest, _impl_.chip_)>(
+          reinterpret_cast<char*>(&_impl_.chip_),
+          reinterpret_cast<char*>(&other->_impl_.chip_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GetStreamDataRequest::GetMetadata() const {

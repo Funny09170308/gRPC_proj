@@ -21,6 +21,8 @@ int main(void)
         P_LOG_LEVEL_WARNING |
         P_LOG_LEVEL_ERROR |
         P_LOG_LEVEL_FATAL);
+    // 子卡同步初始化
+    // clock_sync();
     // 设备参数初始化
     device_info_init();
     // 子卡空间初始化
@@ -46,6 +48,7 @@ int main(void)
 #endif
     // 后IO板内存空间初始化
     public_dev_init();
+    // dac_sync_init();
     slave_card_init();
     task_creat();
     while (1)

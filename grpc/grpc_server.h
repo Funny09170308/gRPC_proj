@@ -212,6 +212,12 @@ public: // QA function
     Status GetADCStartStop(ServerContext *context,
                            const GetADCStartStopRequest *request,
                            GetADCStartStopResponse *response) override;
+    Status GetSampleState(ServerContext *context,
+                          const GetSampleStateRequest *request,
+                          ParamResponse *response) override;
+    Status GetDemodeState(ServerContext *context,
+                          const GetDemodeStateRequest *request,
+                          ParamResponse *response) override;
 };
 
 #ifdef __cplusplus

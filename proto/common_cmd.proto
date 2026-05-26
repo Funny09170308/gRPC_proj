@@ -124,8 +124,9 @@ message SetStreamResult {
 
 message GetStreamDataRequest {
     uint32 chip = 1;
-    uint64 startAddr = 2;
-    uint32 requestLen = 3;
+    uint32 streamID = 2;
+    uint64 startAddr = 3;
+    uint32 requestLen = 4;
 }
 
 message GetStreamResult {

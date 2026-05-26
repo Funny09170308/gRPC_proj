@@ -40,6 +40,8 @@ static const char* QACMDService_method_names[] = {
   "/silicon_based.QACMDService/GetADCPlayParam",
   "/silicon_based.QACMDService/SetADCStartStop",
   "/silicon_based.QACMDService/GetADCStartStop",
+  "/silicon_based.QACMDService/GetSampleState",
+  "/silicon_based.QACMDService/GetDemodeState",
 };
 
 std::unique_ptr< QACMDService::Stub> QACMDService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -67,6 +69,8 @@ QACMDService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   , rpcmethod_GetADCPlayParam_(QACMDService_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SetADCStartStop_(QACMDService_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetADCStartStop_(QACMDService_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSampleState_(QACMDService_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetDemodeState_(QACMDService_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status QACMDService::Stub::SetTrigSour(::grpc::ClientContext* context, const ::silicon_based::SetTrigSourRequest& request, ::silicon_based::ParamResponse* response) {
@@ -483,6 +487,52 @@ void QACMDService::Stub::async::GetADCStartStop(::grpc::ClientContext* context, 
   return result;
 }
 
+::grpc::Status QACMDService::Stub::GetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::silicon_based::ParamResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::GetSampleStateRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetSampleState_, context, request, response);
+}
+
+void QACMDService::Stub::async::GetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::GetSampleStateRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetSampleState_, context, request, response, std::move(f));
+}
+
+void QACMDService::Stub::async::GetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetSampleState_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* QACMDService::Stub::PrepareAsyncGetSampleStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::ParamResponse, ::silicon_based::GetSampleStateRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetSampleState_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* QACMDService::Stub::AsyncGetSampleStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetSampleStateRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status QACMDService::Stub::GetDemodeState(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest& request, ::silicon_based::ParamResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::GetDemodeStateRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetDemodeState_, context, request, response);
+}
+
+void QACMDService::Stub::async::GetDemodeState(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::GetDemodeStateRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDemodeState_, context, request, response, std::move(f));
+}
+
+void QACMDService::Stub::async::GetDemodeState(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetDemodeState_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* QACMDService::Stub::PrepareAsyncGetDemodeStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::ParamResponse, ::silicon_based::GetDemodeStateRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetDemodeState_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* QACMDService::Stub::AsyncGetDemodeStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetDemodeStateRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 QACMDService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       QACMDService_method_names[0],
@@ -664,6 +714,26 @@ QACMDService::Service::Service() {
              ::silicon_based::GetADCStartStopResponse* resp) {
                return service->GetADCStartStop(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      QACMDService_method_names[18],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< QACMDService::Service, ::silicon_based::GetSampleStateRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](QACMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::GetSampleStateRequest* req,
+             ::silicon_based::ParamResponse* resp) {
+               return service->GetSampleState(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      QACMDService_method_names[19],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< QACMDService::Service, ::silicon_based::GetDemodeStateRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](QACMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::GetDemodeStateRequest* req,
+             ::silicon_based::ParamResponse* resp) {
+               return service->GetDemodeState(ctx, req, resp);
+             }, this)));
 }
 
 QACMDService::Service::~Service() {
@@ -789,6 +859,20 @@ QACMDService::Service::~Service() {
 }
 
 ::grpc::Status QACMDService::Service::GetADCStartStop(::grpc::ServerContext* context, const ::silicon_based::GetADCStartStopRequest* request, ::silicon_based::GetADCStartStopResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status QACMDService::Service::GetSampleState(::grpc::ServerContext* context, const ::silicon_based::GetSampleStateRequest* request, ::silicon_based::ParamResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status QACMDService::Service::GetDemodeState(::grpc::ServerContext* context, const ::silicon_based::GetDemodeStateRequest* request, ::silicon_based::ParamResponse* response) {
   (void) context;
   (void) request;
   (void) response;

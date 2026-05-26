@@ -240,12 +240,22 @@ Status CommonCMDServiceImpl::StreamDataGet(ServerContext *context,
                                            const GetStreamDataRequest *request,
                                            grpc::ServerWriter<GetStreamResult> *writer)
 {
-    uint32_t chip = request->chip();
+    uint32_t logicCh = request->chip();
+    uint32_t streamID = request->streamid();
     uint64_t startAddr = request->startaddr();
     uint32_t requestLen = request->requestlen();
+    uint8_t subid, local_ch;
+    if (streamID == DEVICE_TYPE_LNAWG)
+    {
+        get_awg_route(logicCh, &subid, &local_ch);
+    }
+    else if (streamID == DEVICE_TYPE_QA)
+    {
+        get_qa_in_route(logicCh, &subid, &local_ch);
+    }
 
-    P_LOG_INFO("StreamDataGet: chip=%u, startAddr=0x%llx, requestLen=%u",
-               chip, (unsigned long long)startAddr, requestLen);
+    P_LOG_INFO("StreamDataGet: logic_ch = %d, chip=%u, startAddr=0x%llx, requestLen=%u",
+               logicCh, subid, (unsigned long long)startAddr, requestLen);
 
     // 边界检查
     if (requestLen == 0)
@@ -256,12 +266,12 @@ Status CommonCMDServiceImpl::StreamDataGet(ServerContext *context,
 
     // 计算总包数
     uint32_t totalPackages = (requestLen + STREAM_CHUNK_SIZE - 1) / STREAM_CHUNK_SIZE;
-    uint32_t currentPackage = 1;
+    uint32_t currentPackage = 0;
     uint64_t currentAddr = startAddr;
     uint32_t remainingLen = requestLen;
-
+    memset(m_dmaResvBuffer, 0, sizeof(m_dmaResvBuffer));
     uint8_t *dmaBuf = m_dmaResvBuffer;
-    dma_read_data(chip, startAddr, requestLen, dmaBuf);
+    dma_read_data(subid, startAddr, requestLen, dmaBuf);
     while (remainingLen > 0)
     {
         // 计算当前包的大小
@@ -714,5 +724,38 @@ Status QACMDServiceImpl::GetADCStartStop(ServerContext *context,
                                          GetADCStartStopResponse *response)
 {
     uint32_t ch = request->logicch();
+    return Status::OK;
+}
+
+Status QACMDServiceImpl::GetSampleState(ServerContext *context,
+                                        const GetSampleStateRequest *request,
+                                        ParamResponse *response)
+{
+    uint32_t ch = request->logicch();
+    P_LOG_DEBUG("GetSampleState: Get sample state...%d, %d.", ch);
+    if (qa_get_sample_state(ch) < 0)
+    {
+        response->set_success(false);
+    }
+    else
+    {
+        response->set_success(true);
+    }
+    return Status::OK;
+}
+Status QACMDServiceImpl::GetDemodeState(ServerContext *context,
+                                        const GetDemodeStateRequest *request,
+                                        ParamResponse *response)
+{
+    uint32_t ch = request->logicch();
+    P_LOG_DEBUG("GetDemodeState: Get demod state...%d, %d.", ch);
+    if (qa_get_demo_state(ch) < 0)
+    {
+        response->set_success(false);
+    }
+    else
+    {
+        response->set_success(true);
+    }
     return Status::OK;
 }

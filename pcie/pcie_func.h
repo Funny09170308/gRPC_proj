@@ -106,6 +106,7 @@ extern "C"
     int get_qa_out_route(int logical_ch, uint8_t *chip_id, uint8_t *local_ch);
     int get_qa_in_channel_count(void);
     int get_qa_out_channel_count(void);
+    void dac_sync_init(void);
 
 #ifdef __cplusplus
 }

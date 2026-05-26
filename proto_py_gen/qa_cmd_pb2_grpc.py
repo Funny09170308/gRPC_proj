@@ -106,6 +106,16 @@ class QACMDServiceStub(object):
                 request_serializer=qa__cmd__pb2.GetADCStartStopRequest.SerializeToString,
                 response_deserializer=qa__cmd__pb2.GetADCStartStopResponse.FromString,
                 )
+        self.GetSampleState = channel.unary_unary(
+                '/silicon_based.QACMDService/GetSampleState',
+                request_serializer=qa__cmd__pb2.GetSampleStateRequest.SerializeToString,
+                response_deserializer=common__cmd__pb2.ParamResponse.FromString,
+                )
+        self.GetDemodeState = channel.unary_unary(
+                '/silicon_based.QACMDService/GetDemodeState',
+                request_serializer=qa__cmd__pb2.GetDemodeStateRequest.SerializeToString,
+                response_deserializer=common__cmd__pb2.ParamResponse.FromString,
+                )
 
 
 class QACMDServiceServicer(object):
@@ -220,6 +230,18 @@ class QACMDServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetSampleState(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetDemodeState(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_QACMDServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -312,6 +334,16 @@ def add_QACMDServiceServicer_to_server(servicer, server):
                     servicer.GetADCStartStop,
                     request_deserializer=qa__cmd__pb2.GetADCStartStopRequest.FromString,
                     response_serializer=qa__cmd__pb2.GetADCStartStopResponse.SerializeToString,
+            ),
+            'GetSampleState': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetSampleState,
+                    request_deserializer=qa__cmd__pb2.GetSampleStateRequest.FromString,
+                    response_serializer=common__cmd__pb2.ParamResponse.SerializeToString,
+            ),
+            'GetDemodeState': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetDemodeState,
+                    request_deserializer=qa__cmd__pb2.GetDemodeStateRequest.FromString,
+                    response_serializer=common__cmd__pb2.ParamResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -627,5 +659,39 @@ class QACMDService(object):
         return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/GetADCStartStop',
             qa__cmd__pb2.GetADCStartStopRequest.SerializeToString,
             qa__cmd__pb2.GetADCStartStopResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetSampleState(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/GetSampleState',
+            qa__cmd__pb2.GetSampleStateRequest.SerializeToString,
+            common__cmd__pb2.ParamResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetDemodeState(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/GetDemodeState',
+            qa__cmd__pb2.GetDemodeStateRequest.SerializeToString,
+            common__cmd__pb2.ParamResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
