@@ -142,7 +142,7 @@ message DDSConfigParam {
     uint32 trig_delay = 3;
     double freq = 4;
     double phase = 5;
-    double AMP = 6;
+    double amp = 6;
 }
 
 message DDSParamSetRequest {
@@ -167,7 +167,7 @@ message ChirpOutParam {
     double freq_start = 4;
     double freq_end = 5;
     double phase = 6;
-    double AMP = 7;
+    double amp = 7;
 }
 
 message ChirpOutParamSetRequest {

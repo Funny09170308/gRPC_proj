@@ -3,9 +3,9 @@
 #include "../pcie_func.h"
 #include "../../platform_log/platform_log.h"
 
-#define SOFT_TIRGGER_BASEADDR (0x80050000)
+#define SOFT_TRIGGER_BASEADDR (0x80050000)
 
-static DDSAddrMap_t s_ddsAddrMapContx[LNAWG_CHANNEL_NUM] = {
+static DDSAddrMap_t s_ddsAddrMapCtx[LNAWG_CHANNEL_NUM] = {
 	[0] = {
 		.m_en = DDS_0_EN,
 		.m_mode = CHANNEL_0_MODE,
@@ -13,7 +13,7 @@ static DDSAddrMap_t s_ddsAddrMapContx[LNAWG_CHANNEL_NUM] = {
 		.m_trig_delay_addr = {DDS_0_PART_1_TRIG_DELAY, DDS_0_PART_2_TRIG_DELAY, DDS_0_PART_3_TRIG_DELAY, DDS_0_PART_4_TRIG_DELAY},
 		.m_freq_addr = {DDS_0_PART_1_FREQUENCE, DDS_0_PART_2_FREQUENCE, DDS_0_PART_3_FREQUENCE, DDS_0_PART_4_FREQUENCE},
 		.m_phase_addr = {DDS_0_PART_1_PHASE, DDS_0_PART_2_PHASE, DDS_0_PART_3_PHASE, DDS_0_PART_4_PHASE},
-		.m_AMP_addr = {DDS_0_PART_1_AMP, DDS_0_PART_2_AMP, DDS_0_PART_3_AMP, DDS_0_PART_4_AMP},
+		.m_amp_addr = {DDS_0_PART_1_AMP, DDS_0_PART_2_AMP, DDS_0_PART_3_AMP, DDS_0_PART_4_AMP},
 		.m_delt_x_addr = {DDS_0_PART_1_DELT_X, DDS_0_PART_2_DELT_X, DDS_0_PART_3_DELT_X, DDS_0_PART_4_DELT_X},
 	},
 	[1] = {
@@ -23,7 +23,7 @@ static DDSAddrMap_t s_ddsAddrMapContx[LNAWG_CHANNEL_NUM] = {
 		.m_trig_delay_addr = {DDS_1_PART_1_TRIG_DELAY, DDS_1_PART_2_TRIG_DELAY, DDS_1_PART_3_TRIG_DELAY, DDS_1_PART_4_TRIG_DELAY},
 		.m_freq_addr = {DDS_1_PART_1_FREQUENCE, DDS_1_PART_2_FREQUENCE, DDS_1_PART_3_FREQUENCE, DDS_1_PART_4_FREQUENCE},
 		.m_phase_addr = {DDS_1_PART_1_PHASE, DDS_1_PART_2_PHASE, DDS_1_PART_3_PHASE, DDS_1_PART_4_PHASE},
-		.m_AMP_addr = {DDS_1_PART_1_AMP, DDS_1_PART_2_AMP, DDS_1_PART_3_AMP, DDS_1_PART_4_AMP},
+		.m_amp_addr = {DDS_1_PART_1_AMP, DDS_1_PART_2_AMP, DDS_1_PART_3_AMP, DDS_1_PART_4_AMP},
 		.m_delt_x_addr = {DDS_1_PART_1_DELT_X, DDS_1_PART_2_DELT_X, DDS_1_PART_3_DELT_X, DDS_1_PART_4_DELT_X},
 	},
 };
@@ -192,7 +192,6 @@ uint32_t get_awg_ch_mode(int32_t logical_ch)
 		set_awg_ch_run(logical_ch, 0); // stop before get mode
 		xdma_read_user_space(chip_id, CHANNEL_1_MODE, &mode);
 	}
-	P_LOG_DEBUG("Success to get awg ch mode, ch:%d, mode:%d", logical_ch, mode);
 	return mode;
 }
 
@@ -224,7 +223,6 @@ uint32_t get_awg_ch_ext_src(int32_t logical_ch)
 
 	uint32_t ext_src;
 	xdma_read_user_space(chip_id, CHANNEL_0AND1_EXT_SOURCE, &ext_src);
-	P_LOG_DEBUG("Success to get awg ch mode, ch:%d, mode:%d", logical_ch, ext_src);
 	return ext_src;
 }
 
@@ -245,27 +243,27 @@ void set_dev_trig(DevTrigCtrl devtrig)
 	gLocalParam.dev_trig_ctrl.trigger_continue = devtrig.trigger_continue;
 	gLocalParam.dev_trig_ctrl.trigger_delay = devtrig.trigger_delay;
 
-	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (0 * 4), devtrig.trigger_source);
-	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (1 * 4), (uint32_t)((devtrig.trigger_us - 1) * 250));
-	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (2 * 4), devtrig.trigger_times);
-	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (3 * 4), devtrig.trigger_continue);
-	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (4 * 4), (uint32_t)((devtrig.trigger_delay - 1) * 250));
+	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (0 * 4), devtrig.trigger_source);
+	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (1 * 4), (uint32_t)((devtrig.trigger_us - 1) * 250));
+	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (2 * 4), devtrig.trigger_times);
+	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (3 * 4), devtrig.trigger_continue);
+	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (4 * 4), (uint32_t)((devtrig.trigger_delay - 1) * 250));
 }
 
 // 1:enable 0:disable
 void set_dev_trig_state(int32_t state)
 {
 	if (state)
-		common_reg_data_set(SOFT_TIRGGER_BASEADDR + (6 * 4), 0);
+		common_reg_data_set(SOFT_TRIGGER_BASEADDR + (6 * 4), 0);
 	else
-		common_reg_data_set(SOFT_TIRGGER_BASEADDR + (6 * 4), 1);
+		common_reg_data_set(SOFT_TRIGGER_BASEADDR + (6 * 4), 1);
 }
 
 void send_software_trig()
 {
-	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (5 * 4), 0);
-	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (5 * 4), 1);
-	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (5 * 4), 0);
+	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (5 * 4), 0);
+	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (5 * 4), 1);
+	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (5 * 4), 0);
 }
 
 void set_awg_ch_range(int32_t logical_ch, int32_t range)
@@ -434,7 +432,6 @@ uint32_t get_awg_ch_segment_count(int32_t logical_ch)
 		// 非法通道
 		P_LOG_ERROR("Invalid channel! local_ch must be 1 or 2, current local_ch = %d\r\n", local_ch);
 	}
-	P_LOG_DEBUG("Success to get awg ch segment count, ch:%d, seg_cnt:%d", logical_ch, seg_cnt);
 	return seg_cnt;
 }
 
@@ -480,7 +477,6 @@ uint32_t get_awg_ch_segment_loop(int32_t logical_ch)
 		// 非法通道
 		P_LOG_ERROR("Invalid channel! local_ch must be 1 or 2, current local_ch = %d\r\n", local_ch);
 	}
-	P_LOG_DEBUG("Success to get awg ch segment loop count, ch:%d, loop_cnt:%d", logical_ch, loop_cnt);
 	return loop_cnt;
 }
 
@@ -491,20 +487,20 @@ void set_awg_dds_config(int32_t logical_ch, DDSConfigParam_t config)
 
 	uint32_t freq_val = (uint32_t)config.m_freq / 2.4e9 * pow(2, 32);
 	uint32_t phase_val = (uint32_t)config.m_phase / 360 * pow(2, 32);
-	uint32_t amp_val = (uint32_t)65535 * config.m_AMP;
+	uint32_t amp_val = (uint32_t)65535 * config.m_amp;
 	uint32_t set_index = config.m_index;
 	// TODO:delay/len必须>16, 且是16的整数倍
 	P_LOG_DEBUG("set_awg_dds_config: logical_ch=%d, freq=%.2f, phase=%.2f, amp=%.2f, index=%d\r\n",
-				logical_ch, config.m_freq, config.m_phase, config.m_AMP, config.m_index);
+				logical_ch, config.m_freq, config.m_phase, config.m_amp, config.m_index);
 	get_awg_route(logical_ch, &chip_id, &local_ch);
 	P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
 	P_LOG_DEBUG("freq_val: %d(0x%08x), phase_val: %d(0x%08x), amp_val: %d(0x%08x)", freq_val, freq_val, phase_val, phase_val, amp_val, amp_val);
 
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_len_addr[set_index], config.m_len);
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_trig_delay_addr[set_index], config.m_trig_delay);
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_freq_addr[set_index], freq_val);
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_phase_addr[set_index], phase_val);
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_AMP_addr[set_index], amp_val);
+	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_len_addr[set_index], config.m_len);
+	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_trig_delay_addr[set_index], config.m_trig_delay);
+	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_freq_addr[set_index], freq_val);
+	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_phase_addr[set_index], phase_val);
+	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_amp_addr[set_index], amp_val);
 }
 
 DDSConfigParam_t get_awg_dds_config(int32_t logical_ch, uint32_t index)
@@ -514,11 +510,11 @@ DDSConfigParam_t get_awg_dds_config(int32_t logical_ch, uint32_t index)
 	get_awg_route(logical_ch, &chip_id, &local_ch);
 
 	uint32_t freq_val, phase_val, amp_val, len, trig_delay;
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_len_addr[index], len);
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_trig_delay_addr[index], trig_delay);
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_freq_addr[index], freq_val);
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_phase_addr[index], phase_val);
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_AMP_addr[index], amp_val);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_len_addr[index], &len);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_trig_delay_addr[index], &trig_delay);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_freq_addr[index], &freq_val);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_phase_addr[index], &phase_val);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_amp_addr[index], &amp_val);
 
 	// 将double变为uint32_t
 	DDSConfigParam_t config;
@@ -527,7 +523,7 @@ DDSConfigParam_t get_awg_dds_config(int32_t logical_ch, uint32_t index)
 	config.m_trig_delay = trig_delay;
 	config.m_freq = (double)freq_val * 2.4e9 / pow(2, 32);
 	config.m_phase = (double)phase_val * 360.0 / pow(2, 32);
-	config.m_AMP = (double)amp_val / 65535;
+	config.m_amp = (double)amp_val / 65535;
 
 	return config;
 }
@@ -561,7 +557,7 @@ void set_chirp_out_param(int32_t logical_ch, ChirpOutParam_t config)
 	uint32_t freq_end_val = (uint32_t)(config.m_freq_end / 2.4e9 * pow(2, 32));
 	uint32_t delt_x_val = (freq_end_val - freq_start_val) / config.m_len;
 	uint32_t phase_val = (uint32_t)(config.m_phase / 360 * pow(2, 32));
-	uint32_t amp_val = (uint32_t)65535 * config.m_AMP;
+	uint32_t amp_val = (uint32_t)65535 * config.m_amp;
 	uint32_t set_index = config.m_index;
 	P_LOG_DEBUG(
 		"freq_start_val: %d(0x%08x), freq_end_val: %d(0x%08x), phase_val: %d(0x%08x), amp_val: %d(0x%08x), len: %d(0x%08x),"
@@ -569,22 +565,41 @@ void set_chirp_out_param(int32_t logical_ch, ChirpOutParam_t config)
 		freq_start_val, freq_end_val, phase_val, amp_val, config.m_len, config.m_trig_delay, delt_x_val);
 
 	// 设置频率
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_freq_addr[set_index], freq_start_val);
+	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_freq_addr[set_index], freq_start_val);
 	// 设置相位
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_phase_addr[set_index], phase_val);
+	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_phase_addr[set_index], phase_val);
 	// 设置幅度
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_AMP_addr[set_index], amp_val);
+	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_amp_addr[set_index], amp_val);
 	// 设置长度
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_len_addr[set_index], config.m_len);
+	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_len_addr[set_index], config.m_len);
 	// 设置触达时延
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_trig_delay_addr[set_index], config.m_trig_delay);
+	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_trig_delay_addr[set_index], config.m_trig_delay);
 	// 设置delt x
-	xdma_write_user_space(chip_id, s_ddsAddrMapContx[local_ch - 1].m_delt_x_addr[set_index], delt_x_val);
+	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_delt_x_addr[set_index], delt_x_val);
 }
 
-ChirpOutParam_t get_chirp_out_param(int32_t logical_ch)
+ChirpOutParam_t get_chirp_out_param(int32_t logical_ch, uint32_t index)
 {
+	int8_t chip_id;
+	int8_t local_ch;
+	get_awg_route(logical_ch, &chip_id, &local_ch);
+
+	uint32_t freq_start, phase, amp, len, trig_delay, delt_x;
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_freq_addr[index], &freq_start);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_phase_addr[index], &phase);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_amp_addr[index], &amp);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_len_addr[index], &len);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_trig_delay_addr[index], &trig_delay);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_delt_x_addr[index], &delt_x);
+
 	ChirpOutParam_t config;
+	config.m_index = index;
+	config.m_len = len;
+	config.m_trig_delay = trig_delay;
+	config.m_freq_start = (double) freq_start * 2.4e9 / pow(2, 32);
+	config.m_freq_end = (double) (delt_x * len + config.m_freq_start) * 2.4e9 / pow(2, 32);
+	config.m_phase = (double) phase * 360.0 / pow(2, 32);
+	config.m_amp = (double) amp / 65535;
 	return config;
 }
 
@@ -594,7 +609,6 @@ void set_awg_dds_enable(int32_t logical_ch, uint32_t enable)
 	uint8_t local_ch; // 通道数
 
 	get_awg_route(logical_ch, &chip_id, &local_ch);
-	P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
 	if (local_ch == 1)
 	{
 		// 通道1
@@ -628,6 +642,5 @@ uint32_t get_awg_dds_enable(int32_t logical_ch)
 		// 非法通道
 		P_LOG_ERROR("Invalid channel! local_ch must be 1 or 2, current local_ch = %d\r\n", local_ch);
 	}
-	P_LOG_DEBUG("Success to get awg ch dds enable status, ch:%d, enable:%d", logical_ch, enable);
 	return enable;
 }
