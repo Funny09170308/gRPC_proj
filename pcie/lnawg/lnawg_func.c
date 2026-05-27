@@ -510,11 +510,11 @@ DDSConfigParam_t get_awg_dds_config(int32_t logical_ch, uint32_t index)
 	get_awg_route(logical_ch, &chip_id, &local_ch);
 
 	uint32_t freq_val, phase_val, amp_val, len, trig_delay;
-	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_len_addr[index], len);
-	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_trig_delay_addr[index], trig_delay);
-	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_freq_addr[index], freq_val);
-	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_phase_addr[index], phase_val);
-	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_amp_addr[index], amp_val);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_len_addr[index], &len);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_trig_delay_addr[index], &trig_delay);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_freq_addr[index], &freq_val);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_phase_addr[index], &phase_val);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_amp_addr[index], &amp_val);
 
 	// 将double变为uint32_t
 	DDSConfigParam_t config;
@@ -578,9 +578,28 @@ void set_chirp_out_param(int32_t logical_ch, ChirpOutParam_t config)
 	xdma_write_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_delt_x_addr[set_index], delt_x_val);
 }
 
-ChirpOutParam_t get_chirp_out_param(int32_t logical_ch)
+ChirpOutParam_t get_chirp_out_param(int32_t logical_ch, uint32_t index)
 {
+	int8_t chip_id;
+	int8_t local_ch;
+	get_awg_route(logical_ch, &chip_id, &local_ch);
+
+	uint32_t freq_start, phase, amp, len, trig_delay, delt_x;
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_freq_addr[index], &freq_start);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_phase_addr[index], &phase);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_amp_addr[index], &amp);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_len_addr[index], &len);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_trig_delay_addr[index], &trig_delay);
+	xdma_read_user_space(chip_id, s_ddsAddrMapCtx[local_ch - 1].m_delt_x_addr[index], &delt_x);
+
 	ChirpOutParam_t config;
+	config.m_index = index;
+	config.m_len = len;
+	config.m_trig_delay = trig_delay;
+	config.m_freq_start = (double) freq_start * 2.4e9 / pow(2, 32);
+	config.m_freq_end = (double) (delt_x * len + config.m_freq_start) * 2.4e9 / pow(2, 32);
+	config.m_phase = (double) phase * 360.0 / pow(2, 32);
+	config.m_amp = (double) amp / 65535;
 	return config;
 }
 

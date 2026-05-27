@@ -514,6 +514,25 @@ Status LNAWGCMDServiceImpl::SetChirpOutParam(ServerContext *context,
                                              const ChirpOutParamSetRequest *request,
                                              ParamResponse *response)
 {
+    ChirpOutParam_t config_param;
+    config_param.m_index = request->config().index();
+    config_param.m_len = request->config().len();
+    config_param.m_trig_delay = request->config().trig_delay();
+    config_param.m_freq_start = request->config().freq_start();
+    config_param.m_freq_end = request->config().freq_end();
+    config_param.m_phase = request->config().phase();
+    config_param.m_amp = request->config().amp();
+    set_chirp_out_param(request->logical_ch(), config_param);
+    P_LOG_DEBUG(
+        "Set awg chirp out param, ch:%u, index:%u, len:%u, trig_delay:%u, freq_start:%lf, freq_end:%lf, phase:%lf, amp:%lf",
+        request->logical_ch(),
+        config_param.m_index,
+        config_param.m_len,
+        config_param.m_trig_delay,
+        config_param.m_freq_start,
+        config_param.m_freq_end,
+        config_param.m_phase,
+        config_param.m_amp);
     return Status::OK;
 }
 
@@ -521,6 +540,25 @@ Status LNAWGCMDServiceImpl::GetChirpOutParam(ServerContext *context,
                                              const ChirpOutParamGetRequest *request,
                                              ChirpOutParamGetResponse *response)
 {
+    ChirpOutParam_t config_param = get_chirp_out_param(request->logical_ch(), request->index());
+    auto* cfg = response->mutable_config();
+    cfg->set_index(config_param.m_index);
+    cfg->set_len(config_param.m_len);
+    cfg->set_trig_delay(config_param.m_trig_delay);
+    cfg->set_freq_start(config_param.m_freq_start);
+    cfg->set_freq_end(config_param.m_freq_end);
+    cfg->set_phase(config_param.m_phase);
+    cfg->set_amp(config_param.m_amp);
+    P_LOG_DEBUG(
+        "Get awg chirp out param, ch: %d, index:%d, len:%d, trig_delay:%d, freq_start:%f, freq_end:%f, phase:%f, amp:%f\n",
+        request->logical_ch(),
+        cfg->index(),
+        cfg->len(),
+        cfg->trig_delay(),
+        cfg->freq_start(),
+        cfg->freq_end(),
+        cfg->phase(),
+        cfg->amp());
     return Status::OK;
 }
 
