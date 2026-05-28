@@ -495,7 +495,7 @@ int xdma_read_user_space(int chip, uint64_t offset, uint32_t *readVal)
         return -1;
     }
     *readVal = *(uint32_t *)(s_xdmaDevContx[chip].m_user_mmap_addr + offset);
-    // P_LOG_DEBUG("PCIE read data: %d(Hex:%#x) from user space addr: %#llx.",*readVal, *readVal, offset);
+    P_LOG_REPEAT("PCIE read data: %d(Hex:%#x) from user space addr: %#llx.", *readVal, *readVal, offset);
     return 0;
 }
 
@@ -515,8 +515,8 @@ int xdma_write_user_space(int chip, uint64_t offset, uint32_t writeVal)
 
     *(volatile uint32_t *)(s_xdmaDevContx[chip].m_user_mmap_addr + offset) = writeVal;
 
-    // P_LOG_DEBUG("PCIE write data: %u(Hex:%#x) to user space addr: %#llx.",
-    //             writeVal, writeVal, offset);
+    P_LOG_REPEAT("PCIE write data: %u(Hex:%#x) to user space addr: %#llx.",
+                 writeVal, writeVal, offset);
 
     return 0;
 }

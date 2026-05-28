@@ -146,9 +146,9 @@ Status CommonCMDServiceImpl::SetDevTrigParam(ServerContext *context,
 {
     DevTrigCtrl devTrig;
     devTrig.trigger_source = request->trigsource();
-    devTrig.trigger_us = request->trigcontinue();
+    devTrig.trigger_continue = request->trigcontinue();
     devTrig.trigger_times = request->trigtimes();
-    devTrig.trigger_continue = request->trigperiod();
+    devTrig.trigger_us = request->trigperiod();
     devTrig.trigger_delay = request->trigdelay();
     P_LOG_DEBUG("SetDevTrigParam: Set device trigger param");
     set_dev_trig(devTrig);
@@ -551,7 +551,7 @@ Status LNAWGCMDServiceImpl::GetChirpOutParam(ServerContext *context,
                                              ChirpOutParamGetResponse *response)
 {
     ChirpOutParam_t config_param = get_chirp_out_param(request->logical_ch(), request->index());
-    auto* cfg = response->mutable_config();
+    auto *cfg = response->mutable_config();
     cfg->set_index(config_param.m_index);
     cfg->set_len(config_param.m_len);
     cfg->set_trig_delay(config_param.m_trig_delay);
@@ -761,7 +761,7 @@ Status QACMDServiceImpl::SetADCPlayParam(ServerContext *context,
     qa_adc_play_param(ch, ADCPlayParam);
     response->set_success(true);
     P_LOG_DEBUG("SetADCPlayParam: Set qa play param...ch:%d, data_len:%d, play_times, play_delay, play_mode.",
-        ch, ADCPlayParam.m_adc_data_len, ADCPlayParam.m_adc_play_times, ADCPlayParam.m_adc_play_delay, ADCPlayParam.m_adc_play_mode);
+                ch, ADCPlayParam.m_adc_data_len, ADCPlayParam.m_adc_play_times, ADCPlayParam.m_adc_play_delay, ADCPlayParam.m_adc_play_mode);
     return Status::OK;
 }
 

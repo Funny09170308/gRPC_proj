@@ -349,7 +349,7 @@ void temp_monitor(void)
     {
         value = common_pcie_user_reg_data_get(i, AWG_TEMP_OFFSET);
         float slave_temp = value * 507.5921310 / pow(2, 16) - 279.42657680;
-        P_LOG_DEBUG("AWG%d temp: %.2f", (i + 1), slave_temp);
+        P_LOG_REPEAT("AWG%d temp: %.2f", (i + 1), slave_temp);
         if (slave_temp >= TEMPERATURE_WALL)
         {
             cut_off_slave_power();
@@ -365,7 +365,7 @@ void temp_monitor(void)
     {
         value = common_pcie_user_reg_data_get(i, QA_TEMP_OFFSET);
         float slave_temp = value * 507.5921310 / pow(2, 16) - 279.42657680;
-        P_LOG_DEBUG("QA%d temp: %.2f", (i + 1), slave_temp);
+        P_LOG_REPEAT("QA%d temp: %.2f", (i + 1), slave_temp);
         if (slave_temp >= TEMPERATURE_WALL)
         {
             cut_off_slave_power();

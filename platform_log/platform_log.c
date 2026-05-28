@@ -7,6 +7,7 @@ static logLevelMap_t g_log_level_map[P_LOG_LEVEL_NUM] = {
     {P_LOG_LEVEL_WARNING, (uint8_t *)"P_LOG_WARNING"},
     {P_LOG_LEVEL_ERROR, (uint8_t *)"P_LOG_ERROR"},
     {P_LOG_LEVEL_FATAL, (uint8_t *)"P_LOG_FATAL"},
+    {P_LOG_LEVEL_REPEAT, (uint8_t *)"P_LOG_REPEAT"},
 };
 
 // 全局日志等级, 默认不打印Debug

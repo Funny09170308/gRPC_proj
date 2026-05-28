@@ -79,10 +79,12 @@ void set_awg_ch_run(int32_t logical_ch, int32_t state)
 		{ // run
 			if (local_ch == 1)
 			{
+				set_awg_ch_led_status(logical_ch, LED_GREEN);
 				xdma_write_user_space(chip_id, DDS_0_EN, 0x01);
 			}
 			else
 			{
+				set_awg_ch_led_status(logical_ch, LED_GREEN);
 				xdma_write_user_space(chip_id, DDS_1_EN, 0x01);
 			}
 		}
@@ -90,10 +92,12 @@ void set_awg_ch_run(int32_t logical_ch, int32_t state)
 		{ // stop
 			if (local_ch == 1)
 			{
+				set_awg_ch_led_status(logical_ch, LED_OFF);
 				xdma_write_user_space(chip_id, DDS_0_EN, 0);
 			}
 			else
 			{
+				set_awg_ch_led_status(logical_ch, LED_OFF);
 				xdma_write_user_space(chip_id, DDS_1_EN, 0);
 			}
 		}
@@ -596,10 +600,10 @@ ChirpOutParam_t get_chirp_out_param(int32_t logical_ch, uint32_t index)
 	config.m_index = index;
 	config.m_len = len;
 	config.m_trig_delay = trig_delay;
-	config.m_freq_start = (double) freq_start * 2.4e9 / pow(2, 32);
-	config.m_freq_end = (double) (delt_x * len + config.m_freq_start) * 2.4e9 / pow(2, 32);
-	config.m_phase = (double) phase * 360.0 / pow(2, 32);
-	config.m_amp = (double) amp / 65535;
+	config.m_freq_start = (double)freq_start * 2.4e9 / pow(2, 32);
+	config.m_freq_end = (double)(delt_x * len + config.m_freq_start) * 2.4e9 / pow(2, 32);
+	config.m_phase = (double)phase * 360.0 / pow(2, 32);
+	config.m_amp = (double)amp / 65535;
 	return config;
 }
 

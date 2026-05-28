@@ -22,7 +22,8 @@ extern "C"
 #define P_LOG_LEVEL_WARNING (1 << 2) // 0x04
 #define P_LOG_LEVEL_ERROR (1 << 3)   // 0x08
 #define P_LOG_LEVEL_FATAL (1 << 4)   // 0x10
-#define P_LOG_LEVEL_NUM 5            // 等级数量
+#define P_LOG_LEVEL_REPEAT (1 << 5)  // 0x20
+#define P_LOG_LEVEL_NUM 6            // 等级数量
 
     typedef struct
     {
@@ -48,6 +49,7 @@ extern "C"
 #define P_LOG_WARNING(fmt, ...) _log_print(P_LOG_LEVEL_WARNING, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
 #define P_LOG_ERROR(fmt, ...) _log_print(P_LOG_LEVEL_ERROR, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
 #define P_LOG_FATAL(fmt, ...) _log_print(P_LOG_LEVEL_FATAL, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
+#define P_LOG_REPEAT(fmt, ...) _log_print(P_LOG_LEVEL_REPEAT, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
 
 #ifdef __cplusplus
 }
