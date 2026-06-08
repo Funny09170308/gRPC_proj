@@ -583,10 +583,21 @@ void chip_dac_sync_init(uint32_t chip)
     usleep(10);
     xdma_write_user_space(chip, DAC_SYNC_OFFSET, 0);
 }
+
+void sync_init(void)
+{
+    for (uint8_t i = 0; i < g_pcie_board_info.awg_board_num; ++i)
+    {
+        xdma_write_user_space(i, 0x10000 + (103 << 2), 1);
+        P_LOG_DEBUG("Init chip %d dac sync.", i);
+    }
+}
+
 void dac_sync_init(void)
 {
     for (uint8_t i = 0; i < g_pcie_board_info.awg_board_num; ++i)
     {
         chip_dac_sync_init(i);
+        P_LOG_DEBUG("Init chip %d dac sync.", i);
     }
 }

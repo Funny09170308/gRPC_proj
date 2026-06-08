@@ -36,8 +36,26 @@ void pcie_switch_reset(void)
     gpio_set_value(PCIE_PS_RST, 1);
     P_LOG_INFO("PCIe slave reset release succeed!");
 }
+
+void slot_mio_pulse_init(void)
+{
+    gpio_set_value(SLOT_SYNC_PULSE, 0);
+    gpio_set_value(SLOT_SYNC_PULSE, 1);
+    gpio_set_value(SLOT_SYNC_PULSE, 0);
+}
+
 void clock_sync(void)
 {
+    gpio_set_value(SLOT_SYNC_SIGNAL, 0);
+    gpio_set_value(SLOT_SYNC_SIGNAL, 1);
+    usleep(1);
+    gpio_set_value(SLOT_SYNC_SIGNAL, 0);
+    sleep(1);
+    gpio_set_value(SLOT_SYNC_SIGNAL, 0);
+    gpio_set_value(SLOT_SYNC_SIGNAL, 1);
+    usleep(1);
+    gpio_set_value(SLOT_SYNC_SIGNAL, 0);
+    sleep(1);
     gpio_set_value(SLOT_SYNC_SIGNAL, 0);
     gpio_set_value(SLOT_SYNC_SIGNAL, 1);
     usleep(1);

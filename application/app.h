@@ -61,10 +61,9 @@ typedef enum
 void *rpc_thread(void *arg);
 void *tcp_thread(void *arg);
 void task_creat(void);
-
+void slave_card_detect(void);
 #ifdef __cplusplus
 }
 #endif
 
 #endif /* APP_H */
-

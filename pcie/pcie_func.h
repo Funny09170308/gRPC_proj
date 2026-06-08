@@ -97,6 +97,7 @@ extern "C"
     int pcie_dev_init(void);
     void pcie_dev_deinit(void);
     PcieBoardInfo *get_pcie_board_info();
+    int get_subcard_count(void);
     int xdma_read_user_space(int chip, uint64_t offset, uint32_t *readVal);
     int xdma_write_user_space(int chip, uint64_t offset, uint32_t writeVal);
     int dma_write_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer);
@@ -107,7 +108,8 @@ extern "C"
     int get_qa_in_channel_count(void);
     int get_qa_out_channel_count(void);
     void dac_sync_init(void);
-
+    void sync_init(void);
+    void dac_sync_init(void);
 #ifdef __cplusplus
 }
 #endif

@@ -47,3 +47,24 @@ void task_creat(void)
     status_led_ctrl(1);
     P_LOG_INFO("Task init finish!\r\n");
 }
+
+void slave_card_detect(void)
+{
+    PcieBoardInfo *g_pcie_board_info = get_pcie_board_info();
+    int cardCount = get_subcard_count();
+    // TODO:此检测方式不支持混插, 否则会误报
+    if (g_pcie_board_info->awg_board_num != 0)
+    {
+        if (cardCount < 4)
+        {
+            status_led_ctrl(0);
+        }
+    }
+    else if (g_pcie_board_info->qa_board_num != 0)
+    {
+        if (cardCount < 2)
+        {
+            status_led_ctrl(0);
+        }
+    }
+}

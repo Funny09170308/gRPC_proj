@@ -9,9 +9,11 @@
 #define PCIE_SWITCH_RST_CTRL 90 // gpio424
 #define SLOT_SYNC_SIGNAL 101    // gpio435
 #define SLOT_SYNC_FINISH 103    // gpio437
+#define SLOT_SYNC_PULSE 104    // gpio438
 
 void gpio_power_suplly(void);
 int gpio_set_value(int logic_gpio_num, int value);
 void pcie_switch_reset(void);
+void slot_mio_pulse_init(void);
 void clock_sync(void);
 #endif // __AXI_GPIO_H__

@@ -5,6 +5,7 @@
 #include "public/public.h"
 #include "./application/app.h"
 #include "./pcie/pcie_func.h"
+#include "./pcie/qa/qa_func.h"
 #include "./axi_gpio/axi_gpio.h"
 #include "./spi_dev/spi2_test.h"
 #include "./param_mgr/param_mgr.h"
@@ -22,7 +23,7 @@ int main(void)
         P_LOG_LEVEL_ERROR |
         P_LOG_LEVEL_FATAL);
     // 子卡同步初始化
-    // clock_sync();
+    clock_sync();
     // 设备参数初始化
     device_info_init();
     // 子卡空间初始化
@@ -42,14 +43,20 @@ int main(void)
 // 子卡空间初始化
 #if SLAVE_USE_PCIE
     pcie_dev_init();
+    sleep(2);
+    sync_init();
+    sleep(1);
+    slot_mio_pulse_init();
+    sleep(2);
+    dac_sync_init();
     QAConfigRegisterInit();
 #else
     chip2chip_dev_init();
 #endif
     // 后IO板内存空间初始化
     public_dev_init();
-    // dac_sync_init();
     slave_card_init();
+    slave_card_detect();
     task_creat();
     while (1)
     {
