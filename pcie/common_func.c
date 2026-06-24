@@ -84,7 +84,11 @@ void chip2chip_dev_deinit(void)
 
 void slave_card_init(void)
 {
+    P_LOG_DEBUG("Start to init slave card!");
+    // AWG init func
     lnawg_trig_source_init();
+    // QA init func
+    QAConfigRegisterInit();
     qa_trig_source_init();
 }
 
