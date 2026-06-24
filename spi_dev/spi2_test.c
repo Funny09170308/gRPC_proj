@@ -20,7 +20,7 @@ void spi2_test(void)
 	WriteBuffer1[1] = 0x00;
 	WriteBuffer1[2] = 0x00;
 	WriteBuffer1[3] = 0x00;
-    spi_transfer_data(fd, ReadBuffer1, WriteBuffer1, 4);
+    spi_transfer_raw(fd, ReadBuffer1, WriteBuffer1, 4);
     usleep(500) ;
     for (uint8_t index = 0; index < BUFFER_SIZE1; ++index)
     {

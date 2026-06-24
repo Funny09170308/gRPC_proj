@@ -19,11 +19,21 @@
 #define LMKDB1108_I2C_DEV "/dev/i2c-0"
 #define LMKDB1108_I2C_SLAVE_ADDR 0xC4
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 void cdce6214_reg_config(void);
+void cdce6214_internel_reg_config(void);
 
 void lmkdb1108_reg_config(void);
 
 void power_suplly_init(void);
 
 void pcie_reset(void);
+
+#ifdef __cplusplus
+}
+#endif
 #endif // __I2C_REG_CONFIG_H__
