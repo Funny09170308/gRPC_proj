@@ -595,7 +595,6 @@ void sync_init(void)
 
 void dac_sync_init(void)
 {
-    P_LOG_DEBUG("start to sync DAC.");
     for (uint8_t i = 0; i < g_pcie_board_info.awg_board_num; ++i)
     {
         chip_dac_sync_init(i);

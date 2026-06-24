@@ -7,8 +7,8 @@
 #include "../device_info.h"
 
 #define DEVICE_NAME_LEN 32
-#define DEVICE_CONFIG_PATH "/root/app/DeviceInfo.json"
-#define DEVICE_KB_PARAM_PATH "/root/app/KBParam.csv"
+#define DEVICE_CONFIG_PATH "/home/root/app/DeviceInfo.json"
+#define DEVICE_KB_PARAM_PATH "/home/root/app/KBParam.csv"
 #define IP_STR_LEN 16
 #define MAC_STR_LEN 18
 #define STR_SMALL_LEN 32

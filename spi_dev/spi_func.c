@@ -89,7 +89,7 @@ int spi_set_frequence(int fd, uint32_t speed)
 }
 
 // SPI数据传输
-int spi_transfer_raw(int fd, const uint8_t *tx_buf, uint8_t *rx_buf, int len)
+int spi_transfer_data(int fd, const uint8_t *tx_buf, uint8_t *rx_buf, int len)
 {
     struct spi_ioc_transfer tr = {
         .tx_buf = (unsigned long)tx_buf,
@@ -110,22 +110,57 @@ int spi_transfer_raw(int fd, const uint8_t *tx_buf, uint8_t *rx_buf, int len)
     return 0;
 }
 
-int spi_write_bytes(int fd, const uint8_t *tx, int len)
+int spi_read_only(int fd, uint8_t *rx_buf, int len)
 {
-    // RX 不重要 → 必须置NULL，避免AXI SPI RX wait
-    return spi_transfer_raw(fd, tx, NULL, len);
+    // 分配发送缓冲区
+    uint8_t *tx_buf = (uint8_t *)malloc(len);
+    if (tx_buf == NULL) {
+        perror("Malloc tx_buf failed");
+        return -1;
+    }
+    memset(tx_buf, 0xFF, len);
+
+    // 调用核心传输函数
+    int ret = spi_transfer_data(fd, tx_buf, rx_buf, len);
+
+    // 释放临时缓冲区
+    free(tx_buf);
+
+    return ret;
 }
 
-int spi_read_bytes(int fd, uint8_t *rx, int len)
+int spi_read_with_cmd(int fd, uint8_t cmd, uint8_t reg, uint8_t *rx_buf, int len)
 {
-    uint8_t *tx = (uint8_t *)malloc(len);
-    if (!tx)
+    // 构造发送缓冲区
+    int tx_len = 2 + len;
+    uint8_t *tx_buf = (uint8_t *)malloc(tx_len);
+    if (tx_buf == NULL) {
+        perror("Malloc tx_buf failed");
         return -1;
+    }
 
-    memset(tx, 0xFF, len);
+    tx_buf[0] = cmd;          // 读指令
+    tx_buf[1] = reg;          // 寄存器地址
+    memset(&tx_buf[2], 0xFF, len);  // 后续填充空数据
 
-    int ret = spi_transfer_raw(fd, tx, rx, len);
+    // 构造接收缓冲区
+    uint8_t *temp_rx_buf = (uint8_t *)malloc(tx_len);
+    if (temp_rx_buf == NULL) {
+        free(tx_buf);
+        perror("Malloc temp_rx_buf failed");
+        return -1;
+    }
 
-    free(tx);
+    // 执行SPI传输
+    int ret = spi_transfer_data(fd, tx_buf, temp_rx_buf, tx_len);
+    if (ret == 0) {
+        // 提取有效数据
+        memcpy(rx_buf, &temp_rx_buf[2], len);
+    }
+
+    // 释放缓冲区
+    free(tx_buf);
+    free(temp_rx_buf);
+
     return ret;
 }

@@ -62,12 +62,6 @@ void *rpc_thread(void *arg);
 void *tcp_thread(void *arg);
 void task_creat(void);
 void slave_card_detect(void);
-void device_initalization(void);
-void clock_detect(void);
-
-void fan_speed_set(uint32_t fanSpeed);
-void led_init(void);
-void clk_status_decet(uint32_t devType);
 #ifdef __cplusplus
 }
 #endif

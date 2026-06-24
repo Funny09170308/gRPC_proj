@@ -22,9 +22,6 @@ extern "C"
         DEVICE_TYPE_QA = 0x000000F1,
     } slaveCardType_t;
 
-#define DEV_LNAWG DEVICE_TYPE_LNAWG & 0x01
-#define DEV_QA DEVICE_TYPE_QA & 0x01
-
 #define LED_OFF 0x07
 #define LED_GREEN 0x06
 #define LED_RED 0x05
@@ -72,7 +69,7 @@ extern "C"
     uint32_t common_pcie_user_reg_data_get(int32_t chip, uint64_t baseAddr);
     int common_pcie_user_reg_data_set(int32_t chip, uint64_t baseAddr, int32_t value);
 
-    // []: 频繁寄存器读写会导致总线浪费, 暂未实现
+    // [x]: 频繁寄存器读写会导致总线浪费, 暂未实现
     /// @brief DMA寄存器读写
     int common_pcie_reg_data_get(int32_t chip, int64_t baseAddr);
     int common_pcie_reg_data_set(int32_t chip, int64_t baseAddr, int32_t value);
@@ -96,7 +93,6 @@ extern "C"
     void device_mac_addr_set(const char *mac);
     void set_qa_ch_led_status(int32_t logical_ch, int32_t status);
     void set_awg_ch_led_status(int32_t logical_ch, int32_t status);
-    int common_reg_data_set(int64_t baseAddr, uint32_t value);
 #ifdef __cplusplus
 }
 #endif

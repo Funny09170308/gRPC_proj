@@ -1,12 +1,13 @@
 #ifndef LMK04828_DRV_H
 #define LMK04828_DRV_H
 
-#include <stdint.h>
+int lmk04828_reario_init();
+int lmk04828_awg_init();
 
 #ifdef __cplusplus
 extern "C"
 {
-    #endif
+#endif
 
     struct adireg
     {
@@ -29,8 +30,6 @@ extern "C"
         unsigned int addr_data;
     };
 
-    int lmk04828_default_init(int type);
-    int lmk04828_internel_init(int type);
 #ifdef __cplusplus
 }
 #endif // __cplusplus

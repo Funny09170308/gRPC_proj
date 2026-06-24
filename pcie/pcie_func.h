@@ -26,7 +26,6 @@ extern "C"
         LED_08_CTRL = 9 * 4,    // lnawg ch staus(on/off)
         LED_09_CTRL = 2 * 4,    // lnawg ch staus(on/off)
         LED_10_CTRL = 1 * 4,    // lnawg ch staus(on/off)
-        CLOCK_STATUS = 11 * 4,  // clk stauts
     };
 
 #define DEV_TYPE_REG_ADDR 0x10000
