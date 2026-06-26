@@ -2,7 +2,7 @@
 #include "axi_gpio.h"
 #include "../platform_log/platform_log.h"
 
-#define GPIO334 334
+#define GPIO_BASE 516
 void gpio_power_suplly(void)
 {
     gpio_set_value(IO_POWER_CTRL, 1);
@@ -10,7 +10,7 @@ void gpio_power_suplly(void)
 
 int gpio_set_value(int logic_gpio_num, int value)
 {
-    int global_gpio = logic_gpio_num + GPIO334;
+    int global_gpio = logic_gpio_num + GPIO_BASE;
 
     char path[64];
     FILE *f;

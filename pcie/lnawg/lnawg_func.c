@@ -248,10 +248,10 @@ void set_dev_trig(DevTrigCtrl devtrig)
 	gLocalParam.dev_trig_ctrl.trigger_delay = devtrig.trigger_delay;
 
 	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (0 * 4), devtrig.trigger_source);
-	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (1 * 4), (uint32_t)((devtrig.trigger_us - 1) * 250));
+	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (1 * 4), (uint32_t)((devtrig.trigger_us - 1) * 10));
 	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (2 * 4), devtrig.trigger_times);
 	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (3 * 4), devtrig.trigger_continue);
-	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (4 * 4), (uint32_t)((devtrig.trigger_delay - 1) * 250));
+	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (4 * 4), (uint32_t)((devtrig.trigger_delay - 1) * 10));
 }
 
 // 1:enable 0:disable
