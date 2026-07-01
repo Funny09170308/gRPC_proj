@@ -19,87 +19,87 @@ class CommonCMDServiceStub(object):
                 '/silicon_based.CommonCMDService/GetIDN',
                 request_serializer=common__cmd__pb2.GetIDNRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.GetIDNResponse.FromString,
-                )
+                _registered_method=True)
         self.GetDeviceInfo = channel.unary_unary(
                 '/silicon_based.CommonCMDService/GetDeviceInfo',
                 request_serializer=common__cmd__pb2.GetDeviceInfoRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.GetDeviceInfoResponse.FromString,
-                )
+                _registered_method=True)
         self.SetDebugParam = channel.unary_unary(
                 '/silicon_based.CommonCMDService/SetDebugParam',
                 request_serializer=common__cmd__pb2.DebugParamRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.SetGPIOStatus = channel.unary_unary(
                 '/silicon_based.CommonCMDService/SetGPIOStatus',
                 request_serializer=common__cmd__pb2.GPIOStatusRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.SetNetCfgAddr = channel.unary_unary(
                 '/silicon_based.CommonCMDService/SetNetCfgAddr',
                 request_serializer=common__cmd__pb2.SetNetCfgRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetNetCfgAddr = channel.unary_unary(
                 '/silicon_based.CommonCMDService/GetNetCfgAddr',
                 request_serializer=common__cmd__pb2.GetNetCfgRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.NetCfgResponse.FromString,
-                )
+                _registered_method=True)
         self.SetRegValue = channel.unary_unary(
                 '/silicon_based.CommonCMDService/SetRegValue',
                 request_serializer=common__cmd__pb2.RegSetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetRegValue = channel.unary_unary(
                 '/silicon_based.CommonCMDService/GetRegValue',
                 request_serializer=common__cmd__pb2.RegGetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.RegValueResponse.FromString,
-                )
+                _registered_method=True)
         self.SetPCIERegValue = channel.unary_unary(
                 '/silicon_based.CommonCMDService/SetPCIERegValue',
                 request_serializer=common__cmd__pb2.PCIERegSetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetPCIERegValue = channel.unary_unary(
                 '/silicon_based.CommonCMDService/GetPCIERegValue',
                 request_serializer=common__cmd__pb2.PCIERegGetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.PCIERegValueResponse.FromString,
-                )
+                _registered_method=True)
         self.StreamDataSet = channel.stream_unary(
                 '/silicon_based.CommonCMDService/StreamDataSet',
                 request_serializer=common__cmd__pb2.SetStreamDataRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.SetStreamResult.FromString,
-                )
+                _registered_method=True)
         self.StreamDataGet = channel.unary_stream(
                 '/silicon_based.CommonCMDService/StreamDataGet',
                 request_serializer=common__cmd__pb2.GetStreamDataRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.GetStreamResult.FromString,
-                )
+                _registered_method=True)
         self.SetDevTrigSource = channel.unary_unary(
                 '/silicon_based.CommonCMDService/SetDevTrigSource',
                 request_serializer=common__cmd__pb2.SetTrigSourceRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetDevTrigSource = channel.unary_unary(
                 '/silicon_based.CommonCMDService/GetDevTrigSource',
                 request_serializer=common__cmd__pb2.GetTrigSourceRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.GetTrigSourceResponse.FromString,
-                )
+                _registered_method=True)
         self.SetDevTrigParam = channel.unary_unary(
                 '/silicon_based.CommonCMDService/SetDevTrigParam',
                 request_serializer=common__cmd__pb2.SetTrigParamRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetDevTrigParam = channel.unary_unary(
                 '/silicon_based.CommonCMDService/GetDevTrigParam',
                 request_serializer=common__cmd__pb2.GetTrigParamRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.GetTrigParamResponse.FromString,
-                )
+                _registered_method=True)
         self.SetTrigStart = channel.unary_unary(
                 '/silicon_based.CommonCMDService/SetTrigStart',
                 request_serializer=common__cmd__pb2.SetTrigStartRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
 
 
 class CommonCMDServiceServicer(object):
@@ -300,6 +300,7 @@ def add_CommonCMDServiceServicer_to_server(servicer, server):
     generic_handler = grpc.method_handlers_generic_handler(
             'silicon_based.CommonCMDService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('silicon_based.CommonCMDService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -318,11 +319,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/GetIDN',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/GetIDN',
             common__cmd__pb2.GetIDNRequest.SerializeToString,
             common__cmd__pb2.GetIDNResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetDeviceInfo(request,
@@ -335,11 +346,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/GetDeviceInfo',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/GetDeviceInfo',
             common__cmd__pb2.GetDeviceInfoRequest.SerializeToString,
             common__cmd__pb2.GetDeviceInfoResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetDebugParam(request,
@@ -352,11 +373,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/SetDebugParam',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/SetDebugParam',
             common__cmd__pb2.DebugParamRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetGPIOStatus(request,
@@ -369,11 +400,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/SetGPIOStatus',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/SetGPIOStatus',
             common__cmd__pb2.GPIOStatusRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetNetCfgAddr(request,
@@ -386,11 +427,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/SetNetCfgAddr',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/SetNetCfgAddr',
             common__cmd__pb2.SetNetCfgRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetNetCfgAddr(request,
@@ -403,11 +454,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/GetNetCfgAddr',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/GetNetCfgAddr',
             common__cmd__pb2.GetNetCfgRequest.SerializeToString,
             common__cmd__pb2.NetCfgResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetRegValue(request,
@@ -420,11 +481,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/SetRegValue',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/SetRegValue',
             common__cmd__pb2.RegSetRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetRegValue(request,
@@ -437,11 +508,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/GetRegValue',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/GetRegValue',
             common__cmd__pb2.RegGetRequest.SerializeToString,
             common__cmd__pb2.RegValueResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetPCIERegValue(request,
@@ -454,11 +535,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/SetPCIERegValue',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/SetPCIERegValue',
             common__cmd__pb2.PCIERegSetRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetPCIERegValue(request,
@@ -471,11 +562,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/GetPCIERegValue',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/GetPCIERegValue',
             common__cmd__pb2.PCIERegGetRequest.SerializeToString,
             common__cmd__pb2.PCIERegValueResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def StreamDataSet(request_iterator,
@@ -488,11 +589,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.stream_unary(request_iterator, target, '/silicon_based.CommonCMDService/StreamDataSet',
+        return grpc.experimental.stream_unary(
+            request_iterator,
+            target,
+            '/silicon_based.CommonCMDService/StreamDataSet',
             common__cmd__pb2.SetStreamDataRequest.SerializeToString,
             common__cmd__pb2.SetStreamResult.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def StreamDataGet(request,
@@ -505,11 +616,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/silicon_based.CommonCMDService/StreamDataGet',
+        return grpc.experimental.unary_stream(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/StreamDataGet',
             common__cmd__pb2.GetStreamDataRequest.SerializeToString,
             common__cmd__pb2.GetStreamResult.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetDevTrigSource(request,
@@ -522,11 +643,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/SetDevTrigSource',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/SetDevTrigSource',
             common__cmd__pb2.SetTrigSourceRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetDevTrigSource(request,
@@ -539,11 +670,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/GetDevTrigSource',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/GetDevTrigSource',
             common__cmd__pb2.GetTrigSourceRequest.SerializeToString,
             common__cmd__pb2.GetTrigSourceResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetDevTrigParam(request,
@@ -556,11 +697,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/SetDevTrigParam',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/SetDevTrigParam',
             common__cmd__pb2.SetTrigParamRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetDevTrigParam(request,
@@ -573,11 +724,21 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/GetDevTrigParam',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/GetDevTrigParam',
             common__cmd__pb2.GetTrigParamRequest.SerializeToString,
             common__cmd__pb2.GetTrigParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetTrigStart(request,
@@ -590,8 +751,18 @@ class CommonCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.CommonCMDService/SetTrigStart',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/SetTrigStart',
             common__cmd__pb2.SetTrigStartRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)

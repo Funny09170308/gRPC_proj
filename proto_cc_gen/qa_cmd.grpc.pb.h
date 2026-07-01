@@ -24,6 +24,7 @@
 #include <grpcpp/support/status.h>
 #include <grpcpp/support/stub_options.h>
 #include <grpcpp/support/sync_stream.h>
+#include <grpcpp/ports_def.inc>
 
 namespace silicon_based {
 
@@ -3221,4 +3222,5 @@ class QACMDService final {
 }  // namespace silicon_based
 
 
+#include <grpcpp/ports_undef.inc>
 #endif  // GRPC_qa_5fcmd_2eproto__INCLUDED
