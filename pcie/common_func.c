@@ -294,8 +294,8 @@ void status_led_ctrl(uint8_t ok)
 }
 
 #define TEMPERATURE_WALL 95.0f
-#define RERIO_KERNEL_TEMP_PATH "/sys/bus/iio/devices/iio:device0/in_temp0_ps_temp_raw"
-#define RERIO_FPGA_TEMP_PATH "/sys/bus/iio/devices/iio:device0/in_temp2_pl_temp_raw"
+#define RERIO_KERNEL_TEMP_PATH "/sys/bus/iio/devices/iio:device0/in_temp8_raw" // Temp_FPD PS主域
+#define RERIO_FPGA_TEMP_PATH "/sys/bus/iio/devices/iio:device0/in_temp20_raw"  // Temp_PL FPGA
 
 float read_temperature(void)
 {

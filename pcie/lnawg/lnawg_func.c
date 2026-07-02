@@ -248,10 +248,10 @@ void set_dev_trig(DevTrigCtrl devtrig)
 	gLocalParam.dev_trig_ctrl.trigger_delay = devtrig.trigger_delay;
 
 	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (0 * 4), devtrig.trigger_source);
-	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (1 * 4), (uint32_t)((devtrig.trigger_us - 1) * 10));
+	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (1 * 4), (uint32_t)((devtrig.trigger_us - 1) * 25));
 	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (2 * 4), devtrig.trigger_times);
 	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (3 * 4), devtrig.trigger_continue);
-	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (4 * 4), (uint32_t)((devtrig.trigger_delay - 1) * 10));
+	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (4 * 4), (uint32_t)((devtrig.trigger_delay - 1) * 25));
 }
 
 // 1:enable 0:disable
@@ -489,7 +489,7 @@ void set_awg_dds_config(int32_t logical_ch, DDSConfigParam_t config)
 	int8_t chip_id;
 	int8_t local_ch;
 
-	uint32_t freq_val = (uint32_t)config.m_freq / 2.4e9 * pow(2, 32);
+	uint32_t freq_val = (uint32_t)config.m_freq / 2e9 * pow(2, 32);
 	uint32_t phase_val = (uint32_t)config.m_phase / 360 * pow(2, 32);
 	uint32_t amp_val = (uint32_t)65535 * config.m_amp;
 	uint32_t set_index = config.m_index;
