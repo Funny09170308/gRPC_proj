@@ -1,5 +1,6 @@
 #include "qa_func.h"
 #include "../pcie_func.h"
+#include "../../i2c/io_expand/max7300.h"
 #include "../../platform_log/platform_log.h"
 #include <unistd.h>
 

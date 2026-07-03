@@ -6,50 +6,31 @@
 #include "../axi_device/axi_dev_drv.h"
 
 #define C_USER_SPACE_CONFIG_OFFSET 0x10000
+
+typedef enum
+{
+    PCIE_CHIP_ID = 0x0,
+} publicUserSpaceReg_t;
+
+typedef enum
+{
+    DEVICE_TYPE_LNAWG = 0x000000F0,
+    DEVICE_TYPE_QA = 0x000000F1,
+} slaveCardType_t;
+
+#define C_RERIO_TRIGGER_OFFSET 0x8000
+#define C_RERIO_TRIGGER_BASEADDR (PUBLIC_PERIPHERAL_BASEAADDR + C_RERIO_TRIGGER_OFFSET)
+
+typedef enum
+{
+    E_TRIGGER_CTRL_0 = 0 * 4, // 后IOtrigger控制_0
+    E_TRIGGER_CTRL_1 = 5 * 4, // 后IOtrigger控制_1
+} rerioTriggerReg_t;
+
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-
-    typedef enum
-    {
-        PCIE_CHIP_ID = 0x0,
-    } publicUserSpaceReg_t;
-
-    typedef enum
-    {
-        DEVICE_TYPE_LNAWG = 0x000000F0,
-        DEVICE_TYPE_QA = 0x000000F1,
-    } slaveCardType_t;
-
-#define LED_OFF 0x07
-#define LED_GREEN 0x06
-#define LED_RED 0x05
-#define LED_BLUE 0x03
-
-#define C_RERIO_TRIGGER_OFFSET 0x8000
-#define C_RERIO_TRIGGER_BASEADDR (PUBLIC_PERIPHERAL_BASEAADDR + C_RERIO_TRIGGER_OFFSET)
-    typedef enum
-    {
-        E_FAN_SPEED_CTRL = 0 * 4, // max:1600
-        E_LED_01_CTRL = 6 * 4,    // staus(OK:green)
-        E_LED_02_CTRL = 10 * 4,   // ch status(on/off)
-        E_LED_03_CTRL = 5 * 4,    // ch status(on/off)
-        E_LED_04_CTRL = 4 * 4,    // ch status(on/off)
-        E_LED_05_CTRL = 3 * 4,    // ch status(on/off)
-        E_LED_06_CTRL = 7 * 4,    // error
-        E_LED_07_CTRL = 8 * 4,    // lnawg ch staus(on/off)
-        E_LED_08_CTRL = 9 * 4,    // lnawg ch staus(on/off)
-        E_LED_09_CTRL = 2 * 4,    // lnawg ch staus(on/off)
-        E_LED_10_CTRL = 1 * 4,    // lnawg ch staus(on/off)
-    } publicPerReg_t;
-
-    typedef enum
-    {
-        E_TRIGGER_CTRL_0 = 0 * 4, // 后IOtrigger控制_0
-        E_TRIGGER_CTRL_1 = 5 * 4, // 后IOtrigger控制_1
-    } rerioTriggerReg_t;
-
     /// @brief 从卡访问初始化
     /// @param  NONE
     void chip2chip_dev_init(void);
