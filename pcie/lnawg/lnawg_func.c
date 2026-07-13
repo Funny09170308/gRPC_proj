@@ -281,23 +281,39 @@ void set_awg_ch_range(int32_t logical_ch, int32_t range)
 
 	if (local_ch == 1)
 	{
-		if (range == 0)
-		{															   // direct
-			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0x25); // 0b100101
-			usleep(600000);
-			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0);
+		if (range == E_RANGE_DIRECT)
+		{																	// direct
+			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0b0000100); // 0b100101
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0b0000010);
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0b0100000);
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0b0000000);
 		}
-		else if (range == 3)
-		{															   // 3V
-			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0x2A); // 0b101010
-			usleep(800000);
-			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 64);
+		else if (range == E_RANGE_3V)
+		{																	// 3V
+			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0b0000001); // 0b101010
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0b1000000);
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0b1001000);
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0b1100000);
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0b1000000);
 		}
-		else if (range == 5)
-		{															   // 5V
-			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0x1A); // 0b011010
-			usleep(600000);
-			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 64);
+		else if (range == E_RANGE_HIGH_Z)
+		{																	// High-Z
+			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0b0100101); // 0b011010
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0b0000000);
+		}
+		else if (range == E_RANGE_GND)
+		{																	// GND
+			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0b0010101); // 0b011010
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_0_RANGE_SET, 0b0000000);
 		}
 		else
 		{
@@ -305,22 +321,38 @@ void set_awg_ch_range(int32_t logical_ch, int32_t range)
 	}
 	else if (local_ch == 2)
 	{
-		if (range == 0)
-		{															   // direct
-			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0x2A); // 0b101010
-			usleep(600000);
-			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0);
+		if (range == E_RANGE_DIRECT)
+		{															 // direct
+			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 11); // 0b101010
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 11);
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 11);
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 11);
 		}
-		else if (range == 3)
-		{															   // 3V
-			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0x25); // 0b100101
-			usleep(800000);
+		else if (range == E_RANGE_3V)
+		{															 // 3V
+			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 11); // 0b100101
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 11);
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 11);
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 11);
+			usleep(200000);
+			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 11);
+		}
+		else if (range == E_RANGE_HIGH_Z)
+		{															 // High-Z
+			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 11); // 0b010101
+			usleep(200000);
 			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 64);
 		}
-		else if (range == 5)
-		{															   // 5V
-			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0x15); // 0b010101
-			usleep(600000);
+		else if (range == E_RANGE_GND)
+		{															 // GND
+			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 11); // 0b010101
+			usleep(200000);
 			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 64);
 		}
 		else

@@ -13,6 +13,14 @@
 #define AWG_CH_MODE_DDS 2
 #define AWG_CH_MODE_CHIRP_OUT 3
 
+typedef enum
+{
+    E_RANGE_DIRECT = 0,
+    E_RANGE_3V = 1,
+    E_RANGE_HIGH_Z = 2,
+    E_RANGE_GND = 3,
+} eAWGChRangeContext_t;
+
 #ifdef __cplusplus
 extern "C"
 {
