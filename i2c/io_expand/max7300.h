@@ -13,8 +13,8 @@ typedef enum
     E_LED_06_CTRL = 5,
     E_LED_07_CTRL = 6,
     E_LED_08_CTRL = 7,
-    E_LED_09_CTRL = 8,
-    E_LED_10_CTRL = 9,
+    E_LED_A = 8,
+    E_LED_B = 9,
 } eI2CLEDSequenct_t;
 
 #define C_PORT_CONFG_START_ADDR 0x09

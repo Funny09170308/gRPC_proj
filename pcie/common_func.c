@@ -29,32 +29,32 @@ static axiDevice_t s_axiChipAddrCtx[CHIP_NUM] = {};
 static axiDevice_t s_publicPeripherlAddrCtx = {};
 
 uint8_t s_QALEDOffset[8] = {
-    E_LED_08_CTRL,
-    E_LED_03_CTRL,
+    E_LED_01_CTRL,
     E_LED_02_CTRL,
-    E_LED_07_CTRL,
-    E_LED_09_CTRL,
-    E_LED_05_CTRL,
+    E_LED_03_CTRL,
     E_LED_04_CTRL,
-    E_LED_10_CTRL,
+    E_LED_05_CTRL,
+    E_LED_06_CTRL,
+    E_LED_07_CTRL,
+    E_LED_08_CTRL,
 };
 
 uint8_t s_AWGLEDOffset[8] = {
+    E_LED_01_CTRL,
     E_LED_02_CTRL,
     E_LED_03_CTRL,
     E_LED_04_CTRL,
     E_LED_05_CTRL,
+    E_LED_06_CTRL,
     E_LED_07_CTRL,
     E_LED_08_CTRL,
-    E_LED_09_CTRL,
-    E_LED_10_CTRL,
 };
 
 void public_dev_init(void)
 {
     get_device_config(&s_sysConfig);
     axi_device_init(&s_publicPeripherlAddrCtx, "public perh", PUBLIC_PERIPHERAL_BASEAADDR, PUBLIC_PERIPHERAL_LENGTH);
-    max7300_init_all_output_high(C_AXI_I2C_0_PATH, E_MAX7300_LED_CTRL);
+    max7300_init_all_output_high(C_AXI_I2C_0_PATH, E_MAX7300_LED_CTRL_ADDR);
 }
 
 void public_dev_deinit(void)
@@ -266,7 +266,7 @@ void rerioTriggerSourceSet(uint32_t source)
 
 void LED_control(uint8_t offset, uint32_t status)
 {
-    max7300_set_led_color(C_AXI_I2C_0_PATH, E_MAX7300_LED_CTRL, offset, status);
+    max7300_set_led_color(C_AXI_I2C_0_PATH, E_MAX7300_LED_CTRL_ADDR, offset, status);
 }
 
 void status_led_ctrl(uint8_t ok)
@@ -281,17 +281,17 @@ void status_led_ctrl(uint8_t ok)
             if (strncmp(entry->d_name, "xdma", 4) == 0)
             {
                 closedir(dir);
-                LED_control(E_LED_01_CTRL, LED_GREEN);
+                LED_control(E_LED_A, LED_GREEN);
                 return;
             }
         }
-        LED_control(E_LED_01_CTRL, LED_GREEN | LED_RED);
+        LED_control(E_LED_A, LED_GREEN & LED_RED);
         closedir(dir);
         return;
     }
     else
     {
-        LED_control(E_LED_01_CTRL, LED_RED);
+        LED_control(E_LED_A, LED_RED);
         return;
     }
 }

@@ -47,7 +47,7 @@ static int max7300_write_reg(const char *i2cDevPath, uint8_t slaveAddr, uint8_t 
     write_buf[0] = cmd;
     memcpy(&write_buf[1], tx_buf, length);
 
-    ret = write_reg_var(fd, slaveAddr, write_buf, length + 1, C_DONT_CARE, 0);
+    ret = i2c_write_buffer(fd, slaveAddr, write_buf, (size_t)length + 1U);
     close(fd);
     return ret;
 }
@@ -69,7 +69,7 @@ static int max7300_read_reg(const char *i2cDevPath, uint8_t slaveAddr, uint8_t c
         return -1;
     }
 
-    ret = read_reg_var(fd, slaveAddr, &cmd, 1, rx_buf, length);
+    ret = i2c_write_read_buffer(fd, slaveAddr, &cmd, 1, rx_buf, length);
     close(fd);
     return ret;
 }
@@ -151,7 +151,8 @@ int max7300_set_single_io(const char *i2cDevPath, uint8_t slaveAddr, uint8_t por
         return -2;
     }
 
-    reg_addr = C_SIGNAL_PORT_CTRL_START_ADDR + port;
+    /* Register 0x24 controls P4, 0x25 controls P5, ... 0x3f controls P31. */
+    reg_addr = C_SIGNAL_PORT_CTRL_START_ADDR + (port - 4U);
 
     ret = max7300_read_reg(i2cDevPath, slaveAddr, reg_addr, &cur_val, 1);
     if (ret != 0)
@@ -170,7 +171,7 @@ int max7300_set_led_color(const char *i2cDevPath, uint8_t slaveAddr, uint8_t led
     int ret;
     const max7300LEDPort_t *ports;
 
-    if (led < 1 || led > (sizeof(s_ledPortMap) / sizeof(s_ledPortMap[0])))
+    if (led >= (sizeof(s_ledPortMap) / sizeof(s_ledPortMap[0])))
     {
         return -1;
     }
@@ -179,7 +180,7 @@ int max7300_set_led_color(const char *i2cDevPath, uint8_t slaveAddr, uint8_t led
         return -2;
     }
 
-    ports = &s_ledPortMap[led - 1];
+    ports = &s_ledPortMap[led];
 
     ret = max7300_set_single_io(i2cDevPath, slaveAddr, ports->red_port, (color & 0x02) ? 1 : 0);
     if (ret != 0)
@@ -191,6 +192,12 @@ int max7300_set_led_color(const char *i2cDevPath, uint8_t slaveAddr, uint8_t led
     if (ret != 0)
     {
         return ret;
+    }
+
+    /* LEDA/LEDB have no blue channel; port 0 is the map's sentinel value. */
+    if (ports->blue_port == 0)
+    {
+        return 0;
     }
 
     return max7300_set_single_io(i2cDevPath, slaveAddr, ports->blue_port, (color & 0x04) ? 1 : 0);
