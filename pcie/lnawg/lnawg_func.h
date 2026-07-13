@@ -175,9 +175,11 @@ extern "C"
     void set_dev_trig_state(int32_t state);
     void send_software_trig();
 
+    void set_awg_ch_out_range(int32_t logical_ch, int32_t range);
+    uint32_t get_awg_ch_out_range(int32_t logical_ch);
+
     void set_awg_ch_range(int32_t logical_ch, int32_t range);
     uint32_t get_awg_ch_range(int32_t logical_ch);
-
     void set_awg_ch_offset(int32_t logical_ch, double offset);
     double get_awg_ch_offset(int32_t logical_ch);
 

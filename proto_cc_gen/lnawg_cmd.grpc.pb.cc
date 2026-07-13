@@ -28,6 +28,8 @@ static const char* LNAWGCMDService_method_names[] = {
   "/silicon_based.LNAWGCMDService/GetRun",
   "/silicon_based.LNAWGCMDService/SetExtSource",
   "/silicon_based.LNAWGCMDService/GetExtSource",
+  "/silicon_based.LNAWGCMDService/SetOutRange",
+  "/silicon_based.LNAWGCMDService/GetOutRange",
   "/silicon_based.LNAWGCMDService/SetRange",
   "/silicon_based.LNAWGCMDService/GetRange",
   "/silicon_based.LNAWGCMDService/SetOffset",
@@ -57,20 +59,22 @@ LNAWGCMDService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& ch
   , rpcmethod_GetRun_(LNAWGCMDService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SetExtSource_(LNAWGCMDService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetExtSource_(LNAWGCMDService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetRange_(LNAWGCMDService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetRange_(LNAWGCMDService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetOffset_(LNAWGCMDService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetOffset_(LNAWGCMDService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetSegmentCount_(LNAWGCMDService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetSegmentCount_(LNAWGCMDService_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetLoopCount_(LNAWGCMDService_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetLoopCount_(LNAWGCMDService_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetDDSParam_(LNAWGCMDService_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetDDSParam_(LNAWGCMDService_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetChirpOutParam_(LNAWGCMDService_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetChirpOutParam_(LNAWGCMDService_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetDDSEnable_(LNAWGCMDService_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetDDSEnable_(LNAWGCMDService_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetOutRange_(LNAWGCMDService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetOutRange_(LNAWGCMDService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetRange_(LNAWGCMDService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetRange_(LNAWGCMDService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetOffset_(LNAWGCMDService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetOffset_(LNAWGCMDService_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetSegmentCount_(LNAWGCMDService_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSegmentCount_(LNAWGCMDService_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetLoopCount_(LNAWGCMDService_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetLoopCount_(LNAWGCMDService_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetDDSParam_(LNAWGCMDService_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetDDSParam_(LNAWGCMDService_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetChirpOutParam_(LNAWGCMDService_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetChirpOutParam_(LNAWGCMDService_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetDDSEnable_(LNAWGCMDService_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetDDSEnable_(LNAWGCMDService_method_names[21], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status LNAWGCMDService::Stub::SetMode(::grpc::ClientContext* context, const ::silicon_based::ModeSetRequest& request, ::silicon_based::ParamResponse* response) {
@@ -207,6 +211,52 @@ void LNAWGCMDService::Stub::async::GetExtSource(::grpc::ClientContext* context, 
 ::grpc::ClientAsyncResponseReader< ::silicon_based::ExtSourceGetResponse>* LNAWGCMDService::Stub::AsyncGetExtSourceRaw(::grpc::ClientContext* context, const ::silicon_based::ExtSourceGetRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncGetExtSourceRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status LNAWGCMDService::Stub::SetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::silicon_based::ParamResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::RangeSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetOutRange_, context, request, response);
+}
+
+void LNAWGCMDService::Stub::async::SetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::RangeSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetOutRange_, context, request, response, std::move(f));
+}
+
+void LNAWGCMDService::Stub::async::SetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetOutRange_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* LNAWGCMDService::Stub::PrepareAsyncSetOutRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::ParamResponse, ::silicon_based::RangeSetRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetOutRange_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* LNAWGCMDService::Stub::AsyncSetOutRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSetOutRangeRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status LNAWGCMDService::Stub::GetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::silicon_based::RangeGetResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::RangeGetRequest, ::silicon_based::RangeGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetOutRange_, context, request, response);
+}
+
+void LNAWGCMDService::Stub::async::GetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest* request, ::silicon_based::RangeGetResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::RangeGetRequest, ::silicon_based::RangeGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetOutRange_, context, request, response, std::move(f));
+}
+
+void LNAWGCMDService::Stub::async::GetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest* request, ::silicon_based::RangeGetResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetOutRange_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::RangeGetResponse>* LNAWGCMDService::Stub::PrepareAsyncGetOutRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::RangeGetResponse, ::silicon_based::RangeGetRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetOutRange_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::RangeGetResponse>* LNAWGCMDService::Stub::AsyncGetOutRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetOutRangeRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -602,7 +652,7 @@ LNAWGCMDService::Service::Service() {
              ::grpc::ServerContext* ctx,
              const ::silicon_based::RangeSetRequest* req,
              ::silicon_based::ParamResponse* resp) {
-               return service->SetRange(ctx, req, resp);
+               return service->SetOutRange(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LNAWGCMDService_method_names[7],
@@ -612,10 +662,30 @@ LNAWGCMDService::Service::Service() {
              ::grpc::ServerContext* ctx,
              const ::silicon_based::RangeGetRequest* req,
              ::silicon_based::RangeGetResponse* resp) {
-               return service->GetRange(ctx, req, resp);
+               return service->GetOutRange(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LNAWGCMDService_method_names[8],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::RangeSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](LNAWGCMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::RangeSetRequest* req,
+             ::silicon_based::ParamResponse* resp) {
+               return service->SetRange(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LNAWGCMDService_method_names[9],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::RangeGetRequest, ::silicon_based::RangeGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](LNAWGCMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::RangeGetRequest* req,
+             ::silicon_based::RangeGetResponse* resp) {
+               return service->GetRange(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LNAWGCMDService_method_names[10],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::OffsetSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
@@ -625,7 +695,7 @@ LNAWGCMDService::Service::Service() {
                return service->SetOffset(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LNAWGCMDService_method_names[9],
+      LNAWGCMDService_method_names[11],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::OffsetGetRequest, ::silicon_based::OffsetGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
@@ -635,7 +705,7 @@ LNAWGCMDService::Service::Service() {
                return service->GetOffset(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LNAWGCMDService_method_names[10],
+      LNAWGCMDService_method_names[12],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::SegmentCountSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
@@ -645,7 +715,7 @@ LNAWGCMDService::Service::Service() {
                return service->SetSegmentCount(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LNAWGCMDService_method_names[11],
+      LNAWGCMDService_method_names[13],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::SegmentCountGetRequest, ::silicon_based::SegmentCountGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
@@ -655,7 +725,7 @@ LNAWGCMDService::Service::Service() {
                return service->GetSegmentCount(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LNAWGCMDService_method_names[12],
+      LNAWGCMDService_method_names[14],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::LoopCountSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
@@ -665,7 +735,7 @@ LNAWGCMDService::Service::Service() {
                return service->SetLoopCount(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LNAWGCMDService_method_names[13],
+      LNAWGCMDService_method_names[15],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::LoopCountGetRequest, ::silicon_based::LoopCountGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
@@ -675,7 +745,7 @@ LNAWGCMDService::Service::Service() {
                return service->GetLoopCount(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LNAWGCMDService_method_names[14],
+      LNAWGCMDService_method_names[16],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::DDSParamSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
@@ -685,7 +755,7 @@ LNAWGCMDService::Service::Service() {
                return service->SetDDSParam(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LNAWGCMDService_method_names[15],
+      LNAWGCMDService_method_names[17],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::DDSParamGetRequest, ::silicon_based::DDSParamGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
@@ -695,7 +765,7 @@ LNAWGCMDService::Service::Service() {
                return service->GetDDSParam(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LNAWGCMDService_method_names[16],
+      LNAWGCMDService_method_names[18],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::ChirpOutParamSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
@@ -705,7 +775,7 @@ LNAWGCMDService::Service::Service() {
                return service->SetChirpOutParam(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LNAWGCMDService_method_names[17],
+      LNAWGCMDService_method_names[19],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::ChirpOutParamGetRequest, ::silicon_based::ChirpOutParamGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
@@ -715,7 +785,7 @@ LNAWGCMDService::Service::Service() {
                return service->GetChirpOutParam(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LNAWGCMDService_method_names[18],
+      LNAWGCMDService_method_names[20],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::DDSEnableSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
@@ -725,7 +795,7 @@ LNAWGCMDService::Service::Service() {
                return service->SetDDSEnable(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LNAWGCMDService_method_names[19],
+      LNAWGCMDService_method_names[21],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::DDSEnableGetRequest, ::silicon_based::DDSEnableGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
@@ -775,6 +845,20 @@ LNAWGCMDService::Service::~Service() {
 }
 
 ::grpc::Status LNAWGCMDService::Service::GetExtSource(::grpc::ServerContext* context, const ::silicon_based::ExtSourceGetRequest* request, ::silicon_based::ExtSourceGetResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LNAWGCMDService::Service::SetOutRange(::grpc::ServerContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LNAWGCMDService::Service::GetOutRange(::grpc::ServerContext* context, const ::silicon_based::RangeGetRequest* request, ::silicon_based::RangeGetResponse* response) {
   (void) context;
   (void) request;
   (void) response;

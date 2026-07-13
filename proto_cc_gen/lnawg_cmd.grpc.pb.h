@@ -79,6 +79,20 @@ class LNAWGCMDService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ExtSourceGetResponse>> PrepareAsyncGetExtSource(::grpc::ClientContext* context, const ::silicon_based::ExtSourceGetRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ExtSourceGetResponse>>(PrepareAsyncGetExtSourceRaw(context, request, cq));
     }
+    virtual ::grpc::Status SetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::silicon_based::ParamResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> AsyncSetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(AsyncSetOutRangeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> PrepareAsyncSetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(PrepareAsyncSetOutRangeRaw(context, request, cq));
+    }
+    virtual ::grpc::Status GetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::silicon_based::RangeGetResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::RangeGetResponse>> AsyncGetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::RangeGetResponse>>(AsyncGetOutRangeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::RangeGetResponse>> PrepareAsyncGetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::RangeGetResponse>>(PrepareAsyncGetOutRangeRaw(context, request, cq));
+    }
     virtual ::grpc::Status SetRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::silicon_based::ParamResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> AsyncSetRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(AsyncSetRangeRaw(context, request, cq));
@@ -192,6 +206,10 @@ class LNAWGCMDService final {
       virtual void SetExtSource(::grpc::ClientContext* context, const ::silicon_based::ExtSourceSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetExtSource(::grpc::ClientContext* context, const ::silicon_based::ExtSourceGetRequest* request, ::silicon_based::ExtSourceGetResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetExtSource(::grpc::ClientContext* context, const ::silicon_based::ExtSourceGetRequest* request, ::silicon_based::ExtSourceGetResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest* request, ::silicon_based::RangeGetResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest* request, ::silicon_based::RangeGetResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void SetRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest* request, ::silicon_based::RangeGetResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -237,6 +255,10 @@ class LNAWGCMDService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncSetExtSourceRaw(::grpc::ClientContext* context, const ::silicon_based::ExtSourceSetRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ExtSourceGetResponse>* AsyncGetExtSourceRaw(::grpc::ClientContext* context, const ::silicon_based::ExtSourceGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ExtSourceGetResponse>* PrepareAsyncGetExtSourceRaw(::grpc::ClientContext* context, const ::silicon_based::ExtSourceGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* AsyncSetOutRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncSetOutRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::RangeGetResponse>* AsyncGetOutRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::RangeGetResponse>* PrepareAsyncGetOutRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* AsyncSetRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncSetRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::RangeGetResponse>* AsyncGetRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -310,6 +332,20 @@ class LNAWGCMDService final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ExtSourceGetResponse>> PrepareAsyncGetExtSource(::grpc::ClientContext* context, const ::silicon_based::ExtSourceGetRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ExtSourceGetResponse>>(PrepareAsyncGetExtSourceRaw(context, request, cq));
+    }
+    ::grpc::Status SetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::silicon_based::ParamResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> AsyncSetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(AsyncSetOutRangeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> PrepareAsyncSetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(PrepareAsyncSetOutRangeRaw(context, request, cq));
+    }
+    ::grpc::Status GetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::silicon_based::RangeGetResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::RangeGetResponse>> AsyncGetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::RangeGetResponse>>(AsyncGetOutRangeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::RangeGetResponse>> PrepareAsyncGetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::RangeGetResponse>>(PrepareAsyncGetOutRangeRaw(context, request, cq));
     }
     ::grpc::Status SetRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::silicon_based::ParamResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> AsyncSetRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) {
@@ -424,6 +460,10 @@ class LNAWGCMDService final {
       void SetExtSource(::grpc::ClientContext* context, const ::silicon_based::ExtSourceSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetExtSource(::grpc::ClientContext* context, const ::silicon_based::ExtSourceGetRequest* request, ::silicon_based::ExtSourceGetResponse* response, std::function<void(::grpc::Status)>) override;
       void GetExtSource(::grpc::ClientContext* context, const ::silicon_based::ExtSourceGetRequest* request, ::silicon_based::ExtSourceGetResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) override;
+      void SetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest* request, ::silicon_based::RangeGetResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetOutRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest* request, ::silicon_based::RangeGetResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SetRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) override;
       void SetRange(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetRange(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest* request, ::silicon_based::RangeGetResponse* response, std::function<void(::grpc::Status)>) override;
@@ -475,6 +515,10 @@ class LNAWGCMDService final {
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncSetExtSourceRaw(::grpc::ClientContext* context, const ::silicon_based::ExtSourceSetRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ExtSourceGetResponse>* AsyncGetExtSourceRaw(::grpc::ClientContext* context, const ::silicon_based::ExtSourceGetRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ExtSourceGetResponse>* PrepareAsyncGetExtSourceRaw(::grpc::ClientContext* context, const ::silicon_based::ExtSourceGetRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* AsyncSetOutRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncSetOutRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::RangeGetResponse>* AsyncGetOutRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::RangeGetResponse>* PrepareAsyncGetOutRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* AsyncSetRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncSetRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeSetRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::RangeGetResponse>* AsyncGetRangeRaw(::grpc::ClientContext* context, const ::silicon_based::RangeGetRequest& request, ::grpc::CompletionQueue* cq) override;
@@ -509,6 +553,8 @@ class LNAWGCMDService final {
     const ::grpc::internal::RpcMethod rpcmethod_GetRun_;
     const ::grpc::internal::RpcMethod rpcmethod_SetExtSource_;
     const ::grpc::internal::RpcMethod rpcmethod_GetExtSource_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetOutRange_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetOutRange_;
     const ::grpc::internal::RpcMethod rpcmethod_SetRange_;
     const ::grpc::internal::RpcMethod rpcmethod_GetRange_;
     const ::grpc::internal::RpcMethod rpcmethod_SetOffset_;
@@ -536,6 +582,8 @@ class LNAWGCMDService final {
     virtual ::grpc::Status GetRun(::grpc::ServerContext* context, const ::silicon_based::RunGetRequest* request, ::silicon_based::RunGetResponse* response);
     virtual ::grpc::Status SetExtSource(::grpc::ServerContext* context, const ::silicon_based::ExtSourceSetRequest* request, ::silicon_based::ParamResponse* response);
     virtual ::grpc::Status GetExtSource(::grpc::ServerContext* context, const ::silicon_based::ExtSourceGetRequest* request, ::silicon_based::ExtSourceGetResponse* response);
+    virtual ::grpc::Status SetOutRange(::grpc::ServerContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response);
+    virtual ::grpc::Status GetOutRange(::grpc::ServerContext* context, const ::silicon_based::RangeGetRequest* request, ::silicon_based::RangeGetResponse* response);
     virtual ::grpc::Status SetRange(::grpc::ServerContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response);
     virtual ::grpc::Status GetRange(::grpc::ServerContext* context, const ::silicon_based::RangeGetRequest* request, ::silicon_based::RangeGetResponse* response);
     virtual ::grpc::Status SetOffset(::grpc::ServerContext* context, const ::silicon_based::OffsetSetRequest* request, ::silicon_based::ParamResponse* response);
@@ -672,12 +720,52 @@ class LNAWGCMDService final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_SetOutRange : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SetOutRange() {
+      ::grpc::Service::MarkMethodAsync(6);
+    }
+    ~WithAsyncMethod_SetOutRange() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetOutRange(::grpc::ServerContext* /*context*/, const ::silicon_based::RangeSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetOutRange(::grpc::ServerContext* context, ::silicon_based::RangeSetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetOutRange : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetOutRange() {
+      ::grpc::Service::MarkMethodAsync(7);
+    }
+    ~WithAsyncMethod_GetOutRange() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetOutRange(::grpc::ServerContext* /*context*/, const ::silicon_based::RangeGetRequest* /*request*/, ::silicon_based::RangeGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetOutRange(::grpc::ServerContext* context, ::silicon_based::RangeGetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::RangeGetResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_SetRange : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetRange() {
-      ::grpc::Service::MarkMethodAsync(6);
+      ::grpc::Service::MarkMethodAsync(8);
     }
     ~WithAsyncMethod_SetRange() override {
       BaseClassMustBeDerivedFromService(this);
@@ -688,7 +776,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetRange(::grpc::ServerContext* context, ::silicon_based::RangeSetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -697,7 +785,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetRange() {
-      ::grpc::Service::MarkMethodAsync(7);
+      ::grpc::Service::MarkMethodAsync(9);
     }
     ~WithAsyncMethod_GetRange() override {
       BaseClassMustBeDerivedFromService(this);
@@ -708,7 +796,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetRange(::grpc::ServerContext* context, ::silicon_based::RangeGetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::RangeGetResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -717,7 +805,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetOffset() {
-      ::grpc::Service::MarkMethodAsync(8);
+      ::grpc::Service::MarkMethodAsync(10);
     }
     ~WithAsyncMethod_SetOffset() override {
       BaseClassMustBeDerivedFromService(this);
@@ -728,7 +816,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetOffset(::grpc::ServerContext* context, ::silicon_based::OffsetSetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -737,7 +825,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetOffset() {
-      ::grpc::Service::MarkMethodAsync(9);
+      ::grpc::Service::MarkMethodAsync(11);
     }
     ~WithAsyncMethod_GetOffset() override {
       BaseClassMustBeDerivedFromService(this);
@@ -748,7 +836,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetOffset(::grpc::ServerContext* context, ::silicon_based::OffsetGetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::OffsetGetResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -757,7 +845,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetSegmentCount() {
-      ::grpc::Service::MarkMethodAsync(10);
+      ::grpc::Service::MarkMethodAsync(12);
     }
     ~WithAsyncMethod_SetSegmentCount() override {
       BaseClassMustBeDerivedFromService(this);
@@ -768,7 +856,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetSegmentCount(::grpc::ServerContext* context, ::silicon_based::SegmentCountSetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -777,7 +865,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetSegmentCount() {
-      ::grpc::Service::MarkMethodAsync(11);
+      ::grpc::Service::MarkMethodAsync(13);
     }
     ~WithAsyncMethod_GetSegmentCount() override {
       BaseClassMustBeDerivedFromService(this);
@@ -788,7 +876,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetSegmentCount(::grpc::ServerContext* context, ::silicon_based::SegmentCountGetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::SegmentCountGetResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -797,7 +885,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetLoopCount() {
-      ::grpc::Service::MarkMethodAsync(12);
+      ::grpc::Service::MarkMethodAsync(14);
     }
     ~WithAsyncMethod_SetLoopCount() override {
       BaseClassMustBeDerivedFromService(this);
@@ -808,7 +896,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetLoopCount(::grpc::ServerContext* context, ::silicon_based::LoopCountSetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -817,7 +905,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetLoopCount() {
-      ::grpc::Service::MarkMethodAsync(13);
+      ::grpc::Service::MarkMethodAsync(15);
     }
     ~WithAsyncMethod_GetLoopCount() override {
       BaseClassMustBeDerivedFromService(this);
@@ -828,7 +916,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetLoopCount(::grpc::ServerContext* context, ::silicon_based::LoopCountGetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::LoopCountGetResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -837,7 +925,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetDDSParam() {
-      ::grpc::Service::MarkMethodAsync(14);
+      ::grpc::Service::MarkMethodAsync(16);
     }
     ~WithAsyncMethod_SetDDSParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -848,7 +936,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetDDSParam(::grpc::ServerContext* context, ::silicon_based::DDSParamSetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -857,7 +945,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetDDSParam() {
-      ::grpc::Service::MarkMethodAsync(15);
+      ::grpc::Service::MarkMethodAsync(17);
     }
     ~WithAsyncMethod_GetDDSParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -868,7 +956,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetDDSParam(::grpc::ServerContext* context, ::silicon_based::DDSParamGetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::DDSParamGetResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -877,7 +965,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetChirpOutParam() {
-      ::grpc::Service::MarkMethodAsync(16);
+      ::grpc::Service::MarkMethodAsync(18);
     }
     ~WithAsyncMethod_SetChirpOutParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -888,7 +976,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetChirpOutParam(::grpc::ServerContext* context, ::silicon_based::ChirpOutParamSetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -897,7 +985,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetChirpOutParam() {
-      ::grpc::Service::MarkMethodAsync(17);
+      ::grpc::Service::MarkMethodAsync(19);
     }
     ~WithAsyncMethod_GetChirpOutParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -908,7 +996,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetChirpOutParam(::grpc::ServerContext* context, ::silicon_based::ChirpOutParamGetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ChirpOutParamGetResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -917,7 +1005,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetDDSEnable() {
-      ::grpc::Service::MarkMethodAsync(18);
+      ::grpc::Service::MarkMethodAsync(20);
     }
     ~WithAsyncMethod_SetDDSEnable() override {
       BaseClassMustBeDerivedFromService(this);
@@ -928,7 +1016,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetDDSEnable(::grpc::ServerContext* context, ::silicon_based::DDSEnableSetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -937,7 +1025,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetDDSEnable() {
-      ::grpc::Service::MarkMethodAsync(19);
+      ::grpc::Service::MarkMethodAsync(21);
     }
     ~WithAsyncMethod_GetDDSEnable() override {
       BaseClassMustBeDerivedFromService(this);
@@ -948,10 +1036,10 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetDDSEnable(::grpc::ServerContext* context, ::silicon_based::DDSEnableGetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::DDSEnableGetResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SetMode<WithAsyncMethod_GetMode<WithAsyncMethod_SetRun<WithAsyncMethod_GetRun<WithAsyncMethod_SetExtSource<WithAsyncMethod_GetExtSource<WithAsyncMethod_SetRange<WithAsyncMethod_GetRange<WithAsyncMethod_SetOffset<WithAsyncMethod_GetOffset<WithAsyncMethod_SetSegmentCount<WithAsyncMethod_GetSegmentCount<WithAsyncMethod_SetLoopCount<WithAsyncMethod_GetLoopCount<WithAsyncMethod_SetDDSParam<WithAsyncMethod_GetDDSParam<WithAsyncMethod_SetChirpOutParam<WithAsyncMethod_GetChirpOutParam<WithAsyncMethod_SetDDSEnable<WithAsyncMethod_GetDDSEnable<Service > > > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_SetMode<WithAsyncMethod_GetMode<WithAsyncMethod_SetRun<WithAsyncMethod_GetRun<WithAsyncMethod_SetExtSource<WithAsyncMethod_GetExtSource<WithAsyncMethod_SetOutRange<WithAsyncMethod_GetOutRange<WithAsyncMethod_SetRange<WithAsyncMethod_GetRange<WithAsyncMethod_SetOffset<WithAsyncMethod_GetOffset<WithAsyncMethod_SetSegmentCount<WithAsyncMethod_GetSegmentCount<WithAsyncMethod_SetLoopCount<WithAsyncMethod_GetLoopCount<WithAsyncMethod_SetDDSParam<WithAsyncMethod_GetDDSParam<WithAsyncMethod_SetChirpOutParam<WithAsyncMethod_GetChirpOutParam<WithAsyncMethod_SetDDSEnable<WithAsyncMethod_GetDDSEnable<Service > > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SetMode : public BaseClass {
    private:
@@ -1115,18 +1203,72 @@ class LNAWGCMDService final {
       ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::ExtSourceGetRequest* /*request*/, ::silicon_based::ExtSourceGetResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithCallbackMethod_SetOutRange : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SetOutRange() {
+      ::grpc::Service::MarkMethodCallback(6,
+          new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::RangeSetRequest, ::silicon_based::ParamResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response) { return this->SetOutRange(context, request, response); }));}
+    void SetMessageAllocatorFor_SetOutRange(
+        ::grpc::MessageAllocator< ::silicon_based::RangeSetRequest, ::silicon_based::ParamResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::RangeSetRequest, ::silicon_based::ParamResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SetOutRange() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetOutRange(::grpc::ServerContext* /*context*/, const ::silicon_based::RangeSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetOutRange(
+      ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::RangeSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_GetOutRange : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetOutRange() {
+      ::grpc::Service::MarkMethodCallback(7,
+          new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::RangeGetRequest, ::silicon_based::RangeGetResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::silicon_based::RangeGetRequest* request, ::silicon_based::RangeGetResponse* response) { return this->GetOutRange(context, request, response); }));}
+    void SetMessageAllocatorFor_GetOutRange(
+        ::grpc::MessageAllocator< ::silicon_based::RangeGetRequest, ::silicon_based::RangeGetResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::RangeGetRequest, ::silicon_based::RangeGetResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetOutRange() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetOutRange(::grpc::ServerContext* /*context*/, const ::silicon_based::RangeGetRequest* /*request*/, ::silicon_based::RangeGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetOutRange(
+      ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::RangeGetRequest* /*request*/, ::silicon_based::RangeGetResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithCallbackMethod_SetRange : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetRange() {
-      ::grpc::Service::MarkMethodCallback(6,
+      ::grpc::Service::MarkMethodCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::RangeSetRequest, ::silicon_based::ParamResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::RangeSetRequest* request, ::silicon_based::ParamResponse* response) { return this->SetRange(context, request, response); }));}
     void SetMessageAllocatorFor_SetRange(
         ::grpc::MessageAllocator< ::silicon_based::RangeSetRequest, ::silicon_based::ParamResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::RangeSetRequest, ::silicon_based::ParamResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1147,13 +1289,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetRange() {
-      ::grpc::Service::MarkMethodCallback(7,
+      ::grpc::Service::MarkMethodCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::RangeGetRequest, ::silicon_based::RangeGetResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::RangeGetRequest* request, ::silicon_based::RangeGetResponse* response) { return this->GetRange(context, request, response); }));}
     void SetMessageAllocatorFor_GetRange(
         ::grpc::MessageAllocator< ::silicon_based::RangeGetRequest, ::silicon_based::RangeGetResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(9);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::RangeGetRequest, ::silicon_based::RangeGetResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1174,13 +1316,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetOffset() {
-      ::grpc::Service::MarkMethodCallback(8,
+      ::grpc::Service::MarkMethodCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::OffsetSetRequest, ::silicon_based::ParamResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::OffsetSetRequest* request, ::silicon_based::ParamResponse* response) { return this->SetOffset(context, request, response); }));}
     void SetMessageAllocatorFor_SetOffset(
         ::grpc::MessageAllocator< ::silicon_based::OffsetSetRequest, ::silicon_based::ParamResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(8);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(10);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::OffsetSetRequest, ::silicon_based::ParamResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1201,13 +1343,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetOffset() {
-      ::grpc::Service::MarkMethodCallback(9,
+      ::grpc::Service::MarkMethodCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::OffsetGetRequest, ::silicon_based::OffsetGetResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::OffsetGetRequest* request, ::silicon_based::OffsetGetResponse* response) { return this->GetOffset(context, request, response); }));}
     void SetMessageAllocatorFor_GetOffset(
         ::grpc::MessageAllocator< ::silicon_based::OffsetGetRequest, ::silicon_based::OffsetGetResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(9);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::OffsetGetRequest, ::silicon_based::OffsetGetResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1228,13 +1370,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetSegmentCount() {
-      ::grpc::Service::MarkMethodCallback(10,
+      ::grpc::Service::MarkMethodCallback(12,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::SegmentCountSetRequest, ::silicon_based::ParamResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::SegmentCountSetRequest* request, ::silicon_based::ParamResponse* response) { return this->SetSegmentCount(context, request, response); }));}
     void SetMessageAllocatorFor_SetSegmentCount(
         ::grpc::MessageAllocator< ::silicon_based::SegmentCountSetRequest, ::silicon_based::ParamResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(10);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(12);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::SegmentCountSetRequest, ::silicon_based::ParamResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1255,13 +1397,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetSegmentCount() {
-      ::grpc::Service::MarkMethodCallback(11,
+      ::grpc::Service::MarkMethodCallback(13,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::SegmentCountGetRequest, ::silicon_based::SegmentCountGetResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::SegmentCountGetRequest* request, ::silicon_based::SegmentCountGetResponse* response) { return this->GetSegmentCount(context, request, response); }));}
     void SetMessageAllocatorFor_GetSegmentCount(
         ::grpc::MessageAllocator< ::silicon_based::SegmentCountGetRequest, ::silicon_based::SegmentCountGetResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(13);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::SegmentCountGetRequest, ::silicon_based::SegmentCountGetResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1282,13 +1424,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetLoopCount() {
-      ::grpc::Service::MarkMethodCallback(12,
+      ::grpc::Service::MarkMethodCallback(14,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::LoopCountSetRequest, ::silicon_based::ParamResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::LoopCountSetRequest* request, ::silicon_based::ParamResponse* response) { return this->SetLoopCount(context, request, response); }));}
     void SetMessageAllocatorFor_SetLoopCount(
         ::grpc::MessageAllocator< ::silicon_based::LoopCountSetRequest, ::silicon_based::ParamResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(12);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(14);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::LoopCountSetRequest, ::silicon_based::ParamResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1309,13 +1451,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetLoopCount() {
-      ::grpc::Service::MarkMethodCallback(13,
+      ::grpc::Service::MarkMethodCallback(15,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::LoopCountGetRequest, ::silicon_based::LoopCountGetResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::LoopCountGetRequest* request, ::silicon_based::LoopCountGetResponse* response) { return this->GetLoopCount(context, request, response); }));}
     void SetMessageAllocatorFor_GetLoopCount(
         ::grpc::MessageAllocator< ::silicon_based::LoopCountGetRequest, ::silicon_based::LoopCountGetResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(13);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(15);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::LoopCountGetRequest, ::silicon_based::LoopCountGetResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1336,13 +1478,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetDDSParam() {
-      ::grpc::Service::MarkMethodCallback(14,
+      ::grpc::Service::MarkMethodCallback(16,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::DDSParamSetRequest, ::silicon_based::ParamResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::DDSParamSetRequest* request, ::silicon_based::ParamResponse* response) { return this->SetDDSParam(context, request, response); }));}
     void SetMessageAllocatorFor_SetDDSParam(
         ::grpc::MessageAllocator< ::silicon_based::DDSParamSetRequest, ::silicon_based::ParamResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(14);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(16);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::DDSParamSetRequest, ::silicon_based::ParamResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1363,13 +1505,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetDDSParam() {
-      ::grpc::Service::MarkMethodCallback(15,
+      ::grpc::Service::MarkMethodCallback(17,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::DDSParamGetRequest, ::silicon_based::DDSParamGetResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::DDSParamGetRequest* request, ::silicon_based::DDSParamGetResponse* response) { return this->GetDDSParam(context, request, response); }));}
     void SetMessageAllocatorFor_GetDDSParam(
         ::grpc::MessageAllocator< ::silicon_based::DDSParamGetRequest, ::silicon_based::DDSParamGetResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(15);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(17);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::DDSParamGetRequest, ::silicon_based::DDSParamGetResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1390,13 +1532,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetChirpOutParam() {
-      ::grpc::Service::MarkMethodCallback(16,
+      ::grpc::Service::MarkMethodCallback(18,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::ChirpOutParamSetRequest, ::silicon_based::ParamResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::ChirpOutParamSetRequest* request, ::silicon_based::ParamResponse* response) { return this->SetChirpOutParam(context, request, response); }));}
     void SetMessageAllocatorFor_SetChirpOutParam(
         ::grpc::MessageAllocator< ::silicon_based::ChirpOutParamSetRequest, ::silicon_based::ParamResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(16);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(18);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::ChirpOutParamSetRequest, ::silicon_based::ParamResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1417,13 +1559,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetChirpOutParam() {
-      ::grpc::Service::MarkMethodCallback(17,
+      ::grpc::Service::MarkMethodCallback(19,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::ChirpOutParamGetRequest, ::silicon_based::ChirpOutParamGetResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::ChirpOutParamGetRequest* request, ::silicon_based::ChirpOutParamGetResponse* response) { return this->GetChirpOutParam(context, request, response); }));}
     void SetMessageAllocatorFor_GetChirpOutParam(
         ::grpc::MessageAllocator< ::silicon_based::ChirpOutParamGetRequest, ::silicon_based::ChirpOutParamGetResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(17);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(19);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::ChirpOutParamGetRequest, ::silicon_based::ChirpOutParamGetResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1444,13 +1586,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetDDSEnable() {
-      ::grpc::Service::MarkMethodCallback(18,
+      ::grpc::Service::MarkMethodCallback(20,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::DDSEnableSetRequest, ::silicon_based::ParamResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::DDSEnableSetRequest* request, ::silicon_based::ParamResponse* response) { return this->SetDDSEnable(context, request, response); }));}
     void SetMessageAllocatorFor_SetDDSEnable(
         ::grpc::MessageAllocator< ::silicon_based::DDSEnableSetRequest, ::silicon_based::ParamResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(18);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(20);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::DDSEnableSetRequest, ::silicon_based::ParamResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1471,13 +1613,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetDDSEnable() {
-      ::grpc::Service::MarkMethodCallback(19,
+      ::grpc::Service::MarkMethodCallback(21,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::DDSEnableGetRequest, ::silicon_based::DDSEnableGetResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::DDSEnableGetRequest* request, ::silicon_based::DDSEnableGetResponse* response) { return this->GetDDSEnable(context, request, response); }));}
     void SetMessageAllocatorFor_GetDDSEnable(
         ::grpc::MessageAllocator< ::silicon_based::DDSEnableGetRequest, ::silicon_based::DDSEnableGetResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(19);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(21);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::DDSEnableGetRequest, ::silicon_based::DDSEnableGetResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1492,7 +1634,7 @@ class LNAWGCMDService final {
     virtual ::grpc::ServerUnaryReactor* GetDDSEnable(
       ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::DDSEnableGetRequest* /*request*/, ::silicon_based::DDSEnableGetResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SetMode<WithCallbackMethod_GetMode<WithCallbackMethod_SetRun<WithCallbackMethod_GetRun<WithCallbackMethod_SetExtSource<WithCallbackMethod_GetExtSource<WithCallbackMethod_SetRange<WithCallbackMethod_GetRange<WithCallbackMethod_SetOffset<WithCallbackMethod_GetOffset<WithCallbackMethod_SetSegmentCount<WithCallbackMethod_GetSegmentCount<WithCallbackMethod_SetLoopCount<WithCallbackMethod_GetLoopCount<WithCallbackMethod_SetDDSParam<WithCallbackMethod_GetDDSParam<WithCallbackMethod_SetChirpOutParam<WithCallbackMethod_GetChirpOutParam<WithCallbackMethod_SetDDSEnable<WithCallbackMethod_GetDDSEnable<Service > > > > > > > > > > > > > > > > > > > > CallbackService;
+  typedef WithCallbackMethod_SetMode<WithCallbackMethod_GetMode<WithCallbackMethod_SetRun<WithCallbackMethod_GetRun<WithCallbackMethod_SetExtSource<WithCallbackMethod_GetExtSource<WithCallbackMethod_SetOutRange<WithCallbackMethod_GetOutRange<WithCallbackMethod_SetRange<WithCallbackMethod_GetRange<WithCallbackMethod_SetOffset<WithCallbackMethod_GetOffset<WithCallbackMethod_SetSegmentCount<WithCallbackMethod_GetSegmentCount<WithCallbackMethod_SetLoopCount<WithCallbackMethod_GetLoopCount<WithCallbackMethod_SetDDSParam<WithCallbackMethod_GetDDSParam<WithCallbackMethod_SetChirpOutParam<WithCallbackMethod_GetChirpOutParam<WithCallbackMethod_SetDDSEnable<WithCallbackMethod_GetDDSEnable<Service > > > > > > > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SetMode : public BaseClass {
@@ -1597,12 +1739,46 @@ class LNAWGCMDService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_SetOutRange : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SetOutRange() {
+      ::grpc::Service::MarkMethodGeneric(6);
+    }
+    ~WithGenericMethod_SetOutRange() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetOutRange(::grpc::ServerContext* /*context*/, const ::silicon_based::RangeSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetOutRange : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetOutRange() {
+      ::grpc::Service::MarkMethodGeneric(7);
+    }
+    ~WithGenericMethod_GetOutRange() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetOutRange(::grpc::ServerContext* /*context*/, const ::silicon_based::RangeGetRequest* /*request*/, ::silicon_based::RangeGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_SetRange : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetRange() {
-      ::grpc::Service::MarkMethodGeneric(6);
+      ::grpc::Service::MarkMethodGeneric(8);
     }
     ~WithGenericMethod_SetRange() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1619,7 +1795,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetRange() {
-      ::grpc::Service::MarkMethodGeneric(7);
+      ::grpc::Service::MarkMethodGeneric(9);
     }
     ~WithGenericMethod_GetRange() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1636,7 +1812,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetOffset() {
-      ::grpc::Service::MarkMethodGeneric(8);
+      ::grpc::Service::MarkMethodGeneric(10);
     }
     ~WithGenericMethod_SetOffset() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1653,7 +1829,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetOffset() {
-      ::grpc::Service::MarkMethodGeneric(9);
+      ::grpc::Service::MarkMethodGeneric(11);
     }
     ~WithGenericMethod_GetOffset() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1670,7 +1846,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetSegmentCount() {
-      ::grpc::Service::MarkMethodGeneric(10);
+      ::grpc::Service::MarkMethodGeneric(12);
     }
     ~WithGenericMethod_SetSegmentCount() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1687,7 +1863,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetSegmentCount() {
-      ::grpc::Service::MarkMethodGeneric(11);
+      ::grpc::Service::MarkMethodGeneric(13);
     }
     ~WithGenericMethod_GetSegmentCount() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1704,7 +1880,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetLoopCount() {
-      ::grpc::Service::MarkMethodGeneric(12);
+      ::grpc::Service::MarkMethodGeneric(14);
     }
     ~WithGenericMethod_SetLoopCount() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1721,7 +1897,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetLoopCount() {
-      ::grpc::Service::MarkMethodGeneric(13);
+      ::grpc::Service::MarkMethodGeneric(15);
     }
     ~WithGenericMethod_GetLoopCount() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1738,7 +1914,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetDDSParam() {
-      ::grpc::Service::MarkMethodGeneric(14);
+      ::grpc::Service::MarkMethodGeneric(16);
     }
     ~WithGenericMethod_SetDDSParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1755,7 +1931,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetDDSParam() {
-      ::grpc::Service::MarkMethodGeneric(15);
+      ::grpc::Service::MarkMethodGeneric(17);
     }
     ~WithGenericMethod_GetDDSParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1772,7 +1948,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetChirpOutParam() {
-      ::grpc::Service::MarkMethodGeneric(16);
+      ::grpc::Service::MarkMethodGeneric(18);
     }
     ~WithGenericMethod_SetChirpOutParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1789,7 +1965,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetChirpOutParam() {
-      ::grpc::Service::MarkMethodGeneric(17);
+      ::grpc::Service::MarkMethodGeneric(19);
     }
     ~WithGenericMethod_GetChirpOutParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1806,7 +1982,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetDDSEnable() {
-      ::grpc::Service::MarkMethodGeneric(18);
+      ::grpc::Service::MarkMethodGeneric(20);
     }
     ~WithGenericMethod_SetDDSEnable() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1823,7 +1999,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetDDSEnable() {
-      ::grpc::Service::MarkMethodGeneric(19);
+      ::grpc::Service::MarkMethodGeneric(21);
     }
     ~WithGenericMethod_GetDDSEnable() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1955,12 +2131,52 @@ class LNAWGCMDService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_SetOutRange : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SetOutRange() {
+      ::grpc::Service::MarkMethodRaw(6);
+    }
+    ~WithRawMethod_SetOutRange() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetOutRange(::grpc::ServerContext* /*context*/, const ::silicon_based::RangeSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetOutRange(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetOutRange : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetOutRange() {
+      ::grpc::Service::MarkMethodRaw(7);
+    }
+    ~WithRawMethod_GetOutRange() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetOutRange(::grpc::ServerContext* /*context*/, const ::silicon_based::RangeGetRequest* /*request*/, ::silicon_based::RangeGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetOutRange(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_SetRange : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetRange() {
-      ::grpc::Service::MarkMethodRaw(6);
+      ::grpc::Service::MarkMethodRaw(8);
     }
     ~WithRawMethod_SetRange() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1971,7 +2187,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetRange(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1980,7 +2196,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetRange() {
-      ::grpc::Service::MarkMethodRaw(7);
+      ::grpc::Service::MarkMethodRaw(9);
     }
     ~WithRawMethod_GetRange() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1991,7 +2207,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetRange(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2000,7 +2216,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetOffset() {
-      ::grpc::Service::MarkMethodRaw(8);
+      ::grpc::Service::MarkMethodRaw(10);
     }
     ~WithRawMethod_SetOffset() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2011,7 +2227,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetOffset(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(8, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2020,7 +2236,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetOffset() {
-      ::grpc::Service::MarkMethodRaw(9);
+      ::grpc::Service::MarkMethodRaw(11);
     }
     ~WithRawMethod_GetOffset() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2031,7 +2247,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetOffset(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(9, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2040,7 +2256,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetSegmentCount() {
-      ::grpc::Service::MarkMethodRaw(10);
+      ::grpc::Service::MarkMethodRaw(12);
     }
     ~WithRawMethod_SetSegmentCount() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2051,7 +2267,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetSegmentCount(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2060,7 +2276,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetSegmentCount() {
-      ::grpc::Service::MarkMethodRaw(11);
+      ::grpc::Service::MarkMethodRaw(13);
     }
     ~WithRawMethod_GetSegmentCount() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2071,7 +2287,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetSegmentCount(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2080,7 +2296,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetLoopCount() {
-      ::grpc::Service::MarkMethodRaw(12);
+      ::grpc::Service::MarkMethodRaw(14);
     }
     ~WithRawMethod_SetLoopCount() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2091,7 +2307,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetLoopCount(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2100,7 +2316,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetLoopCount() {
-      ::grpc::Service::MarkMethodRaw(13);
+      ::grpc::Service::MarkMethodRaw(15);
     }
     ~WithRawMethod_GetLoopCount() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2111,7 +2327,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetLoopCount(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2120,7 +2336,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetDDSParam() {
-      ::grpc::Service::MarkMethodRaw(14);
+      ::grpc::Service::MarkMethodRaw(16);
     }
     ~WithRawMethod_SetDDSParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2131,7 +2347,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetDDSParam(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2140,7 +2356,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetDDSParam() {
-      ::grpc::Service::MarkMethodRaw(15);
+      ::grpc::Service::MarkMethodRaw(17);
     }
     ~WithRawMethod_GetDDSParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2151,7 +2367,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetDDSParam(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2160,7 +2376,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetChirpOutParam() {
-      ::grpc::Service::MarkMethodRaw(16);
+      ::grpc::Service::MarkMethodRaw(18);
     }
     ~WithRawMethod_SetChirpOutParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2171,7 +2387,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetChirpOutParam(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2180,7 +2396,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetChirpOutParam() {
-      ::grpc::Service::MarkMethodRaw(17);
+      ::grpc::Service::MarkMethodRaw(19);
     }
     ~WithRawMethod_GetChirpOutParam() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2191,7 +2407,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetChirpOutParam(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2200,7 +2416,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetDDSEnable() {
-      ::grpc::Service::MarkMethodRaw(18);
+      ::grpc::Service::MarkMethodRaw(20);
     }
     ~WithRawMethod_SetDDSEnable() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2211,7 +2427,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetDDSEnable(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2220,7 +2436,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetDDSEnable() {
-      ::grpc::Service::MarkMethodRaw(19);
+      ::grpc::Service::MarkMethodRaw(21);
     }
     ~WithRawMethod_GetDDSEnable() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2231,7 +2447,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetDDSEnable(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2367,12 +2583,56 @@ class LNAWGCMDService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_SetOutRange : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SetOutRange() {
+      ::grpc::Service::MarkMethodRawCallback(6,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetOutRange(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SetOutRange() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetOutRange(::grpc::ServerContext* /*context*/, const ::silicon_based::RangeSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetOutRange(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetOutRange : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetOutRange() {
+      ::grpc::Service::MarkMethodRawCallback(7,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetOutRange(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetOutRange() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetOutRange(::grpc::ServerContext* /*context*/, const ::silicon_based::RangeGetRequest* /*request*/, ::silicon_based::RangeGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetOutRange(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_SetRange : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetRange() {
-      ::grpc::Service::MarkMethodRawCallback(6,
+      ::grpc::Service::MarkMethodRawCallback(8,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetRange(context, request, response); }));
@@ -2394,7 +2654,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetRange() {
-      ::grpc::Service::MarkMethodRawCallback(7,
+      ::grpc::Service::MarkMethodRawCallback(9,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetRange(context, request, response); }));
@@ -2416,7 +2676,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetOffset() {
-      ::grpc::Service::MarkMethodRawCallback(8,
+      ::grpc::Service::MarkMethodRawCallback(10,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetOffset(context, request, response); }));
@@ -2438,7 +2698,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetOffset() {
-      ::grpc::Service::MarkMethodRawCallback(9,
+      ::grpc::Service::MarkMethodRawCallback(11,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetOffset(context, request, response); }));
@@ -2460,7 +2720,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetSegmentCount() {
-      ::grpc::Service::MarkMethodRawCallback(10,
+      ::grpc::Service::MarkMethodRawCallback(12,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetSegmentCount(context, request, response); }));
@@ -2482,7 +2742,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetSegmentCount() {
-      ::grpc::Service::MarkMethodRawCallback(11,
+      ::grpc::Service::MarkMethodRawCallback(13,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetSegmentCount(context, request, response); }));
@@ -2504,7 +2764,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetLoopCount() {
-      ::grpc::Service::MarkMethodRawCallback(12,
+      ::grpc::Service::MarkMethodRawCallback(14,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetLoopCount(context, request, response); }));
@@ -2526,7 +2786,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetLoopCount() {
-      ::grpc::Service::MarkMethodRawCallback(13,
+      ::grpc::Service::MarkMethodRawCallback(15,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetLoopCount(context, request, response); }));
@@ -2548,7 +2808,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetDDSParam() {
-      ::grpc::Service::MarkMethodRawCallback(14,
+      ::grpc::Service::MarkMethodRawCallback(16,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetDDSParam(context, request, response); }));
@@ -2570,7 +2830,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetDDSParam() {
-      ::grpc::Service::MarkMethodRawCallback(15,
+      ::grpc::Service::MarkMethodRawCallback(17,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDDSParam(context, request, response); }));
@@ -2592,7 +2852,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetChirpOutParam() {
-      ::grpc::Service::MarkMethodRawCallback(16,
+      ::grpc::Service::MarkMethodRawCallback(18,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetChirpOutParam(context, request, response); }));
@@ -2614,7 +2874,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetChirpOutParam() {
-      ::grpc::Service::MarkMethodRawCallback(17,
+      ::grpc::Service::MarkMethodRawCallback(19,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetChirpOutParam(context, request, response); }));
@@ -2636,7 +2896,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetDDSEnable() {
-      ::grpc::Service::MarkMethodRawCallback(18,
+      ::grpc::Service::MarkMethodRawCallback(20,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetDDSEnable(context, request, response); }));
@@ -2658,7 +2918,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetDDSEnable() {
-      ::grpc::Service::MarkMethodRawCallback(19,
+      ::grpc::Service::MarkMethodRawCallback(21,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDDSEnable(context, request, response); }));
@@ -2837,12 +3097,66 @@ class LNAWGCMDService final {
     virtual ::grpc::Status StreamedGetExtSource(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::ExtSourceGetRequest,::silicon_based::ExtSourceGetResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_SetOutRange : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetOutRange() {
+      ::grpc::Service::MarkMethodStreamed(6,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::silicon_based::RangeSetRequest, ::silicon_based::ParamResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::silicon_based::RangeSetRequest, ::silicon_based::ParamResponse>* streamer) {
+                       return this->StreamedSetOutRange(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SetOutRange() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SetOutRange(::grpc::ServerContext* /*context*/, const ::silicon_based::RangeSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSetOutRange(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::RangeSetRequest,::silicon_based::ParamResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetOutRange : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetOutRange() {
+      ::grpc::Service::MarkMethodStreamed(7,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::silicon_based::RangeGetRequest, ::silicon_based::RangeGetResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::silicon_based::RangeGetRequest, ::silicon_based::RangeGetResponse>* streamer) {
+                       return this->StreamedGetOutRange(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetOutRange() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetOutRange(::grpc::ServerContext* /*context*/, const ::silicon_based::RangeGetRequest* /*request*/, ::silicon_based::RangeGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetOutRange(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::RangeGetRequest,::silicon_based::RangeGetResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_SetRange : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetRange() {
-      ::grpc::Service::MarkMethodStreamed(6,
+      ::grpc::Service::MarkMethodStreamed(8,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::RangeSetRequest, ::silicon_based::ParamResponse>(
             [this](::grpc::ServerContext* context,
@@ -2869,7 +3183,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetRange() {
-      ::grpc::Service::MarkMethodStreamed(7,
+      ::grpc::Service::MarkMethodStreamed(9,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::RangeGetRequest, ::silicon_based::RangeGetResponse>(
             [this](::grpc::ServerContext* context,
@@ -2896,7 +3210,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetOffset() {
-      ::grpc::Service::MarkMethodStreamed(8,
+      ::grpc::Service::MarkMethodStreamed(10,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::OffsetSetRequest, ::silicon_based::ParamResponse>(
             [this](::grpc::ServerContext* context,
@@ -2923,7 +3237,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetOffset() {
-      ::grpc::Service::MarkMethodStreamed(9,
+      ::grpc::Service::MarkMethodStreamed(11,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::OffsetGetRequest, ::silicon_based::OffsetGetResponse>(
             [this](::grpc::ServerContext* context,
@@ -2950,7 +3264,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetSegmentCount() {
-      ::grpc::Service::MarkMethodStreamed(10,
+      ::grpc::Service::MarkMethodStreamed(12,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::SegmentCountSetRequest, ::silicon_based::ParamResponse>(
             [this](::grpc::ServerContext* context,
@@ -2977,7 +3291,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetSegmentCount() {
-      ::grpc::Service::MarkMethodStreamed(11,
+      ::grpc::Service::MarkMethodStreamed(13,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::SegmentCountGetRequest, ::silicon_based::SegmentCountGetResponse>(
             [this](::grpc::ServerContext* context,
@@ -3004,7 +3318,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetLoopCount() {
-      ::grpc::Service::MarkMethodStreamed(12,
+      ::grpc::Service::MarkMethodStreamed(14,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::LoopCountSetRequest, ::silicon_based::ParamResponse>(
             [this](::grpc::ServerContext* context,
@@ -3031,7 +3345,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetLoopCount() {
-      ::grpc::Service::MarkMethodStreamed(13,
+      ::grpc::Service::MarkMethodStreamed(15,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::LoopCountGetRequest, ::silicon_based::LoopCountGetResponse>(
             [this](::grpc::ServerContext* context,
@@ -3058,7 +3372,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetDDSParam() {
-      ::grpc::Service::MarkMethodStreamed(14,
+      ::grpc::Service::MarkMethodStreamed(16,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::DDSParamSetRequest, ::silicon_based::ParamResponse>(
             [this](::grpc::ServerContext* context,
@@ -3085,7 +3399,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetDDSParam() {
-      ::grpc::Service::MarkMethodStreamed(15,
+      ::grpc::Service::MarkMethodStreamed(17,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::DDSParamGetRequest, ::silicon_based::DDSParamGetResponse>(
             [this](::grpc::ServerContext* context,
@@ -3112,7 +3426,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetChirpOutParam() {
-      ::grpc::Service::MarkMethodStreamed(16,
+      ::grpc::Service::MarkMethodStreamed(18,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::ChirpOutParamSetRequest, ::silicon_based::ParamResponse>(
             [this](::grpc::ServerContext* context,
@@ -3139,7 +3453,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetChirpOutParam() {
-      ::grpc::Service::MarkMethodStreamed(17,
+      ::grpc::Service::MarkMethodStreamed(19,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::ChirpOutParamGetRequest, ::silicon_based::ChirpOutParamGetResponse>(
             [this](::grpc::ServerContext* context,
@@ -3166,7 +3480,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetDDSEnable() {
-      ::grpc::Service::MarkMethodStreamed(18,
+      ::grpc::Service::MarkMethodStreamed(20,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::DDSEnableSetRequest, ::silicon_based::ParamResponse>(
             [this](::grpc::ServerContext* context,
@@ -3193,7 +3507,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetDDSEnable() {
-      ::grpc::Service::MarkMethodStreamed(19,
+      ::grpc::Service::MarkMethodStreamed(21,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::DDSEnableGetRequest, ::silicon_based::DDSEnableGetResponse>(
             [this](::grpc::ServerContext* context,
@@ -3214,9 +3528,9 @@ class LNAWGCMDService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedGetDDSEnable(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::DDSEnableGetRequest,::silicon_based::DDSEnableGetResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_SetMode<WithStreamedUnaryMethod_GetMode<WithStreamedUnaryMethod_SetRun<WithStreamedUnaryMethod_GetRun<WithStreamedUnaryMethod_SetExtSource<WithStreamedUnaryMethod_GetExtSource<WithStreamedUnaryMethod_SetRange<WithStreamedUnaryMethod_GetRange<WithStreamedUnaryMethod_SetOffset<WithStreamedUnaryMethod_GetOffset<WithStreamedUnaryMethod_SetSegmentCount<WithStreamedUnaryMethod_GetSegmentCount<WithStreamedUnaryMethod_SetLoopCount<WithStreamedUnaryMethod_GetLoopCount<WithStreamedUnaryMethod_SetDDSParam<WithStreamedUnaryMethod_GetDDSParam<WithStreamedUnaryMethod_SetChirpOutParam<WithStreamedUnaryMethod_GetChirpOutParam<WithStreamedUnaryMethod_SetDDSEnable<WithStreamedUnaryMethod_GetDDSEnable<Service > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_SetMode<WithStreamedUnaryMethod_GetMode<WithStreamedUnaryMethod_SetRun<WithStreamedUnaryMethod_GetRun<WithStreamedUnaryMethod_SetExtSource<WithStreamedUnaryMethod_GetExtSource<WithStreamedUnaryMethod_SetOutRange<WithStreamedUnaryMethod_GetOutRange<WithStreamedUnaryMethod_SetRange<WithStreamedUnaryMethod_GetRange<WithStreamedUnaryMethod_SetOffset<WithStreamedUnaryMethod_GetOffset<WithStreamedUnaryMethod_SetSegmentCount<WithStreamedUnaryMethod_GetSegmentCount<WithStreamedUnaryMethod_SetLoopCount<WithStreamedUnaryMethod_GetLoopCount<WithStreamedUnaryMethod_SetDDSParam<WithStreamedUnaryMethod_GetDDSParam<WithStreamedUnaryMethod_SetChirpOutParam<WithStreamedUnaryMethod_GetChirpOutParam<WithStreamedUnaryMethod_SetDDSEnable<WithStreamedUnaryMethod_GetDDSEnable<Service > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SetMode<WithStreamedUnaryMethod_GetMode<WithStreamedUnaryMethod_SetRun<WithStreamedUnaryMethod_GetRun<WithStreamedUnaryMethod_SetExtSource<WithStreamedUnaryMethod_GetExtSource<WithStreamedUnaryMethod_SetRange<WithStreamedUnaryMethod_GetRange<WithStreamedUnaryMethod_SetOffset<WithStreamedUnaryMethod_GetOffset<WithStreamedUnaryMethod_SetSegmentCount<WithStreamedUnaryMethod_GetSegmentCount<WithStreamedUnaryMethod_SetLoopCount<WithStreamedUnaryMethod_GetLoopCount<WithStreamedUnaryMethod_SetDDSParam<WithStreamedUnaryMethod_GetDDSParam<WithStreamedUnaryMethod_SetChirpOutParam<WithStreamedUnaryMethod_GetChirpOutParam<WithStreamedUnaryMethod_SetDDSEnable<WithStreamedUnaryMethod_GetDDSEnable<Service > > > > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_SetMode<WithStreamedUnaryMethod_GetMode<WithStreamedUnaryMethod_SetRun<WithStreamedUnaryMethod_GetRun<WithStreamedUnaryMethod_SetExtSource<WithStreamedUnaryMethod_GetExtSource<WithStreamedUnaryMethod_SetOutRange<WithStreamedUnaryMethod_GetOutRange<WithStreamedUnaryMethod_SetRange<WithStreamedUnaryMethod_GetRange<WithStreamedUnaryMethod_SetOffset<WithStreamedUnaryMethod_GetOffset<WithStreamedUnaryMethod_SetSegmentCount<WithStreamedUnaryMethod_GetSegmentCount<WithStreamedUnaryMethod_SetLoopCount<WithStreamedUnaryMethod_GetLoopCount<WithStreamedUnaryMethod_SetDDSParam<WithStreamedUnaryMethod_GetDDSParam<WithStreamedUnaryMethod_SetChirpOutParam<WithStreamedUnaryMethod_GetChirpOutParam<WithStreamedUnaryMethod_SetDDSEnable<WithStreamedUnaryMethod_GetDDSEnable<Service > > > > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace silicon_based

@@ -98,13 +98,21 @@ public: // QA function
                         const ExtSourceGetRequest *request,
                         ExtSourceGetResponse *response) override;
 
+    Status SetOutRange(ServerContext *context,
+                       const RangeSetRequest *request,
+                       ParamResponse *response) override;
+
+    Status GetOutRange(ServerContext *context,
+                       const RangeGetRequest *request,
+                       RangeGetResponse *response) override;
+
     Status SetRange(ServerContext *context,
-                    const RangeSetRequest *request,
-                    ParamResponse *response) override;
+                       const RangeSetRequest *request,
+                       ParamResponse *response) override;
 
     Status GetRange(ServerContext *context,
-                    const RangeGetRequest *request,
-                    RangeGetResponse *response) override;
+                       const RangeGetRequest *request,
+                       RangeGetResponse *response) override;
 
     Status SetOffset(ServerContext *context,
                      const OffsetSetRequest *request,

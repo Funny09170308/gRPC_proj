@@ -46,6 +46,16 @@ class LNAWGCMDServiceStub(object):
                 request_serializer=lnawg__cmd__pb2.ExtSourceGetRequest.SerializeToString,
                 response_deserializer=lnawg__cmd__pb2.ExtSourceGetResponse.FromString,
                 _registered_method=True)
+        self.SetOutRange = channel.unary_unary(
+                '/silicon_based.LNAWGCMDService/SetOutRange',
+                request_serializer=lnawg__cmd__pb2.RangeSetRequest.SerializeToString,
+                response_deserializer=common__cmd__pb2.ParamResponse.FromString,
+                _registered_method=True)
+        self.GetOutRange = channel.unary_unary(
+                '/silicon_based.LNAWGCMDService/GetOutRange',
+                request_serializer=lnawg__cmd__pb2.RangeGetRequest.SerializeToString,
+                response_deserializer=lnawg__cmd__pb2.RangeGetResponse.FromString,
+                _registered_method=True)
         self.SetRange = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/SetRange',
                 request_serializer=lnawg__cmd__pb2.RangeSetRequest.SerializeToString,
@@ -153,6 +163,18 @@ class LNAWGCMDServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetExtSource(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SetOutRange(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetOutRange(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -274,6 +296,16 @@ def add_LNAWGCMDServiceServicer_to_server(servicer, server):
                     servicer.GetExtSource,
                     request_deserializer=lnawg__cmd__pb2.ExtSourceGetRequest.FromString,
                     response_serializer=lnawg__cmd__pb2.ExtSourceGetResponse.SerializeToString,
+            ),
+            'SetOutRange': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetOutRange,
+                    request_deserializer=lnawg__cmd__pb2.RangeSetRequest.FromString,
+                    response_serializer=common__cmd__pb2.ParamResponse.SerializeToString,
+            ),
+            'GetOutRange': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetOutRange,
+                    request_deserializer=lnawg__cmd__pb2.RangeGetRequest.FromString,
+                    response_serializer=lnawg__cmd__pb2.RangeGetResponse.SerializeToString,
             ),
             'SetRange': grpc.unary_unary_rpc_method_handler(
                     servicer.SetRange,
@@ -509,6 +541,60 @@ class LNAWGCMDService(object):
             '/silicon_based.LNAWGCMDService/GetExtSource',
             lnawg__cmd__pb2.ExtSourceGetRequest.SerializeToString,
             lnawg__cmd__pb2.ExtSourceGetResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SetOutRange(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/SetOutRange',
+            lnawg__cmd__pb2.RangeSetRequest.SerializeToString,
+            common__cmd__pb2.ParamResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetOutRange(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetOutRange',
+            lnawg__cmd__pb2.RangeGetRequest.SerializeToString,
+            lnawg__cmd__pb2.RangeGetResponse.FromString,
             options,
             channel_credentials,
             insecure,

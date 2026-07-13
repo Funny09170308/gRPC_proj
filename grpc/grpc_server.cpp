@@ -398,6 +398,25 @@ Status LNAWGCMDServiceImpl::GetExtSource(ServerContext *context,
     return Status::OK;
 }
 
+Status LNAWGCMDServiceImpl::SetOutRange(ServerContext *context,
+                                        const RangeSetRequest *request,
+                                        ParamResponse *response)
+{
+    set_awg_ch_out_range(request->logical_ch(), request->range());
+    P_LOG_DEBUG("Set awg range, ch:%d, range:%d", request->logical_ch(), request->range());
+    return Status::OK;
+}
+
+Status LNAWGCMDServiceImpl::GetOutRange(ServerContext *context,
+                                        const RangeGetRequest *request,
+                                        RangeGetResponse *response)
+{
+    uint32_t range = get_awg_ch_range(request->logical_ch());
+    response->set_range(range);
+    P_LOG_DEBUG("Get awg range, ch:%d, range:%d", request->logical_ch(), range);
+    return Status::OK;
+}
+
 Status LNAWGCMDServiceImpl::SetRange(ServerContext *context,
                                      const RangeSetRequest *request,
                                      ParamResponse *response)

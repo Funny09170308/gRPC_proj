@@ -15,6 +15,9 @@ service LNAWGCMDService {
     rpc SetExtSource(ExtSourceSetRequest) returns (ParamResponse);
     rpc GetExtSource(ExtSourceGetRequest) returns (ExtSourceGetResponse);
 
+    rpc SetOutRange(RangeSetRequest) returns (ParamResponse);
+    rpc GetOutRange(RangeGetRequest) returns (RangeGetResponse);
+
     rpc SetRange(RangeSetRequest) returns (ParamResponse);
     rpc GetRange(RangeGetRequest) returns (RangeGetResponse);
 
