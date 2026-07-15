@@ -7,7 +7,7 @@
 
 #define SOFT_TRIGGER_BASEADDR (0x80050000)
 
-static DDSAddrMap_t s_ddsAddrMapCtx[LNAWG_CHANNEL_NUM] = {
+static DDSAddrMap_t s_ddsAddrMapCtx[C_LNAWG_CHANNEL_NUM] = {
 	[0] = {
 		.m_en = DDS_0_EN,
 		.m_mode = CHANNEL_0_MODE,
@@ -45,7 +45,7 @@ void set_awg_ch_run(int32_t logical_ch, int32_t state)
 	chmode = gLocalParam.awgch_mode[logical_ch - 1];
 	get_awg_route(logical_ch, &chip_id, &local_ch);
 
-	if (chmode == AWG_CH_MODE_AWG)
+	if (chmode == C_AWG_CH_MODE_AWG)
 	{
 		if (state)
 		{
@@ -75,7 +75,7 @@ void set_awg_ch_run(int32_t logical_ch, int32_t state)
 		}
 		P_LOG_DEBUG("AWG MODE\r\n");
 	}
-	else if (chmode == AWG_CH_MODE_DDS || chmode == AWG_CH_MODE_CHIRP_OUT)
+	else if (chmode == C_AWG_CH_MODE_DDS || chmode == C_AWG_CH_MODE_CHIRP_OUT)
 	{
 		if (state)
 		{ // run
@@ -105,6 +105,40 @@ void set_awg_ch_run(int32_t logical_ch, int32_t state)
 		}
 		P_LOG_DEBUG("DDS MODE\r\n");
 	}
+	else if (chmode == C_AWG_CH_MODE_PARAM_WAVE)
+	{
+		if (state)
+		{ // run
+			if (local_ch == 1)
+			{
+				set_awg_ch_led_status(logical_ch, LED_GREEN);
+				xdma_write_user_space(chip_id, DDS_0_EN, 0x01);
+				xdma_write_user_space(chip_id, CHANNEL_0_OUTPUT_EN, 0x01);
+			}
+			else
+			{
+				set_awg_ch_led_status(logical_ch, LED_GREEN);
+				xdma_write_user_space(chip_id, DDS_1_EN, 0x01);
+				xdma_write_user_space(chip_id, CHANNEL_1_OUTPUT_EN, 0x01);
+			}
+		}
+		else
+		{ // stop
+			if (local_ch == 1)
+			{
+				set_awg_ch_led_status(logical_ch, LED_OFF);
+				xdma_write_user_space(chip_id, DDS_0_EN, 0);
+				xdma_write_user_space(chip_id, CHANNEL_0_OUTPUT_EN, 0);
+			}
+			else
+			{
+				set_awg_ch_led_status(logical_ch, LED_OFF);
+				xdma_write_user_space(chip_id, DDS_1_EN, 0);
+				xdma_write_user_space(chip_id, CHANNEL_1_OUTPUT_EN, 0);
+			}
+		}
+		P_LOG_DEBUG("WAVE PARAM MODE\r\n");
+	}
 }
 
 uint32_t get_awg_ch_run(int32_t logical_ch)
@@ -117,7 +151,7 @@ uint32_t get_awg_ch_run(int32_t logical_ch)
 	get_awg_route(logical_ch, &chip_id, &local_ch);
 
 	uint32_t state;
-	if (chmode == AWG_CH_MODE_AWG)
+	if (chmode == C_AWG_CH_MODE_AWG)
 	{
 		if (local_ch == 1)
 		{
@@ -128,7 +162,7 @@ uint32_t get_awg_ch_run(int32_t logical_ch)
 			xdma_read_user_space(chip_id, CHANNEL_1_OUTPUT_EN, &state);
 		}
 	}
-	else if (chmode == AWG_CH_MODE_DDS || chmode == AWG_CH_MODE_CHIRP_OUT)
+	else if (chmode == C_AWG_CH_MODE_DDS || chmode == C_AWG_CH_MODE_CHIRP_OUT)
 	{
 		if (local_ch == 1)
 		{
@@ -322,7 +356,7 @@ void set_awg_ch_out_range(int32_t logical_ch, int32_t range)
 	else if (local_ch == 2)
 	{
 		if (range == E_RANGE_DIRECT)
-		{															 // direct
+		{																	// direct
 			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0b0000100); // 0b101010
 			usleep(200000);
 			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0b0000010);
@@ -332,7 +366,7 @@ void set_awg_ch_out_range(int32_t logical_ch, int32_t range)
 			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0b0000000);
 		}
 		else if (range == E_RANGE_3V)
-		{															 // 3V
+		{																	// 3V
 			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0b0000001); // 0b100101
 			usleep(200000);
 			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0b1000000);
@@ -344,13 +378,13 @@ void set_awg_ch_out_range(int32_t logical_ch, int32_t range)
 			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0b1000000);
 		}
 		else if (range == E_RANGE_HIGH_Z)
-		{															 // High-Z
+		{																	// High-Z
 			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0b0100101); // 0b010101
 			usleep(200000);
 			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0b0000000);
 		}
 		else if (range == E_RANGE_GND)
-		{															 // GND
+		{																	// GND
 			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0b0010101); // 0b010101
 			usleep(200000);
 			xdma_write_user_space(chip_id, CHANNEL_1_RANGE_SET, 0b0000000);
@@ -451,7 +485,6 @@ uint32_t get_awg_ch_range(int32_t logical_ch)
 
 	return range;
 }
-
 
 void set_awg_ch_offset(int32_t logical_ch, double offset)
 {

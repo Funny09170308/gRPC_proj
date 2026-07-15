@@ -177,7 +177,7 @@ Status CommonCMDServiceImpl::StreamDataSet(ServerContext *context,
                                            ServerReader<SetStreamDataRequest> *reader,
                                            SetStreamResult *response)
 {
-    P_LOG_INFO("Client connect the stream port: StreamDataSet");
+    P_LOG_REPEAT("Client connect the stream port: StreamDataSet");
 
     uint32_t chip = 0;
     uint32_t streamID = 0;
@@ -231,7 +231,7 @@ Status CommonCMDServiceImpl::StreamDataSet(ServerContext *context,
                     startAddr, currentPackBytes);
     }
 
-    P_LOG_INFO("StreamDataSet All packs deploy succeed! %u", totalResvBytes);
+    P_LOG_REPEAT("StreamDataSet All packs deploy succeed! %u", totalResvBytes);
     response->set_resvtotal(totalResvBytes);
     return Status::OK;
 }
