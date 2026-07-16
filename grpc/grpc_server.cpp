@@ -173,11 +173,35 @@ Status CommonCMDServiceImpl::SetTrigStart(ServerContext *context,
     return Status::OK;
 }
 
+Status CommonCMDServiceImpl::SetRERIOFeadbackTest(ServerContext *context,
+                                                  const SetRERIOFeadbackTestRequest *request,
+                                                  ParamResponse *response)
+{
+    uint32_t en = request->fben();
+    uint32_t fb_trig_delay = request->fbtrigdelay();
+    uint32_t seq_sel = request->fbseqsel();
+    P_LOG_DEBUG("Rear IO feadback test...\r\n");
+    set_reaio_feadback_test(en, fb_trig_delay, seq_sel);
+    return Status::OK;
+}
+
+Status CommonCMDServiceImpl::GetRERIOFeadbackTest(ServerContext *context,
+                                                  const GetRERIOFeadbackTestRequest *request,
+                                                  GetRERIOFeadbackTestResponse *response)
+{
+    uint32_t en = 0, fb_trig_delay = 0, seq_sel = 0;
+    get_reaio_feadback_test(&en, &fb_trig_delay, &seq_sel);
+    response->set_fben(en);
+    response->set_fbtrigdelay(fb_trig_delay);
+    response->set_fbseqsel(seq_sel);
+    return Status::OK;
+}
+
 Status CommonCMDServiceImpl::StreamDataSet(ServerContext *context,
                                            ServerReader<SetStreamDataRequest> *reader,
                                            SetStreamResult *response)
 {
-    P_LOG_INFO("Client connect the stream port: StreamDataSet");
+    P_LOG_REPEAT("Client connect the stream port: StreamDataSet");
 
     uint32_t chip = 0;
     uint32_t streamID = 0;
@@ -231,7 +255,7 @@ Status CommonCMDServiceImpl::StreamDataSet(ServerContext *context,
                     startAddr, currentPackBytes);
     }
 
-    P_LOG_INFO("StreamDataSet All packs deploy succeed! %u", totalResvBytes);
+    P_LOG_REPEAT("StreamDataSet All packs deploy succeed! %u", totalResvBytes);
     response->set_resvtotal(totalResvBytes);
     return Status::OK;
 }
@@ -395,6 +419,25 @@ Status LNAWGCMDServiceImpl::GetExtSource(ServerContext *context,
     uint32_t source = get_awg_ch_ext_src(request->logical_ch());
     response->set_source(source);
     P_LOG_DEBUG("Get awg ext source, ch:%d, source:%d", request->logical_ch(), source);
+    return Status::OK;
+}
+
+Status LNAWGCMDServiceImpl::SetOutRange(ServerContext *context,
+                                        const RangeSetRequest *request,
+                                        ParamResponse *response)
+{
+    set_awg_ch_out_range(request->logical_ch(), request->range());
+    P_LOG_DEBUG("Set awg range, ch:%d, range:%d", request->logical_ch(), request->range());
+    return Status::OK;
+}
+
+Status LNAWGCMDServiceImpl::GetOutRange(ServerContext *context,
+                                        const RangeGetRequest *request,
+                                        RangeGetResponse *response)
+{
+    uint32_t range = get_awg_ch_range(request->logical_ch());
+    response->set_range(range);
+    P_LOG_DEBUG("Get awg range, ch:%d, range:%d", request->logical_ch(), range);
     return Status::OK;
 }
 
@@ -588,6 +631,25 @@ Status LNAWGCMDServiceImpl::GetDDSEnable(ServerContext *context,
     uint32_t enable = get_awg_dds_enable(request->logical_ch());
     response->set_enable(enable);
     P_LOG_DEBUG("Get awg ch dds enable status, ch:%d, enable:%d", request->logical_ch(), enable);
+    return Status::OK;
+}
+
+Status LNAWGCMDServiceImpl::SetFeadbackEnable(ServerContext *context,
+                                              const FeadbackEnableSetRequest *request,
+                                              ParamResponse *response)
+{
+    set_awg_feadback_enable(request->logical_ch(), request->enable());
+    P_LOG_DEBUG("Set awg ch feadback enable status, ch:%d, enable:%d", request->logical_ch(), request->enable());
+    return Status::OK;
+}
+
+Status LNAWGCMDServiceImpl::GetFeadbackEnable(ServerContext *context,
+                                              const FeadbackEnableGetRequest *request,
+                                              FeadbackEnableGetRespone *response)
+{
+    uint32_t enable = get_awg_feadback_enable(request->logical_ch());
+    response->set_enable(enable);
+    P_LOG_DEBUG("Get awg ch feadback enable status, ch:%d, enable:%d", request->logical_ch(), enable);
     return Status::OK;
 }
 

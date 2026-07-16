@@ -464,7 +464,7 @@ void set_static_ip(const char *interface, const char *ip, const char *gateway, c
 
 int start_dhcp_ip(void)
 {
-    const char *ifname = "eth0";
+    const char *ifname = "end0";
     const char *config_file = "/etc/network/interfaces";
     FILE *fp;
     char line[256];
@@ -477,7 +477,7 @@ int start_dhcp_ip(void)
         while (fgets(line, sizeof(line), fp))
         {
             line[strcspn(line, "\r\n")] = '\0';
-            if (strstr(line, "iface eth0 inet dhcp"))
+            if (strstr(line, "iface end0 inet dhcp"))
             {
                 dhcp_in_file = 1;
                 break;
@@ -507,12 +507,12 @@ int start_dhcp_ip(void)
 
     // 3) ĺć§ç DHCP ĺŽ˘ćˇçŤŻďźĺšśéĺŻç˝ĺĄ
     system("killall udhcpc 2>/dev/null");
-    system("ifdown eth0 2>/dev/null"); // ĺż˝çĽéčŻŻ
-    system("ifup eth0 2>/dev/null");
+    system("ifdown end0 2>/dev/null"); // ĺż˝çĽéčŻŻ
+    system("ifup end0 2>/dev/null");
 
     // 4) äťĽâćééčŻăééťć¨ĄĺźâĺŻĺ¨ udhcpcďźéżĺéżćśé´éťĺĄďź
     //	  -n: ĺ¤ąč´ĽçŤĺłéĺş	 -q: ééť	-T 2: čśćś 2 ç§   -t 3: éčŻ 3 ćŹĄ
-    int ret = system("udhcpc -i eth0 -n -q -T 2 -t 3");
+    int ret = system("udhcpc -i end0 -n -q -T 2 -t 3");
     if (ret != 0)
     {
         fprintf(stderr, "udhcpc failed (ret=%d)\n", ret);

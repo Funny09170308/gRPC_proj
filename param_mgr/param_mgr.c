@@ -189,7 +189,7 @@ void device_info_init(void)
 	{
 		P_LOG_ERROR("Prase JSON failed, using local parameter!");
 		g_deviceCfg.dhcpen = 0;
-		snprintf(g_deviceCfg.interface, sizeof(g_deviceCfg.interface), "%s", "eth0");
+		snprintf(g_deviceCfg.interface, sizeof(g_deviceCfg.interface), "%s", "end0");
 		snprintf(g_deviceCfg.ip, sizeof(g_deviceCfg.ip), "%s", "192.168.1.10");
 		snprintf(g_deviceCfg.mask, sizeof(g_deviceCfg.mask), "%s", "255.255.255.0");
 		snprintf(g_deviceCfg.gw, sizeof(g_deviceCfg.gw), "%s", "192.168.1.1");

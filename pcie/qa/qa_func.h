@@ -21,7 +21,7 @@
 #define ADC1_RES_BASE 0x1200 * 4
 #define ADC2_RES_BASE 0x1300 * 4
 
-#define SOFT_TIRGGER_BASEADDR (0x80050000)
+
 
 #ifdef __cplusplus
 extern "C"

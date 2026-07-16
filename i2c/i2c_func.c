@@ -8,6 +8,68 @@
 #include <linux/i2c.h>
 #include <errno.h>
 #include <string.h>
+#include <limits.h>
+
+int i2c_write_buffer(int fd, uint8_t slave,
+                     const uint8_t *data, size_t dataLen)
+{
+    struct i2c_msg msg;
+    struct i2c_rdwr_ioctl_data ioctl_data;
+
+    if (fd < 0 || data == NULL || dataLen == 0 || dataLen > USHRT_MAX)
+    {
+        errno = EINVAL;
+        return -1;
+    }
+
+    msg.addr = slave;
+    msg.flags = 0;
+    msg.len = (uint16_t)dataLen;
+    msg.buf = (uint8_t *)data;
+    ioctl_data.msgs = &msg;
+    ioctl_data.nmsgs = 1;
+
+    if (ioctl(fd, I2C_RDWR, &ioctl_data) < 0)
+    {
+        perror("i2c_write_buffer ioctl failed");
+        return -1;
+    }
+    return 0;
+}
+
+int i2c_write_read_buffer(int fd, uint8_t slave,
+                          const uint8_t *writeData, size_t writeLen,
+                          uint8_t *readData, size_t readLen)
+{
+    struct i2c_msg msgs[2];
+    struct i2c_rdwr_ioctl_data ioctl_data;
+
+    if (fd < 0 || writeData == NULL || writeLen == 0 ||
+        readData == NULL || readLen == 0 ||
+        writeLen > USHRT_MAX || readLen > USHRT_MAX)
+    {
+        errno = EINVAL;
+        return -1;
+    }
+
+    msgs[0].addr = slave;
+    msgs[0].flags = 0;
+    msgs[0].len = (uint16_t)writeLen;
+    msgs[0].buf = (uint8_t *)writeData;
+    msgs[1].addr = slave;
+    msgs[1].flags = I2C_M_RD;
+    msgs[1].len = (uint16_t)readLen;
+    msgs[1].buf = readData;
+    ioctl_data.msgs = msgs;
+    ioctl_data.nmsgs = 2;
+
+    if (ioctl(fd, I2C_RDWR, &ioctl_data) < 0)
+    {
+        perror("i2c_write_read_buffer ioctl failed");
+        return -1;
+    }
+    return 0;
+}
 
 /**
  * @brief 写可变长度寄存器

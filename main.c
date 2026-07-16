@@ -17,6 +17,7 @@ int main(void)
     setbuf(stdout, NULL);
 
     plog_init(
+        // P_LOG_LEVEL_REPEAT |
         // P_LOG_LEVEL_DEBUG |
         P_LOG_LEVEL_INFO |
         P_LOG_LEVEL_WARNING |
