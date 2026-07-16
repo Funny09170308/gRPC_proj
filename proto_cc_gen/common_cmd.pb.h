@@ -74,6 +74,12 @@ extern GetIDNResponseDefaultTypeInternal _GetIDNResponse_default_instance_;
 class GetNetCfgRequest;
 struct GetNetCfgRequestDefaultTypeInternal;
 extern GetNetCfgRequestDefaultTypeInternal _GetNetCfgRequest_default_instance_;
+class GetRERIOFeadbackTestRequest;
+struct GetRERIOFeadbackTestRequestDefaultTypeInternal;
+extern GetRERIOFeadbackTestRequestDefaultTypeInternal _GetRERIOFeadbackTestRequest_default_instance_;
+class GetRERIOFeadbackTestResponse;
+struct GetRERIOFeadbackTestResponseDefaultTypeInternal;
+extern GetRERIOFeadbackTestResponseDefaultTypeInternal _GetRERIOFeadbackTestResponse_default_instance_;
 class GetStreamDataRequest;
 struct GetStreamDataRequestDefaultTypeInternal;
 extern GetStreamDataRequestDefaultTypeInternal _GetStreamDataRequest_default_instance_;
@@ -119,6 +125,9 @@ extern RegValueResponseDefaultTypeInternal _RegValueResponse_default_instance_;
 class SetNetCfgRequest;
 struct SetNetCfgRequestDefaultTypeInternal;
 extern SetNetCfgRequestDefaultTypeInternal _SetNetCfgRequest_default_instance_;
+class SetRERIOFeadbackTestRequest;
+struct SetRERIOFeadbackTestRequestDefaultTypeInternal;
+extern SetRERIOFeadbackTestRequestDefaultTypeInternal _SetRERIOFeadbackTestRequest_default_instance_;
 class SetStreamDataRequest;
 struct SetStreamDataRequestDefaultTypeInternal;
 extern SetStreamDataRequestDefaultTypeInternal _SetStreamDataRequest_default_instance_;
@@ -1175,6 +1184,221 @@ class SetStreamDataRequest final
     ::uint32_t currentpackage_;
     ::uint64_t startaddr_;
     ::uint32_t currentpackbytes_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_common_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SetRERIOFeadbackTestRequest final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.SetRERIOFeadbackTestRequest) */ {
+ public:
+  inline SetRERIOFeadbackTestRequest() : SetRERIOFeadbackTestRequest(nullptr) {}
+  ~SetRERIOFeadbackTestRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SetRERIOFeadbackTestRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SetRERIOFeadbackTestRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SetRERIOFeadbackTestRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SetRERIOFeadbackTestRequest(const SetRERIOFeadbackTestRequest& from) : SetRERIOFeadbackTestRequest(nullptr, from) {}
+  inline SetRERIOFeadbackTestRequest(SetRERIOFeadbackTestRequest&& from) noexcept
+      : SetRERIOFeadbackTestRequest(nullptr, std::move(from)) {}
+  inline SetRERIOFeadbackTestRequest& operator=(const SetRERIOFeadbackTestRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetRERIOFeadbackTestRequest& operator=(SetRERIOFeadbackTestRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetRERIOFeadbackTestRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetRERIOFeadbackTestRequest* internal_default_instance() {
+    return reinterpret_cast<const SetRERIOFeadbackTestRequest*>(
+        &_SetRERIOFeadbackTestRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 27;
+  friend void swap(SetRERIOFeadbackTestRequest& a, SetRERIOFeadbackTestRequest& b) { a.Swap(&b); }
+  inline void Swap(SetRERIOFeadbackTestRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetRERIOFeadbackTestRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetRERIOFeadbackTestRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SetRERIOFeadbackTestRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SetRERIOFeadbackTestRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SetRERIOFeadbackTestRequest& from) { SetRERIOFeadbackTestRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SetRERIOFeadbackTestRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.SetRERIOFeadbackTestRequest"; }
+
+ protected:
+  explicit SetRERIOFeadbackTestRequest(::google::protobuf::Arena* arena);
+  SetRERIOFeadbackTestRequest(::google::protobuf::Arena* arena, const SetRERIOFeadbackTestRequest& from);
+  SetRERIOFeadbackTestRequest(::google::protobuf::Arena* arena, SetRERIOFeadbackTestRequest&& from) noexcept
+      : SetRERIOFeadbackTestRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kFbEnFieldNumber = 1,
+    kFbTrigDelayFieldNumber = 2,
+    kFbSeqSelFieldNumber = 3,
+  };
+  // uint32 fbEn = 1;
+  void clear_fben() ;
+  ::uint32_t fben() const;
+  void set_fben(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_fben() const;
+  void _internal_set_fben(::uint32_t value);
+
+  public:
+  // uint32 fbTrigDelay = 2;
+  void clear_fbtrigdelay() ;
+  ::uint32_t fbtrigdelay() const;
+  void set_fbtrigdelay(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_fbtrigdelay() const;
+  void _internal_set_fbtrigdelay(::uint32_t value);
+
+  public:
+  // uint32 fbSeqSel = 3;
+  void clear_fbseqsel() ;
+  ::uint32_t fbseqsel() const;
+  void set_fbseqsel(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_fbseqsel() const;
+  void _internal_set_fbseqsel(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.SetRERIOFeadbackTestRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 3, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SetRERIOFeadbackTestRequest& from_msg);
+    ::uint32_t fben_;
+    ::uint32_t fbtrigdelay_;
+    ::uint32_t fbseqsel_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -4219,6 +4443,367 @@ class GetStreamDataRequest final
 };
 // -------------------------------------------------------------------
 
+class GetRERIOFeadbackTestResponse final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.GetRERIOFeadbackTestResponse) */ {
+ public:
+  inline GetRERIOFeadbackTestResponse() : GetRERIOFeadbackTestResponse(nullptr) {}
+  ~GetRERIOFeadbackTestResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GetRERIOFeadbackTestResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetRERIOFeadbackTestResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetRERIOFeadbackTestResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline GetRERIOFeadbackTestResponse(const GetRERIOFeadbackTestResponse& from) : GetRERIOFeadbackTestResponse(nullptr, from) {}
+  inline GetRERIOFeadbackTestResponse(GetRERIOFeadbackTestResponse&& from) noexcept
+      : GetRERIOFeadbackTestResponse(nullptr, std::move(from)) {}
+  inline GetRERIOFeadbackTestResponse& operator=(const GetRERIOFeadbackTestResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetRERIOFeadbackTestResponse& operator=(GetRERIOFeadbackTestResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetRERIOFeadbackTestResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetRERIOFeadbackTestResponse* internal_default_instance() {
+    return reinterpret_cast<const GetRERIOFeadbackTestResponse*>(
+        &_GetRERIOFeadbackTestResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 29;
+  friend void swap(GetRERIOFeadbackTestResponse& a, GetRERIOFeadbackTestResponse& b) { a.Swap(&b); }
+  inline void Swap(GetRERIOFeadbackTestResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetRERIOFeadbackTestResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetRERIOFeadbackTestResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<GetRERIOFeadbackTestResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const GetRERIOFeadbackTestResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const GetRERIOFeadbackTestResponse& from) { GetRERIOFeadbackTestResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(GetRERIOFeadbackTestResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.GetRERIOFeadbackTestResponse"; }
+
+ protected:
+  explicit GetRERIOFeadbackTestResponse(::google::protobuf::Arena* arena);
+  GetRERIOFeadbackTestResponse(::google::protobuf::Arena* arena, const GetRERIOFeadbackTestResponse& from);
+  GetRERIOFeadbackTestResponse(::google::protobuf::Arena* arena, GetRERIOFeadbackTestResponse&& from) noexcept
+      : GetRERIOFeadbackTestResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kFbEnFieldNumber = 1,
+    kFbTrigDelayFieldNumber = 2,
+    kFbSeqSelFieldNumber = 3,
+  };
+  // uint32 fbEn = 1;
+  void clear_fben() ;
+  ::uint32_t fben() const;
+  void set_fben(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_fben() const;
+  void _internal_set_fben(::uint32_t value);
+
+  public:
+  // uint32 fbTrigDelay = 2;
+  void clear_fbtrigdelay() ;
+  ::uint32_t fbtrigdelay() const;
+  void set_fbtrigdelay(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_fbtrigdelay() const;
+  void _internal_set_fbtrigdelay(::uint32_t value);
+
+  public:
+  // uint32 fbSeqSel = 3;
+  void clear_fbseqsel() ;
+  ::uint32_t fbseqsel() const;
+  void set_fbseqsel(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_fbseqsel() const;
+  void _internal_set_fbseqsel(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.GetRERIOFeadbackTestResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 3, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const GetRERIOFeadbackTestResponse& from_msg);
+    ::uint32_t fben_;
+    ::uint32_t fbtrigdelay_;
+    ::uint32_t fbseqsel_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_common_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetRERIOFeadbackTestRequest final
+    : public ::google::protobuf::internal::ZeroFieldsBase
+/* @@protoc_insertion_point(class_definition:silicon_based.GetRERIOFeadbackTestRequest) */ {
+ public:
+  inline GetRERIOFeadbackTestRequest() : GetRERIOFeadbackTestRequest(nullptr) {}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(GetRERIOFeadbackTestRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(GetRERIOFeadbackTestRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetRERIOFeadbackTestRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline GetRERIOFeadbackTestRequest(const GetRERIOFeadbackTestRequest& from) : GetRERIOFeadbackTestRequest(nullptr, from) {}
+  inline GetRERIOFeadbackTestRequest(GetRERIOFeadbackTestRequest&& from) noexcept
+      : GetRERIOFeadbackTestRequest(nullptr, std::move(from)) {}
+  inline GetRERIOFeadbackTestRequest& operator=(const GetRERIOFeadbackTestRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetRERIOFeadbackTestRequest& operator=(GetRERIOFeadbackTestRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetRERIOFeadbackTestRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetRERIOFeadbackTestRequest* internal_default_instance() {
+    return reinterpret_cast<const GetRERIOFeadbackTestRequest*>(
+        &_GetRERIOFeadbackTestRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 28;
+  friend void swap(GetRERIOFeadbackTestRequest& a, GetRERIOFeadbackTestRequest& b) { a.Swap(&b); }
+  inline void Swap(GetRERIOFeadbackTestRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetRERIOFeadbackTestRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetRERIOFeadbackTestRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::internal::ZeroFieldsBase::DefaultConstruct<GetRERIOFeadbackTestRequest>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const GetRERIOFeadbackTestRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const GetRERIOFeadbackTestRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.GetRERIOFeadbackTestRequest"; }
+
+ protected:
+  explicit GetRERIOFeadbackTestRequest(::google::protobuf::Arena* arena);
+  GetRERIOFeadbackTestRequest(::google::protobuf::Arena* arena, const GetRERIOFeadbackTestRequest& from);
+  GetRERIOFeadbackTestRequest(::google::protobuf::Arena* arena, GetRERIOFeadbackTestRequest&& from) noexcept
+      : GetRERIOFeadbackTestRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  // @@protoc_insertion_point(class_scope:silicon_based.GetRERIOFeadbackTestRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 0, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const GetRERIOFeadbackTestRequest& from_msg);
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  friend struct ::TableStruct_common_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
 class GetNetCfgRequest final
     : public ::google::protobuf::internal::ZeroFieldsBase
 /* @@protoc_insertion_point(class_definition:silicon_based.GetNetCfgRequest) */ {
@@ -7112,6 +7697,150 @@ inline ::uint32_t SetTrigStartRequest::_internal_state() const {
 inline void SetTrigStartRequest::_internal_set_state(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.state_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SetRERIOFeadbackTestRequest
+
+// uint32 fbEn = 1;
+inline void SetRERIOFeadbackTestRequest::clear_fben() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fben_ = 0u;
+}
+inline ::uint32_t SetRERIOFeadbackTestRequest::fben() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SetRERIOFeadbackTestRequest.fbEn)
+  return _internal_fben();
+}
+inline void SetRERIOFeadbackTestRequest::set_fben(::uint32_t value) {
+  _internal_set_fben(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SetRERIOFeadbackTestRequest.fbEn)
+}
+inline ::uint32_t SetRERIOFeadbackTestRequest::_internal_fben() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.fben_;
+}
+inline void SetRERIOFeadbackTestRequest::_internal_set_fben(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fben_ = value;
+}
+
+// uint32 fbTrigDelay = 2;
+inline void SetRERIOFeadbackTestRequest::clear_fbtrigdelay() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fbtrigdelay_ = 0u;
+}
+inline ::uint32_t SetRERIOFeadbackTestRequest::fbtrigdelay() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SetRERIOFeadbackTestRequest.fbTrigDelay)
+  return _internal_fbtrigdelay();
+}
+inline void SetRERIOFeadbackTestRequest::set_fbtrigdelay(::uint32_t value) {
+  _internal_set_fbtrigdelay(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SetRERIOFeadbackTestRequest.fbTrigDelay)
+}
+inline ::uint32_t SetRERIOFeadbackTestRequest::_internal_fbtrigdelay() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.fbtrigdelay_;
+}
+inline void SetRERIOFeadbackTestRequest::_internal_set_fbtrigdelay(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fbtrigdelay_ = value;
+}
+
+// uint32 fbSeqSel = 3;
+inline void SetRERIOFeadbackTestRequest::clear_fbseqsel() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fbseqsel_ = 0u;
+}
+inline ::uint32_t SetRERIOFeadbackTestRequest::fbseqsel() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SetRERIOFeadbackTestRequest.fbSeqSel)
+  return _internal_fbseqsel();
+}
+inline void SetRERIOFeadbackTestRequest::set_fbseqsel(::uint32_t value) {
+  _internal_set_fbseqsel(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SetRERIOFeadbackTestRequest.fbSeqSel)
+}
+inline ::uint32_t SetRERIOFeadbackTestRequest::_internal_fbseqsel() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.fbseqsel_;
+}
+inline void SetRERIOFeadbackTestRequest::_internal_set_fbseqsel(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fbseqsel_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// GetRERIOFeadbackTestRequest
+
+// -------------------------------------------------------------------
+
+// GetRERIOFeadbackTestResponse
+
+// uint32 fbEn = 1;
+inline void GetRERIOFeadbackTestResponse::clear_fben() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fben_ = 0u;
+}
+inline ::uint32_t GetRERIOFeadbackTestResponse::fben() const {
+  // @@protoc_insertion_point(field_get:silicon_based.GetRERIOFeadbackTestResponse.fbEn)
+  return _internal_fben();
+}
+inline void GetRERIOFeadbackTestResponse::set_fben(::uint32_t value) {
+  _internal_set_fben(value);
+  // @@protoc_insertion_point(field_set:silicon_based.GetRERIOFeadbackTestResponse.fbEn)
+}
+inline ::uint32_t GetRERIOFeadbackTestResponse::_internal_fben() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.fben_;
+}
+inline void GetRERIOFeadbackTestResponse::_internal_set_fben(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fben_ = value;
+}
+
+// uint32 fbTrigDelay = 2;
+inline void GetRERIOFeadbackTestResponse::clear_fbtrigdelay() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fbtrigdelay_ = 0u;
+}
+inline ::uint32_t GetRERIOFeadbackTestResponse::fbtrigdelay() const {
+  // @@protoc_insertion_point(field_get:silicon_based.GetRERIOFeadbackTestResponse.fbTrigDelay)
+  return _internal_fbtrigdelay();
+}
+inline void GetRERIOFeadbackTestResponse::set_fbtrigdelay(::uint32_t value) {
+  _internal_set_fbtrigdelay(value);
+  // @@protoc_insertion_point(field_set:silicon_based.GetRERIOFeadbackTestResponse.fbTrigDelay)
+}
+inline ::uint32_t GetRERIOFeadbackTestResponse::_internal_fbtrigdelay() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.fbtrigdelay_;
+}
+inline void GetRERIOFeadbackTestResponse::_internal_set_fbtrigdelay(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fbtrigdelay_ = value;
+}
+
+// uint32 fbSeqSel = 3;
+inline void GetRERIOFeadbackTestResponse::clear_fbseqsel() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fbseqsel_ = 0u;
+}
+inline ::uint32_t GetRERIOFeadbackTestResponse::fbseqsel() const {
+  // @@protoc_insertion_point(field_get:silicon_based.GetRERIOFeadbackTestResponse.fbSeqSel)
+  return _internal_fbseqsel();
+}
+inline void GetRERIOFeadbackTestResponse::set_fbseqsel(::uint32_t value) {
+  _internal_set_fbseqsel(value);
+  // @@protoc_insertion_point(field_set:silicon_based.GetRERIOFeadbackTestResponse.fbSeqSel)
+}
+inline ::uint32_t GetRERIOFeadbackTestResponse::_internal_fbseqsel() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.fbseqsel_;
+}
+inline void GetRERIOFeadbackTestResponse::_internal_set_fbseqsel(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.fbseqsel_ = value;
 }
 
 #ifdef __GNUC__

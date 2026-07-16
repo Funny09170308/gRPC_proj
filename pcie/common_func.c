@@ -13,6 +13,7 @@
 #include <netinet/tcp.h>
 
 #include "common_func.h"
+#include "../device_info.h"
 #include "../i2c/i2c_func.h"
 #include "../public/public.h"
 #include "../pcie/pcie_func.h"
@@ -432,4 +433,20 @@ void set_awg_ch_led_status(int32_t logical_ch, int32_t status)
 {
     P_LOG_DEBUG("Set channel %d led status: %d", logical_ch, status);
     LED_control(s_AWGLEDOffset[logical_ch - 1], status);
+}
+
+void set_reaio_feadback_test(uint32_t en, uint32_t fb_trig_delay, uint32_t seq_sel)
+{
+    P_LOG_DEBUG("Set rear io feadback test en:%d, delay: %d seqsel: %d", en, fb_trig_delay, seq_sel);
+    common_reg_data_set(SOFT_TIRGGER_BASEADDR + (0x100 * 4), en);
+    common_reg_data_set(SOFT_TIRGGER_BASEADDR + (0x103 * 4), fb_trig_delay);
+    common_reg_data_set(SOFT_TIRGGER_BASEADDR + (0x104 * 4), seq_sel);
+}
+
+void get_reaio_feadback_test(uint32_t *en, uint32_t *fb_trig_delay, uint32_t *seq_sel)
+{
+    P_LOG_DEBUG("Get rear io feadback test param");
+    *en = common_reg_data_get(SOFT_TIRGGER_BASEADDR + (0x100 * 4));
+    *fb_trig_delay = common_reg_data_get(SOFT_TIRGGER_BASEADDR + (0x103 * 4));
+    *seq_sel = common_reg_data_get(SOFT_TIRGGER_BASEADDR + (0x104 * 4));
 }

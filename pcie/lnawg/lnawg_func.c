@@ -1,11 +1,10 @@
 #include "lnawg_func.h"
 #include "../pcie_func.h"
 #include "../common_func.h"
+#include "../../device_info.h"
 #include "../../i2c/i2c_func.h"
 #include "../../i2c/io_expand/max7300.h"
 #include "../../platform_log/platform_log.h"
-
-#define SOFT_TRIGGER_BASEADDR (0x80050000)
 
 static DDSAddrMap_t s_ddsAddrMapCtx[C_LNAWG_CHANNEL_NUM] = {
 	[0] = {
@@ -283,27 +282,27 @@ void set_dev_trig(DevTrigCtrl devtrig)
 	gLocalParam.dev_trig_ctrl.trigger_continue = devtrig.trigger_continue;
 	gLocalParam.dev_trig_ctrl.trigger_delay = devtrig.trigger_delay;
 
-	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (0 * 4), devtrig.trigger_source);
-	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (1 * 4), (uint32_t)((devtrig.trigger_us - 1) * 25));
-	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (2 * 4), devtrig.trigger_times);
-	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (3 * 4), devtrig.trigger_continue);
-	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (4 * 4), (uint32_t)((devtrig.trigger_delay) * 25));
+	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (0 * 4), devtrig.trigger_source);
+	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (1 * 4), (uint32_t)((devtrig.trigger_us - 1) * 25));
+	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (2 * 4), devtrig.trigger_times);
+	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (3 * 4), devtrig.trigger_continue);
+	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (4 * 4), (uint32_t)((devtrig.trigger_delay) * 25));
 }
 
 // 1:enable 0:disable
 void set_dev_trig_state(int32_t state)
 {
 	if (state)
-		common_reg_data_set(SOFT_TRIGGER_BASEADDR + (6 * 4), 0);
+		common_reg_data_set(SOFT_TIRGGER_BASEADDR + (6 * 4), 0);
 	else
-		common_reg_data_set(SOFT_TRIGGER_BASEADDR + (6 * 4), 1);
+		common_reg_data_set(SOFT_TIRGGER_BASEADDR + (6 * 4), 1);
 }
 
 void send_software_trig()
 {
-	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (5 * 4), 0);
-	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (5 * 4), 1);
-	common_reg_data_set(SOFT_TRIGGER_BASEADDR + (5 * 4), 0);
+	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (5 * 4), 0);
+	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (5 * 4), 1);
+	common_reg_data_set(SOFT_TIRGGER_BASEADDR + (5 * 4), 0);
 }
 
 void set_awg_ch_out_range(int32_t logical_ch, int32_t range)
@@ -782,6 +781,48 @@ uint32_t get_awg_dds_enable(int32_t logical_ch)
 	else if (local_ch == 2)
 	{
 		xdma_read_user_space(chip_id, DDS_1_EN, &enable);
+	}
+	else
+	{
+		// 非法通道
+		P_LOG_ERROR("Invalid channel! local_ch must be 1 or 2, current local_ch = %d\r\n", local_ch);
+	}
+	return enable;
+}
+
+void set_awg_feadback_enable(int32_t logical_ch, uint32_t enable)
+{
+	uint8_t chip_id;  // 子卡id
+	uint8_t local_ch; // 通道数
+
+	get_awg_route(logical_ch, &chip_id, &local_ch);
+	if (local_ch == 1)
+	{
+		// 通道1
+		xdma_write_user_space(chip_id, FEEDBACK_CHANNEL_0_ENABLE, enable);
+	}
+	else
+	{
+		// 通道2
+		xdma_write_user_space(chip_id, FEEDBACK_CHANNEL_1_ENABLE, enable);
+	}
+}
+
+uint32_t get_awg_feadback_enable(int32_t logical_ch)
+{
+	uint8_t chip_id;  // 子卡id
+	uint8_t local_ch; // 通道数
+
+	get_awg_route(logical_ch, &chip_id, &local_ch);
+
+	uint32_t enable;
+	if (local_ch == 1)
+	{
+		xdma_read_user_space(chip_id, FEEDBACK_CHANNEL_0_ENABLE, &enable);
+	}
+	else if (local_ch == 2)
+	{
+		xdma_read_user_space(chip_id, FEEDBACK_CHANNEL_1_ENABLE, &enable);
 	}
 	else
 	{

@@ -160,6 +160,20 @@ class CommonCMDService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> PrepareAsyncSetTrigStart(::grpc::ClientContext* context, const ::silicon_based::SetTrigStartRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(PrepareAsyncSetTrigStartRaw(context, request, cq));
     }
+    virtual ::grpc::Status SetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest& request, ::silicon_based::ParamResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> AsyncSetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(AsyncSetRERIOFeadbackTestRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> PrepareAsyncSetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(PrepareAsyncSetRERIOFeadbackTestRaw(context, request, cq));
+    }
+    virtual ::grpc::Status GetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest& request, ::silicon_based::GetRERIOFeadbackTestResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetRERIOFeadbackTestResponse>> AsyncGetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetRERIOFeadbackTestResponse>>(AsyncGetRERIOFeadbackTestRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetRERIOFeadbackTestResponse>> PrepareAsyncGetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetRERIOFeadbackTestResponse>>(PrepareAsyncGetRERIOFeadbackTestRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -195,6 +209,10 @@ class CommonCMDService final {
       virtual void GetDevTrigParam(::grpc::ClientContext* context, const ::silicon_based::GetTrigParamRequest* request, ::silicon_based::GetTrigParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void SetTrigStart(::grpc::ClientContext* context, const ::silicon_based::SetTrigStartRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetTrigStart(::grpc::ClientContext* context, const ::silicon_based::SetTrigStartRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest* request, ::silicon_based::GetRERIOFeadbackTestResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest* request, ::silicon_based::GetRERIOFeadbackTestResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -236,6 +254,10 @@ class CommonCMDService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetTrigParamResponse>* PrepareAsyncGetDevTrigParamRaw(::grpc::ClientContext* context, const ::silicon_based::GetTrigParamRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* AsyncSetTrigStartRaw(::grpc::ClientContext* context, const ::silicon_based::SetTrigStartRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncSetTrigStartRaw(::grpc::ClientContext* context, const ::silicon_based::SetTrigStartRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* AsyncSetRERIOFeadbackTestRaw(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncSetRERIOFeadbackTestRaw(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetRERIOFeadbackTestResponse>* AsyncGetRERIOFeadbackTestRaw(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetRERIOFeadbackTestResponse>* PrepareAsyncGetRERIOFeadbackTestRaw(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -363,6 +385,20 @@ class CommonCMDService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> PrepareAsyncSetTrigStart(::grpc::ClientContext* context, const ::silicon_based::SetTrigStartRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(PrepareAsyncSetTrigStartRaw(context, request, cq));
     }
+    ::grpc::Status SetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest& request, ::silicon_based::ParamResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> AsyncSetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(AsyncSetRERIOFeadbackTestRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> PrepareAsyncSetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(PrepareAsyncSetRERIOFeadbackTestRaw(context, request, cq));
+    }
+    ::grpc::Status GetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest& request, ::silicon_based::GetRERIOFeadbackTestResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetRERIOFeadbackTestResponse>> AsyncGetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetRERIOFeadbackTestResponse>>(AsyncGetRERIOFeadbackTestRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetRERIOFeadbackTestResponse>> PrepareAsyncGetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetRERIOFeadbackTestResponse>>(PrepareAsyncGetRERIOFeadbackTestRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -398,6 +434,10 @@ class CommonCMDService final {
       void GetDevTrigParam(::grpc::ClientContext* context, const ::silicon_based::GetTrigParamRequest* request, ::silicon_based::GetTrigParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SetTrigStart(::grpc::ClientContext* context, const ::silicon_based::SetTrigStartRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) override;
       void SetTrigStart(::grpc::ClientContext* context, const ::silicon_based::SetTrigStartRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) override;
+      void SetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest* request, ::silicon_based::GetRERIOFeadbackTestResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest* request, ::silicon_based::GetRERIOFeadbackTestResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -445,6 +485,10 @@ class CommonCMDService final {
     ::grpc::ClientAsyncResponseReader< ::silicon_based::GetTrigParamResponse>* PrepareAsyncGetDevTrigParamRaw(::grpc::ClientContext* context, const ::silicon_based::GetTrigParamRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* AsyncSetTrigStartRaw(::grpc::ClientContext* context, const ::silicon_based::SetTrigStartRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncSetTrigStartRaw(::grpc::ClientContext* context, const ::silicon_based::SetTrigStartRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* AsyncSetRERIOFeadbackTestRaw(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncSetRERIOFeadbackTestRaw(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::GetRERIOFeadbackTestResponse>* AsyncGetRERIOFeadbackTestRaw(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::GetRERIOFeadbackTestResponse>* PrepareAsyncGetRERIOFeadbackTestRaw(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_GetIDN_;
     const ::grpc::internal::RpcMethod rpcmethod_GetDeviceInfo_;
     const ::grpc::internal::RpcMethod rpcmethod_SetDebugParam_;
@@ -462,6 +506,8 @@ class CommonCMDService final {
     const ::grpc::internal::RpcMethod rpcmethod_SetDevTrigParam_;
     const ::grpc::internal::RpcMethod rpcmethod_GetDevTrigParam_;
     const ::grpc::internal::RpcMethod rpcmethod_SetTrigStart_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetRERIOFeadbackTest_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetRERIOFeadbackTest_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -486,6 +532,8 @@ class CommonCMDService final {
     virtual ::grpc::Status SetDevTrigParam(::grpc::ServerContext* context, const ::silicon_based::SetTrigParamRequest* request, ::silicon_based::ParamResponse* response);
     virtual ::grpc::Status GetDevTrigParam(::grpc::ServerContext* context, const ::silicon_based::GetTrigParamRequest* request, ::silicon_based::GetTrigParamResponse* response);
     virtual ::grpc::Status SetTrigStart(::grpc::ServerContext* context, const ::silicon_based::SetTrigStartRequest* request, ::silicon_based::ParamResponse* response);
+    virtual ::grpc::Status SetRERIOFeadbackTest(::grpc::ServerContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest* request, ::silicon_based::ParamResponse* response);
+    virtual ::grpc::Status GetRERIOFeadbackTest(::grpc::ServerContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest* request, ::silicon_based::GetRERIOFeadbackTestResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_GetIDN : public BaseClass {
@@ -827,7 +875,47 @@ class CommonCMDService final {
       ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_GetIDN<WithAsyncMethod_GetDeviceInfo<WithAsyncMethod_SetDebugParam<WithAsyncMethod_SetGPIOStatus<WithAsyncMethod_SetNetCfgAddr<WithAsyncMethod_GetNetCfgAddr<WithAsyncMethod_SetRegValue<WithAsyncMethod_GetRegValue<WithAsyncMethod_SetPCIERegValue<WithAsyncMethod_GetPCIERegValue<WithAsyncMethod_StreamDataSet<WithAsyncMethod_StreamDataGet<WithAsyncMethod_SetDevTrigSource<WithAsyncMethod_GetDevTrigSource<WithAsyncMethod_SetDevTrigParam<WithAsyncMethod_GetDevTrigParam<WithAsyncMethod_SetTrigStart<Service > > > > > > > > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_SetRERIOFeadbackTest : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SetRERIOFeadbackTest() {
+      ::grpc::Service::MarkMethodAsync(17);
+    }
+    ~WithAsyncMethod_SetRERIOFeadbackTest() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRERIOFeadbackTest(::grpc::ServerContext* /*context*/, const ::silicon_based::SetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetRERIOFeadbackTest(::grpc::ServerContext* context, ::silicon_based::SetRERIOFeadbackTestRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetRERIOFeadbackTest : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetRERIOFeadbackTest() {
+      ::grpc::Service::MarkMethodAsync(18);
+    }
+    ~WithAsyncMethod_GetRERIOFeadbackTest() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRERIOFeadbackTest(::grpc::ServerContext* /*context*/, const ::silicon_based::GetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::GetRERIOFeadbackTestResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetRERIOFeadbackTest(::grpc::ServerContext* context, ::silicon_based::GetRERIOFeadbackTestRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::GetRERIOFeadbackTestResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_GetIDN<WithAsyncMethod_GetDeviceInfo<WithAsyncMethod_SetDebugParam<WithAsyncMethod_SetGPIOStatus<WithAsyncMethod_SetNetCfgAddr<WithAsyncMethod_GetNetCfgAddr<WithAsyncMethod_SetRegValue<WithAsyncMethod_GetRegValue<WithAsyncMethod_SetPCIERegValue<WithAsyncMethod_GetPCIERegValue<WithAsyncMethod_StreamDataSet<WithAsyncMethod_StreamDataGet<WithAsyncMethod_SetDevTrigSource<WithAsyncMethod_GetDevTrigSource<WithAsyncMethod_SetDevTrigParam<WithAsyncMethod_GetDevTrigParam<WithAsyncMethod_SetTrigStart<WithAsyncMethod_SetRERIOFeadbackTest<WithAsyncMethod_GetRERIOFeadbackTest<Service > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_GetIDN : public BaseClass {
    private:
@@ -1277,7 +1365,61 @@ class CommonCMDService final {
     virtual ::grpc::ServerUnaryReactor* SetTrigStart(
       ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::SetTrigStartRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_GetIDN<WithCallbackMethod_GetDeviceInfo<WithCallbackMethod_SetDebugParam<WithCallbackMethod_SetGPIOStatus<WithCallbackMethod_SetNetCfgAddr<WithCallbackMethod_GetNetCfgAddr<WithCallbackMethod_SetRegValue<WithCallbackMethod_GetRegValue<WithCallbackMethod_SetPCIERegValue<WithCallbackMethod_GetPCIERegValue<WithCallbackMethod_StreamDataSet<WithCallbackMethod_StreamDataGet<WithCallbackMethod_SetDevTrigSource<WithCallbackMethod_GetDevTrigSource<WithCallbackMethod_SetDevTrigParam<WithCallbackMethod_GetDevTrigParam<WithCallbackMethod_SetTrigStart<Service > > > > > > > > > > > > > > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_SetRERIOFeadbackTest : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SetRERIOFeadbackTest() {
+      ::grpc::Service::MarkMethodCallback(17,
+          new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::SetRERIOFeadbackTestRequest, ::silicon_based::ParamResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest* request, ::silicon_based::ParamResponse* response) { return this->SetRERIOFeadbackTest(context, request, response); }));}
+    void SetMessageAllocatorFor_SetRERIOFeadbackTest(
+        ::grpc::MessageAllocator< ::silicon_based::SetRERIOFeadbackTestRequest, ::silicon_based::ParamResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(17);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::SetRERIOFeadbackTestRequest, ::silicon_based::ParamResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SetRERIOFeadbackTest() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRERIOFeadbackTest(::grpc::ServerContext* /*context*/, const ::silicon_based::SetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetRERIOFeadbackTest(
+      ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::SetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_GetRERIOFeadbackTest : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetRERIOFeadbackTest() {
+      ::grpc::Service::MarkMethodCallback(18,
+          new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::GetRERIOFeadbackTestRequest, ::silicon_based::GetRERIOFeadbackTestResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest* request, ::silicon_based::GetRERIOFeadbackTestResponse* response) { return this->GetRERIOFeadbackTest(context, request, response); }));}
+    void SetMessageAllocatorFor_GetRERIOFeadbackTest(
+        ::grpc::MessageAllocator< ::silicon_based::GetRERIOFeadbackTestRequest, ::silicon_based::GetRERIOFeadbackTestResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(18);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::GetRERIOFeadbackTestRequest, ::silicon_based::GetRERIOFeadbackTestResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetRERIOFeadbackTest() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRERIOFeadbackTest(::grpc::ServerContext* /*context*/, const ::silicon_based::GetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::GetRERIOFeadbackTestResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetRERIOFeadbackTest(
+      ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::GetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::GetRERIOFeadbackTestResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_GetIDN<WithCallbackMethod_GetDeviceInfo<WithCallbackMethod_SetDebugParam<WithCallbackMethod_SetGPIOStatus<WithCallbackMethod_SetNetCfgAddr<WithCallbackMethod_GetNetCfgAddr<WithCallbackMethod_SetRegValue<WithCallbackMethod_GetRegValue<WithCallbackMethod_SetPCIERegValue<WithCallbackMethod_GetPCIERegValue<WithCallbackMethod_StreamDataSet<WithCallbackMethod_StreamDataGet<WithCallbackMethod_SetDevTrigSource<WithCallbackMethod_GetDevTrigSource<WithCallbackMethod_SetDevTrigParam<WithCallbackMethod_GetDevTrigParam<WithCallbackMethod_SetTrigStart<WithCallbackMethod_SetRERIOFeadbackTest<WithCallbackMethod_GetRERIOFeadbackTest<Service > > > > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_GetIDN : public BaseClass {
@@ -1564,6 +1706,40 @@ class CommonCMDService final {
     }
     // disable synchronous version of this method
     ::grpc::Status SetTrigStart(::grpc::ServerContext* /*context*/, const ::silicon_based::SetTrigStartRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SetRERIOFeadbackTest : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SetRERIOFeadbackTest() {
+      ::grpc::Service::MarkMethodGeneric(17);
+    }
+    ~WithGenericMethod_SetRERIOFeadbackTest() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRERIOFeadbackTest(::grpc::ServerContext* /*context*/, const ::silicon_based::SetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetRERIOFeadbackTest : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetRERIOFeadbackTest() {
+      ::grpc::Service::MarkMethodGeneric(18);
+    }
+    ~WithGenericMethod_GetRERIOFeadbackTest() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRERIOFeadbackTest(::grpc::ServerContext* /*context*/, const ::silicon_based::GetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::GetRERIOFeadbackTestResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1906,6 +2082,46 @@ class CommonCMDService final {
     }
     void RequestSetTrigStart(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SetRERIOFeadbackTest : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SetRERIOFeadbackTest() {
+      ::grpc::Service::MarkMethodRaw(17);
+    }
+    ~WithRawMethod_SetRERIOFeadbackTest() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRERIOFeadbackTest(::grpc::ServerContext* /*context*/, const ::silicon_based::SetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetRERIOFeadbackTest(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetRERIOFeadbackTest : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetRERIOFeadbackTest() {
+      ::grpc::Service::MarkMethodRaw(18);
+    }
+    ~WithRawMethod_GetRERIOFeadbackTest() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRERIOFeadbackTest(::grpc::ServerContext* /*context*/, const ::silicon_based::GetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::GetRERIOFeadbackTestResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetRERIOFeadbackTest(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2280,6 +2496,50 @@ class CommonCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* SetTrigStart(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SetRERIOFeadbackTest : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SetRERIOFeadbackTest() {
+      ::grpc::Service::MarkMethodRawCallback(17,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetRERIOFeadbackTest(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SetRERIOFeadbackTest() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetRERIOFeadbackTest(::grpc::ServerContext* /*context*/, const ::silicon_based::SetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetRERIOFeadbackTest(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetRERIOFeadbackTest : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetRERIOFeadbackTest() {
+      ::grpc::Service::MarkMethodRawCallback(18,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetRERIOFeadbackTest(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetRERIOFeadbackTest() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetRERIOFeadbackTest(::grpc::ServerContext* /*context*/, const ::silicon_based::GetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::GetRERIOFeadbackTestResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetRERIOFeadbackTest(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -2687,7 +2947,61 @@ class CommonCMDService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedSetTrigStart(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::SetTrigStartRequest,::silicon_based::ParamResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_GetIDN<WithStreamedUnaryMethod_GetDeviceInfo<WithStreamedUnaryMethod_SetDebugParam<WithStreamedUnaryMethod_SetGPIOStatus<WithStreamedUnaryMethod_SetNetCfgAddr<WithStreamedUnaryMethod_GetNetCfgAddr<WithStreamedUnaryMethod_SetRegValue<WithStreamedUnaryMethod_GetRegValue<WithStreamedUnaryMethod_SetPCIERegValue<WithStreamedUnaryMethod_GetPCIERegValue<WithStreamedUnaryMethod_SetDevTrigSource<WithStreamedUnaryMethod_GetDevTrigSource<WithStreamedUnaryMethod_SetDevTrigParam<WithStreamedUnaryMethod_GetDevTrigParam<WithStreamedUnaryMethod_SetTrigStart<Service > > > > > > > > > > > > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SetRERIOFeadbackTest : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetRERIOFeadbackTest() {
+      ::grpc::Service::MarkMethodStreamed(17,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::silicon_based::SetRERIOFeadbackTestRequest, ::silicon_based::ParamResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::silicon_based::SetRERIOFeadbackTestRequest, ::silicon_based::ParamResponse>* streamer) {
+                       return this->StreamedSetRERIOFeadbackTest(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SetRERIOFeadbackTest() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SetRERIOFeadbackTest(::grpc::ServerContext* /*context*/, const ::silicon_based::SetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSetRERIOFeadbackTest(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::SetRERIOFeadbackTestRequest,::silicon_based::ParamResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetRERIOFeadbackTest : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetRERIOFeadbackTest() {
+      ::grpc::Service::MarkMethodStreamed(18,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::silicon_based::GetRERIOFeadbackTestRequest, ::silicon_based::GetRERIOFeadbackTestResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::silicon_based::GetRERIOFeadbackTestRequest, ::silicon_based::GetRERIOFeadbackTestResponse>* streamer) {
+                       return this->StreamedGetRERIOFeadbackTest(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetRERIOFeadbackTest() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetRERIOFeadbackTest(::grpc::ServerContext* /*context*/, const ::silicon_based::GetRERIOFeadbackTestRequest* /*request*/, ::silicon_based::GetRERIOFeadbackTestResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetRERIOFeadbackTest(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::GetRERIOFeadbackTestRequest,::silicon_based::GetRERIOFeadbackTestResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_GetIDN<WithStreamedUnaryMethod_GetDeviceInfo<WithStreamedUnaryMethod_SetDebugParam<WithStreamedUnaryMethod_SetGPIOStatus<WithStreamedUnaryMethod_SetNetCfgAddr<WithStreamedUnaryMethod_GetNetCfgAddr<WithStreamedUnaryMethod_SetRegValue<WithStreamedUnaryMethod_GetRegValue<WithStreamedUnaryMethod_SetPCIERegValue<WithStreamedUnaryMethod_GetPCIERegValue<WithStreamedUnaryMethod_SetDevTrigSource<WithStreamedUnaryMethod_GetDevTrigSource<WithStreamedUnaryMethod_SetDevTrigParam<WithStreamedUnaryMethod_GetDevTrigParam<WithStreamedUnaryMethod_SetTrigStart<WithStreamedUnaryMethod_SetRERIOFeadbackTest<WithStreamedUnaryMethod_GetRERIOFeadbackTest<Service > > > > > > > > > > > > > > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_StreamDataGet : public BaseClass {
    private:
@@ -2716,7 +3030,7 @@ class CommonCMDService final {
     virtual ::grpc::Status StreamedStreamDataGet(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::silicon_based::GetStreamDataRequest,::silicon_based::GetStreamResult>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_StreamDataGet<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_GetIDN<WithStreamedUnaryMethod_GetDeviceInfo<WithStreamedUnaryMethod_SetDebugParam<WithStreamedUnaryMethod_SetGPIOStatus<WithStreamedUnaryMethod_SetNetCfgAddr<WithStreamedUnaryMethod_GetNetCfgAddr<WithStreamedUnaryMethod_SetRegValue<WithStreamedUnaryMethod_GetRegValue<WithStreamedUnaryMethod_SetPCIERegValue<WithStreamedUnaryMethod_GetPCIERegValue<WithSplitStreamingMethod_StreamDataGet<WithStreamedUnaryMethod_SetDevTrigSource<WithStreamedUnaryMethod_GetDevTrigSource<WithStreamedUnaryMethod_SetDevTrigParam<WithStreamedUnaryMethod_GetDevTrigParam<WithStreamedUnaryMethod_SetTrigStart<Service > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_GetIDN<WithStreamedUnaryMethod_GetDeviceInfo<WithStreamedUnaryMethod_SetDebugParam<WithStreamedUnaryMethod_SetGPIOStatus<WithStreamedUnaryMethod_SetNetCfgAddr<WithStreamedUnaryMethod_GetNetCfgAddr<WithStreamedUnaryMethod_SetRegValue<WithStreamedUnaryMethod_GetRegValue<WithStreamedUnaryMethod_SetPCIERegValue<WithStreamedUnaryMethod_GetPCIERegValue<WithSplitStreamingMethod_StreamDataGet<WithStreamedUnaryMethod_SetDevTrigSource<WithStreamedUnaryMethod_GetDevTrigSource<WithStreamedUnaryMethod_SetDevTrigParam<WithStreamedUnaryMethod_GetDevTrigParam<WithStreamedUnaryMethod_SetTrigStart<WithStreamedUnaryMethod_SetRERIOFeadbackTest<WithStreamedUnaryMethod_GetRERIOFeadbackTest<Service > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace silicon_based

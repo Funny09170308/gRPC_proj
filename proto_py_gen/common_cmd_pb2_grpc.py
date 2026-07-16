@@ -100,6 +100,16 @@ class CommonCMDServiceStub(object):
                 request_serializer=common__cmd__pb2.SetTrigStartRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
                 _registered_method=True)
+        self.SetRERIOFeadbackTest = channel.unary_unary(
+                '/silicon_based.CommonCMDService/SetRERIOFeadbackTest',
+                request_serializer=common__cmd__pb2.SetRERIOFeadbackTestRequest.SerializeToString,
+                response_deserializer=common__cmd__pb2.ParamResponse.FromString,
+                _registered_method=True)
+        self.GetRERIOFeadbackTest = channel.unary_unary(
+                '/silicon_based.CommonCMDService/GetRERIOFeadbackTest',
+                request_serializer=common__cmd__pb2.GetRERIOFeadbackTestRequest.SerializeToString,
+                response_deserializer=common__cmd__pb2.GetRERIOFeadbackTestResponse.FromString,
+                _registered_method=True)
 
 
 class CommonCMDServiceServicer(object):
@@ -208,6 +218,18 @@ class CommonCMDServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetRERIOFeadbackTest(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetRERIOFeadbackTest(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_CommonCMDServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -295,6 +317,16 @@ def add_CommonCMDServiceServicer_to_server(servicer, server):
                     servicer.SetTrigStart,
                     request_deserializer=common__cmd__pb2.SetTrigStartRequest.FromString,
                     response_serializer=common__cmd__pb2.ParamResponse.SerializeToString,
+            ),
+            'SetRERIOFeadbackTest': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetRERIOFeadbackTest,
+                    request_deserializer=common__cmd__pb2.SetRERIOFeadbackTestRequest.FromString,
+                    response_serializer=common__cmd__pb2.ParamResponse.SerializeToString,
+            ),
+            'GetRERIOFeadbackTest': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetRERIOFeadbackTest,
+                    request_deserializer=common__cmd__pb2.GetRERIOFeadbackTestRequest.FromString,
+                    response_serializer=common__cmd__pb2.GetRERIOFeadbackTestResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -757,6 +789,60 @@ class CommonCMDService(object):
             '/silicon_based.CommonCMDService/SetTrigStart',
             common__cmd__pb2.SetTrigStartRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SetRERIOFeadbackTest(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/SetRERIOFeadbackTest',
+            common__cmd__pb2.SetRERIOFeadbackTestRequest.SerializeToString,
+            common__cmd__pb2.ParamResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetRERIOFeadbackTest(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.CommonCMDService/GetRERIOFeadbackTest',
+            common__cmd__pb2.GetRERIOFeadbackTestRequest.SerializeToString,
+            common__cmd__pb2.GetRERIOFeadbackTestResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -126,6 +126,16 @@ class LNAWGCMDServiceStub(object):
                 request_serializer=lnawg__cmd__pb2.DDSEnableGetRequest.SerializeToString,
                 response_deserializer=lnawg__cmd__pb2.DDSEnableGetResponse.FromString,
                 _registered_method=True)
+        self.SetFeadbackEnable = channel.unary_unary(
+                '/silicon_based.LNAWGCMDService/SetFeadbackEnable',
+                request_serializer=lnawg__cmd__pb2.FeadbackEnableSetRequest.SerializeToString,
+                response_deserializer=common__cmd__pb2.ParamResponse.FromString,
+                _registered_method=True)
+        self.GetFeadbackEnable = channel.unary_unary(
+                '/silicon_based.LNAWGCMDService/GetFeadbackEnable',
+                request_serializer=lnawg__cmd__pb2.FeadbackEnableGetRequest.SerializeToString,
+                response_deserializer=lnawg__cmd__pb2.FeadbackEnableGetRespone.FromString,
+                _registered_method=True)
 
 
 class LNAWGCMDServiceServicer(object):
@@ -264,6 +274,18 @@ class LNAWGCMDServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetFeadbackEnable(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetFeadbackEnable(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_LNAWGCMDServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -376,6 +398,16 @@ def add_LNAWGCMDServiceServicer_to_server(servicer, server):
                     servicer.GetDDSEnable,
                     request_deserializer=lnawg__cmd__pb2.DDSEnableGetRequest.FromString,
                     response_serializer=lnawg__cmd__pb2.DDSEnableGetResponse.SerializeToString,
+            ),
+            'SetFeadbackEnable': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetFeadbackEnable,
+                    request_deserializer=lnawg__cmd__pb2.FeadbackEnableSetRequest.FromString,
+                    response_serializer=common__cmd__pb2.ParamResponse.SerializeToString,
+            ),
+            'GetFeadbackEnable': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetFeadbackEnable,
+                    request_deserializer=lnawg__cmd__pb2.FeadbackEnableGetRequest.FromString,
+                    response_serializer=lnawg__cmd__pb2.FeadbackEnableGetRespone.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -973,6 +1005,60 @@ class LNAWGCMDService(object):
             '/silicon_based.LNAWGCMDService/GetDDSEnable',
             lnawg__cmd__pb2.DDSEnableGetRequest.SerializeToString,
             lnawg__cmd__pb2.DDSEnableGetResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SetFeadbackEnable(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/SetFeadbackEnable',
+            lnawg__cmd__pb2.FeadbackEnableSetRequest.SerializeToString,
+            common__cmd__pb2.ParamResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetFeadbackEnable(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetFeadbackEnable',
+            lnawg__cmd__pb2.FeadbackEnableGetRequest.SerializeToString,
+            lnawg__cmd__pb2.FeadbackEnableGetRespone.FromString,
             options,
             channel_credentials,
             insecure,

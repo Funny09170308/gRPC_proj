@@ -95,6 +95,15 @@ extern ExtSourceGetResponseDefaultTypeInternal _ExtSourceGetResponse_default_ins
 class ExtSourceSetRequest;
 struct ExtSourceSetRequestDefaultTypeInternal;
 extern ExtSourceSetRequestDefaultTypeInternal _ExtSourceSetRequest_default_instance_;
+class FeadbackEnableGetRequest;
+struct FeadbackEnableGetRequestDefaultTypeInternal;
+extern FeadbackEnableGetRequestDefaultTypeInternal _FeadbackEnableGetRequest_default_instance_;
+class FeadbackEnableGetRespone;
+struct FeadbackEnableGetResponeDefaultTypeInternal;
+extern FeadbackEnableGetResponeDefaultTypeInternal _FeadbackEnableGetRespone_default_instance_;
+class FeadbackEnableSetRequest;
+struct FeadbackEnableSetRequestDefaultTypeInternal;
+extern FeadbackEnableSetRequestDefaultTypeInternal _FeadbackEnableSetRequest_default_instance_;
 class LoopCountGetRequest;
 struct LoopCountGetRequestDefaultTypeInternal;
 extern LoopCountGetRequestDefaultTypeInternal _LoopCountGetRequest_default_instance_;
@@ -3664,6 +3673,591 @@ class LoopCountGetRequest final
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const LoopCountGetRequest& from_msg);
     ::int32_t logical_ch_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lnawg_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
+class FeadbackEnableSetRequest final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.FeadbackEnableSetRequest) */ {
+ public:
+  inline FeadbackEnableSetRequest() : FeadbackEnableSetRequest(nullptr) {}
+  ~FeadbackEnableSetRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(FeadbackEnableSetRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(FeadbackEnableSetRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR FeadbackEnableSetRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline FeadbackEnableSetRequest(const FeadbackEnableSetRequest& from) : FeadbackEnableSetRequest(nullptr, from) {}
+  inline FeadbackEnableSetRequest(FeadbackEnableSetRequest&& from) noexcept
+      : FeadbackEnableSetRequest(nullptr, std::move(from)) {}
+  inline FeadbackEnableSetRequest& operator=(const FeadbackEnableSetRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline FeadbackEnableSetRequest& operator=(FeadbackEnableSetRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const FeadbackEnableSetRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const FeadbackEnableSetRequest* internal_default_instance() {
+    return reinterpret_cast<const FeadbackEnableSetRequest*>(
+        &_FeadbackEnableSetRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 32;
+  friend void swap(FeadbackEnableSetRequest& a, FeadbackEnableSetRequest& b) { a.Swap(&b); }
+  inline void Swap(FeadbackEnableSetRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(FeadbackEnableSetRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  FeadbackEnableSetRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<FeadbackEnableSetRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const FeadbackEnableSetRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const FeadbackEnableSetRequest& from) { FeadbackEnableSetRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(FeadbackEnableSetRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.FeadbackEnableSetRequest"; }
+
+ protected:
+  explicit FeadbackEnableSetRequest(::google::protobuf::Arena* arena);
+  FeadbackEnableSetRequest(::google::protobuf::Arena* arena, const FeadbackEnableSetRequest& from);
+  FeadbackEnableSetRequest(::google::protobuf::Arena* arena, FeadbackEnableSetRequest&& from) noexcept
+      : FeadbackEnableSetRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kLogicalChFieldNumber = 1,
+    kEnableFieldNumber = 2,
+  };
+  // uint32 logical_ch = 1;
+  void clear_logical_ch() ;
+  ::uint32_t logical_ch() const;
+  void set_logical_ch(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_logical_ch() const;
+  void _internal_set_logical_ch(::uint32_t value);
+
+  public:
+  // uint32 enable = 2;
+  void clear_enable() ;
+  ::uint32_t enable() const;
+  void set_enable(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_enable() const;
+  void _internal_set_enable(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.FeadbackEnableSetRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const FeadbackEnableSetRequest& from_msg);
+    ::uint32_t logical_ch_;
+    ::uint32_t enable_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lnawg_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
+class FeadbackEnableGetRespone final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.FeadbackEnableGetRespone) */ {
+ public:
+  inline FeadbackEnableGetRespone() : FeadbackEnableGetRespone(nullptr) {}
+  ~FeadbackEnableGetRespone() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(FeadbackEnableGetRespone* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(FeadbackEnableGetRespone));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR FeadbackEnableGetRespone(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline FeadbackEnableGetRespone(const FeadbackEnableGetRespone& from) : FeadbackEnableGetRespone(nullptr, from) {}
+  inline FeadbackEnableGetRespone(FeadbackEnableGetRespone&& from) noexcept
+      : FeadbackEnableGetRespone(nullptr, std::move(from)) {}
+  inline FeadbackEnableGetRespone& operator=(const FeadbackEnableGetRespone& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline FeadbackEnableGetRespone& operator=(FeadbackEnableGetRespone&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const FeadbackEnableGetRespone& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const FeadbackEnableGetRespone* internal_default_instance() {
+    return reinterpret_cast<const FeadbackEnableGetRespone*>(
+        &_FeadbackEnableGetRespone_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 34;
+  friend void swap(FeadbackEnableGetRespone& a, FeadbackEnableGetRespone& b) { a.Swap(&b); }
+  inline void Swap(FeadbackEnableGetRespone* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(FeadbackEnableGetRespone* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  FeadbackEnableGetRespone* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<FeadbackEnableGetRespone>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const FeadbackEnableGetRespone& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const FeadbackEnableGetRespone& from) { FeadbackEnableGetRespone::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(FeadbackEnableGetRespone* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.FeadbackEnableGetRespone"; }
+
+ protected:
+  explicit FeadbackEnableGetRespone(::google::protobuf::Arena* arena);
+  FeadbackEnableGetRespone(::google::protobuf::Arena* arena, const FeadbackEnableGetRespone& from);
+  FeadbackEnableGetRespone(::google::protobuf::Arena* arena, FeadbackEnableGetRespone&& from) noexcept
+      : FeadbackEnableGetRespone(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kEnableFieldNumber = 1,
+  };
+  // uint32 enable = 1;
+  void clear_enable() ;
+  ::uint32_t enable() const;
+  void set_enable(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_enable() const;
+  void _internal_set_enable(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.FeadbackEnableGetRespone)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const FeadbackEnableGetRespone& from_msg);
+    ::uint32_t enable_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lnawg_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
+class FeadbackEnableGetRequest final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.FeadbackEnableGetRequest) */ {
+ public:
+  inline FeadbackEnableGetRequest() : FeadbackEnableGetRequest(nullptr) {}
+  ~FeadbackEnableGetRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(FeadbackEnableGetRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(FeadbackEnableGetRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR FeadbackEnableGetRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline FeadbackEnableGetRequest(const FeadbackEnableGetRequest& from) : FeadbackEnableGetRequest(nullptr, from) {}
+  inline FeadbackEnableGetRequest(FeadbackEnableGetRequest&& from) noexcept
+      : FeadbackEnableGetRequest(nullptr, std::move(from)) {}
+  inline FeadbackEnableGetRequest& operator=(const FeadbackEnableGetRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline FeadbackEnableGetRequest& operator=(FeadbackEnableGetRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const FeadbackEnableGetRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const FeadbackEnableGetRequest* internal_default_instance() {
+    return reinterpret_cast<const FeadbackEnableGetRequest*>(
+        &_FeadbackEnableGetRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 33;
+  friend void swap(FeadbackEnableGetRequest& a, FeadbackEnableGetRequest& b) { a.Swap(&b); }
+  inline void Swap(FeadbackEnableGetRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(FeadbackEnableGetRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  FeadbackEnableGetRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<FeadbackEnableGetRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const FeadbackEnableGetRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const FeadbackEnableGetRequest& from) { FeadbackEnableGetRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(FeadbackEnableGetRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.FeadbackEnableGetRequest"; }
+
+ protected:
+  explicit FeadbackEnableGetRequest(::google::protobuf::Arena* arena);
+  FeadbackEnableGetRequest(::google::protobuf::Arena* arena, const FeadbackEnableGetRequest& from);
+  FeadbackEnableGetRequest(::google::protobuf::Arena* arena, FeadbackEnableGetRequest&& from) noexcept
+      : FeadbackEnableGetRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kLogicalChFieldNumber = 1,
+  };
+  // uint32 logical_ch = 1;
+  void clear_logical_ch() ;
+  ::uint32_t logical_ch() const;
+  void set_logical_ch(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_logical_ch() const;
+  void _internal_set_logical_ch(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.FeadbackEnableGetRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const FeadbackEnableGetRequest& from_msg);
+    ::uint32_t logical_ch_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -8215,6 +8809,106 @@ inline ::uint32_t DDSEnableGetResponse::_internal_enable() const {
   return _impl_.enable_;
 }
 inline void DDSEnableGetResponse::_internal_set_enable(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.enable_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// FeadbackEnableSetRequest
+
+// uint32 logical_ch = 1;
+inline void FeadbackEnableSetRequest::clear_logical_ch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logical_ch_ = 0u;
+}
+inline ::uint32_t FeadbackEnableSetRequest::logical_ch() const {
+  // @@protoc_insertion_point(field_get:silicon_based.FeadbackEnableSetRequest.logical_ch)
+  return _internal_logical_ch();
+}
+inline void FeadbackEnableSetRequest::set_logical_ch(::uint32_t value) {
+  _internal_set_logical_ch(value);
+  // @@protoc_insertion_point(field_set:silicon_based.FeadbackEnableSetRequest.logical_ch)
+}
+inline ::uint32_t FeadbackEnableSetRequest::_internal_logical_ch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.logical_ch_;
+}
+inline void FeadbackEnableSetRequest::_internal_set_logical_ch(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logical_ch_ = value;
+}
+
+// uint32 enable = 2;
+inline void FeadbackEnableSetRequest::clear_enable() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.enable_ = 0u;
+}
+inline ::uint32_t FeadbackEnableSetRequest::enable() const {
+  // @@protoc_insertion_point(field_get:silicon_based.FeadbackEnableSetRequest.enable)
+  return _internal_enable();
+}
+inline void FeadbackEnableSetRequest::set_enable(::uint32_t value) {
+  _internal_set_enable(value);
+  // @@protoc_insertion_point(field_set:silicon_based.FeadbackEnableSetRequest.enable)
+}
+inline ::uint32_t FeadbackEnableSetRequest::_internal_enable() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.enable_;
+}
+inline void FeadbackEnableSetRequest::_internal_set_enable(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.enable_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// FeadbackEnableGetRequest
+
+// uint32 logical_ch = 1;
+inline void FeadbackEnableGetRequest::clear_logical_ch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logical_ch_ = 0u;
+}
+inline ::uint32_t FeadbackEnableGetRequest::logical_ch() const {
+  // @@protoc_insertion_point(field_get:silicon_based.FeadbackEnableGetRequest.logical_ch)
+  return _internal_logical_ch();
+}
+inline void FeadbackEnableGetRequest::set_logical_ch(::uint32_t value) {
+  _internal_set_logical_ch(value);
+  // @@protoc_insertion_point(field_set:silicon_based.FeadbackEnableGetRequest.logical_ch)
+}
+inline ::uint32_t FeadbackEnableGetRequest::_internal_logical_ch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.logical_ch_;
+}
+inline void FeadbackEnableGetRequest::_internal_set_logical_ch(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logical_ch_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// FeadbackEnableGetRespone
+
+// uint32 enable = 1;
+inline void FeadbackEnableGetRespone::clear_enable() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.enable_ = 0u;
+}
+inline ::uint32_t FeadbackEnableGetRespone::enable() const {
+  // @@protoc_insertion_point(field_get:silicon_based.FeadbackEnableGetRespone.enable)
+  return _internal_enable();
+}
+inline void FeadbackEnableGetRespone::set_enable(::uint32_t value) {
+  _internal_set_enable(value);
+  // @@protoc_insertion_point(field_set:silicon_based.FeadbackEnableGetRespone.enable)
+}
+inline ::uint32_t FeadbackEnableGetRespone::_internal_enable() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.enable_;
+}
+inline void FeadbackEnableGetRespone::_internal_set_enable(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.enable_ = value;
 }

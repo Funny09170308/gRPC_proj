@@ -156,6 +156,33 @@ struct SetStreamDataRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetStreamDataRequestDefaultTypeInternal _SetStreamDataRequest_default_instance_;
 
+inline constexpr SetRERIOFeadbackTestRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : fben_{0u},
+        fbtrigdelay_{0u},
+        fbseqsel_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SetRERIOFeadbackTestRequest::SetRERIOFeadbackTestRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SetRERIOFeadbackTestRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetRERIOFeadbackTestRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetRERIOFeadbackTestRequestDefaultTypeInternal() {}
+  union {
+    SetRERIOFeadbackTestRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetRERIOFeadbackTestRequestDefaultTypeInternal _SetRERIOFeadbackTestRequest_default_instance_;
+
 inline constexpr SetNetCfgRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : ipaddr_(
@@ -545,6 +572,51 @@ struct GetStreamDataRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetStreamDataRequestDefaultTypeInternal _GetStreamDataRequest_default_instance_;
+
+inline constexpr GetRERIOFeadbackTestResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : fben_{0u},
+        fbtrigdelay_{0u},
+        fbseqsel_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR GetRERIOFeadbackTestResponse::GetRERIOFeadbackTestResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct GetRERIOFeadbackTestResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetRERIOFeadbackTestResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetRERIOFeadbackTestResponseDefaultTypeInternal() {}
+  union {
+    GetRERIOFeadbackTestResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetRERIOFeadbackTestResponseDefaultTypeInternal _GetRERIOFeadbackTestResponse_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR GetRERIOFeadbackTestRequest::GetRERIOFeadbackTestRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct GetRERIOFeadbackTestRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetRERIOFeadbackTestRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetRERIOFeadbackTestRequestDefaultTypeInternal() {}
+  union {
+    GetRERIOFeadbackTestRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetRERIOFeadbackTestRequestDefaultTypeInternal _GetRERIOFeadbackTestRequest_default_instance_;
               template <typename>
 PROTOBUF_CONSTEXPR GetNetCfgRequest::GetNetCfgRequest(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
@@ -990,6 +1062,36 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::silicon_based::SetTrigStartRequest, _impl_.state_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetRERIOFeadbackTestRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetRERIOFeadbackTestRequest, _impl_.fben_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetRERIOFeadbackTestRequest, _impl_.fbtrigdelay_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetRERIOFeadbackTestRequest, _impl_.fbseqsel_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::GetRERIOFeadbackTestRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::GetRERIOFeadbackTestResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::silicon_based::GetRERIOFeadbackTestResponse, _impl_.fben_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::GetRERIOFeadbackTestResponse, _impl_.fbtrigdelay_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::GetRERIOFeadbackTestResponse, _impl_.fbseqsel_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -1021,6 +1123,9 @@ static const ::_pbi::MigrationSchema
         {246, -1, -1, sizeof(::silicon_based::GetTrigParamRequest)},
         {254, -1, -1, sizeof(::silicon_based::GetTrigParamResponse)},
         {267, -1, -1, sizeof(::silicon_based::SetTrigStartRequest)},
+        {276, -1, -1, sizeof(::silicon_based::SetRERIOFeadbackTestRequest)},
+        {287, -1, -1, sizeof(::silicon_based::GetRERIOFeadbackTestRequest)},
+        {295, -1, -1, sizeof(::silicon_based::GetRERIOFeadbackTestResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::silicon_based::_GetIDNRequest_default_instance_._instance,
@@ -1050,6 +1155,9 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::silicon_based::_GetTrigParamRequest_default_instance_._instance,
     &::silicon_based::_GetTrigParamResponse_default_instance_._instance,
     &::silicon_based::_SetTrigStartRequest_default_instance_._instance,
+    &::silicon_based::_SetRERIOFeadbackTestRequest_default_instance_._instance,
+    &::silicon_based::_GetRERIOFeadbackTestRequest_default_instance_._instance,
+    &::silicon_based::_GetRERIOFeadbackTestResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_common_5fcmd_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -1095,7 +1203,12 @@ const char descriptor_table_protodef_common_5fcmd_2eproto[] ABSL_ATTRIBUTE_SECTI
     "esponse\022\022\n\ntrigSource\030\001 \001(\r\022\024\n\014trigConti"
     "nue\030\002 \001(\r\022\021\n\ttrigTimes\030\003 \001(\r\022\022\n\ntrigPeri"
     "od\030\004 \001(\r\022\021\n\ttrigDelay\030\005 \001(\r\"$\n\023SetTrigSt"
-    "artRequest\022\r\n\005state\030\001 \001(\r2\247\013\n\020CommonCMDS"
+    "artRequest\022\r\n\005state\030\001 \001(\r\"R\n\033SetRERIOFea"
+    "dbackTestRequest\022\014\n\004fbEn\030\001 \001(\r\022\023\n\013fbTrig"
+    "Delay\030\002 \001(\r\022\020\n\010fbSeqSel\030\003 \001(\r\"\035\n\033GetRERI"
+    "OFeadbackTestRequest\"S\n\034GetRERIOFeadback"
+    "TestResponse\022\014\n\004fbEn\030\001 \001(\r\022\023\n\013fbTrigDela"
+    "y\030\002 \001(\r\022\020\n\010fbSeqSel\030\003 \001(\r2\372\014\n\020CommonCMDS"
     "ervice\022E\n\006GetIDN\022\034.silicon_based.GetIDNR"
     "equest\032\035.silicon_based.GetIDNResponse\022Z\n"
     "\rGetDeviceInfo\022#.silicon_based.GetDevice"
@@ -1131,20 +1244,25 @@ const char descriptor_table_protodef_common_5fcmd_2eproto[] ABSL_ATTRIBUTE_SECTI
     "\022\".silicon_based.GetTrigParamRequest\032#.s"
     "ilicon_based.GetTrigParamResponse\022P\n\014Set"
     "TrigStart\022\".silicon_based.SetTrigStartRe"
-    "quest\032\034.silicon_based.ParamResponseb\006pro"
-    "to3"
+    "quest\032\034.silicon_based.ParamResponse\022`\n\024S"
+    "etRERIOFeadbackTest\022*.silicon_based.SetR"
+    "ERIOFeadbackTestRequest\032\034.silicon_based."
+    "ParamResponse\022o\n\024GetRERIOFeadbackTest\022*."
+    "silicon_based.GetRERIOFeadbackTestReques"
+    "t\032+.silicon_based.GetRERIOFeadbackTestRe"
+    "sponseb\006proto3"
 };
 static ::absl::once_flag descriptor_table_common_5fcmd_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_common_5fcmd_2eproto = {
     false,
     false,
-    3163,
+    3574,
     descriptor_table_protodef_common_5fcmd_2eproto,
     "common_cmd.proto",
     &descriptor_table_common_5fcmd_2eproto_once,
     nullptr,
     0,
-    27,
+    30,
     schemas,
     file_default_instances,
     TableStruct_common_5fcmd_2eproto::offsets,
@@ -7135,6 +7253,635 @@ void SetTrigStartRequest::InternalSwap(SetTrigStartRequest* PROTOBUF_RESTRICT ot
 }
 
 ::google::protobuf::Metadata SetTrigStartRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SetRERIOFeadbackTestRequest::_Internal {
+ public:
+};
+
+SetRERIOFeadbackTestRequest::SetRERIOFeadbackTestRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.SetRERIOFeadbackTestRequest)
+}
+SetRERIOFeadbackTestRequest::SetRERIOFeadbackTestRequest(
+    ::google::protobuf::Arena* arena, const SetRERIOFeadbackTestRequest& from)
+    : SetRERIOFeadbackTestRequest(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE SetRERIOFeadbackTestRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void SetRERIOFeadbackTestRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, fben_),
+           0,
+           offsetof(Impl_, fbseqsel_) -
+               offsetof(Impl_, fben_) +
+               sizeof(Impl_::fbseqsel_));
+}
+SetRERIOFeadbackTestRequest::~SetRERIOFeadbackTestRequest() {
+  // @@protoc_insertion_point(destructor:silicon_based.SetRERIOFeadbackTestRequest)
+  SharedDtor(*this);
+}
+inline void SetRERIOFeadbackTestRequest::SharedDtor(MessageLite& self) {
+  SetRERIOFeadbackTestRequest& this_ = static_cast<SetRERIOFeadbackTestRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* SetRERIOFeadbackTestRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SetRERIOFeadbackTestRequest(arena);
+}
+constexpr auto SetRERIOFeadbackTestRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SetRERIOFeadbackTestRequest),
+                                            alignof(SetRERIOFeadbackTestRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SetRERIOFeadbackTestRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SetRERIOFeadbackTestRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SetRERIOFeadbackTestRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SetRERIOFeadbackTestRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SetRERIOFeadbackTestRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SetRERIOFeadbackTestRequest>(), &SetRERIOFeadbackTestRequest::ByteSizeLong,
+            &SetRERIOFeadbackTestRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SetRERIOFeadbackTestRequest, _impl_._cached_size_),
+        false,
+    },
+    &SetRERIOFeadbackTestRequest::kDescriptorMethods,
+    &descriptor_table_common_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SetRERIOFeadbackTestRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 0, 2> SetRERIOFeadbackTestRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::SetRERIOFeadbackTestRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // uint32 fbEn = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SetRERIOFeadbackTestRequest, _impl_.fben_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(SetRERIOFeadbackTestRequest, _impl_.fben_)}},
+    // uint32 fbTrigDelay = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SetRERIOFeadbackTestRequest, _impl_.fbtrigdelay_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(SetRERIOFeadbackTestRequest, _impl_.fbtrigdelay_)}},
+    // uint32 fbSeqSel = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SetRERIOFeadbackTestRequest, _impl_.fbseqsel_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(SetRERIOFeadbackTestRequest, _impl_.fbseqsel_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 fbEn = 1;
+    {PROTOBUF_FIELD_OFFSET(SetRERIOFeadbackTestRequest, _impl_.fben_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 fbTrigDelay = 2;
+    {PROTOBUF_FIELD_OFFSET(SetRERIOFeadbackTestRequest, _impl_.fbtrigdelay_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 fbSeqSel = 3;
+    {PROTOBUF_FIELD_OFFSET(SetRERIOFeadbackTestRequest, _impl_.fbseqsel_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void SetRERIOFeadbackTestRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.SetRERIOFeadbackTestRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.fben_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.fbseqsel_) -
+      reinterpret_cast<char*>(&_impl_.fben_)) + sizeof(_impl_.fbseqsel_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SetRERIOFeadbackTestRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SetRERIOFeadbackTestRequest& this_ = static_cast<const SetRERIOFeadbackTestRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SetRERIOFeadbackTestRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SetRERIOFeadbackTestRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:silicon_based.SetRERIOFeadbackTestRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 fbEn = 1;
+          if (this_._internal_fben() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_fben(), target);
+          }
+
+          // uint32 fbTrigDelay = 2;
+          if (this_._internal_fbtrigdelay() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                2, this_._internal_fbtrigdelay(), target);
+          }
+
+          // uint32 fbSeqSel = 3;
+          if (this_._internal_fbseqsel() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                3, this_._internal_fbseqsel(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:silicon_based.SetRERIOFeadbackTestRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SetRERIOFeadbackTestRequest::ByteSizeLong(const MessageLite& base) {
+          const SetRERIOFeadbackTestRequest& this_ = static_cast<const SetRERIOFeadbackTestRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SetRERIOFeadbackTestRequest::ByteSizeLong() const {
+          const SetRERIOFeadbackTestRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:silicon_based.SetRERIOFeadbackTestRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // uint32 fbEn = 1;
+            if (this_._internal_fben() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_fben());
+            }
+            // uint32 fbTrigDelay = 2;
+            if (this_._internal_fbtrigdelay() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_fbtrigdelay());
+            }
+            // uint32 fbSeqSel = 3;
+            if (this_._internal_fbseqsel() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_fbseqsel());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SetRERIOFeadbackTestRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SetRERIOFeadbackTestRequest*>(&to_msg);
+  auto& from = static_cast<const SetRERIOFeadbackTestRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.SetRERIOFeadbackTestRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_fben() != 0) {
+    _this->_impl_.fben_ = from._impl_.fben_;
+  }
+  if (from._internal_fbtrigdelay() != 0) {
+    _this->_impl_.fbtrigdelay_ = from._impl_.fbtrigdelay_;
+  }
+  if (from._internal_fbseqsel() != 0) {
+    _this->_impl_.fbseqsel_ = from._impl_.fbseqsel_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetRERIOFeadbackTestRequest::CopyFrom(const SetRERIOFeadbackTestRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.SetRERIOFeadbackTestRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SetRERIOFeadbackTestRequest::InternalSwap(SetRERIOFeadbackTestRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SetRERIOFeadbackTestRequest, _impl_.fbseqsel_)
+      + sizeof(SetRERIOFeadbackTestRequest::_impl_.fbseqsel_)
+      - PROTOBUF_FIELD_OFFSET(SetRERIOFeadbackTestRequest, _impl_.fben_)>(
+          reinterpret_cast<char*>(&_impl_.fben_),
+          reinterpret_cast<char*>(&other->_impl_.fben_));
+}
+
+::google::protobuf::Metadata SetRERIOFeadbackTestRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class GetRERIOFeadbackTestRequest::_Internal {
+ public:
+};
+
+GetRERIOFeadbackTestRequest::GetRERIOFeadbackTestRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  // @@protoc_insertion_point(arena_constructor:silicon_based.GetRERIOFeadbackTestRequest)
+}
+GetRERIOFeadbackTestRequest::GetRERIOFeadbackTestRequest(
+    ::google::protobuf::Arena* arena,
+    const GetRERIOFeadbackTestRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  GetRERIOFeadbackTestRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:silicon_based.GetRERIOFeadbackTestRequest)
+}
+
+inline void* GetRERIOFeadbackTestRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) GetRERIOFeadbackTestRequest(arena);
+}
+constexpr auto GetRERIOFeadbackTestRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(GetRERIOFeadbackTestRequest),
+                                            alignof(GetRERIOFeadbackTestRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull GetRERIOFeadbackTestRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_GetRERIOFeadbackTestRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &GetRERIOFeadbackTestRequest::MergeImpl,
+        ::google::protobuf::internal::ZeroFieldsBase::GetNewImpl<GetRERIOFeadbackTestRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &GetRERIOFeadbackTestRequest::SharedDtor,
+        ::google::protobuf::internal::ZeroFieldsBase::GetClearImpl<GetRERIOFeadbackTestRequest>(), &GetRERIOFeadbackTestRequest::ByteSizeLong,
+            &GetRERIOFeadbackTestRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(GetRERIOFeadbackTestRequest, _impl_._cached_size_),
+        false,
+    },
+    &GetRERIOFeadbackTestRequest::kDescriptorMethods,
+    &descriptor_table_common_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* GetRERIOFeadbackTestRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 0, 0, 0, 2> GetRERIOFeadbackTestRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    0, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967295,  // skipmap
+    offsetof(decltype(_table_), field_names),  // no field_entries
+    0,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::GetRERIOFeadbackTestRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }},
+  // no field_entries, or aux_entries
+  {{
+  }},
+};
+
+
+
+
+
+
+
+
+::google::protobuf::Metadata GetRERIOFeadbackTestRequest::GetMetadata() const {
+  return ::google::protobuf::internal::ZeroFieldsBase::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class GetRERIOFeadbackTestResponse::_Internal {
+ public:
+};
+
+GetRERIOFeadbackTestResponse::GetRERIOFeadbackTestResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.GetRERIOFeadbackTestResponse)
+}
+GetRERIOFeadbackTestResponse::GetRERIOFeadbackTestResponse(
+    ::google::protobuf::Arena* arena, const GetRERIOFeadbackTestResponse& from)
+    : GetRERIOFeadbackTestResponse(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE GetRERIOFeadbackTestResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void GetRERIOFeadbackTestResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, fben_),
+           0,
+           offsetof(Impl_, fbseqsel_) -
+               offsetof(Impl_, fben_) +
+               sizeof(Impl_::fbseqsel_));
+}
+GetRERIOFeadbackTestResponse::~GetRERIOFeadbackTestResponse() {
+  // @@protoc_insertion_point(destructor:silicon_based.GetRERIOFeadbackTestResponse)
+  SharedDtor(*this);
+}
+inline void GetRERIOFeadbackTestResponse::SharedDtor(MessageLite& self) {
+  GetRERIOFeadbackTestResponse& this_ = static_cast<GetRERIOFeadbackTestResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* GetRERIOFeadbackTestResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) GetRERIOFeadbackTestResponse(arena);
+}
+constexpr auto GetRERIOFeadbackTestResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(GetRERIOFeadbackTestResponse),
+                                            alignof(GetRERIOFeadbackTestResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull GetRERIOFeadbackTestResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_GetRERIOFeadbackTestResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &GetRERIOFeadbackTestResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<GetRERIOFeadbackTestResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &GetRERIOFeadbackTestResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<GetRERIOFeadbackTestResponse>(), &GetRERIOFeadbackTestResponse::ByteSizeLong,
+            &GetRERIOFeadbackTestResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(GetRERIOFeadbackTestResponse, _impl_._cached_size_),
+        false,
+    },
+    &GetRERIOFeadbackTestResponse::kDescriptorMethods,
+    &descriptor_table_common_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* GetRERIOFeadbackTestResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 0, 2> GetRERIOFeadbackTestResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::GetRERIOFeadbackTestResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // uint32 fbEn = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetRERIOFeadbackTestResponse, _impl_.fben_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(GetRERIOFeadbackTestResponse, _impl_.fben_)}},
+    // uint32 fbTrigDelay = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetRERIOFeadbackTestResponse, _impl_.fbtrigdelay_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(GetRERIOFeadbackTestResponse, _impl_.fbtrigdelay_)}},
+    // uint32 fbSeqSel = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(GetRERIOFeadbackTestResponse, _impl_.fbseqsel_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(GetRERIOFeadbackTestResponse, _impl_.fbseqsel_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 fbEn = 1;
+    {PROTOBUF_FIELD_OFFSET(GetRERIOFeadbackTestResponse, _impl_.fben_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 fbTrigDelay = 2;
+    {PROTOBUF_FIELD_OFFSET(GetRERIOFeadbackTestResponse, _impl_.fbtrigdelay_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 fbSeqSel = 3;
+    {PROTOBUF_FIELD_OFFSET(GetRERIOFeadbackTestResponse, _impl_.fbseqsel_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void GetRERIOFeadbackTestResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.GetRERIOFeadbackTestResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.fben_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.fbseqsel_) -
+      reinterpret_cast<char*>(&_impl_.fben_)) + sizeof(_impl_.fbseqsel_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* GetRERIOFeadbackTestResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const GetRERIOFeadbackTestResponse& this_ = static_cast<const GetRERIOFeadbackTestResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* GetRERIOFeadbackTestResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const GetRERIOFeadbackTestResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:silicon_based.GetRERIOFeadbackTestResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 fbEn = 1;
+          if (this_._internal_fben() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_fben(), target);
+          }
+
+          // uint32 fbTrigDelay = 2;
+          if (this_._internal_fbtrigdelay() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                2, this_._internal_fbtrigdelay(), target);
+          }
+
+          // uint32 fbSeqSel = 3;
+          if (this_._internal_fbseqsel() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                3, this_._internal_fbseqsel(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:silicon_based.GetRERIOFeadbackTestResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t GetRERIOFeadbackTestResponse::ByteSizeLong(const MessageLite& base) {
+          const GetRERIOFeadbackTestResponse& this_ = static_cast<const GetRERIOFeadbackTestResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t GetRERIOFeadbackTestResponse::ByteSizeLong() const {
+          const GetRERIOFeadbackTestResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:silicon_based.GetRERIOFeadbackTestResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // uint32 fbEn = 1;
+            if (this_._internal_fben() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_fben());
+            }
+            // uint32 fbTrigDelay = 2;
+            if (this_._internal_fbtrigdelay() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_fbtrigdelay());
+            }
+            // uint32 fbSeqSel = 3;
+            if (this_._internal_fbseqsel() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_fbseqsel());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void GetRERIOFeadbackTestResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<GetRERIOFeadbackTestResponse*>(&to_msg);
+  auto& from = static_cast<const GetRERIOFeadbackTestResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.GetRERIOFeadbackTestResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_fben() != 0) {
+    _this->_impl_.fben_ = from._impl_.fben_;
+  }
+  if (from._internal_fbtrigdelay() != 0) {
+    _this->_impl_.fbtrigdelay_ = from._impl_.fbtrigdelay_;
+  }
+  if (from._internal_fbseqsel() != 0) {
+    _this->_impl_.fbseqsel_ = from._impl_.fbseqsel_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetRERIOFeadbackTestResponse::CopyFrom(const GetRERIOFeadbackTestResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.GetRERIOFeadbackTestResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void GetRERIOFeadbackTestResponse::InternalSwap(GetRERIOFeadbackTestResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(GetRERIOFeadbackTestResponse, _impl_.fbseqsel_)
+      + sizeof(GetRERIOFeadbackTestResponse::_impl_.fbseqsel_)
+      - PROTOBUF_FIELD_OFFSET(GetRERIOFeadbackTestResponse, _impl_.fben_)>(
+          reinterpret_cast<char*>(&_impl_.fben_),
+          reinterpret_cast<char*>(&other->_impl_.fben_));
+}
+
+::google::protobuf::Metadata GetRERIOFeadbackTestResponse::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

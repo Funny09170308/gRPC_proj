@@ -173,6 +173,30 @@ Status CommonCMDServiceImpl::SetTrigStart(ServerContext *context,
     return Status::OK;
 }
 
+Status CommonCMDServiceImpl::SetRERIOFeadbackTest(ServerContext *context,
+                                                  const SetRERIOFeadbackTestRequest *request,
+                                                  ParamResponse *response)
+{
+    uint32_t en = request->fben();
+    uint32_t fb_trig_delay = request->fbtrigdelay();
+    uint32_t seq_sel = request->fbseqsel();
+    P_LOG_DEBUG("Rear IO feadback test...\r\n");
+    set_reaio_feadback_test(en, fb_trig_delay, seq_sel);
+    return Status::OK;
+}
+
+Status CommonCMDServiceImpl::GetRERIOFeadbackTest(ServerContext *context,
+                                                  const GetRERIOFeadbackTestRequest *request,
+                                                  GetRERIOFeadbackTestResponse *response)
+{
+    uint32_t en = 0, fb_trig_delay = 0, seq_sel = 0;
+    get_reaio_feadback_test(&en, &fb_trig_delay, &seq_sel);
+    response->set_fben(en);
+    response->set_fbtrigdelay(fb_trig_delay);
+    response->set_fbseqsel(seq_sel);
+    return Status::OK;
+}
+
 Status CommonCMDServiceImpl::StreamDataSet(ServerContext *context,
                                            ServerReader<SetStreamDataRequest> *reader,
                                            SetStreamResult *response)
@@ -607,6 +631,25 @@ Status LNAWGCMDServiceImpl::GetDDSEnable(ServerContext *context,
     uint32_t enable = get_awg_dds_enable(request->logical_ch());
     response->set_enable(enable);
     P_LOG_DEBUG("Get awg ch dds enable status, ch:%d, enable:%d", request->logical_ch(), enable);
+    return Status::OK;
+}
+
+Status LNAWGCMDServiceImpl::SetFeadbackEnable(ServerContext *context,
+                                              const FeadbackEnableSetRequest *request,
+                                              ParamResponse *response)
+{
+    set_awg_feadback_enable(request->logical_ch(), request->enable());
+    P_LOG_DEBUG("Set awg ch feadback enable status, ch:%d, enable:%d", request->logical_ch(), request->enable());
+    return Status::OK;
+}
+
+Status LNAWGCMDServiceImpl::GetFeadbackEnable(ServerContext *context,
+                                              const FeadbackEnableGetRequest *request,
+                                              FeadbackEnableGetRespone *response)
+{
+    uint32_t enable = get_awg_feadback_enable(request->logical_ch());
+    response->set_enable(enable);
+    P_LOG_DEBUG("Get awg ch feadback enable status, ch:%d, enable:%d", request->logical_ch(), enable);
     return Status::OK;
 }
 

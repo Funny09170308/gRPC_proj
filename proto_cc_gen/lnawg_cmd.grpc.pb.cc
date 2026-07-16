@@ -44,6 +44,8 @@ static const char* LNAWGCMDService_method_names[] = {
   "/silicon_based.LNAWGCMDService/GetChirpOutParam",
   "/silicon_based.LNAWGCMDService/SetDDSEnable",
   "/silicon_based.LNAWGCMDService/GetDDSEnable",
+  "/silicon_based.LNAWGCMDService/SetFeadbackEnable",
+  "/silicon_based.LNAWGCMDService/GetFeadbackEnable",
 };
 
 std::unique_ptr< LNAWGCMDService::Stub> LNAWGCMDService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -75,6 +77,8 @@ LNAWGCMDService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& ch
   , rpcmethod_GetChirpOutParam_(LNAWGCMDService_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SetDDSEnable_(LNAWGCMDService_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetDDSEnable_(LNAWGCMDService_method_names[21], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetFeadbackEnable_(LNAWGCMDService_method_names[22], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetFeadbackEnable_(LNAWGCMDService_method_names[23], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status LNAWGCMDService::Stub::SetMode(::grpc::ClientContext* context, const ::silicon_based::ModeSetRequest& request, ::silicon_based::ParamResponse* response) {
@@ -583,6 +587,52 @@ void LNAWGCMDService::Stub::async::GetDDSEnable(::grpc::ClientContext* context, 
   return result;
 }
 
+::grpc::Status LNAWGCMDService::Stub::SetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest& request, ::silicon_based::ParamResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::FeadbackEnableSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetFeadbackEnable_, context, request, response);
+}
+
+void LNAWGCMDService::Stub::async::SetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::FeadbackEnableSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetFeadbackEnable_, context, request, response, std::move(f));
+}
+
+void LNAWGCMDService::Stub::async::SetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetFeadbackEnable_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* LNAWGCMDService::Stub::PrepareAsyncSetFeadbackEnableRaw(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::ParamResponse, ::silicon_based::FeadbackEnableSetRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetFeadbackEnable_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* LNAWGCMDService::Stub::AsyncSetFeadbackEnableRaw(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSetFeadbackEnableRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status LNAWGCMDService::Stub::GetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableGetRequest& request, ::silicon_based::FeadbackEnableGetRespone* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::FeadbackEnableGetRequest, ::silicon_based::FeadbackEnableGetRespone, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetFeadbackEnable_, context, request, response);
+}
+
+void LNAWGCMDService::Stub::async::GetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableGetRequest* request, ::silicon_based::FeadbackEnableGetRespone* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::FeadbackEnableGetRequest, ::silicon_based::FeadbackEnableGetRespone, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetFeadbackEnable_, context, request, response, std::move(f));
+}
+
+void LNAWGCMDService::Stub::async::GetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableGetRequest* request, ::silicon_based::FeadbackEnableGetRespone* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetFeadbackEnable_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::FeadbackEnableGetRespone>* LNAWGCMDService::Stub::PrepareAsyncGetFeadbackEnableRaw(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableGetRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::FeadbackEnableGetRespone, ::silicon_based::FeadbackEnableGetRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetFeadbackEnable_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::FeadbackEnableGetRespone>* LNAWGCMDService::Stub::AsyncGetFeadbackEnableRaw(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableGetRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetFeadbackEnableRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 LNAWGCMDService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LNAWGCMDService_method_names[0],
@@ -804,6 +854,26 @@ LNAWGCMDService::Service::Service() {
              ::silicon_based::DDSEnableGetResponse* resp) {
                return service->GetDDSEnable(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LNAWGCMDService_method_names[22],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::FeadbackEnableSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](LNAWGCMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::FeadbackEnableSetRequest* req,
+             ::silicon_based::ParamResponse* resp) {
+               return service->SetFeadbackEnable(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LNAWGCMDService_method_names[23],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::FeadbackEnableGetRequest, ::silicon_based::FeadbackEnableGetRespone, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](LNAWGCMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::FeadbackEnableGetRequest* req,
+             ::silicon_based::FeadbackEnableGetRespone* resp) {
+               return service->GetFeadbackEnable(ctx, req, resp);
+             }, this)));
 }
 
 LNAWGCMDService::Service::~Service() {
@@ -957,6 +1027,20 @@ LNAWGCMDService::Service::~Service() {
 }
 
 ::grpc::Status LNAWGCMDService::Service::GetDDSEnable(::grpc::ServerContext* context, const ::silicon_based::DDSEnableGetRequest* request, ::silicon_based::DDSEnableGetResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LNAWGCMDService::Service::SetFeadbackEnable(::grpc::ServerContext* context, const ::silicon_based::FeadbackEnableSetRequest* request, ::silicon_based::ParamResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LNAWGCMDService::Service::GetFeadbackEnable(::grpc::ServerContext* context, const ::silicon_based::FeadbackEnableGetRequest* request, ::silicon_based::FeadbackEnableGetRespone* response) {
   (void) context;
   (void) request;
   (void) response;

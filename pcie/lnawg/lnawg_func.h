@@ -110,6 +110,8 @@ extern "C"
         DDS_0_PART_3_DELT_X = C_AWG_REG_BASE_ADDR + (63 * 4),
         DDS_0_PART_4_DELT_X = C_AWG_REG_BASE_ADDR + (64 * 4),
 
+        FEEDBACK_CHANNEL_1_ENABLE = C_AWG_REG_BASE_ADDR + (108 * 4),
+        FEEDBACK_CHANNEL_0_ENABLE = C_AWG_REG_BASE_ADDR + (109 * 4),
     } AWGConfigRegOffset_t;
 
     typedef struct _DEV_TRIG_CTRL
@@ -200,6 +202,9 @@ extern "C"
 
     void set_awg_dds_enable(int32_t logical_ch, uint32_t enable);
     uint32_t get_awg_dds_enable(int32_t logical_ch);
+
+    void set_awg_feadback_enable(int32_t logical_ch, uint32_t enable);
+    uint32_t get_awg_feadback_enable(int32_t logical_ch);
 
 #ifdef __cplusplus
 }

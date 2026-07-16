@@ -74,6 +74,8 @@ extern "C"
     void device_mac_addr_set(const char *mac);
     void set_qa_ch_led_status(int32_t logical_ch, int32_t status);
     void set_awg_ch_led_status(int32_t logical_ch, int32_t status);
+    void set_reaio_feadback_test(uint32_t en, uint32_t fb_trig_delay, uint32_t seq_sel);
+    void get_reaio_feadback_test(uint32_t *en, uint32_t *fb_trig_delay, uint32_t *seq_sel);
 #ifdef __cplusplus
 }
 #endif

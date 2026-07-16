@@ -482,6 +482,82 @@ struct LoopCountGetRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LoopCountGetRequestDefaultTypeInternal _LoopCountGetRequest_default_instance_;
 
+inline constexpr FeadbackEnableSetRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : logical_ch_{0u},
+        enable_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR FeadbackEnableSetRequest::FeadbackEnableSetRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct FeadbackEnableSetRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR FeadbackEnableSetRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~FeadbackEnableSetRequestDefaultTypeInternal() {}
+  union {
+    FeadbackEnableSetRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FeadbackEnableSetRequestDefaultTypeInternal _FeadbackEnableSetRequest_default_instance_;
+
+inline constexpr FeadbackEnableGetRespone::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : enable_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR FeadbackEnableGetRespone::FeadbackEnableGetRespone(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct FeadbackEnableGetResponeDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR FeadbackEnableGetResponeDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~FeadbackEnableGetResponeDefaultTypeInternal() {}
+  union {
+    FeadbackEnableGetRespone _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FeadbackEnableGetResponeDefaultTypeInternal _FeadbackEnableGetRespone_default_instance_;
+
+inline constexpr FeadbackEnableGetRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : logical_ch_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR FeadbackEnableGetRequest::FeadbackEnableGetRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct FeadbackEnableGetRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR FeadbackEnableGetRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~FeadbackEnableGetRequestDefaultTypeInternal() {}
+  union {
+    FeadbackEnableGetRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FeadbackEnableGetRequestDefaultTypeInternal _FeadbackEnableGetRequest_default_instance_;
+
 inline constexpr ExtSourceSetRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : logical_ch_{0u},
@@ -1173,6 +1249,34 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::silicon_based::DDSEnableGetResponse, _impl_.enable_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::FeadbackEnableSetRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::silicon_based::FeadbackEnableSetRequest, _impl_.logical_ch_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::FeadbackEnableSetRequest, _impl_.enable_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::FeadbackEnableGetRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::silicon_based::FeadbackEnableGetRequest, _impl_.logical_ch_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::FeadbackEnableGetRespone, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::silicon_based::FeadbackEnableGetRespone, _impl_.enable_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -1209,6 +1313,9 @@ static const ::_pbi::MigrationSchema
         {289, -1, -1, sizeof(::silicon_based::DDSEnableSetRequest)},
         {299, -1, -1, sizeof(::silicon_based::DDSEnableGetRequest)},
         {308, -1, -1, sizeof(::silicon_based::DDSEnableGetResponse)},
+        {317, -1, -1, sizeof(::silicon_based::FeadbackEnableSetRequest)},
+        {327, -1, -1, sizeof(::silicon_based::FeadbackEnableGetRequest)},
+        {336, -1, -1, sizeof(::silicon_based::FeadbackEnableGetRespone)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::silicon_based::_ModeSetRequest_default_instance_._instance,
@@ -1243,6 +1350,9 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::silicon_based::_DDSEnableSetRequest_default_instance_._instance,
     &::silicon_based::_DDSEnableGetRequest_default_instance_._instance,
     &::silicon_based::_DDSEnableGetResponse_default_instance_._instance,
+    &::silicon_based::_FeadbackEnableSetRequest_default_instance_._instance,
+    &::silicon_based::_FeadbackEnableGetRequest_default_instance_._instance,
+    &::silicon_based::_FeadbackEnableGetRespone_default_instance_._instance,
 };
 const char descriptor_table_protodef_lnawg_5fcmd_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -1292,52 +1402,61 @@ const char descriptor_table_protodef_lnawg_5fcmd_2eproto[] ABSL_ATTRIBUTE_SECTIO
     "t\022\022\n\nlogical_ch\030\001 \001(\r\022\016\n\006enable\030\002 \001(\r\")\n"
     "\023DDSEnableGetRequest\022\022\n\nlogical_ch\030\001 \001(\r"
     "\"&\n\024DDSEnableGetResponse\022\016\n\006enable\030\001 \001(\r"
-    "2\240\016\n\017LNAWGCMDService\022F\n\007SetMode\022\035.silico"
-    "n_based.ModeSetRequest\032\034.silicon_based.P"
-    "aramResponse\022H\n\007GetMode\022\035.silicon_based."
-    "ModeGetRequest\032\036.silicon_based.ModeGetRe"
-    "sponse\022D\n\006SetRun\022\034.silicon_based.RunSetR"
-    "equest\032\034.silicon_based.ParamResponse\022E\n\006"
-    "GetRun\022\034.silicon_based.RunGetRequest\032\035.s"
-    "ilicon_based.RunGetResponse\022P\n\014SetExtSou"
-    "rce\022\".silicon_based.ExtSourceSetRequest\032"
-    "\034.silicon_based.ParamResponse\022W\n\014GetExtS"
-    "ource\022\".silicon_based.ExtSourceGetReques"
-    "t\032#.silicon_based.ExtSourceGetResponse\022K"
-    "\n\013SetOutRange\022\036.silicon_based.RangeSetRe"
-    "quest\032\034.silicon_based.ParamResponse\022N\n\013G"
-    "etOutRange\022\036.silicon_based.RangeGetReque"
-    "st\032\037.silicon_based.RangeGetResponse\022H\n\010S"
-    "etRange\022\036.silicon_based.RangeSetRequest\032"
-    "\034.silicon_based.ParamResponse\022K\n\010GetRang"
-    "e\022\036.silicon_based.RangeGetRequest\032\037.sili"
-    "con_based.RangeGetResponse\022J\n\tSetOffset\022"
-    "\037.silicon_based.OffsetSetRequest\032\034.silic"
-    "on_based.ParamResponse\022N\n\tGetOffset\022\037.si"
-    "licon_based.OffsetGetRequest\032 .silicon_b"
-    "ased.OffsetGetResponse\022V\n\017SetSegmentCoun"
-    "t\022%.silicon_based.SegmentCountSetRequest"
-    "\032\034.silicon_based.ParamResponse\022`\n\017GetSeg"
-    "mentCount\022%.silicon_based.SegmentCountGe"
-    "tRequest\032&.silicon_based.SegmentCountGet"
-    "Response\022P\n\014SetLoopCount\022\".silicon_based"
-    ".LoopCountSetRequest\032\034.silicon_based.Par"
-    "amResponse\022W\n\014GetLoopCount\022\".silicon_bas"
-    "ed.LoopCountGetRequest\032#.silicon_based.L"
-    "oopCountGetResponse\022N\n\013SetDDSParam\022!.sil"
-    "icon_based.DDSParamSetRequest\032\034.silicon_"
-    "based.ParamResponse\022T\n\013GetDDSParam\022!.sil"
-    "icon_based.DDSParamGetRequest\032\".silicon_"
-    "based.DDSParamGetResponse\022X\n\020SetChirpOut"
-    "Param\022&.silicon_based.ChirpOutParamSetRe"
-    "quest\032\034.silicon_based.ParamResponse\022c\n\020G"
-    "etChirpOutParam\022&.silicon_based.ChirpOut"
-    "ParamGetRequest\032\'.silicon_based.ChirpOut"
-    "ParamGetResponse\022P\n\014SetDDSEnable\022\".silic"
-    "on_based.DDSEnableSetRequest\032\034.silicon_b"
-    "ased.ParamResponse\022W\n\014GetDDSEnable\022\".sil"
-    "icon_based.DDSEnableGetRequest\032#.silicon"
-    "_based.DDSEnableGetResponseb\006proto3"
+    "\">\n\030FeadbackEnableSetRequest\022\022\n\nlogical_"
+    "ch\030\001 \001(\r\022\016\n\006enable\030\002 \001(\r\".\n\030FeadbackEnab"
+    "leGetRequest\022\022\n\nlogical_ch\030\001 \001(\r\"*\n\030Fead"
+    "backEnableGetRespone\022\016\n\006enable\030\001 \001(\r2\343\017\n"
+    "\017LNAWGCMDService\022F\n\007SetMode\022\035.silicon_ba"
+    "sed.ModeSetRequest\032\034.silicon_based.Param"
+    "Response\022H\n\007GetMode\022\035.silicon_based.Mode"
+    "GetRequest\032\036.silicon_based.ModeGetRespon"
+    "se\022D\n\006SetRun\022\034.silicon_based.RunSetReque"
+    "st\032\034.silicon_based.ParamResponse\022E\n\006GetR"
+    "un\022\034.silicon_based.RunGetRequest\032\035.silic"
+    "on_based.RunGetResponse\022P\n\014SetExtSource\022"
+    "\".silicon_based.ExtSourceSetRequest\032\034.si"
+    "licon_based.ParamResponse\022W\n\014GetExtSourc"
+    "e\022\".silicon_based.ExtSourceGetRequest\032#."
+    "silicon_based.ExtSourceGetResponse\022K\n\013Se"
+    "tOutRange\022\036.silicon_based.RangeSetReques"
+    "t\032\034.silicon_based.ParamResponse\022N\n\013GetOu"
+    "tRange\022\036.silicon_based.RangeGetRequest\032\037"
+    ".silicon_based.RangeGetResponse\022H\n\010SetRa"
+    "nge\022\036.silicon_based.RangeSetRequest\032\034.si"
+    "licon_based.ParamResponse\022K\n\010GetRange\022\036."
+    "silicon_based.RangeGetRequest\032\037.silicon_"
+    "based.RangeGetResponse\022J\n\tSetOffset\022\037.si"
+    "licon_based.OffsetSetRequest\032\034.silicon_b"
+    "ased.ParamResponse\022N\n\tGetOffset\022\037.silico"
+    "n_based.OffsetGetRequest\032 .silicon_based"
+    ".OffsetGetResponse\022V\n\017SetSegmentCount\022%."
+    "silicon_based.SegmentCountSetRequest\032\034.s"
+    "ilicon_based.ParamResponse\022`\n\017GetSegment"
+    "Count\022%.silicon_based.SegmentCountGetReq"
+    "uest\032&.silicon_based.SegmentCountGetResp"
+    "onse\022P\n\014SetLoopCount\022\".silicon_based.Loo"
+    "pCountSetRequest\032\034.silicon_based.ParamRe"
+    "sponse\022W\n\014GetLoopCount\022\".silicon_based.L"
+    "oopCountGetRequest\032#.silicon_based.LoopC"
+    "ountGetResponse\022N\n\013SetDDSParam\022!.silicon"
+    "_based.DDSParamSetRequest\032\034.silicon_base"
+    "d.ParamResponse\022T\n\013GetDDSParam\022!.silicon"
+    "_based.DDSParamGetRequest\032\".silicon_base"
+    "d.DDSParamGetResponse\022X\n\020SetChirpOutPara"
+    "m\022&.silicon_based.ChirpOutParamSetReques"
+    "t\032\034.silicon_based.ParamResponse\022c\n\020GetCh"
+    "irpOutParam\022&.silicon_based.ChirpOutPara"
+    "mGetRequest\032\'.silicon_based.ChirpOutPara"
+    "mGetResponse\022P\n\014SetDDSEnable\022\".silicon_b"
+    "ased.DDSEnableSetRequest\032\034.silicon_based"
+    ".ParamResponse\022W\n\014GetDDSEnable\022\".silicon"
+    "_based.DDSEnableGetRequest\032#.silicon_bas"
+    "ed.DDSEnableGetResponse\022Z\n\021SetFeadbackEn"
+    "able\022\'.silicon_based.FeadbackEnableSetRe"
+    "quest\032\034.silicon_based.ParamResponse\022e\n\021G"
+    "etFeadbackEnable\022\'.silicon_based.Feadbac"
+    "kEnableGetRequest\032\'.silicon_based.Feadba"
+    "ckEnableGetResponeb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_lnawg_5fcmd_2eproto_deps[1] =
     {
@@ -1347,13 +1466,13 @@ static ::absl::once_flag descriptor_table_lnawg_5fcmd_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_lnawg_5fcmd_2eproto = {
     false,
     false,
-    3675,
+    4026,
     descriptor_table_protodef_lnawg_5fcmd_2eproto,
     "lnawg_cmd.proto",
     &descriptor_table_lnawg_5fcmd_2eproto_once,
     descriptor_table_lnawg_5fcmd_2eproto_deps,
     1,
-    32,
+    35,
     schemas,
     file_default_instances,
     TableStruct_lnawg_5fcmd_2eproto::offsets,
@@ -8818,6 +8937,661 @@ void DDSEnableGetResponse::InternalSwap(DDSEnableGetResponse* PROTOBUF_RESTRICT 
 }
 
 ::google::protobuf::Metadata DDSEnableGetResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class FeadbackEnableSetRequest::_Internal {
+ public:
+};
+
+FeadbackEnableSetRequest::FeadbackEnableSetRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.FeadbackEnableSetRequest)
+}
+FeadbackEnableSetRequest::FeadbackEnableSetRequest(
+    ::google::protobuf::Arena* arena, const FeadbackEnableSetRequest& from)
+    : FeadbackEnableSetRequest(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE FeadbackEnableSetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void FeadbackEnableSetRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, logical_ch_),
+           0,
+           offsetof(Impl_, enable_) -
+               offsetof(Impl_, logical_ch_) +
+               sizeof(Impl_::enable_));
+}
+FeadbackEnableSetRequest::~FeadbackEnableSetRequest() {
+  // @@protoc_insertion_point(destructor:silicon_based.FeadbackEnableSetRequest)
+  SharedDtor(*this);
+}
+inline void FeadbackEnableSetRequest::SharedDtor(MessageLite& self) {
+  FeadbackEnableSetRequest& this_ = static_cast<FeadbackEnableSetRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* FeadbackEnableSetRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) FeadbackEnableSetRequest(arena);
+}
+constexpr auto FeadbackEnableSetRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(FeadbackEnableSetRequest),
+                                            alignof(FeadbackEnableSetRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull FeadbackEnableSetRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_FeadbackEnableSetRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &FeadbackEnableSetRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<FeadbackEnableSetRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &FeadbackEnableSetRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<FeadbackEnableSetRequest>(), &FeadbackEnableSetRequest::ByteSizeLong,
+            &FeadbackEnableSetRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(FeadbackEnableSetRequest, _impl_._cached_size_),
+        false,
+    },
+    &FeadbackEnableSetRequest::kDescriptorMethods,
+    &descriptor_table_lnawg_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* FeadbackEnableSetRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2> FeadbackEnableSetRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::FeadbackEnableSetRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // uint32 enable = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(FeadbackEnableSetRequest, _impl_.enable_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(FeadbackEnableSetRequest, _impl_.enable_)}},
+    // uint32 logical_ch = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(FeadbackEnableSetRequest, _impl_.logical_ch_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(FeadbackEnableSetRequest, _impl_.logical_ch_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 logical_ch = 1;
+    {PROTOBUF_FIELD_OFFSET(FeadbackEnableSetRequest, _impl_.logical_ch_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 enable = 2;
+    {PROTOBUF_FIELD_OFFSET(FeadbackEnableSetRequest, _impl_.enable_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void FeadbackEnableSetRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.FeadbackEnableSetRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.logical_ch_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.enable_) -
+      reinterpret_cast<char*>(&_impl_.logical_ch_)) + sizeof(_impl_.enable_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* FeadbackEnableSetRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const FeadbackEnableSetRequest& this_ = static_cast<const FeadbackEnableSetRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* FeadbackEnableSetRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const FeadbackEnableSetRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:silicon_based.FeadbackEnableSetRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 logical_ch = 1;
+          if (this_._internal_logical_ch() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_logical_ch(), target);
+          }
+
+          // uint32 enable = 2;
+          if (this_._internal_enable() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                2, this_._internal_enable(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:silicon_based.FeadbackEnableSetRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t FeadbackEnableSetRequest::ByteSizeLong(const MessageLite& base) {
+          const FeadbackEnableSetRequest& this_ = static_cast<const FeadbackEnableSetRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t FeadbackEnableSetRequest::ByteSizeLong() const {
+          const FeadbackEnableSetRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:silicon_based.FeadbackEnableSetRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // uint32 logical_ch = 1;
+            if (this_._internal_logical_ch() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_logical_ch());
+            }
+            // uint32 enable = 2;
+            if (this_._internal_enable() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_enable());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void FeadbackEnableSetRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<FeadbackEnableSetRequest*>(&to_msg);
+  auto& from = static_cast<const FeadbackEnableSetRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.FeadbackEnableSetRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_logical_ch() != 0) {
+    _this->_impl_.logical_ch_ = from._impl_.logical_ch_;
+  }
+  if (from._internal_enable() != 0) {
+    _this->_impl_.enable_ = from._impl_.enable_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void FeadbackEnableSetRequest::CopyFrom(const FeadbackEnableSetRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.FeadbackEnableSetRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void FeadbackEnableSetRequest::InternalSwap(FeadbackEnableSetRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(FeadbackEnableSetRequest, _impl_.enable_)
+      + sizeof(FeadbackEnableSetRequest::_impl_.enable_)
+      - PROTOBUF_FIELD_OFFSET(FeadbackEnableSetRequest, _impl_.logical_ch_)>(
+          reinterpret_cast<char*>(&_impl_.logical_ch_),
+          reinterpret_cast<char*>(&other->_impl_.logical_ch_));
+}
+
+::google::protobuf::Metadata FeadbackEnableSetRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class FeadbackEnableGetRequest::_Internal {
+ public:
+};
+
+FeadbackEnableGetRequest::FeadbackEnableGetRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.FeadbackEnableGetRequest)
+}
+FeadbackEnableGetRequest::FeadbackEnableGetRequest(
+    ::google::protobuf::Arena* arena, const FeadbackEnableGetRequest& from)
+    : FeadbackEnableGetRequest(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE FeadbackEnableGetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void FeadbackEnableGetRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.logical_ch_ = {};
+}
+FeadbackEnableGetRequest::~FeadbackEnableGetRequest() {
+  // @@protoc_insertion_point(destructor:silicon_based.FeadbackEnableGetRequest)
+  SharedDtor(*this);
+}
+inline void FeadbackEnableGetRequest::SharedDtor(MessageLite& self) {
+  FeadbackEnableGetRequest& this_ = static_cast<FeadbackEnableGetRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* FeadbackEnableGetRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) FeadbackEnableGetRequest(arena);
+}
+constexpr auto FeadbackEnableGetRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(FeadbackEnableGetRequest),
+                                            alignof(FeadbackEnableGetRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull FeadbackEnableGetRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_FeadbackEnableGetRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &FeadbackEnableGetRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<FeadbackEnableGetRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &FeadbackEnableGetRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<FeadbackEnableGetRequest>(), &FeadbackEnableGetRequest::ByteSizeLong,
+            &FeadbackEnableGetRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(FeadbackEnableGetRequest, _impl_._cached_size_),
+        false,
+    },
+    &FeadbackEnableGetRequest::kDescriptorMethods,
+    &descriptor_table_lnawg_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* FeadbackEnableGetRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> FeadbackEnableGetRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::FeadbackEnableGetRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // uint32 logical_ch = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(FeadbackEnableGetRequest, _impl_.logical_ch_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(FeadbackEnableGetRequest, _impl_.logical_ch_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 logical_ch = 1;
+    {PROTOBUF_FIELD_OFFSET(FeadbackEnableGetRequest, _impl_.logical_ch_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void FeadbackEnableGetRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.FeadbackEnableGetRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.logical_ch_ = 0u;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* FeadbackEnableGetRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const FeadbackEnableGetRequest& this_ = static_cast<const FeadbackEnableGetRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* FeadbackEnableGetRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const FeadbackEnableGetRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:silicon_based.FeadbackEnableGetRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 logical_ch = 1;
+          if (this_._internal_logical_ch() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_logical_ch(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:silicon_based.FeadbackEnableGetRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t FeadbackEnableGetRequest::ByteSizeLong(const MessageLite& base) {
+          const FeadbackEnableGetRequest& this_ = static_cast<const FeadbackEnableGetRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t FeadbackEnableGetRequest::ByteSizeLong() const {
+          const FeadbackEnableGetRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:silicon_based.FeadbackEnableGetRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // uint32 logical_ch = 1;
+            if (this_._internal_logical_ch() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_logical_ch());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void FeadbackEnableGetRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<FeadbackEnableGetRequest*>(&to_msg);
+  auto& from = static_cast<const FeadbackEnableGetRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.FeadbackEnableGetRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_logical_ch() != 0) {
+    _this->_impl_.logical_ch_ = from._impl_.logical_ch_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void FeadbackEnableGetRequest::CopyFrom(const FeadbackEnableGetRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.FeadbackEnableGetRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void FeadbackEnableGetRequest::InternalSwap(FeadbackEnableGetRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+        swap(_impl_.logical_ch_, other->_impl_.logical_ch_);
+}
+
+::google::protobuf::Metadata FeadbackEnableGetRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class FeadbackEnableGetRespone::_Internal {
+ public:
+};
+
+FeadbackEnableGetRespone::FeadbackEnableGetRespone(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.FeadbackEnableGetRespone)
+}
+FeadbackEnableGetRespone::FeadbackEnableGetRespone(
+    ::google::protobuf::Arena* arena, const FeadbackEnableGetRespone& from)
+    : FeadbackEnableGetRespone(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE FeadbackEnableGetRespone::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void FeadbackEnableGetRespone::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.enable_ = {};
+}
+FeadbackEnableGetRespone::~FeadbackEnableGetRespone() {
+  // @@protoc_insertion_point(destructor:silicon_based.FeadbackEnableGetRespone)
+  SharedDtor(*this);
+}
+inline void FeadbackEnableGetRespone::SharedDtor(MessageLite& self) {
+  FeadbackEnableGetRespone& this_ = static_cast<FeadbackEnableGetRespone&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* FeadbackEnableGetRespone::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) FeadbackEnableGetRespone(arena);
+}
+constexpr auto FeadbackEnableGetRespone::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(FeadbackEnableGetRespone),
+                                            alignof(FeadbackEnableGetRespone));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull FeadbackEnableGetRespone::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_FeadbackEnableGetRespone_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &FeadbackEnableGetRespone::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<FeadbackEnableGetRespone>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &FeadbackEnableGetRespone::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<FeadbackEnableGetRespone>(), &FeadbackEnableGetRespone::ByteSizeLong,
+            &FeadbackEnableGetRespone::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(FeadbackEnableGetRespone, _impl_._cached_size_),
+        false,
+    },
+    &FeadbackEnableGetRespone::kDescriptorMethods,
+    &descriptor_table_lnawg_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* FeadbackEnableGetRespone::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> FeadbackEnableGetRespone::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::FeadbackEnableGetRespone>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // uint32 enable = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(FeadbackEnableGetRespone, _impl_.enable_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(FeadbackEnableGetRespone, _impl_.enable_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 enable = 1;
+    {PROTOBUF_FIELD_OFFSET(FeadbackEnableGetRespone, _impl_.enable_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void FeadbackEnableGetRespone::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.FeadbackEnableGetRespone)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.enable_ = 0u;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* FeadbackEnableGetRespone::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const FeadbackEnableGetRespone& this_ = static_cast<const FeadbackEnableGetRespone&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* FeadbackEnableGetRespone::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const FeadbackEnableGetRespone& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:silicon_based.FeadbackEnableGetRespone)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 enable = 1;
+          if (this_._internal_enable() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_enable(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:silicon_based.FeadbackEnableGetRespone)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t FeadbackEnableGetRespone::ByteSizeLong(const MessageLite& base) {
+          const FeadbackEnableGetRespone& this_ = static_cast<const FeadbackEnableGetRespone&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t FeadbackEnableGetRespone::ByteSizeLong() const {
+          const FeadbackEnableGetRespone& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:silicon_based.FeadbackEnableGetRespone)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // uint32 enable = 1;
+            if (this_._internal_enable() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_enable());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void FeadbackEnableGetRespone::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<FeadbackEnableGetRespone*>(&to_msg);
+  auto& from = static_cast<const FeadbackEnableGetRespone&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.FeadbackEnableGetRespone)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_enable() != 0) {
+    _this->_impl_.enable_ = from._impl_.enable_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void FeadbackEnableGetRespone::CopyFrom(const FeadbackEnableGetRespone& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.FeadbackEnableGetRespone)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void FeadbackEnableGetRespone::InternalSwap(FeadbackEnableGetRespone* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+        swap(_impl_.enable_, other->_impl_.enable_);
+}
+
+::google::protobuf::Metadata FeadbackEnableGetRespone::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)
