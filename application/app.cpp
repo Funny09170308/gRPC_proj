@@ -55,14 +55,14 @@ void slave_card_detect(void)
     // TODO:此检测方式不支持混插, 否则会误报
     if (g_pcie_board_info->awg_board_num != 0)
     {
-        if (cardCount < 4)
+        if (g_pcie_board_info->awg_board_num != 4)
         {
             status_led_ctrl(0);
         }
     }
     else if (g_pcie_board_info->qa_board_num != 0)
     {
-        if (cardCount < 2)
+        if (g_pcie_board_info->qa_board_num != 2)
         {
             status_led_ctrl(0);
         }

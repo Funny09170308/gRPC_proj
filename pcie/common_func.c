@@ -55,7 +55,7 @@ void public_dev_init(void)
 {
     get_device_config(&s_sysConfig);
     axi_device_init(&s_publicPeripherlAddrCtx, "public perh", PUBLIC_PERIPHERAL_BASEAADDR, PUBLIC_PERIPHERAL_LENGTH);
-    max7300_init_all_output_high(C_AXI_I2C_0_PATH, E_MAX7300_LED_CTRL_ADDR);
+    // max7300_init_all_output_high(C_AXI_I2C_0_PATH, E_MAX7300_LED_CTRL_ADDR);
 }
 
 void public_dev_deinit(void)
