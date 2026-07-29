@@ -26,6 +26,8 @@ service CommonCMDService {
     rpc SetDevTrigParam(SetTrigParamRequest) returns (ParamResponse);
     rpc GetDevTrigParam(GetTrigParamRequest) returns (GetTrigParamResponse);
     rpc SetTrigStart(SetTrigStartRequest) returns (ParamResponse);
+    rpc SetRERIOFeadbackTest(SetRERIOFeadbackTestRequest) returns (ParamResponse);
+    rpc GetRERIOFeadbackTest(GetRERIOFeadbackTestRequest) returns (GetRERIOFeadbackTestResponse);
 }
 
 message GetIDNRequest {
@@ -169,4 +171,19 @@ message GetTrigParamResponse {
 }
 message SetTrigStartRequest {
     uint32 state = 1;
+}
+
+message SetRERIOFeadbackTestRequest {
+    uint32 fbEn = 1;
+    uint32 fbTrigDelay = 2;
+    uint32 fbSeqSel = 3;
+}
+
+message GetRERIOFeadbackTestRequest {
+}
+
+message GetRERIOFeadbackTestResponse {
+    uint32 fbEn = 1;
+    uint32 fbTrigDelay = 2;
+    uint32 fbSeqSel = 3;
 }

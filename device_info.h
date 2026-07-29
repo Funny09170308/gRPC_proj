@@ -13,7 +13,7 @@
 #define FACTORY_VERSION "Ver0.1.0"
 
 #define VENDER_NAME "ZWDX"
-#define CURRENT_SOFTWARE_VERSION "Ver0.2.0"
+#define CURRENT_SOFTWARE_VERSION "Ver0.2.1"
 
 #define SLAVE_USE_PCIE 1
 
@@ -25,6 +25,7 @@
 
 // ===================== 通用地址地址分区定义 ===================== //
 #define PUBLIC_PERIPHERAL_BASEAADDR 0x80040000
+#define SOFT_TIRGGER_BASEADDR 0x80050000
 #define PUBLIC_PERIPHERAL_LENGTH 0x20000
 
 // ===================== Chip2Chip 子卡地址分区定义 ===================== //

@@ -39,6 +39,8 @@ static const char* CommonCMDService_method_names[] = {
   "/silicon_based.CommonCMDService/SetDevTrigParam",
   "/silicon_based.CommonCMDService/GetDevTrigParam",
   "/silicon_based.CommonCMDService/SetTrigStart",
+  "/silicon_based.CommonCMDService/SetRERIOFeadbackTest",
+  "/silicon_based.CommonCMDService/GetRERIOFeadbackTest",
 };
 
 std::unique_ptr< CommonCMDService::Stub> CommonCMDService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -65,6 +67,8 @@ CommonCMDService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& c
   , rpcmethod_SetDevTrigParam_(CommonCMDService_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetDevTrigParam_(CommonCMDService_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SetTrigStart_(CommonCMDService_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetRERIOFeadbackTest_(CommonCMDService_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetRERIOFeadbackTest_(CommonCMDService_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status CommonCMDService::Stub::GetIDN(::grpc::ClientContext* context, const ::silicon_based::GetIDNRequest& request, ::silicon_based::GetIDNResponse* response) {
@@ -444,6 +448,52 @@ void CommonCMDService::Stub::async::SetTrigStart(::grpc::ClientContext* context,
   return result;
 }
 
+::grpc::Status CommonCMDService::Stub::SetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest& request, ::silicon_based::ParamResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::SetRERIOFeadbackTestRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetRERIOFeadbackTest_, context, request, response);
+}
+
+void CommonCMDService::Stub::async::SetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::SetRERIOFeadbackTestRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetRERIOFeadbackTest_, context, request, response, std::move(f));
+}
+
+void CommonCMDService::Stub::async::SetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetRERIOFeadbackTest_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* CommonCMDService::Stub::PrepareAsyncSetRERIOFeadbackTestRaw(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::ParamResponse, ::silicon_based::SetRERIOFeadbackTestRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetRERIOFeadbackTest_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* CommonCMDService::Stub::AsyncSetRERIOFeadbackTestRaw(::grpc::ClientContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSetRERIOFeadbackTestRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status CommonCMDService::Stub::GetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest& request, ::silicon_based::GetRERIOFeadbackTestResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::GetRERIOFeadbackTestRequest, ::silicon_based::GetRERIOFeadbackTestResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetRERIOFeadbackTest_, context, request, response);
+}
+
+void CommonCMDService::Stub::async::GetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest* request, ::silicon_based::GetRERIOFeadbackTestResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::GetRERIOFeadbackTestRequest, ::silicon_based::GetRERIOFeadbackTestResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetRERIOFeadbackTest_, context, request, response, std::move(f));
+}
+
+void CommonCMDService::Stub::async::GetRERIOFeadbackTest(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest* request, ::silicon_based::GetRERIOFeadbackTestResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetRERIOFeadbackTest_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::GetRERIOFeadbackTestResponse>* CommonCMDService::Stub::PrepareAsyncGetRERIOFeadbackTestRaw(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::GetRERIOFeadbackTestResponse, ::silicon_based::GetRERIOFeadbackTestRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetRERIOFeadbackTest_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::GetRERIOFeadbackTestResponse>* CommonCMDService::Stub::AsyncGetRERIOFeadbackTestRaw(::grpc::ClientContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetRERIOFeadbackTestRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 CommonCMDService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       CommonCMDService_method_names[0],
@@ -615,6 +665,26 @@ CommonCMDService::Service::Service() {
              ::silicon_based::ParamResponse* resp) {
                return service->SetTrigStart(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      CommonCMDService_method_names[17],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< CommonCMDService::Service, ::silicon_based::SetRERIOFeadbackTestRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](CommonCMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::SetRERIOFeadbackTestRequest* req,
+             ::silicon_based::ParamResponse* resp) {
+               return service->SetRERIOFeadbackTest(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      CommonCMDService_method_names[18],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< CommonCMDService::Service, ::silicon_based::GetRERIOFeadbackTestRequest, ::silicon_based::GetRERIOFeadbackTestResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](CommonCMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::GetRERIOFeadbackTestRequest* req,
+             ::silicon_based::GetRERIOFeadbackTestResponse* resp) {
+               return service->GetRERIOFeadbackTest(ctx, req, resp);
+             }, this)));
 }
 
 CommonCMDService::Service::~Service() {
@@ -733,6 +803,20 @@ CommonCMDService::Service::~Service() {
 }
 
 ::grpc::Status CommonCMDService::Service::SetTrigStart(::grpc::ServerContext* context, const ::silicon_based::SetTrigStartRequest* request, ::silicon_based::ParamResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status CommonCMDService::Service::SetRERIOFeadbackTest(::grpc::ServerContext* context, const ::silicon_based::SetRERIOFeadbackTestRequest* request, ::silicon_based::ParamResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status CommonCMDService::Service::GetRERIOFeadbackTest(::grpc::ServerContext* context, const ::silicon_based::GetRERIOFeadbackTestRequest* request, ::silicon_based::GetRERIOFeadbackTestResponse* response) {
   (void) context;
   (void) request;
   (void) response;

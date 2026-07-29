@@ -15,6 +15,9 @@ service LNAWGCMDService {
     rpc SetExtSource(ExtSourceSetRequest) returns (ParamResponse);
     rpc GetExtSource(ExtSourceGetRequest) returns (ExtSourceGetResponse);
 
+    rpc SetOutRange(RangeSetRequest) returns (ParamResponse);
+    rpc GetOutRange(RangeGetRequest) returns (RangeGetResponse);
+
     rpc SetRange(RangeSetRequest) returns (ParamResponse);
     rpc GetRange(RangeGetRequest) returns (RangeGetResponse);
 
@@ -35,6 +38,9 @@ service LNAWGCMDService {
 
     rpc SetDDSEnable(DDSEnableSetRequest) returns (ParamResponse);
     rpc GetDDSEnable(DDSEnableGetRequest) returns (DDSEnableGetResponse);
+
+    rpc SetFeadbackEnable(FeadbackEnableSetRequest) returns (ParamResponse);
+    rpc GetFeadbackEnable(FeadbackEnableGetRequest) returns (FeadbackEnableGetRespone);
 }
 
 // -----------------AWG Mode-----------------------
@@ -195,5 +201,18 @@ message DDSEnableGetRequest {
 }
 
 message DDSEnableGetResponse {
+    uint32 enable = 1;
+}
+// -----------------AWG FeadbackEnable-----------------------
+message FeadbackEnableSetRequest {
+    uint32 logical_ch = 1;
+    uint32 enable = 2;
+}
+
+message FeadbackEnableGetRequest {
+    uint32 logical_ch = 1;
+}
+
+message FeadbackEnableGetRespone {
     uint32 enable = 1;
 }

@@ -66,7 +66,12 @@ public:
     Status SetTrigStart(ServerContext *context,
                         const SetTrigStartRequest *request,
                         ParamResponse *response) override;
-
+    Status SetRERIOFeadbackTest(ServerContext *context,
+                                const SetRERIOFeadbackTestRequest *request,
+                                ParamResponse *response) override;
+    Status GetRERIOFeadbackTest(ServerContext *context,
+                                const GetRERIOFeadbackTestRequest *request,
+                                GetRERIOFeadbackTestResponse *response) override;
 private:
     vector<uint8_t> m_resvBuffer;
 };
@@ -97,6 +102,13 @@ public: // QA function
     Status GetExtSource(ServerContext *context,
                         const ExtSourceGetRequest *request,
                         ExtSourceGetResponse *response) override;
+    Status SetOutRange(ServerContext *context,
+                       const RangeSetRequest *request,
+                       ParamResponse *response) override;
+
+    Status GetOutRange(ServerContext *context,
+                       const RangeGetRequest *request,
+                       RangeGetResponse *response) override;
 
     Status SetRange(ServerContext *context,
                     const RangeSetRequest *request,
@@ -149,10 +161,16 @@ public: // QA function
     Status SetDDSEnable(ServerContext *context,
                         const DDSEnableSetRequest *request,
                         ParamResponse *response) override;
-
     Status GetDDSEnable(ServerContext *context,
                         const DDSEnableGetRequest *request,
                         DDSEnableGetResponse *response) override;
+
+    Status SetFeadbackEnable(ServerContext *context,
+                             const FeadbackEnableSetRequest *request,
+                             ParamResponse *response) override;
+    Status GetFeadbackEnable(ServerContext *context,
+                             const FeadbackEnableGetRequest *request,
+                             FeadbackEnableGetRespone *response) override;
 };
 
 class QACMDServiceImpl final : public QACMDService::Service

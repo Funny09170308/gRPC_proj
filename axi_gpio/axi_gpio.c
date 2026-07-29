@@ -2,7 +2,7 @@
 #include "axi_gpio.h"
 #include "../platform_log/platform_log.h"
 
-#define GPIO_BASE 334
+#define GPIO_BASE 516
 void gpio_power_suplly(void)
 {
     gpio_set_value(IO_POWER_CTRL, 1);

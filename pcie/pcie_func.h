@@ -3,30 +3,10 @@
 
 #include <stdint.h>
 
-#define LED_OFF 0x07
-#define LED_GREEN 0x06
-#define LED_RED 0x05
-#define LED_BLUE 0x03
-
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-
-    typedef enum
-    {
-        FAN_SPEED_CTRL = 0 * 4, // max:1600
-        LED_01_CTRL = 6 * 4,    // staus(OK:green)
-        LED_02_CTRL = 10 * 4,   // ch status(on/off)
-        LED_03_CTRL = 5 * 4,    // ch status(on/off)
-        LED_04_CTRL = 4 * 4,    // ch status(on/off)
-        LED_05_CTRL = 3 * 4,    // ch status(on/off)
-        LED_06_CTRL = 7 * 4,    // error
-        LED_07_CTRL = 8 * 4,    // lnawg ch staus(on/off)
-        LED_08_CTRL = 9 * 4,    // lnawg ch staus(on/off)
-        LED_09_CTRL = 2 * 4,    // lnawg ch staus(on/off)
-        LED_10_CTRL = 1 * 4,    // lnawg ch staus(on/off)
-    };
 
 #define DEV_TYPE_REG_ADDR 0x10000
 #define XDMA_MAP_SIZE 0x40000
