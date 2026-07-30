@@ -358,7 +358,7 @@ void qa_adc_play_param(uint32_t logical_ch, ADCPlayParam_t param)
     P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
 
     int phych;
-
+    param.m_adc_data_len = (uint32_t)(param.m_adc_data_len / 8);
     P_LOG_DEBUG("QA: Set chip: %d adc ch: %d adc play param.", chip_id, local_ch);
     P_LOG_DEBUG("adc_data_len: %d.", param.m_adc_data_len);
     P_LOG_DEBUG("adc_play_times: %d.", param.m_adc_play_times);

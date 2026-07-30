@@ -348,12 +348,12 @@ int pcie_dev_init(void)
         {
             g_pcie_board_info.items[i].dev_type = DEV_TYPE_AWG;
         }
-        else if ((dev_type & MASK) == DEV_TYPE_QA_4G)
+        else if ((dev_type & MASK) == (DEV_TYPE_QA_4G & MASK))
         {
             g_pcie_board_info.qa_sub_type[i] = 4;
             g_pcie_board_info.items[i].dev_type = DEV_TYPE_QA;
         }
-        else if ((dev_type & MASK) == DEV_TYPE_QA_8G)
+        else if ((dev_type & MASK) == (DEV_TYPE_QA_8G & MASK))
         {
             g_pcie_board_info.qa_sub_type[i] = 8;
             g_pcie_board_info.items[i].dev_type = DEV_TYPE_QA;
