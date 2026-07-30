@@ -3,25 +3,26 @@
 
 #include <stdint.h>
 #include "../common_func.h"
-#define CARD_LOCAL_CH_NUM 2
+#define CARD_LOCAL_CH_NUM 4
 #define SIGNAL_MODULE_NUM 16
 
 // ============ XDMA-user space偏移地址 ============//
-#define SYSTEM_CONFIG_BASE 0x0000 * 4
-#define DAC1_CONFIG_BASE 0x0400 * 4
-#define DAC2_CONFIG_BASE 0x0500 * 4
-
-#define ADC1_CONFIG_BASE 0x0800 * 4
-#define ADC2_CONFIG_BASE 0x0900 * 4
-
-#define ADC1_SAMPLE_BASE 0x0C00 * 4
-#define ADC2_SAMPLE_BASE 0x0C10 * 4
+#define SYSTEM_CONFIG_BASE 0x0000
+#define DAC_CONFIG_BASE 0x0400
+#define ADC_CONFIG_BASE 0x0800
+#define ADC_SAMPLE_BASE 0x0C00
 
 #define STATUS_BASE 0x1000 * 4
 #define ADC1_RES_BASE 0x1200 * 4
 #define ADC2_RES_BASE 0x1300 * 4
 
-
+typedef enum
+{
+    E_DAC_AWG_TRIG_PLAY = 1,
+    E_DAC_AWG_CONT_PLAY = 2,
+    E_DAC_DDS_TRIG_PLAY = 3,
+    E_DAC_DDS_CONT_PLAY = 4,
+};
 
 #ifdef __cplusplus
 extern "C"
@@ -88,6 +89,7 @@ extern "C"
         uint32_t m_soft_trig;
         uint32_t m_trigger_mode;
         uint32_t m_trigger_source;
+        uint32_t m_temperature;
         DACConfigReg_t m_DAC_config_reg[CARD_LOCAL_CH_NUM];
         ADCConfigReg_t m_ADC_config_reg[CARD_LOCAL_CH_NUM];
         DEConfigReg_t m_DE_config_reg[CARD_LOCAL_CH_NUM];

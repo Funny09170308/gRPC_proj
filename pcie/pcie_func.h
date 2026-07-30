@@ -21,8 +21,8 @@ extern "C"
         DEV_TYPE_NONE = 0,
         DEV_TYPE_AWG = 0x000000F0,
         DEV_TYPE_QA = 0x000000F1,
-        DEV_TYPE_QA_4G = 0x00000080,
-        DEV_TYPE_QA_8G = 0x00000040,
+        DEV_TYPE_QA_4G = 0x00000042,
+        DEV_TYPE_QA_8G = 0x00000081,
     } DeviceType;
 
     typedef struct
