@@ -341,22 +341,24 @@ int pcie_dev_init(void)
         {
             return -1;
         }
-
+        P_LOG_INFO("Card %d read value: %#x", i, dev_type);
         g_pcie_board_info.items[i].chip_id = i;
-#define MASK 0xFFFFFFF0
         if (dev_type == DEV_TYPE_AWG)
         {
             g_pcie_board_info.items[i].dev_type = DEV_TYPE_AWG;
+            P_LOG_INFO("Card %d type: %#x", i, g_pcie_board_info.items[i].dev_type);
         }
-        else if ((dev_type & MASK) == DEV_TYPE_QA_4G)
+        else if (dev_type == DEV_TYPE_QA_4G)
         {
             g_pcie_board_info.qa_sub_type[i] = 4;
             g_pcie_board_info.items[i].dev_type = DEV_TYPE_QA;
+            P_LOG_INFO("Card %d type: %#x, subtype = %d", i, g_pcie_board_info.items[i].dev_type, g_pcie_board_info.qa_sub_type[i]);
         }
-        else if ((dev_type & MASK) == DEV_TYPE_QA_8G)
+        else if (dev_type == DEV_TYPE_QA_8G)
         {
             g_pcie_board_info.qa_sub_type[i] = 8;
             g_pcie_board_info.items[i].dev_type = DEV_TYPE_QA;
+            P_LOG_INFO("Card %d type: %#x, subtype = %d", i, g_pcie_board_info.items[i].dev_type, g_pcie_board_info.qa_sub_type[i]);
         }
         else
         {
@@ -495,7 +497,7 @@ int xdma_read_user_space(int chip, uint64_t offset, uint32_t *readVal)
         return -1;
     }
     *readVal = *(uint32_t *)(s_xdmaDevContx[chip].m_user_mmap_addr + offset);
-    P_LOG_REPEAT("PCIE read data: %d(Hex:%#x) from user space addr: %#llx.", *readVal, *readVal, offset);
+    P_LOG_DEBUG("PCIE read data: %d(Hex:%#x) from user space addr: %#llx.", *readVal, *readVal, offset);
     return 0;
 }
 
@@ -515,7 +517,7 @@ int xdma_write_user_space(int chip, uint64_t offset, uint32_t writeVal)
 
     *(volatile uint32_t *)(s_xdmaDevContx[chip].m_user_mmap_addr + offset) = writeVal;
 
-    P_LOG_REPEAT("PCIE write data: %u(Hex:%#x) to user space addr: %#llx.",
+    P_LOG_DEBUG("PCIE write data: %u(Hex:%#x) to user space addr: %#llx.",
                  writeVal, writeVal, offset);
 
     return 0;

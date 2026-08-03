@@ -19,37 +19,60 @@ void QAConfigRegisterInit(void)
         for (index = 0; index < SIGNAL_MODULE_NUM; ++index)
         {
             s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_en[index] = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0000 + index * 0x10) * 4;
+            P_LOG_DEBUG("Channel %d DAC ch %d DAC_CFG_REG addr-m_dac_en = %#x", u8ChIndex, index, s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_en[index]);
             s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_freq[index] = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0002 + index * 0x10) * 4;
+            P_LOG_DEBUG("Channel %d DAC ch %d DAC_CFG_REG addr-m_dac_freq = %#x", u8ChIndex, index, s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_freq[index]);
             s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_phase[index] = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0004 + index * 0x10) * 4;
+            P_LOG_DEBUG("Channel %d DAC ch %d DAC_CFG_REG addr-m_dac_phase = %#x", u8ChIndex, index, s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_phase[index]);
             s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_amp[index] = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0005 + index * 0x10) * 4;
+            P_LOG_DEBUG("Channel %d DAC ch %d DAC_CFG_REG addr-m_dac_amp = %#x", u8ChIndex, index, s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_amp[index]);
         }
-        s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_data_len = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0006 * 4);
-        s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_play_times = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0007 * 4);
-        s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_play_delay = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0008 * 4);
-        s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_wait_calc_delay = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0009 * 4);
-        s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_play_mode = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x000A * 4);
-        s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_start_play = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x000B * 4);
+        s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_data_len = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0006) * 4;
+        P_LOG_DEBUG("Channel %d DAC DAC_CFG_REG addr-m_dac_data_len = %#x", u8ChIndex, s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_data_len);
+        s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_play_times = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0007) * 4;
+        P_LOG_DEBUG("Channel %d DAC DAC_CFG_REG addr-m_dac_play_times = %#x", u8ChIndex, s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_play_times);
+        s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_play_delay = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0008) * 4;
+        P_LOG_DEBUG("Channel %d DAC DAC_CFG_REG addr-m_dac_play_delay = %#x", u8ChIndex, s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_play_delay);
+        s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_wait_calc_delay = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0009) * 4;
+        P_LOG_DEBUG("Channel %d DAC DAC_CFG_REG addr-m_dac_wait_calc_delay = %#x", u8ChIndex, s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_wait_calc_delay);
+        s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_play_mode = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x000A) * 4;
+        P_LOG_DEBUG("Channel %d DAC DAC_CFG_REG addr-m_dac_play_mode = %#x", u8ChIndex, s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_play_mode);
+        s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_start_play = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x000B) * 4;
+        P_LOG_DEBUG("Channel %d DAC DAC_CFG_REG addr-m_dac_start_play = %#x", u8ChIndex, s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_start_play);
 
         // 解模参数寄存器配置
         for (index = 0; index < SIGNAL_MODULE_NUM; ++index)
         {
             s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_en[index] = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0000 + index * 0x10) * 4;
+            P_LOG_DEBUG("Channel %d ADC ch %d ADC_CFG_REG addr-m_adc_en = %#x", u8ChIndex, index, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_en[index]);
             s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_freq[index] = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0001 + index * 0x10) * 4;
+            P_LOG_DEBUG("Channel %d ADC ch %d ADC_CFG_REG addr-m_adc_freq = %#x", u8ChIndex, index, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_freq[index]);
             s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_phase[index] = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0004 + index * 0x10) * 4;
+            P_LOG_DEBUG("Channel %d ADC ch %d ADC_CFG_REG addr-m_adc_phase = %#x", u8ChIndex, index, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_phase[index]);
         }
 
         s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_data_len = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0005) * 4;
+        P_LOG_DEBUG("Channel %d ADC ADC_CFG_REG addr-m_adc_data_len = %#x", u8ChIndex, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_data_len);
         s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_play_times = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0006) * 4;
+        P_LOG_DEBUG("Channel %d ADC ADC_CFG_REG addr-m_adc_play_times = %#x", u8ChIndex, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_play_times);
         s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_play_delay = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0007) * 4;
+        P_LOG_DEBUG("Channel %d ADC ADC_CFG_REG addr-m_adc_play_delay = %#x", u8ChIndex, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_play_delay);
         s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_play_mode = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0008) * 4;
+        P_LOG_DEBUG("Channel %d ADC ADC_CFG_REG addr-m_adc_play_mode = %#x", u8ChIndex, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_play_mode);
         s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_start_play = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0009) * 4;
+        P_LOG_DEBUG("Channel %d ADC ADC_CFG_REG addr-m_adc_start_play = %#x", u8ChIndex, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_start_play);
 
         // 直采参数寄存器配置
-        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_start = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0100 + 0x0000) * 4;
-        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_mode = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0100 + 0x0001) * 4;
-        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_length = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0100 + 0x0002) * 4;
-        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_delay = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0100 + 0x0003) * 4;
-        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_num = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0100 + 0x0004) * 4;
+        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_start = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0010 + 0x0000) * 4;
+        P_LOG_DEBUG("Channel %d sample sample_CFG_REG addr-m_sample_start = %#x", u8ChIndex, s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_start);
+        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_mode = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0010 + 0x0001) * 4;
+        P_LOG_DEBUG("Channel %d sample sample_CFG_REG addr-m_sample_mode = %#x", u8ChIndex, s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_mode);
+        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_length = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0010 + 0x0002) * 4;
+        P_LOG_DEBUG("Channel %d sample sample_CFG_REG addr-m_sample_length = %#x", u8ChIndex, s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_length);
+        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_delay = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0010 + 0x0003) * 4;
+        P_LOG_DEBUG("Channel %d sample sample_CFG_REG addr-m_sample_delay = %#x", u8ChIndex, s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_delay);
+        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_num = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0010 + 0x0004) * 4;
+        P_LOG_DEBUG("Channel %d sample sample_CFG_REG addr-m_sample_num = %#x", u8ChIndex, s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_num);
     }
 
     s_QAUserRegs.m_device_id = C_USER_SPACE_CONFIG_OFFSET + (SYSTEM_CONFIG_BASE + 0x0000) * 4;
@@ -119,16 +142,16 @@ int dac_localch_to_phych(uint32_t localch)
     switch (localch)
     {
     case 1:
-        phych = 3;
-        break;
-    case 2:
-        phych = 2;
-        break;
-    case 3:
         phych = 0;
         break;
-    case 4:
+    case 2:
         phych = 1;
+        break;
+    case 3:
+        phych = 2;
+        break;
+    case 4:
+        phych = 3;
         break;
     default:
         P_LOG_ERROR("no suppurt ch: %d\r\n", localch);
@@ -143,16 +166,16 @@ int adc_localch_to_phych(uint32_t localch)
     switch (localch)
     {
     case 1:
-        phych = 3;
+        phych = 0;
         break;
     case 2:
-        phych = 2;
-        break;
-    case 3:
         phych = 1;
         break;
+    case 3:
+        phych = 2;
+        break;
     case 4:
-        phych = 0;
+        phych = 3;
         break;
     default:
         P_LOG_ERROR("no suppurt ch: %d\r\n", localch);
