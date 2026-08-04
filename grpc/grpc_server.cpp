@@ -278,7 +278,7 @@ Status CommonCMDServiceImpl::StreamDataGet(ServerContext *context,
         get_qa_in_route(logicCh, &subid, &local_ch);
     }
 
-    P_LOG_INFO("StreamDataGet: logic_ch = %d, chip=%u, startAddr=0x%llx, requestLen=%u",
+    P_LOG_DEBUG("StreamDataGet: logic_ch = %d, chip=%u, startAddr=0x%llx, requestLen=%u",
                logicCh, subid, (unsigned long long)startAddr, requestLen);
 
     // 边界检查
@@ -321,7 +321,7 @@ Status CommonCMDServiceImpl::StreamDataGet(ServerContext *context,
         remainingLen -= currentPackBytes;
         currentPackage++;
     }
-    P_LOG_INFO("StreamDataGet: All %u packages sent successfully, total bytes=%u",
+    P_LOG_DEBUG("StreamDataGet: All %u packages sent successfully, total bytes=%u",
                totalPackages, requestLen);
     return Status::OK;
 }
