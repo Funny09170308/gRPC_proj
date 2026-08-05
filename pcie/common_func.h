@@ -40,6 +40,9 @@ extern "C"
     int common_reg_data_set(int64_t baseAddr, uint32_t value);
     uint32_t common_reg_data_get(int64_t baseAddr);
 
+    int rf_reg_data_set(int64_t baseAddr, uint32_t value);
+    uint32_t rf_reg_data_get(int64_t baseAddr);
+
     void public_dev_init(void);
     void public_dev_deinit(void);
 

@@ -497,7 +497,7 @@ int xdma_read_user_space(int chip, uint64_t offset, uint32_t *readVal)
         return -1;
     }
     *readVal = *(uint32_t *)(s_xdmaDevContx[chip].m_user_mmap_addr + offset);
-    P_LOG_DEBUG("PCIE read data: %d(Hex:%#x) from user space addr: %#llx.", *readVal, *readVal, offset);
+    P_LOG_REPEAT("PCIE read data: %d(Hex:%#x) from user space addr: %#llx.", *readVal, *readVal, offset);
     return 0;
 }
 
@@ -517,7 +517,7 @@ int xdma_write_user_space(int chip, uint64_t offset, uint32_t writeVal)
 
     *(volatile uint32_t *)(s_xdmaDevContx[chip].m_user_mmap_addr + offset) = writeVal;
 
-    P_LOG_DEBUG("PCIE write data: %u(Hex:%#x) to user space addr: %#llx.",
+    P_LOG_REPEAT("PCIE write data: %u(Hex:%#x) to user space addr: %#llx.",
                  writeVal, writeVal, offset);
 
     return 0;
@@ -536,7 +536,7 @@ int dma_write_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
     {
         P_LOG_ERROR("PCIe DMA write data to device %s failed!", s_xdmaDevContx[chip].m_devH2CSpaceName);
     }
-    P_LOG_DEBUG("PCIe DMA write data to device %s succeed!...%d", s_xdmaDevContx[chip].m_devH2CSpaceName, rc);
+    P_LOG_REPEAT("PCIe DMA write data to device %s succeed!...%d", s_xdmaDevContx[chip].m_devH2CSpaceName, rc);
     return 0;
 }
 
@@ -546,7 +546,7 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
     {
         return -1;
     }
-    P_LOG_DEBUG("PCIe chip %d DMA access addr %#llx, read bytes: %d.", chip, address, bytes);
+    P_LOG_REPEAT("PCIe chip %d DMA access addr %#llx, read bytes: %d.", chip, address, bytes);
     uint64_t size = bytes;
     int index = 0, int_num, rem_num, count = 0;
     int_num = size / DMA_ONCE_SIZE_MAX;
@@ -560,7 +560,7 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
                                 DMA_ONCE_SIZE_MAX,
                                 address + index * DMA_ONCE_SIZE_MAX);
         memcpy(buffer + index * DMA_ONCE_SIZE_MAX, s_xdmaDevContx[chip].m_pbuffer, DMA_ONCE_SIZE_MAX);
-        P_LOG_DEBUG("DMA read index: %d, read count: %d", index, count);
+        P_LOG_REPEAT("DMA read index: %d, read count: %d", index, count);
     }
     memset(s_xdmaDevContx[chip].m_pbuffer, 0x00, rem_num);
     count += read_to_buffer(s_xdmaDevContx[chip].m_devC2HSpaceName,
@@ -569,10 +569,10 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
                             rem_num,
                             address + index * DMA_ONCE_SIZE_MAX);
     memcpy(buffer + index * DMA_ONCE_SIZE_MAX, s_xdmaDevContx[chip].m_pbuffer, rem_num);
-    P_LOG_DEBUG("DMA total read count: %d", count);
+    P_LOG_REPEAT("DMA total read count: %d", count);
     if (count < 0)
         P_LOG_ERROR("PCIe DMA read data from device %s failed!", s_xdmaDevContx[chip].m_devC2HSpaceName);
-    P_LOG_DEBUG("PCIe DMA Read count: %d, expect: %d.", count, bytes);
+        P_LOG_REPEAT("PCIe DMA Read count: %d, expect: %d.", count, bytes);
     return count;
 }
 

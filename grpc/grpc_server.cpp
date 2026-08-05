@@ -54,7 +54,15 @@ Status CommonCMDServiceImpl::SetRegValue(ServerContext *context,
                 regAddr,
                 regVal,
                 regVal);
-    common_reg_data_set(regAddr, regVal);
+    if (((regAddr >> 16) & 0xffff) == 0x8001)
+    {
+        P_LOG_DEBUG("Write addr %#x value to RF REGION");
+        rf_reg_data_set(regAddr, regVal);
+    }
+    else
+    {
+        common_reg_data_set(regAddr, regVal);
+    }
     response->set_success(true);
     return Status::OK;
 }
@@ -66,7 +74,16 @@ Status CommonCMDServiceImpl::GetRegValue(ServerContext *context,
     uint64_t regAddr = request->regaddr();
     P_LOG_DEBUG(" Received GetRegValue, address = %#llx.",
                 regAddr);
-    uint32_t value = common_reg_data_get(regAddr);
+    uint32_t value = 0;
+    if (((regAddr >> 32) & 0xffff) == 0x8001)
+    {
+        P_LOG_DEBUG("Read addr %#x value from RF REGION");
+        value = rf_reg_data_get(regAddr);
+    }
+    else
+    {
+        value = common_reg_data_get(regAddr);
+    }
     response->set_regvalue(value);
     return Status::OK;
 }
@@ -279,7 +296,7 @@ Status CommonCMDServiceImpl::StreamDataGet(ServerContext *context,
     }
 
     P_LOG_DEBUG("StreamDataGet: logic_ch = %d, chip=%u, startAddr=0x%llx, requestLen=%u",
-               logicCh, subid, (unsigned long long)startAddr, requestLen);
+                logicCh, subid, (unsigned long long)startAddr, requestLen);
 
     // 边界检查
     if (requestLen == 0)
@@ -322,7 +339,7 @@ Status CommonCMDServiceImpl::StreamDataGet(ServerContext *context,
         currentPackage++;
     }
     P_LOG_DEBUG("StreamDataGet: All %u packages sent successfully, total bytes=%u",
-               totalPackages, requestLen);
+                totalPackages, requestLen);
     return Status::OK;
 }
 

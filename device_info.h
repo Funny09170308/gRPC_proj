@@ -28,6 +28,8 @@
 #define SOFT_TIRGGER_BASEADDR 0x80050000
 #define PUBLIC_PERIPHERAL_LENGTH 0x20000
 
+#define RF_PERIPHERAL_BASEAADDR 0x80010000
+#define RF_PERIPHERAL_LENGTH 0x1000
 // ===================== Chip2Chip 子卡地址分区定义 ===================== //
 
 // 子卡数量

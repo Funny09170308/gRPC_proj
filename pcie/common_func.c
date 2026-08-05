@@ -28,7 +28,7 @@ static systemConfig_t *s_sysConfig;
 /// @brief 从卡地址映射信息
 static axiDevice_t s_axiChipAddrCtx[CHIP_NUM] = {};
 static axiDevice_t s_publicPeripherlAddrCtx = {};
-
+static axiDevice_t s_rfPeripherlAddrCtx = {};
 uint8_t s_QALEDOffset[8] = {
     E_LED_01_CTRL,
     E_LED_02_CTRL,
@@ -55,12 +55,15 @@ void public_dev_init(void)
 {
     get_device_config(&s_sysConfig);
     axi_device_init(&s_publicPeripherlAddrCtx, "public perh", PUBLIC_PERIPHERAL_BASEAADDR, PUBLIC_PERIPHERAL_LENGTH);
+    axi_device_init(&s_rfPeripherlAddrCtx, "rf perh", RF_PERIPHERAL_BASEAADDR, RF_PERIPHERAL_LENGTH);
+
     // max7300_init_all_output_high(C_AXI_I2C_0_PATH, E_MAX7300_LED_CTRL_ADDR);
 }
 
 void public_dev_deinit(void)
 {
     axi_device_release(&s_publicPeripherlAddrCtx);
+    axi_device_release(&s_rfPeripherlAddrCtx);
 }
 
 void chip2chip_dev_init(void)
@@ -151,6 +154,37 @@ int common_reg_data_set(int64_t baseAddr, uint32_t value)
     return 0;
 }
 
+int rf_reg_data_set(int64_t baseAddr, uint32_t value)
+{
+    int32_t chip = chip_calculate(baseAddr);
+    int32_t *packageBaseAddr;
+    int64_t offset;
+    if (chip < 0)
+    {
+        P_LOG_ERROR("Addr phrase to chip failed!...%llx", baseAddr);
+        return -1;
+    }
+    else if (chip == 4)
+    {
+        offset = (baseAddr - s_rfPeripherlAddrCtx.m_phys_base) / 4;
+        packageBaseAddr = s_rfPeripherlAddrCtx.m_virt_base + offset;
+    }
+    else
+    {
+        offset = (baseAddr - s_axiChipAddrCtx[chip].m_phys_base) / 4;
+        packageBaseAddr = s_axiChipAddrCtx[chip].m_virt_base + offset;
+    }
+    P_LOG_DEBUG("Write lnawg signal data %#x(Dec:%d) to DDR addr:%#llx(offset: %llx from phy addr:%#llx, virt: %#llx)",
+                value,
+                value,
+                baseAddr,
+                offset,
+                s_rfPeripherlAddrCtx.m_phys_base,
+                packageBaseAddr);
+    *(_IO uint32_t *)packageBaseAddr = value;
+    return 0;
+}
+
 uint32_t common_pcie_user_reg_data_get(int32_t chip, uint64_t baseAddr)
 {
     uint32_t rtn = 0;
@@ -185,11 +219,44 @@ uint32_t common_reg_data_get(int64_t baseAddr)
         offset = (baseAddr - s_axiChipAddrCtx[chip].m_phys_base) / 4;
         packageBaseAddr = s_axiChipAddrCtx[chip].m_virt_base + offset;
     }
+    P_LOG_DEBUG("Read lnawg signal reg data: %#x(Dec: %d) from addr:%#llx(offset: %llx from phy addr:%#llx, virt: %#llx)",
+                rtn,
+                rtn,
+                baseAddr,
+                offset,
+                packageBaseAddr);
+    rtn = *(_IO uint32_t *)packageBaseAddr;
+    return rtn;
+}
+
+uint32_t rf_reg_data_get(int64_t baseAddr)
+{
+    uint32_t rtn = 0;
+    int32_t chip = chip_calculate(baseAddr);
+    uint32_t *packageBaseAddr;
+    int64_t offset;
+    if (chip < 0)
+    {
+        P_LOG_ERROR("Addr phrase to chip failed!");
+        return -1;
+    }
+    else if (chip == 4)
+    {
+        offset = (baseAddr - s_rfPeripherlAddrCtx.m_phys_base) / 4;
+        packageBaseAddr = s_rfPeripherlAddrCtx.m_virt_base + offset;
+    }
+    else
+    {
+        // 计算偏移量(4字节偏移)
+        offset = (baseAddr - s_axiChipAddrCtx[chip].m_phys_base) / 4;
+        packageBaseAddr = s_axiChipAddrCtx[chip].m_virt_base + offset;
+    }
     P_LOG_DEBUG("Read lnawg signal reg data: %#x(Dec: %d) from addr:%#llx(offset: %llx, virt: %#llx)",
                 rtn,
                 rtn,
                 baseAddr,
                 offset,
+                s_rfPeripherlAddrCtx.m_phys_base,
                 packageBaseAddr);
     rtn = *(_IO uint32_t *)packageBaseAddr;
     return rtn;
@@ -341,7 +408,7 @@ void temp_monitor(void)
 #define QA_TEMP_OFFSET 0x00010000 + (1 << 2)
     s_boardInfo = get_pcie_board_info();
     float kernel_temp = read_temperature();
-    P_LOG_DEBUG("Kernel temp: %.2f", kernel_temp);
+    P_LOG_REPEAT("Kernel temp: %.2f", kernel_temp);
     if (kernel_temp >= TEMPERATURE_WALL)
     {
         cut_off_slave_power();
