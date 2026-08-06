@@ -62,7 +62,7 @@ void slave_card_detect(void)
     }
     else if (g_pcie_board_info->qa_board_num != 0)
     {
-        if (g_pcie_board_info->qa_board_num != 2)
+        if (g_pcie_board_info->qa_board_num != 1)
         {
             status_led_ctrl(0);
         }
