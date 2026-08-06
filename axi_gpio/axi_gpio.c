@@ -63,3 +63,8 @@ void clock_sync(void)
     usleep(100);
     gpio_set_value(SLOT_SYNC_FINISH, 1);
 }
+
+void rf_pwr_supply(void)
+{
+    gpio_set_value(RF_PWR_CTRL, 1);
+}

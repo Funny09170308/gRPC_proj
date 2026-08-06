@@ -904,3 +904,25 @@ Status QACMDServiceImpl::GetDemodeState(ServerContext *context,
     }
     return Status::OK;
 }
+
+Status QACMDServiceImpl::SetADCRFAtten(ServerContext *context,
+                                       const SetADCRFAttenRequest *request,
+                                       ParamResponse *response)
+{
+    uint32_t ch = request->logicch();
+    float attenVal = request->attenval();
+    P_LOG_DEBUG("SetADCRFAtten: Set ADC atten value...%d, %f.", ch, attenVal);
+    qa_set_rf_ad_atten(ch, attenVal);
+    return Status::OK;
+}
+
+Status QACMDServiceImpl::SetDACRFAtten(ServerContext *context,
+                                       const SetDACRFAttenRequest *request,
+                                       ParamResponse *response)
+{
+    uint32_t ch = request->logicch();
+    float attenVal = request->attenval();
+    P_LOG_DEBUG("SetDACRFAtten: Set DAC atten value...%d, %f.", ch, attenVal);
+    qa_set_rf_da_atten(ch, attenVal);
+    return Status::OK;
+}

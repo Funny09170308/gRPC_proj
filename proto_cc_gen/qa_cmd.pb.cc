@@ -157,6 +157,32 @@ struct SetDACStartStopRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetDACStartStopRequestDefaultTypeInternal _SetDACStartStopRequest_default_instance_;
 
+inline constexpr SetDACRFAttenRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : logicch_{0u},
+        attenval_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SetDACRFAttenRequest::SetDACRFAttenRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SetDACRFAttenRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetDACRFAttenRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetDACRFAttenRequestDefaultTypeInternal() {}
+  union {
+    SetDACRFAttenRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetDACRFAttenRequestDefaultTypeInternal _SetDACRFAttenRequest_default_instance_;
+
 inline constexpr SetDACPlayParamRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : logicch_{0u},
@@ -240,6 +266,32 @@ struct SetADCStartStopRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetADCStartStopRequestDefaultTypeInternal _SetADCStartStopRequest_default_instance_;
+
+inline constexpr SetADCRFAttenRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : logicch_{0u},
+        attenval_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SetADCRFAttenRequest::SetADCRFAttenRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SetADCRFAttenRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetADCRFAttenRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetADCRFAttenRequestDefaultTypeInternal() {}
+  union {
+    SetADCRFAttenRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetADCRFAttenRequestDefaultTypeInternal _SetADCRFAttenRequest_default_instance_;
 
 inline constexpr SetADCPlayParamRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -1051,6 +1103,26 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::silicon_based::GetDemodeStateRequest, _impl_.logicch_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetDACRFAttenRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetDACRFAttenRequest, _impl_.logicch_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetDACRFAttenRequest, _impl_.attenval_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetADCRFAttenRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetADCRFAttenRequest, _impl_.logicch_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetADCRFAttenRequest, _impl_.attenval_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -1083,6 +1155,8 @@ static const ::_pbi::MigrationSchema
         {258, -1, -1, sizeof(::silicon_based::GetADCStartStopResponse)},
         {267, -1, -1, sizeof(::silicon_based::GetSampleStateRequest)},
         {276, -1, -1, sizeof(::silicon_based::GetDemodeStateRequest)},
+        {285, -1, -1, sizeof(::silicon_based::SetDACRFAttenRequest)},
+        {295, -1, -1, sizeof(::silicon_based::SetADCRFAttenRequest)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::silicon_based::_SetTrigSourRequest_default_instance_._instance,
@@ -1113,6 +1187,8 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::silicon_based::_GetADCStartStopResponse_default_instance_._instance,
     &::silicon_based::_GetSampleStateRequest_default_instance_._instance,
     &::silicon_based::_GetDemodeStateRequest_default_instance_._instance,
+    &::silicon_based::_SetDACRFAttenRequest_default_instance_._instance,
+    &::silicon_based::_SetADCRFAttenRequest_default_instance_._instance,
 };
 const char descriptor_table_protodef_qa_5fcmd_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -1162,53 +1238,60 @@ const char descriptor_table_protodef_qa_5fcmd_2eproto[] ABSL_ATTRIBUTE_SECTION_V
     "\001(\r\"+\n\027GetADCStartStopResponse\022\020\n\010chEnab"
     "le\030\001 \001(\r\"(\n\025GetSampleStateRequest\022\017\n\007log"
     "icCh\030\001 \001(\r\"(\n\025GetDemodeStateRequest\022\017\n\007l"
-    "ogicCh\030\001 \001(\r2\245\016\n\014QACMDService\022N\n\013SetTrig"
-    "Sour\022!.silicon_based.SetTrigSourRequest\032"
-    "\034.silicon_based.ParamResponse\022N\n\013SetSoft"
-    "Trig\022!.silicon_based.SetSoftTrigRequest\032"
-    "\034.silicon_based.ParamResponse\022V\n\017SetDACD"
-    "DSConfig\022%.silicon_based.SetDACDDSConfig"
-    "Request\032\034.silicon_based.ParamResponse\022`\n"
-    "\017GetDACDDSConfig\022%.silicon_based.GetDACD"
-    "DSConfigRequest\032&.silicon_based.GetDACDD"
-    "SConfigResponse\022V\n\017SetDACPlayParam\022%.sil"
-    "icon_based.SetDACPlayParamRequest\032\034.sili"
-    "con_based.ParamResponse\022`\n\017GetDACPlayPar"
-    "am\022%.silicon_based.GetDACPlayParamReques"
-    "t\032&.silicon_based.GetDACPlayParamRespons"
-    "e\022V\n\017SetDACStartStop\022%.silicon_based.Set"
-    "DACStartStopRequest\032\034.silicon_based.Para"
-    "mResponse\022`\n\017GetDACStartStop\022%.silicon_b"
-    "ased.GetDACStartStopRequest\032&.silicon_ba"
-    "sed.GetDACStartStopResponse\022T\n\016SetSample"
-    "Param\022$.silicon_based.SetSampleParamRequ"
-    "est\032\034.silicon_based.ParamResponse\022]\n\016Get"
-    "SampleParam\022$.silicon_based.GetSamplePar"
-    "amRequest\032%.silicon_based.GetSampleParam"
-    "Response\022\\\n\022SetSampleStartStop\022(.silicon"
-    "_based.SetSampleStartStopRequest\032\034.silic"
-    "on_based.ParamResponse\022i\n\022GetSampleStart"
-    "Stop\022(.silicon_based.GetSampleStartStopR"
-    "equest\032).silicon_based.GetSampleStartSto"
-    "pResponse\022P\n\014SetADCConfig\022\".silicon_base"
-    "d.SetADCConfigRequest\032\034.silicon_based.Pa"
-    "ramResponse\022W\n\014GetADCConfig\022\".silicon_ba"
-    "sed.GetADCConfigRequest\032#.silicon_based."
-    "GetADCConfigResponse\022V\n\017SetADCPlayParam\022"
-    "%.silicon_based.SetADCPlayParamRequest\032\034"
-    ".silicon_based.ParamResponse\022`\n\017GetADCPl"
-    "ayParam\022%.silicon_based.GetADCPlayParamR"
-    "equest\032&.silicon_based.GetADCPlayParamRe"
-    "sponse\022V\n\017SetADCStartStop\022%.silicon_base"
-    "d.SetADCStartStopRequest\032\034.silicon_based"
-    ".ParamResponse\022`\n\017GetADCStartStop\022%.sili"
-    "con_based.GetADCStartStopRequest\032&.silic"
-    "on_based.GetADCStartStopResponse\022T\n\016GetS"
-    "ampleState\022$.silicon_based.GetSampleStat"
-    "eRequest\032\034.silicon_based.ParamResponse\022T"
-    "\n\016GetDemodeState\022$.silicon_based.GetDemo"
-    "deStateRequest\032\034.silicon_based.ParamResp"
-    "onseb\006proto3"
+    "ogicCh\030\001 \001(\r\"9\n\024SetDACRFAttenRequest\022\017\n\007"
+    "logicCh\030\001 \001(\r\022\020\n\010attenVal\030\002 \001(\002\"9\n\024SetAD"
+    "CRFAttenRequest\022\017\n\007logicCh\030\001 \001(\r\022\020\n\010atte"
+    "nVal\030\002 \001(\0022\315\017\n\014QACMDService\022N\n\013SetTrigSo"
+    "ur\022!.silicon_based.SetTrigSourRequest\032\034."
+    "silicon_based.ParamResponse\022N\n\013SetSoftTr"
+    "ig\022!.silicon_based.SetSoftTrigRequest\032\034."
+    "silicon_based.ParamResponse\022V\n\017SetDACDDS"
+    "Config\022%.silicon_based.SetDACDDSConfigRe"
+    "quest\032\034.silicon_based.ParamResponse\022`\n\017G"
+    "etDACDDSConfig\022%.silicon_based.GetDACDDS"
+    "ConfigRequest\032&.silicon_based.GetDACDDSC"
+    "onfigResponse\022V\n\017SetDACPlayParam\022%.silic"
+    "on_based.SetDACPlayParamRequest\032\034.silico"
+    "n_based.ParamResponse\022`\n\017GetDACPlayParam"
+    "\022%.silicon_based.GetDACPlayParamRequest\032"
+    "&.silicon_based.GetDACPlayParamResponse\022"
+    "V\n\017SetDACStartStop\022%.silicon_based.SetDA"
+    "CStartStopRequest\032\034.silicon_based.ParamR"
+    "esponse\022`\n\017GetDACStartStop\022%.silicon_bas"
+    "ed.GetDACStartStopRequest\032&.silicon_base"
+    "d.GetDACStartStopResponse\022T\n\016SetSamplePa"
+    "ram\022$.silicon_based.SetSampleParamReques"
+    "t\032\034.silicon_based.ParamResponse\022]\n\016GetSa"
+    "mpleParam\022$.silicon_based.GetSampleParam"
+    "Request\032%.silicon_based.GetSampleParamRe"
+    "sponse\022\\\n\022SetSampleStartStop\022(.silicon_b"
+    "ased.SetSampleStartStopRequest\032\034.silicon"
+    "_based.ParamResponse\022i\n\022GetSampleStartSt"
+    "op\022(.silicon_based.GetSampleStartStopReq"
+    "uest\032).silicon_based.GetSampleStartStopR"
+    "esponse\022P\n\014SetADCConfig\022\".silicon_based."
+    "SetADCConfigRequest\032\034.silicon_based.Para"
+    "mResponse\022W\n\014GetADCConfig\022\".silicon_base"
+    "d.GetADCConfigRequest\032#.silicon_based.Ge"
+    "tADCConfigResponse\022V\n\017SetADCPlayParam\022%."
+    "silicon_based.SetADCPlayParamRequest\032\034.s"
+    "ilicon_based.ParamResponse\022`\n\017GetADCPlay"
+    "Param\022%.silicon_based.GetADCPlayParamReq"
+    "uest\032&.silicon_based.GetADCPlayParamResp"
+    "onse\022V\n\017SetADCStartStop\022%.silicon_based."
+    "SetADCStartStopRequest\032\034.silicon_based.P"
+    "aramResponse\022`\n\017GetADCStartStop\022%.silico"
+    "n_based.GetADCStartStopRequest\032&.silicon"
+    "_based.GetADCStartStopResponse\022R\n\rSetDAC"
+    "RFAtten\022#.silicon_based.SetDACRFAttenReq"
+    "uest\032\034.silicon_based.ParamResponse\022R\n\rSe"
+    "tADCRFAtten\022#.silicon_based.SetADCRFAtte"
+    "nRequest\032\034.silicon_based.ParamResponse\022T"
+    "\n\016GetSampleState\022$.silicon_based.GetSamp"
+    "leStateRequest\032\034.silicon_based.ParamResp"
+    "onse\022T\n\016GetDemodeState\022$.silicon_based.G"
+    "etDemodeStateRequest\032\034.silicon_based.Par"
+    "amResponseb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_qa_5fcmd_2eproto_deps[1] =
     {
@@ -1218,13 +1301,13 @@ static ::absl::once_flag descriptor_table_qa_5fcmd_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_qa_5fcmd_2eproto = {
     false,
     false,
-    3692,
+    3978,
     descriptor_table_protodef_qa_5fcmd_2eproto,
     "qa_cmd.proto",
     &descriptor_table_qa_5fcmd_2eproto_once,
     descriptor_table_qa_5fcmd_2eproto_deps,
     1,
-    28,
+    30,
     schemas,
     file_default_instances,
     TableStruct_qa_5fcmd_2eproto::offsets,
@@ -7970,6 +8053,486 @@ void GetDemodeStateRequest::InternalSwap(GetDemodeStateRequest* PROTOBUF_RESTRIC
 }
 
 ::google::protobuf::Metadata GetDemodeStateRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SetDACRFAttenRequest::_Internal {
+ public:
+};
+
+SetDACRFAttenRequest::SetDACRFAttenRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.SetDACRFAttenRequest)
+}
+SetDACRFAttenRequest::SetDACRFAttenRequest(
+    ::google::protobuf::Arena* arena, const SetDACRFAttenRequest& from)
+    : SetDACRFAttenRequest(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE SetDACRFAttenRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void SetDACRFAttenRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, logicch_),
+           0,
+           offsetof(Impl_, attenval_) -
+               offsetof(Impl_, logicch_) +
+               sizeof(Impl_::attenval_));
+}
+SetDACRFAttenRequest::~SetDACRFAttenRequest() {
+  // @@protoc_insertion_point(destructor:silicon_based.SetDACRFAttenRequest)
+  SharedDtor(*this);
+}
+inline void SetDACRFAttenRequest::SharedDtor(MessageLite& self) {
+  SetDACRFAttenRequest& this_ = static_cast<SetDACRFAttenRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* SetDACRFAttenRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SetDACRFAttenRequest(arena);
+}
+constexpr auto SetDACRFAttenRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SetDACRFAttenRequest),
+                                            alignof(SetDACRFAttenRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SetDACRFAttenRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SetDACRFAttenRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SetDACRFAttenRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SetDACRFAttenRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SetDACRFAttenRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SetDACRFAttenRequest>(), &SetDACRFAttenRequest::ByteSizeLong,
+            &SetDACRFAttenRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SetDACRFAttenRequest, _impl_._cached_size_),
+        false,
+    },
+    &SetDACRFAttenRequest::kDescriptorMethods,
+    &descriptor_table_qa_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SetDACRFAttenRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2> SetDACRFAttenRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::SetDACRFAttenRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // float attenVal = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(SetDACRFAttenRequest, _impl_.attenval_)}},
+    // uint32 logicCh = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SetDACRFAttenRequest, _impl_.logicch_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(SetDACRFAttenRequest, _impl_.logicch_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 logicCh = 1;
+    {PROTOBUF_FIELD_OFFSET(SetDACRFAttenRequest, _impl_.logicch_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // float attenVal = 2;
+    {PROTOBUF_FIELD_OFFSET(SetDACRFAttenRequest, _impl_.attenval_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void SetDACRFAttenRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.SetDACRFAttenRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.logicch_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.attenval_) -
+      reinterpret_cast<char*>(&_impl_.logicch_)) + sizeof(_impl_.attenval_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SetDACRFAttenRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SetDACRFAttenRequest& this_ = static_cast<const SetDACRFAttenRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SetDACRFAttenRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SetDACRFAttenRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:silicon_based.SetDACRFAttenRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 logicCh = 1;
+          if (this_._internal_logicch() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_logicch(), target);
+          }
+
+          // float attenVal = 2;
+          if (::absl::bit_cast<::uint32_t>(this_._internal_attenval()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                2, this_._internal_attenval(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:silicon_based.SetDACRFAttenRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SetDACRFAttenRequest::ByteSizeLong(const MessageLite& base) {
+          const SetDACRFAttenRequest& this_ = static_cast<const SetDACRFAttenRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SetDACRFAttenRequest::ByteSizeLong() const {
+          const SetDACRFAttenRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:silicon_based.SetDACRFAttenRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // uint32 logicCh = 1;
+            if (this_._internal_logicch() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_logicch());
+            }
+            // float attenVal = 2;
+            if (::absl::bit_cast<::uint32_t>(this_._internal_attenval()) != 0) {
+              total_size += 5;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SetDACRFAttenRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SetDACRFAttenRequest*>(&to_msg);
+  auto& from = static_cast<const SetDACRFAttenRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.SetDACRFAttenRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_logicch() != 0) {
+    _this->_impl_.logicch_ = from._impl_.logicch_;
+  }
+  if (::absl::bit_cast<::uint32_t>(from._internal_attenval()) != 0) {
+    _this->_impl_.attenval_ = from._impl_.attenval_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetDACRFAttenRequest::CopyFrom(const SetDACRFAttenRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.SetDACRFAttenRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SetDACRFAttenRequest::InternalSwap(SetDACRFAttenRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SetDACRFAttenRequest, _impl_.attenval_)
+      + sizeof(SetDACRFAttenRequest::_impl_.attenval_)
+      - PROTOBUF_FIELD_OFFSET(SetDACRFAttenRequest, _impl_.logicch_)>(
+          reinterpret_cast<char*>(&_impl_.logicch_),
+          reinterpret_cast<char*>(&other->_impl_.logicch_));
+}
+
+::google::protobuf::Metadata SetDACRFAttenRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SetADCRFAttenRequest::_Internal {
+ public:
+};
+
+SetADCRFAttenRequest::SetADCRFAttenRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.SetADCRFAttenRequest)
+}
+SetADCRFAttenRequest::SetADCRFAttenRequest(
+    ::google::protobuf::Arena* arena, const SetADCRFAttenRequest& from)
+    : SetADCRFAttenRequest(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE SetADCRFAttenRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void SetADCRFAttenRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, logicch_),
+           0,
+           offsetof(Impl_, attenval_) -
+               offsetof(Impl_, logicch_) +
+               sizeof(Impl_::attenval_));
+}
+SetADCRFAttenRequest::~SetADCRFAttenRequest() {
+  // @@protoc_insertion_point(destructor:silicon_based.SetADCRFAttenRequest)
+  SharedDtor(*this);
+}
+inline void SetADCRFAttenRequest::SharedDtor(MessageLite& self) {
+  SetADCRFAttenRequest& this_ = static_cast<SetADCRFAttenRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* SetADCRFAttenRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SetADCRFAttenRequest(arena);
+}
+constexpr auto SetADCRFAttenRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SetADCRFAttenRequest),
+                                            alignof(SetADCRFAttenRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SetADCRFAttenRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SetADCRFAttenRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SetADCRFAttenRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SetADCRFAttenRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SetADCRFAttenRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SetADCRFAttenRequest>(), &SetADCRFAttenRequest::ByteSizeLong,
+            &SetADCRFAttenRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SetADCRFAttenRequest, _impl_._cached_size_),
+        false,
+    },
+    &SetADCRFAttenRequest::kDescriptorMethods,
+    &descriptor_table_qa_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SetADCRFAttenRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2> SetADCRFAttenRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::SetADCRFAttenRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // float attenVal = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(SetADCRFAttenRequest, _impl_.attenval_)}},
+    // uint32 logicCh = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SetADCRFAttenRequest, _impl_.logicch_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(SetADCRFAttenRequest, _impl_.logicch_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 logicCh = 1;
+    {PROTOBUF_FIELD_OFFSET(SetADCRFAttenRequest, _impl_.logicch_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // float attenVal = 2;
+    {PROTOBUF_FIELD_OFFSET(SetADCRFAttenRequest, _impl_.attenval_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void SetADCRFAttenRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.SetADCRFAttenRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.logicch_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.attenval_) -
+      reinterpret_cast<char*>(&_impl_.logicch_)) + sizeof(_impl_.attenval_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SetADCRFAttenRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SetADCRFAttenRequest& this_ = static_cast<const SetADCRFAttenRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SetADCRFAttenRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SetADCRFAttenRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:silicon_based.SetADCRFAttenRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 logicCh = 1;
+          if (this_._internal_logicch() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_logicch(), target);
+          }
+
+          // float attenVal = 2;
+          if (::absl::bit_cast<::uint32_t>(this_._internal_attenval()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                2, this_._internal_attenval(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:silicon_based.SetADCRFAttenRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SetADCRFAttenRequest::ByteSizeLong(const MessageLite& base) {
+          const SetADCRFAttenRequest& this_ = static_cast<const SetADCRFAttenRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SetADCRFAttenRequest::ByteSizeLong() const {
+          const SetADCRFAttenRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:silicon_based.SetADCRFAttenRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // uint32 logicCh = 1;
+            if (this_._internal_logicch() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_logicch());
+            }
+            // float attenVal = 2;
+            if (::absl::bit_cast<::uint32_t>(this_._internal_attenval()) != 0) {
+              total_size += 5;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SetADCRFAttenRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SetADCRFAttenRequest*>(&to_msg);
+  auto& from = static_cast<const SetADCRFAttenRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.SetADCRFAttenRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_logicch() != 0) {
+    _this->_impl_.logicch_ = from._impl_.logicch_;
+  }
+  if (::absl::bit_cast<::uint32_t>(from._internal_attenval()) != 0) {
+    _this->_impl_.attenval_ = from._impl_.attenval_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetADCRFAttenRequest::CopyFrom(const SetADCRFAttenRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.SetADCRFAttenRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SetADCRFAttenRequest::InternalSwap(SetADCRFAttenRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SetADCRFAttenRequest, _impl_.attenval_)
+      + sizeof(SetADCRFAttenRequest::_impl_.attenval_)
+      - PROTOBUF_FIELD_OFFSET(SetADCRFAttenRequest, _impl_.logicch_)>(
+          reinterpret_cast<char*>(&_impl_.logicch_),
+          reinterpret_cast<char*>(&other->_impl_.logicch_));
+}
+
+::google::protobuf::Metadata SetADCRFAttenRequest::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

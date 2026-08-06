@@ -57,6 +57,8 @@ int main(void)
     // 后IO板内存空间初始化
     public_dev_init();
     slave_card_init();
+    sleep(5);
+    rf_pwr_supply();
     slave_card_detect();
     task_creat();
     while (1)

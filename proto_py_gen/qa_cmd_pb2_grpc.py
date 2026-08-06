@@ -106,6 +106,16 @@ class QACMDServiceStub(object):
                 request_serializer=qa__cmd__pb2.GetADCStartStopRequest.SerializeToString,
                 response_deserializer=qa__cmd__pb2.GetADCStartStopResponse.FromString,
                 _registered_method=True)
+        self.SetDACRFAtten = channel.unary_unary(
+                '/silicon_based.QACMDService/SetDACRFAtten',
+                request_serializer=qa__cmd__pb2.SetDACRFAttenRequest.SerializeToString,
+                response_deserializer=common__cmd__pb2.ParamResponse.FromString,
+                _registered_method=True)
+        self.SetADCRFAtten = channel.unary_unary(
+                '/silicon_based.QACMDService/SetADCRFAtten',
+                request_serializer=qa__cmd__pb2.SetADCRFAttenRequest.SerializeToString,
+                response_deserializer=common__cmd__pb2.ParamResponse.FromString,
+                _registered_method=True)
         self.GetSampleState = channel.unary_unary(
                 '/silicon_based.QACMDService/GetSampleState',
                 request_serializer=qa__cmd__pb2.GetSampleStateRequest.SerializeToString,
@@ -230,6 +240,18 @@ class QACMDServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetDACRFAtten(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SetADCRFAtten(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def GetSampleState(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -334,6 +356,16 @@ def add_QACMDServiceServicer_to_server(servicer, server):
                     servicer.GetADCStartStop,
                     request_deserializer=qa__cmd__pb2.GetADCStartStopRequest.FromString,
                     response_serializer=qa__cmd__pb2.GetADCStartStopResponse.SerializeToString,
+            ),
+            'SetDACRFAtten': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetDACRFAtten,
+                    request_deserializer=qa__cmd__pb2.SetDACRFAttenRequest.FromString,
+                    response_serializer=common__cmd__pb2.ParamResponse.SerializeToString,
+            ),
+            'SetADCRFAtten': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetADCRFAtten,
+                    request_deserializer=qa__cmd__pb2.SetADCRFAttenRequest.FromString,
+                    response_serializer=common__cmd__pb2.ParamResponse.SerializeToString,
             ),
             'GetSampleState': grpc.unary_unary_rpc_method_handler(
                     servicer.GetSampleState,
@@ -833,6 +865,60 @@ class QACMDService(object):
             '/silicon_based.QACMDService/GetADCStartStop',
             qa__cmd__pb2.GetADCStartStopRequest.SerializeToString,
             qa__cmd__pb2.GetADCStartStopResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SetDACRFAtten(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetDACRFAtten',
+            qa__cmd__pb2.SetDACRFAttenRequest.SerializeToString,
+            common__cmd__pb2.ParamResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SetADCRFAtten(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetADCRFAtten',
+            qa__cmd__pb2.SetADCRFAttenRequest.SerializeToString,
+            common__cmd__pb2.ParamResponse.FromString,
             options,
             channel_credentials,
             insecure,

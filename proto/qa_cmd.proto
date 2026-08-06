@@ -24,6 +24,10 @@ service QACMDService {
     rpc GetADCPlayParam(GetADCPlayParamRequest) returns (GetADCPlayParamResponse);
     rpc SetADCStartStop(SetADCStartStopRequest) returns (ParamResponse);
     rpc GetADCStartStop(GetADCStartStopRequest) returns (GetADCStartStopResponse);
+    rpc SetDACRFAtten(SetDACRFAttenRequest) returns (ParamResponse);
+    rpc GetDACRFAtten(GetDACRFAttenRequest) returns (GetDACRFAttenResponse);
+    rpc SetADCRFAtten(SetADCRFAttenRequest) returns (ParamResponse);
+    rpc GetADCRFAtten(GetADCRFAttenRequest) returns (GetADCRFAttenResponse);
 
     rpc GetSampleState(GetSampleStateRequest) returns (ParamResponse);
     rpc GetDemodeState(GetDemodeStateRequest) returns (ParamResponse);
@@ -148,4 +152,27 @@ message GetSampleStateRequest {
 
 message GetDemodeStateRequest {
     uint32 logicCh = 1;
+}
+
+message SetDACRFAttenRequest {
+    uint32 logicCh = 1;
+    float attenVal = 2;
+}
+
+message GetDACRFAttenRequest {
+    uint32 logicCh = 1;
+}
+message GetDACRFAttenResponse {
+    float attenVal = 1;
+}
+message GetADCRFAttenRequest {
+    uint32 logicCh = 1;
+}
+message GetADCRFAttenResponse {
+    float attenVal = 1;
+}
+
+message SetADCRFAttenRequest {
+    uint32 logicCh = 1;
+    float attenVal = 2;
 }

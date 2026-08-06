@@ -18,8 +18,7 @@ void set_latch(void)
     rf_reg_data_set(0x80010000, 0);
 }
 
-#define C_SET_ATTEN_0 0
-#define C_SET_ATTEN_1 1
+
 void set_ch_atten(uint8_t ch, uint8_t sel, uint8_t attenVal)
 {
     if (ch > C_RF_TOTAL_CH_NUM)

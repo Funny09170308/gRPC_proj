@@ -72,6 +72,7 @@ public:
     Status GetRERIOFeadbackTest(ServerContext *context,
                                 const GetRERIOFeadbackTestRequest *request,
                                 GetRERIOFeadbackTestResponse *response) override;
+
 private:
     vector<uint8_t> m_resvBuffer;
 };
@@ -236,6 +237,12 @@ public: // QA function
     Status GetDemodeState(ServerContext *context,
                           const GetDemodeStateRequest *request,
                           ParamResponse *response) override;
+    Status SetADCRFAtten(ServerContext *context,
+                           const SetADCRFAttenRequest *request,
+                           ParamResponse *response) override;
+    Status SetDACRFAtten(ServerContext *context,
+                           const SetDACRFAttenRequest *request,
+                           ParamResponse *response) override;
 };
 
 #ifdef __cplusplus

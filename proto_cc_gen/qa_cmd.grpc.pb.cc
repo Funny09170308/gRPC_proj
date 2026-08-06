@@ -40,6 +40,8 @@ static const char* QACMDService_method_names[] = {
   "/silicon_based.QACMDService/GetADCPlayParam",
   "/silicon_based.QACMDService/SetADCStartStop",
   "/silicon_based.QACMDService/GetADCStartStop",
+  "/silicon_based.QACMDService/SetDACRFAtten",
+  "/silicon_based.QACMDService/SetADCRFAtten",
   "/silicon_based.QACMDService/GetSampleState",
   "/silicon_based.QACMDService/GetDemodeState",
 };
@@ -69,8 +71,10 @@ QACMDService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   , rpcmethod_GetADCPlayParam_(QACMDService_method_names[15], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SetADCStartStop_(QACMDService_method_names[16], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetADCStartStop_(QACMDService_method_names[17], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetSampleState_(QACMDService_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetDemodeState_(QACMDService_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetDACRFAtten_(QACMDService_method_names[18], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetADCRFAtten_(QACMDService_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSampleState_(QACMDService_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetDemodeState_(QACMDService_method_names[21], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status QACMDService::Stub::SetTrigSour(::grpc::ClientContext* context, const ::silicon_based::SetTrigSourRequest& request, ::silicon_based::ParamResponse* response) {
@@ -487,6 +491,52 @@ void QACMDService::Stub::async::GetADCStartStop(::grpc::ClientContext* context, 
   return result;
 }
 
+::grpc::Status QACMDService::Stub::SetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest& request, ::silicon_based::ParamResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::SetDACRFAttenRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetDACRFAtten_, context, request, response);
+}
+
+void QACMDService::Stub::async::SetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::SetDACRFAttenRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetDACRFAtten_, context, request, response, std::move(f));
+}
+
+void QACMDService::Stub::async::SetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetDACRFAtten_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* QACMDService::Stub::PrepareAsyncSetDACRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::ParamResponse, ::silicon_based::SetDACRFAttenRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetDACRFAtten_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* QACMDService::Stub::AsyncSetDACRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSetDACRFAttenRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status QACMDService::Stub::SetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest& request, ::silicon_based::ParamResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::SetADCRFAttenRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetADCRFAtten_, context, request, response);
+}
+
+void QACMDService::Stub::async::SetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::SetADCRFAttenRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetADCRFAtten_, context, request, response, std::move(f));
+}
+
+void QACMDService::Stub::async::SetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetADCRFAtten_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* QACMDService::Stub::PrepareAsyncSetADCRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::ParamResponse, ::silicon_based::SetADCRFAttenRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetADCRFAtten_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* QACMDService::Stub::AsyncSetADCRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSetADCRFAttenRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 ::grpc::Status QACMDService::Stub::GetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::silicon_based::ParamResponse* response) {
   return ::grpc::internal::BlockingUnaryCall< ::silicon_based::GetSampleStateRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetSampleState_, context, request, response);
 }
@@ -717,6 +767,26 @@ QACMDService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       QACMDService_method_names[18],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< QACMDService::Service, ::silicon_based::SetDACRFAttenRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](QACMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::SetDACRFAttenRequest* req,
+             ::silicon_based::ParamResponse* resp) {
+               return service->SetDACRFAtten(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      QACMDService_method_names[19],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< QACMDService::Service, ::silicon_based::SetADCRFAttenRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](QACMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::SetADCRFAttenRequest* req,
+             ::silicon_based::ParamResponse* resp) {
+               return service->SetADCRFAtten(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      QACMDService_method_names[20],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< QACMDService::Service, ::silicon_based::GetSampleStateRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](QACMDService::Service* service,
              ::grpc::ServerContext* ctx,
@@ -725,7 +795,7 @@ QACMDService::Service::Service() {
                return service->GetSampleState(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      QACMDService_method_names[19],
+      QACMDService_method_names[21],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< QACMDService::Service, ::silicon_based::GetDemodeStateRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](QACMDService::Service* service,
@@ -859,6 +929,20 @@ QACMDService::Service::~Service() {
 }
 
 ::grpc::Status QACMDService::Service::GetADCStartStop(::grpc::ServerContext* context, const ::silicon_based::GetADCStartStopRequest* request, ::silicon_based::GetADCStartStopResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status QACMDService::Service::SetDACRFAtten(::grpc::ServerContext* context, const ::silicon_based::SetDACRFAttenRequest* request, ::silicon_based::ParamResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status QACMDService::Service::SetADCRFAtten(::grpc::ServerContext* context, const ::silicon_based::SetADCRFAttenRequest* request, ::silicon_based::ParamResponse* response) {
   (void) context;
   (void) request;
   (void) response;

@@ -113,6 +113,9 @@ extern SetADCConfigRequestDefaultTypeInternal _SetADCConfigRequest_default_insta
 class SetADCPlayParamRequest;
 struct SetADCPlayParamRequestDefaultTypeInternal;
 extern SetADCPlayParamRequestDefaultTypeInternal _SetADCPlayParamRequest_default_instance_;
+class SetADCRFAttenRequest;
+struct SetADCRFAttenRequestDefaultTypeInternal;
+extern SetADCRFAttenRequestDefaultTypeInternal _SetADCRFAttenRequest_default_instance_;
 class SetADCStartStopRequest;
 struct SetADCStartStopRequestDefaultTypeInternal;
 extern SetADCStartStopRequestDefaultTypeInternal _SetADCStartStopRequest_default_instance_;
@@ -122,6 +125,9 @@ extern SetDACDDSConfigRequestDefaultTypeInternal _SetDACDDSConfigRequest_default
 class SetDACPlayParamRequest;
 struct SetDACPlayParamRequestDefaultTypeInternal;
 extern SetDACPlayParamRequestDefaultTypeInternal _SetDACPlayParamRequest_default_instance_;
+class SetDACRFAttenRequest;
+struct SetDACRFAttenRequestDefaultTypeInternal;
+extern SetDACRFAttenRequestDefaultTypeInternal _SetDACRFAttenRequest_default_instance_;
 class SetDACStartStopRequest;
 struct SetDACStartStopRequestDefaultTypeInternal;
 extern SetDACStartStopRequestDefaultTypeInternal _SetDACStartStopRequest_default_instance_;
@@ -1177,6 +1183,209 @@ class SetDACStartStopRequest final
 };
 // -------------------------------------------------------------------
 
+class SetDACRFAttenRequest final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.SetDACRFAttenRequest) */ {
+ public:
+  inline SetDACRFAttenRequest() : SetDACRFAttenRequest(nullptr) {}
+  ~SetDACRFAttenRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SetDACRFAttenRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SetDACRFAttenRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SetDACRFAttenRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SetDACRFAttenRequest(const SetDACRFAttenRequest& from) : SetDACRFAttenRequest(nullptr, from) {}
+  inline SetDACRFAttenRequest(SetDACRFAttenRequest&& from) noexcept
+      : SetDACRFAttenRequest(nullptr, std::move(from)) {}
+  inline SetDACRFAttenRequest& operator=(const SetDACRFAttenRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetDACRFAttenRequest& operator=(SetDACRFAttenRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetDACRFAttenRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetDACRFAttenRequest* internal_default_instance() {
+    return reinterpret_cast<const SetDACRFAttenRequest*>(
+        &_SetDACRFAttenRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 28;
+  friend void swap(SetDACRFAttenRequest& a, SetDACRFAttenRequest& b) { a.Swap(&b); }
+  inline void Swap(SetDACRFAttenRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetDACRFAttenRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetDACRFAttenRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SetDACRFAttenRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SetDACRFAttenRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SetDACRFAttenRequest& from) { SetDACRFAttenRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SetDACRFAttenRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.SetDACRFAttenRequest"; }
+
+ protected:
+  explicit SetDACRFAttenRequest(::google::protobuf::Arena* arena);
+  SetDACRFAttenRequest(::google::protobuf::Arena* arena, const SetDACRFAttenRequest& from);
+  SetDACRFAttenRequest(::google::protobuf::Arena* arena, SetDACRFAttenRequest&& from) noexcept
+      : SetDACRFAttenRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kLogicChFieldNumber = 1,
+    kAttenValFieldNumber = 2,
+  };
+  // uint32 logicCh = 1;
+  void clear_logicch() ;
+  ::uint32_t logicch() const;
+  void set_logicch(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_logicch() const;
+  void _internal_set_logicch(::uint32_t value);
+
+  public:
+  // float attenVal = 2;
+  void clear_attenval() ;
+  float attenval() const;
+  void set_attenval(float value);
+
+  private:
+  float _internal_attenval() const;
+  void _internal_set_attenval(float value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.SetDACRFAttenRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SetDACRFAttenRequest& from_msg);
+    ::uint32_t logicch_;
+    float attenval_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_qa_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
 class SetDACPlayParamRequest final
     : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:silicon_based.SetDACPlayParamRequest) */ {
@@ -1850,6 +2059,209 @@ class SetADCStartStopRequest final
                           const SetADCStartStopRequest& from_msg);
     ::uint32_t logicch_;
     ::uint32_t chenable_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_qa_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SetADCRFAttenRequest final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.SetADCRFAttenRequest) */ {
+ public:
+  inline SetADCRFAttenRequest() : SetADCRFAttenRequest(nullptr) {}
+  ~SetADCRFAttenRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SetADCRFAttenRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SetADCRFAttenRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SetADCRFAttenRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SetADCRFAttenRequest(const SetADCRFAttenRequest& from) : SetADCRFAttenRequest(nullptr, from) {}
+  inline SetADCRFAttenRequest(SetADCRFAttenRequest&& from) noexcept
+      : SetADCRFAttenRequest(nullptr, std::move(from)) {}
+  inline SetADCRFAttenRequest& operator=(const SetADCRFAttenRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetADCRFAttenRequest& operator=(SetADCRFAttenRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetADCRFAttenRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetADCRFAttenRequest* internal_default_instance() {
+    return reinterpret_cast<const SetADCRFAttenRequest*>(
+        &_SetADCRFAttenRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 29;
+  friend void swap(SetADCRFAttenRequest& a, SetADCRFAttenRequest& b) { a.Swap(&b); }
+  inline void Swap(SetADCRFAttenRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetADCRFAttenRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetADCRFAttenRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SetADCRFAttenRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SetADCRFAttenRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SetADCRFAttenRequest& from) { SetADCRFAttenRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SetADCRFAttenRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.SetADCRFAttenRequest"; }
+
+ protected:
+  explicit SetADCRFAttenRequest(::google::protobuf::Arena* arena);
+  SetADCRFAttenRequest(::google::protobuf::Arena* arena, const SetADCRFAttenRequest& from);
+  SetADCRFAttenRequest(::google::protobuf::Arena* arena, SetADCRFAttenRequest&& from) noexcept
+      : SetADCRFAttenRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kLogicChFieldNumber = 1,
+    kAttenValFieldNumber = 2,
+  };
+  // uint32 logicCh = 1;
+  void clear_logicch() ;
+  ::uint32_t logicch() const;
+  void set_logicch(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_logicch() const;
+  void _internal_set_logicch(::uint32_t value);
+
+  public:
+  // float attenVal = 2;
+  void clear_attenval() ;
+  float attenval() const;
+  void set_attenval(float value);
+
+  private:
+  float _internal_attenval() const;
+  void _internal_set_attenval(float value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.SetADCRFAttenRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SetADCRFAttenRequest& from_msg);
+    ::uint32_t logicch_;
+    float attenval_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -7512,6 +7924,102 @@ inline ::uint32_t GetDemodeStateRequest::_internal_logicch() const {
 inline void GetDemodeStateRequest::_internal_set_logicch(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.logicch_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SetDACRFAttenRequest
+
+// uint32 logicCh = 1;
+inline void SetDACRFAttenRequest::clear_logicch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logicch_ = 0u;
+}
+inline ::uint32_t SetDACRFAttenRequest::logicch() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SetDACRFAttenRequest.logicCh)
+  return _internal_logicch();
+}
+inline void SetDACRFAttenRequest::set_logicch(::uint32_t value) {
+  _internal_set_logicch(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SetDACRFAttenRequest.logicCh)
+}
+inline ::uint32_t SetDACRFAttenRequest::_internal_logicch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.logicch_;
+}
+inline void SetDACRFAttenRequest::_internal_set_logicch(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logicch_ = value;
+}
+
+// float attenVal = 2;
+inline void SetDACRFAttenRequest::clear_attenval() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.attenval_ = 0;
+}
+inline float SetDACRFAttenRequest::attenval() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SetDACRFAttenRequest.attenVal)
+  return _internal_attenval();
+}
+inline void SetDACRFAttenRequest::set_attenval(float value) {
+  _internal_set_attenval(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SetDACRFAttenRequest.attenVal)
+}
+inline float SetDACRFAttenRequest::_internal_attenval() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.attenval_;
+}
+inline void SetDACRFAttenRequest::_internal_set_attenval(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.attenval_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SetADCRFAttenRequest
+
+// uint32 logicCh = 1;
+inline void SetADCRFAttenRequest::clear_logicch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logicch_ = 0u;
+}
+inline ::uint32_t SetADCRFAttenRequest::logicch() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SetADCRFAttenRequest.logicCh)
+  return _internal_logicch();
+}
+inline void SetADCRFAttenRequest::set_logicch(::uint32_t value) {
+  _internal_set_logicch(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SetADCRFAttenRequest.logicCh)
+}
+inline ::uint32_t SetADCRFAttenRequest::_internal_logicch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.logicch_;
+}
+inline void SetADCRFAttenRequest::_internal_set_logicch(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logicch_ = value;
+}
+
+// float attenVal = 2;
+inline void SetADCRFAttenRequest::clear_attenval() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.attenval_ = 0;
+}
+inline float SetADCRFAttenRequest::attenval() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SetADCRFAttenRequest.attenVal)
+  return _internal_attenval();
+}
+inline void SetADCRFAttenRequest::set_attenval(float value) {
+  _internal_set_attenval(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SetADCRFAttenRequest.attenVal)
+}
+inline float SetADCRFAttenRequest::_internal_attenval() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.attenval_;
+}
+inline void SetADCRFAttenRequest::_internal_set_attenval(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.attenval_ = value;
 }
 
 #ifdef __GNUC__

@@ -20,6 +20,17 @@
 #define C_CH_EN_START_BIT 15
 #define C_CH_EN_BIT_WIDTH 1
 
+// 一级衰减
+#define C_SET_ATTEN_0 0
+// 二级衰减
+#define C_SET_ATTEN_1 1
+
+#define C_ATTEN_STEP 0.25
+#define C_ATTEN_MIN_VAL 10.0f
+#define C_STAGE_ATTEN_SET_MAX_VAL 0xff
+#define C_ATTEN_SET_MAX_VAL (uint16_t)(C_STAGE_ATTEN_SET_MAX_VAL * 2)
+#define C_ATTEN_SET_MIN_VAL (uint16_t)(C_ATTEN_MIN_VAL / C_ATTEN_STEP)
+
 // 生成指定位宽的掩码
 #define C_FIELD_MASK_RAW(bitWidth) ((1 << bitWidth) - 1)
 // 生成在寄存器中对齐后的掩码
