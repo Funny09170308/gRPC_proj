@@ -5,8 +5,8 @@
 uint32_t build_reg_value(uint8_t chSel, uint8_t chEn, uint8_t LESel, uint8_t ATTEN)
 {
     uint32_t reg_val = C_FIELD_PACK(ATTEN, C_ATTEN_START_BIT, C_ATTEN_BIT_WIDTH) |
-                       C_FIELD_PACK(LESel, C_CH_SEL_START_BIT, C_CH_SEL_BIT_WIDTH) |
-                       C_FIELD_PACK(chSel, C_LE_SEL_START_BIT, C_LE_SEL_BIT_WIDTH) |
+                       C_FIELD_PACK(chSel, C_CH_SEL_START_BIT, C_CH_SEL_BIT_WIDTH) |
+                       C_FIELD_PACK(LESel, C_LE_SEL_START_BIT, C_LE_SEL_BIT_WIDTH) |
                        C_FIELD_PACK(chEn, C_CH_EN_START_BIT, C_CH_EN_BIT_WIDTH);
     return reg_val;
 }

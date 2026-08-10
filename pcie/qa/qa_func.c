@@ -219,7 +219,7 @@ void qa_dac_dds_config(uint32_t logical_ch, uint32_t index, DACDDSConfig_t confi
     qa_dac_start_stop_play(logical_ch, 0); // 停止输出
 
     freq_word = (uint32_t)(config.m_DAC_freq / 4000e6 * pow(2, 25));
-    phase_word = (uint32_t)(config.m_DAC_Phase / 180 * pow(2, 25));
+    phase_word = (uint32_t)(config.m_DAC_Phase / 360 * pow(2, 25));
     amp_word = (uint32_t)(config.m_DAC_AMP * pow(2, 32));
 
     P_LOG_DEBUG("freq: %d value: %d(%#x) write to dds index: %d", config.m_DAC_freq, freq_word, freq_word, index);
@@ -562,14 +562,15 @@ void qa_trig_source_init(void)
     }
 }
 
-uint8_t reverse8bit(uint8_t data)
+uint8_t reverse8bit_lshift1(uint8_t data)
 {
     uint8_t res = 0;
+    data = data << 1;   //左移1位，原始bit7溢出丢弃，最低位补0
     for (int i = 0; i < 8; i++)
     {
-        res <<= 1;         // 结果左移腾出最低位
-        res |= (data & 1); // 取出data最低位放到res
-        data >>= 1;        // 原数据右移，处理下一位
+        res <<= 1;
+        res |= (data & 1);
+        data >>= 1;
     }
     return res;
 }
@@ -584,11 +585,12 @@ void qa_set_rf_da_atten(uint32_t logical_ch, float attenVal)
     uint8_t setAttenVal = (uint8_t)(attenVal / C_ATTEN_STEP);
     uint8_t setStage1AttenVal = C_ATTEN_SET_MIN_VAL;
     uint8_t setStage2AttenVal = 0;
-    if ((setAttenVal >= C_ATTEN_SET_MIN_VAL) && (setAttenVal <= C_STAGE_ATTEN_SET_MAX_VAL))
+    if ((setAttenVal >= 0) && (setAttenVal <= C_STAGE_ATTEN_SET_MAX_VAL))
     {
-        setStage1AttenVal = reverse8bit(setAttenVal);
+        setStage1AttenVal = reverse8bit_lshift1(setAttenVal);
         setStage2AttenVal = 0;
-        P_LOG_DEBUG("Set RF atten stage 1:%#x(origin:%#x)...%f",
+        P_LOG_DEBUG("Set RF channel %d atten stage 1:%#x(origin:%#x)...%f",
+                    phych,
                     setStage1AttenVal,
                     setAttenVal,
                     attenVal);
@@ -611,15 +613,16 @@ void qa_set_rf_ad_atten(uint32_t logical_ch, float attenVal)
     uint8_t setAttenVal = (uint8_t)(attenVal / C_ATTEN_STEP);
     uint8_t stage1AttenVal = C_ATTEN_SET_MIN_VAL;
     uint8_t stage2AttenVal = 0;
-    uint8_t setStage1AttenVal = reverse8bit(stage1AttenVal);
-    uint8_t setStage2AttenVal = reverse8bit(stage2AttenVal);
+    uint8_t setStage1AttenVal = reverse8bit_lshift1(stage1AttenVal);
+    uint8_t setStage2AttenVal = reverse8bit_lshift1(stage2AttenVal);
     if ((setAttenVal >= 0) && (setAttenVal <= C_ATTEN_SET_MAX_VAL))
     {
         stage1AttenVal = (setAttenVal / 2) + (setAttenVal % 2);
         stage2AttenVal = (setAttenVal / 2);
-        setStage1AttenVal = reverse8bit(stage1AttenVal);
-        setStage2AttenVal = reverse8bit(stage2AttenVal);
-        P_LOG_DEBUG("Set RF atten stage 1:%#x(origin:%#x), stage 2:%#x(origin:%#x)...%f",
+        setStage1AttenVal = reverse8bit_lshift1(stage1AttenVal);
+        setStage2AttenVal = reverse8bit_lshift1(stage2AttenVal);
+        P_LOG_DEBUG("Set RF channel %d atten stage 1:%#x(origin:%#x), stage 2:%#x(origin:%#x)...%f",
+                    phych,
                     setStage1AttenVal,
                     stage1AttenVal,
                     setStage2AttenVal,
@@ -633,4 +636,23 @@ void qa_set_rf_ad_atten(uint32_t logical_ch, float attenVal)
     }
     set_ch_atten(phych, C_SET_ATTEN_0, setStage1AttenVal);
     set_ch_atten(phych, C_SET_ATTEN_1, setStage2AttenVal);
+}
+
+#define C_DIGITAL_ATTEN_CH_START_BIT 8
+#define C_DIGITAL_ATTEN_CH_BIT_WIDTH 8
+#define C_DIGITAL_ATTEN_VALUE_START_BIT 0
+#define C_DIGITAL_ATTEN_VALUE_BIT_WIDTH 5
+#define C_DIGITAL_ATTEN_LATCH_START_BIT 16
+#define C_DIGITAL_ATTEN_LATCH_BIT_WIDTH 1
+
+void qa_set_digital_atten(uint32_t logical_ch, uint8_t attenVal)
+{
+    uint8_t chip_id, local_ch;
+    get_qa_in_route(logical_ch, &chip_id, &local_ch);
+    P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
+    int phych;
+    phych = adc_localch_to_phych(local_ch) + 4;
+    uint32_t regVal = C_FIELD_PACK(phych, C_DIGITAL_ATTEN_CH_START_BIT, C_DIGITAL_ATTEN_CH_BIT_WIDTH) |
+                      C_FIELD_PACK(attenVal, C_DIGITAL_ATTEN_VALUE_START_BIT, C_DIGITAL_ATTEN_VALUE_START_BIT) |
+                      C_FIELD_PACK(0, C_DIGITAL_ATTEN_LATCH_START_BIT, C_DIGITAL_ATTEN_LATCH_BIT_WIDTH);
 }
