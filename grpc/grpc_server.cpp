@@ -905,6 +905,17 @@ Status QACMDServiceImpl::GetDemodeState(ServerContext *context,
     return Status::OK;
 }
 
+Status QACMDServiceImpl::SetDigitalAtten(ServerContext *context,
+                                         const SetDigitalAttenRequest *request,
+                                         ParamResponse *response)
+{
+    uint32_t ch = request->logicch();
+    uint8_t attenVal = request->attenval();
+    P_LOG_DEBUG("SetDigitalAtten: Set digital atten value...%d, %d.", ch, attenVal);
+    qa_set_digital_atten(ch, attenVal);
+    return Status::OK;
+}
+
 Status QACMDServiceImpl::SetADCRFAtten(ServerContext *context,
                                        const SetADCRFAttenRequest *request,
                                        ParamResponse *response)

@@ -237,12 +237,15 @@ public: // QA function
     Status GetDemodeState(ServerContext *context,
                           const GetDemodeStateRequest *request,
                           ParamResponse *response) override;
+    Status SetDigitalAtten(ServerContext *context,
+                         const SetDigitalAttenRequest *request,
+                         ParamResponse *response) override;
     Status SetADCRFAtten(ServerContext *context,
-                           const SetADCRFAttenRequest *request,
-                           ParamResponse *response) override;
+                         const SetADCRFAttenRequest *request,
+                         ParamResponse *response) override;
     Status SetDACRFAtten(ServerContext *context,
-                           const SetDACRFAttenRequest *request,
-                           ParamResponse *response) override;
+                         const SetDACRFAttenRequest *request,
+                         ParamResponse *response) override;
 };
 
 #ifdef __cplusplus

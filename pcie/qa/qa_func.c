@@ -562,15 +562,14 @@ void qa_trig_source_init(void)
     }
 }
 
-uint8_t reverse8bit_lshift1(uint8_t data)
+uint8_t reverse8bit(uint8_t data)
 {
     uint8_t res = 0;
-    data = data << 1;   //左移1位，原始bit7溢出丢弃，最低位补0
     for (int i = 0; i < 8; i++)
     {
-        res <<= 1;
-        res |= (data & 1);
-        data >>= 1;
+        res <<= 1;         // 结果左移腾出最低位
+        res |= (data & 1); // 取出data最低位放到res
+        data >>= 1;        // 原数据右移，处理下一位
     }
     return res;
 }
@@ -578,16 +577,18 @@ uint8_t reverse8bit_lshift1(uint8_t data)
 void qa_set_rf_da_atten(uint32_t logical_ch, float attenVal)
 {
     uint8_t chip_id, local_ch;
+    logical_ch = 5 - logical_ch;
     get_qa_out_route(logical_ch, &chip_id, &local_ch);
     P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
     int phych;
     phych = adc_localch_to_phych(local_ch);
     uint8_t setAttenVal = (uint8_t)(attenVal / C_ATTEN_STEP);
+    P_LOG_DEBUG("Set atten total value:%d", setAttenVal);
     uint8_t setStage1AttenVal = C_ATTEN_SET_MIN_VAL;
     uint8_t setStage2AttenVal = 0;
     if ((setAttenVal >= 0) && (setAttenVal <= C_STAGE_ATTEN_SET_MAX_VAL))
     {
-        setStage1AttenVal = reverse8bit_lshift1(setAttenVal);
+        setStage1AttenVal = reverse8bit(setAttenVal);
         setStage2AttenVal = 0;
         P_LOG_DEBUG("Set RF channel %d atten stage 1:%#x(origin:%#x)...%f",
                     phych,
@@ -606,22 +607,38 @@ void qa_set_rf_da_atten(uint32_t logical_ch, float attenVal)
 void qa_set_rf_ad_atten(uint32_t logical_ch, float attenVal)
 {
     uint8_t chip_id, local_ch;
+    logical_ch = 5 - logical_ch;
     get_qa_in_route(logical_ch, &chip_id, &local_ch);
     P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
     int phych;
     phych = adc_localch_to_phych(local_ch) + 4;
     uint8_t setAttenVal = (uint8_t)(attenVal / C_ATTEN_STEP);
+    P_LOG_DEBUG("Set atten total value:%d", setAttenVal);
     uint8_t stage1AttenVal = C_ATTEN_SET_MIN_VAL;
     uint8_t stage2AttenVal = 0;
-    uint8_t setStage1AttenVal = reverse8bit_lshift1(stage1AttenVal);
-    uint8_t setStage2AttenVal = reverse8bit_lshift1(stage2AttenVal);
-    if ((setAttenVal >= 0) && (setAttenVal <= C_ATTEN_SET_MAX_VAL))
+    uint8_t setStage1AttenVal = reverse8bit(stage1AttenVal);
+    uint8_t setStage2AttenVal = reverse8bit(stage2AttenVal);
+    if ((setAttenVal >= 0) && (setAttenVal <= C_STAGE_ATTEN_SET_MAX_VAL))
     {
-        stage1AttenVal = (setAttenVal / 2) + (setAttenVal % 2);
-        stage2AttenVal = (setAttenVal / 2);
-        setStage1AttenVal = reverse8bit_lshift1(stage1AttenVal);
-        setStage2AttenVal = reverse8bit_lshift1(stage2AttenVal);
-        P_LOG_DEBUG("Set RF channel %d atten stage 1:%#x(origin:%#x), stage 2:%#x(origin:%#x)...%f",
+        stage1AttenVal = setAttenVal;
+        stage2AttenVal = 0;
+        setStage1AttenVal = reverse8bit(stage1AttenVal);
+        setStage2AttenVal = reverse8bit(stage2AttenVal);
+        P_LOG_DEBUG("Only use stage 1. Set RF channel %d atten stage 1:%#x(origin:%#x), stage 2:%#x(origin:%#x)...%f",
+                    phych,
+                    setStage1AttenVal,
+                    stage1AttenVal,
+                    setStage2AttenVal,
+                    stage2AttenVal,
+                    attenVal);
+    }
+    else if ((setAttenVal > C_STAGE_ATTEN_SET_MAX_VAL) && (setAttenVal <= C_ATTEN_SET_MAX_VAL))
+    {
+        stage1AttenVal = C_STAGE_ATTEN_SET_MAX_VAL;
+        stage2AttenVal = setAttenVal - C_STAGE_ATTEN_SET_MAX_VAL;
+        setStage1AttenVal = reverse8bit(stage1AttenVal);
+        setStage2AttenVal = reverse8bit(stage2AttenVal);
+        P_LOG_DEBUG("Use both stage. Set RF channel %d atten stage 1:%#x(origin:%#x), stage 2:%#x(origin:%#x)...%f",
                     phych,
                     setStage1AttenVal,
                     stage1AttenVal,
@@ -635,6 +652,7 @@ void qa_set_rf_ad_atten(uint32_t logical_ch, float attenVal)
         return;
     }
     set_ch_atten(phych, C_SET_ATTEN_0, setStage1AttenVal);
+    usleep(100);
     set_ch_atten(phych, C_SET_ATTEN_1, setStage2AttenVal);
 }
 
@@ -651,8 +669,36 @@ void qa_set_digital_atten(uint32_t logical_ch, uint8_t attenVal)
     get_qa_in_route(logical_ch, &chip_id, &local_ch);
     P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
     int phych;
-    phych = adc_localch_to_phych(local_ch) + 4;
+    phych = adc_localch_to_phych(local_ch) + 1;
     uint32_t regVal = C_FIELD_PACK(phych, C_DIGITAL_ATTEN_CH_START_BIT, C_DIGITAL_ATTEN_CH_BIT_WIDTH) |
-                      C_FIELD_PACK(attenVal, C_DIGITAL_ATTEN_VALUE_START_BIT, C_DIGITAL_ATTEN_VALUE_START_BIT) |
+                      C_FIELD_PACK(attenVal, C_DIGITAL_ATTEN_VALUE_START_BIT, C_DIGITAL_ATTEN_VALUE_BIT_WIDTH) |
                       C_FIELD_PACK(0, C_DIGITAL_ATTEN_LATCH_START_BIT, C_DIGITAL_ATTEN_LATCH_BIT_WIDTH);
+    P_LOG_DEBUG("Write digital atten value: %d to channel %d, reg value%#x", attenVal, phych, regVal);
+    xdma_write_user_space(chip_id, C_USER_SPACE_CONFIG_OFFSET + (4 * 4), regVal);
+    regVal = C_FIELD_PACK(phych, C_DIGITAL_ATTEN_CH_START_BIT, C_DIGITAL_ATTEN_CH_BIT_WIDTH) |
+             C_FIELD_PACK(attenVal, C_DIGITAL_ATTEN_VALUE_START_BIT, C_DIGITAL_ATTEN_VALUE_BIT_WIDTH) |
+             C_FIELD_PACK(1, C_DIGITAL_ATTEN_LATCH_START_BIT, C_DIGITAL_ATTEN_LATCH_BIT_WIDTH);
+    P_LOG_DEBUG("Write digital atten value: %d to channel %d, reg value%#x", attenVal, phych, regVal);
+    xdma_write_user_space(chip_id, C_USER_SPACE_CONFIG_OFFSET + (4 * 4), regVal);
+    regVal = C_FIELD_PACK(phych, C_DIGITAL_ATTEN_CH_START_BIT, C_DIGITAL_ATTEN_CH_BIT_WIDTH) |
+             C_FIELD_PACK(attenVal, C_DIGITAL_ATTEN_VALUE_START_BIT, C_DIGITAL_ATTEN_VALUE_BIT_WIDTH) |
+             C_FIELD_PACK(0, C_DIGITAL_ATTEN_LATCH_START_BIT, C_DIGITAL_ATTEN_LATCH_BIT_WIDTH);
+    P_LOG_DEBUG("Write digital atten value: %d to channel %d, reg value%#x", attenVal, phych, regVal);
+    xdma_write_user_space(chip_id, C_USER_SPACE_CONFIG_OFFSET + (4 * 4), regVal);
+    usleep(1);
+    regVal = C_FIELD_PACK(phych, C_DIGITAL_ATTEN_CH_START_BIT, C_DIGITAL_ATTEN_CH_BIT_WIDTH) |
+             C_FIELD_PACK(attenVal, C_DIGITAL_ATTEN_VALUE_START_BIT, C_DIGITAL_ATTEN_VALUE_BIT_WIDTH) |
+             C_FIELD_PACK(0, C_DIGITAL_ATTEN_LATCH_START_BIT, C_DIGITAL_ATTEN_LATCH_BIT_WIDTH);
+    P_LOG_DEBUG("Write digital atten value: %d to channel %d, reg value%#x", attenVal, phych, regVal);
+    xdma_write_user_space(chip_id, C_USER_SPACE_CONFIG_OFFSET + (4 * 4), regVal);
+    regVal = C_FIELD_PACK(phych, C_DIGITAL_ATTEN_CH_START_BIT, C_DIGITAL_ATTEN_CH_BIT_WIDTH) |
+             C_FIELD_PACK(attenVal, C_DIGITAL_ATTEN_VALUE_START_BIT, C_DIGITAL_ATTEN_VALUE_BIT_WIDTH) |
+             C_FIELD_PACK(1, C_DIGITAL_ATTEN_LATCH_START_BIT, C_DIGITAL_ATTEN_LATCH_BIT_WIDTH);
+    P_LOG_DEBUG("Write digital atten value: %d to channel %d, reg value%#x", attenVal, phych, regVal);
+    xdma_write_user_space(chip_id, C_USER_SPACE_CONFIG_OFFSET + (4 * 4), regVal);
+    regVal = C_FIELD_PACK(phych, C_DIGITAL_ATTEN_CH_START_BIT, C_DIGITAL_ATTEN_CH_BIT_WIDTH) |
+             C_FIELD_PACK(attenVal, C_DIGITAL_ATTEN_VALUE_START_BIT, C_DIGITAL_ATTEN_VALUE_BIT_WIDTH) |
+             C_FIELD_PACK(0, C_DIGITAL_ATTEN_LATCH_START_BIT, C_DIGITAL_ATTEN_LATCH_BIT_WIDTH);
+    P_LOG_DEBUG("Write digital atten value: %d to channel %d, reg value%#x", attenVal, phych, regVal);
+    xdma_write_user_space(chip_id, C_USER_SPACE_CONFIG_OFFSET + (4 * 4), regVal);
 }

@@ -163,6 +163,13 @@ class QACMDService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetADCStartStopResponse>> PrepareAsyncGetADCStartStop(::grpc::ClientContext* context, const ::silicon_based::GetADCStartStopRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetADCStartStopResponse>>(PrepareAsyncGetADCStartStopRaw(context, request, cq));
     }
+    virtual ::grpc::Status SetDigitalAtten(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest& request, ::silicon_based::ParamResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> AsyncSetDigitalAtten(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(AsyncSetDigitalAttenRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> PrepareAsyncSetDigitalAtten(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(PrepareAsyncSetDigitalAttenRaw(context, request, cq));
+    }
     virtual ::grpc::Status SetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest& request, ::silicon_based::ParamResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> AsyncSetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(AsyncSetDACRFAttenRaw(context, request, cq));
@@ -170,12 +177,26 @@ class QACMDService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> PrepareAsyncSetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(PrepareAsyncSetDACRFAttenRaw(context, request, cq));
     }
+    virtual ::grpc::Status GetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest& request, ::silicon_based::GetDACRFAttenResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetDACRFAttenResponse>> AsyncGetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetDACRFAttenResponse>>(AsyncGetDACRFAttenRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetDACRFAttenResponse>> PrepareAsyncGetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetDACRFAttenResponse>>(PrepareAsyncGetDACRFAttenRaw(context, request, cq));
+    }
     virtual ::grpc::Status SetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest& request, ::silicon_based::ParamResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> AsyncSetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(AsyncSetADCRFAttenRaw(context, request, cq));
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> PrepareAsyncSetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(PrepareAsyncSetADCRFAttenRaw(context, request, cq));
+    }
+    virtual ::grpc::Status GetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest& request, ::silicon_based::GetADCRFAttenResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetADCRFAttenResponse>> AsyncGetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetADCRFAttenResponse>>(AsyncGetADCRFAttenRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetADCRFAttenResponse>> PrepareAsyncGetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetADCRFAttenResponse>>(PrepareAsyncGetADCRFAttenRaw(context, request, cq));
     }
     virtual ::grpc::Status GetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::silicon_based::ParamResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> AsyncGetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::grpc::CompletionQueue* cq) {
@@ -230,10 +251,16 @@ class QACMDService final {
       virtual void SetADCStartStop(::grpc::ClientContext* context, const ::silicon_based::SetADCStartStopRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetADCStartStop(::grpc::ClientContext* context, const ::silicon_based::GetADCStartStopRequest* request, ::silicon_based::GetADCStartStopResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetADCStartStop(::grpc::ClientContext* context, const ::silicon_based::GetADCStartStopRequest* request, ::silicon_based::GetADCStartStopResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SetDigitalAtten(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetDigitalAtten(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void SetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest* request, ::silicon_based::GetDACRFAttenResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest* request, ::silicon_based::GetDACRFAttenResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void SetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest* request, ::silicon_based::GetADCRFAttenResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest* request, ::silicon_based::GetADCRFAttenResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetDemodeState(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -279,10 +306,16 @@ class QACMDService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncSetADCStartStopRaw(::grpc::ClientContext* context, const ::silicon_based::SetADCStartStopRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetADCStartStopResponse>* AsyncGetADCStartStopRaw(::grpc::ClientContext* context, const ::silicon_based::GetADCStartStopRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetADCStartStopResponse>* PrepareAsyncGetADCStartStopRaw(::grpc::ClientContext* context, const ::silicon_based::GetADCStartStopRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* AsyncSetDigitalAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncSetDigitalAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* AsyncSetDACRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncSetDACRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetDACRFAttenResponse>* AsyncGetDACRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetDACRFAttenResponse>* PrepareAsyncGetDACRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* AsyncSetADCRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncSetADCRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetADCRFAttenResponse>* AsyncGetADCRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::GetADCRFAttenResponse>* PrepareAsyncGetADCRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* AsyncGetSampleStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncGetSampleStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* AsyncGetDemodeStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -417,6 +450,13 @@ class QACMDService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetADCStartStopResponse>> PrepareAsyncGetADCStartStop(::grpc::ClientContext* context, const ::silicon_based::GetADCStartStopRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetADCStartStopResponse>>(PrepareAsyncGetADCStartStopRaw(context, request, cq));
     }
+    ::grpc::Status SetDigitalAtten(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest& request, ::silicon_based::ParamResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> AsyncSetDigitalAtten(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(AsyncSetDigitalAttenRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> PrepareAsyncSetDigitalAtten(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(PrepareAsyncSetDigitalAttenRaw(context, request, cq));
+    }
     ::grpc::Status SetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest& request, ::silicon_based::ParamResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> AsyncSetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(AsyncSetDACRFAttenRaw(context, request, cq));
@@ -424,12 +464,26 @@ class QACMDService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> PrepareAsyncSetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(PrepareAsyncSetDACRFAttenRaw(context, request, cq));
     }
+    ::grpc::Status GetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest& request, ::silicon_based::GetDACRFAttenResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetDACRFAttenResponse>> AsyncGetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetDACRFAttenResponse>>(AsyncGetDACRFAttenRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetDACRFAttenResponse>> PrepareAsyncGetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetDACRFAttenResponse>>(PrepareAsyncGetDACRFAttenRaw(context, request, cq));
+    }
     ::grpc::Status SetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest& request, ::silicon_based::ParamResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> AsyncSetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(AsyncSetADCRFAttenRaw(context, request, cq));
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> PrepareAsyncSetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(PrepareAsyncSetADCRFAttenRaw(context, request, cq));
+    }
+    ::grpc::Status GetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest& request, ::silicon_based::GetADCRFAttenResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetADCRFAttenResponse>> AsyncGetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetADCRFAttenResponse>>(AsyncGetADCRFAttenRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetADCRFAttenResponse>> PrepareAsyncGetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::GetADCRFAttenResponse>>(PrepareAsyncGetADCRFAttenRaw(context, request, cq));
     }
     ::grpc::Status GetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::silicon_based::ParamResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> AsyncGetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::grpc::CompletionQueue* cq) {
@@ -484,10 +538,16 @@ class QACMDService final {
       void SetADCStartStop(::grpc::ClientContext* context, const ::silicon_based::SetADCStartStopRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetADCStartStop(::grpc::ClientContext* context, const ::silicon_based::GetADCStartStopRequest* request, ::silicon_based::GetADCStartStopResponse* response, std::function<void(::grpc::Status)>) override;
       void GetADCStartStop(::grpc::ClientContext* context, const ::silicon_based::GetADCStartStopRequest* request, ::silicon_based::GetADCStartStopResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SetDigitalAtten(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) override;
+      void SetDigitalAtten(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) override;
       void SetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest* request, ::silicon_based::GetDACRFAttenResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetDACRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest* request, ::silicon_based::GetDACRFAttenResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) override;
       void SetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest* request, ::silicon_based::GetADCRFAttenResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetADCRFAtten(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest* request, ::silicon_based::GetADCRFAttenResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) override;
       void GetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetDemodeState(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) override;
@@ -539,10 +599,16 @@ class QACMDService final {
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncSetADCStartStopRaw(::grpc::ClientContext* context, const ::silicon_based::SetADCStartStopRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::GetADCStartStopResponse>* AsyncGetADCStartStopRaw(::grpc::ClientContext* context, const ::silicon_based::GetADCStartStopRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::GetADCStartStopResponse>* PrepareAsyncGetADCStartStopRaw(::grpc::ClientContext* context, const ::silicon_based::GetADCStartStopRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* AsyncSetDigitalAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncSetDigitalAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetDigitalAttenRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* AsyncSetDACRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncSetDACRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::GetDACRFAttenResponse>* AsyncGetDACRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::GetDACRFAttenResponse>* PrepareAsyncGetDACRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::GetDACRFAttenRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* AsyncSetADCRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncSetADCRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::GetADCRFAttenResponse>* AsyncGetADCRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::GetADCRFAttenResponse>* PrepareAsyncGetADCRFAttenRaw(::grpc::ClientContext* context, const ::silicon_based::GetADCRFAttenRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* AsyncGetSampleStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncGetSampleStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* AsyncGetDemodeStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest& request, ::grpc::CompletionQueue* cq) override;
@@ -565,8 +631,11 @@ class QACMDService final {
     const ::grpc::internal::RpcMethod rpcmethod_GetADCPlayParam_;
     const ::grpc::internal::RpcMethod rpcmethod_SetADCStartStop_;
     const ::grpc::internal::RpcMethod rpcmethod_GetADCStartStop_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetDigitalAtten_;
     const ::grpc::internal::RpcMethod rpcmethod_SetDACRFAtten_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetDACRFAtten_;
     const ::grpc::internal::RpcMethod rpcmethod_SetADCRFAtten_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetADCRFAtten_;
     const ::grpc::internal::RpcMethod rpcmethod_GetSampleState_;
     const ::grpc::internal::RpcMethod rpcmethod_GetDemodeState_;
   };
@@ -594,8 +663,11 @@ class QACMDService final {
     virtual ::grpc::Status GetADCPlayParam(::grpc::ServerContext* context, const ::silicon_based::GetADCPlayParamRequest* request, ::silicon_based::GetADCPlayParamResponse* response);
     virtual ::grpc::Status SetADCStartStop(::grpc::ServerContext* context, const ::silicon_based::SetADCStartStopRequest* request, ::silicon_based::ParamResponse* response);
     virtual ::grpc::Status GetADCStartStop(::grpc::ServerContext* context, const ::silicon_based::GetADCStartStopRequest* request, ::silicon_based::GetADCStartStopResponse* response);
+    virtual ::grpc::Status SetDigitalAtten(::grpc::ServerContext* context, const ::silicon_based::SetDigitalAttenRequest* request, ::silicon_based::ParamResponse* response);
     virtual ::grpc::Status SetDACRFAtten(::grpc::ServerContext* context, const ::silicon_based::SetDACRFAttenRequest* request, ::silicon_based::ParamResponse* response);
+    virtual ::grpc::Status GetDACRFAtten(::grpc::ServerContext* context, const ::silicon_based::GetDACRFAttenRequest* request, ::silicon_based::GetDACRFAttenResponse* response);
     virtual ::grpc::Status SetADCRFAtten(::grpc::ServerContext* context, const ::silicon_based::SetADCRFAttenRequest* request, ::silicon_based::ParamResponse* response);
+    virtual ::grpc::Status GetADCRFAtten(::grpc::ServerContext* context, const ::silicon_based::GetADCRFAttenRequest* request, ::silicon_based::GetADCRFAttenResponse* response);
     virtual ::grpc::Status GetSampleState(::grpc::ServerContext* context, const ::silicon_based::GetSampleStateRequest* request, ::silicon_based::ParamResponse* response);
     virtual ::grpc::Status GetDemodeState(::grpc::ServerContext* context, const ::silicon_based::GetDemodeStateRequest* request, ::silicon_based::ParamResponse* response);
   };
@@ -960,12 +1032,32 @@ class QACMDService final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_SetDigitalAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SetDigitalAtten() {
+      ::grpc::Service::MarkMethodAsync(18);
+    }
+    ~WithAsyncMethod_SetDigitalAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetDigitalAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::SetDigitalAttenRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetDigitalAtten(::grpc::ServerContext* context, ::silicon_based::SetDigitalAttenRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_SetDACRFAtten : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetDACRFAtten() {
-      ::grpc::Service::MarkMethodAsync(18);
+      ::grpc::Service::MarkMethodAsync(19);
     }
     ~WithAsyncMethod_SetDACRFAtten() override {
       BaseClassMustBeDerivedFromService(this);
@@ -976,7 +1068,27 @@ class QACMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetDACRFAtten(::grpc::ServerContext* context, ::silicon_based::SetDACRFAttenRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetDACRFAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetDACRFAtten() {
+      ::grpc::Service::MarkMethodAsync(20);
+    }
+    ~WithAsyncMethod_GetDACRFAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDACRFAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::GetDACRFAttenRequest* /*request*/, ::silicon_based::GetDACRFAttenResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDACRFAtten(::grpc::ServerContext* context, ::silicon_based::GetDACRFAttenRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::GetDACRFAttenResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -985,7 +1097,7 @@ class QACMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetADCRFAtten() {
-      ::grpc::Service::MarkMethodAsync(19);
+      ::grpc::Service::MarkMethodAsync(21);
     }
     ~WithAsyncMethod_SetADCRFAtten() override {
       BaseClassMustBeDerivedFromService(this);
@@ -996,7 +1108,27 @@ class QACMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetADCRFAtten(::grpc::ServerContext* context, ::silicon_based::SetADCRFAttenRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetADCRFAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetADCRFAtten() {
+      ::grpc::Service::MarkMethodAsync(22);
+    }
+    ~WithAsyncMethod_GetADCRFAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetADCRFAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::GetADCRFAttenRequest* /*request*/, ::silicon_based::GetADCRFAttenResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetADCRFAtten(::grpc::ServerContext* context, ::silicon_based::GetADCRFAttenRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::GetADCRFAttenResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1005,7 +1137,7 @@ class QACMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetSampleState() {
-      ::grpc::Service::MarkMethodAsync(20);
+      ::grpc::Service::MarkMethodAsync(23);
     }
     ~WithAsyncMethod_GetSampleState() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1016,7 +1148,7 @@ class QACMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetSampleState(::grpc::ServerContext* context, ::silicon_based::GetSampleStateRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1025,7 +1157,7 @@ class QACMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetDemodeState() {
-      ::grpc::Service::MarkMethodAsync(21);
+      ::grpc::Service::MarkMethodAsync(24);
     }
     ~WithAsyncMethod_GetDemodeState() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1036,10 +1168,10 @@ class QACMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetDemodeState(::grpc::ServerContext* context, ::silicon_based::GetDemodeStateRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SetTrigSour<WithAsyncMethod_SetSoftTrig<WithAsyncMethod_SetDACDDSConfig<WithAsyncMethod_GetDACDDSConfig<WithAsyncMethod_SetDACPlayParam<WithAsyncMethod_GetDACPlayParam<WithAsyncMethod_SetDACStartStop<WithAsyncMethod_GetDACStartStop<WithAsyncMethod_SetSampleParam<WithAsyncMethod_GetSampleParam<WithAsyncMethod_SetSampleStartStop<WithAsyncMethod_GetSampleStartStop<WithAsyncMethod_SetADCConfig<WithAsyncMethod_GetADCConfig<WithAsyncMethod_SetADCPlayParam<WithAsyncMethod_GetADCPlayParam<WithAsyncMethod_SetADCStartStop<WithAsyncMethod_GetADCStartStop<WithAsyncMethod_SetDACRFAtten<WithAsyncMethod_SetADCRFAtten<WithAsyncMethod_GetSampleState<WithAsyncMethod_GetDemodeState<Service > > > > > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_SetTrigSour<WithAsyncMethod_SetSoftTrig<WithAsyncMethod_SetDACDDSConfig<WithAsyncMethod_GetDACDDSConfig<WithAsyncMethod_SetDACPlayParam<WithAsyncMethod_GetDACPlayParam<WithAsyncMethod_SetDACStartStop<WithAsyncMethod_GetDACStartStop<WithAsyncMethod_SetSampleParam<WithAsyncMethod_GetSampleParam<WithAsyncMethod_SetSampleStartStop<WithAsyncMethod_GetSampleStartStop<WithAsyncMethod_SetADCConfig<WithAsyncMethod_GetADCConfig<WithAsyncMethod_SetADCPlayParam<WithAsyncMethod_GetADCPlayParam<WithAsyncMethod_SetADCStartStop<WithAsyncMethod_GetADCStartStop<WithAsyncMethod_SetDigitalAtten<WithAsyncMethod_SetDACRFAtten<WithAsyncMethod_GetDACRFAtten<WithAsyncMethod_SetADCRFAtten<WithAsyncMethod_GetADCRFAtten<WithAsyncMethod_GetSampleState<WithAsyncMethod_GetDemodeState<Service > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SetTrigSour : public BaseClass {
    private:
@@ -1527,18 +1659,45 @@ class QACMDService final {
       ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::GetADCStartStopRequest* /*request*/, ::silicon_based::GetADCStartStopResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithCallbackMethod_SetDigitalAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SetDigitalAtten() {
+      ::grpc::Service::MarkMethodCallback(18,
+          new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::SetDigitalAttenRequest, ::silicon_based::ParamResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::silicon_based::SetDigitalAttenRequest* request, ::silicon_based::ParamResponse* response) { return this->SetDigitalAtten(context, request, response); }));}
+    void SetMessageAllocatorFor_SetDigitalAtten(
+        ::grpc::MessageAllocator< ::silicon_based::SetDigitalAttenRequest, ::silicon_based::ParamResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(18);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::SetDigitalAttenRequest, ::silicon_based::ParamResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SetDigitalAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetDigitalAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::SetDigitalAttenRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetDigitalAtten(
+      ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::SetDigitalAttenRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithCallbackMethod_SetDACRFAtten : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetDACRFAtten() {
-      ::grpc::Service::MarkMethodCallback(18,
+      ::grpc::Service::MarkMethodCallback(19,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::SetDACRFAttenRequest, ::silicon_based::ParamResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::SetDACRFAttenRequest* request, ::silicon_based::ParamResponse* response) { return this->SetDACRFAtten(context, request, response); }));}
     void SetMessageAllocatorFor_SetDACRFAtten(
         ::grpc::MessageAllocator< ::silicon_based::SetDACRFAttenRequest, ::silicon_based::ParamResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(18);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(19);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::SetDACRFAttenRequest, ::silicon_based::ParamResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1554,18 +1713,45 @@ class QACMDService final {
       ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::SetDACRFAttenRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithCallbackMethod_GetDACRFAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetDACRFAtten() {
+      ::grpc::Service::MarkMethodCallback(20,
+          new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::GetDACRFAttenRequest, ::silicon_based::GetDACRFAttenResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::silicon_based::GetDACRFAttenRequest* request, ::silicon_based::GetDACRFAttenResponse* response) { return this->GetDACRFAtten(context, request, response); }));}
+    void SetMessageAllocatorFor_GetDACRFAtten(
+        ::grpc::MessageAllocator< ::silicon_based::GetDACRFAttenRequest, ::silicon_based::GetDACRFAttenResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(20);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::GetDACRFAttenRequest, ::silicon_based::GetDACRFAttenResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetDACRFAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDACRFAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::GetDACRFAttenRequest* /*request*/, ::silicon_based::GetDACRFAttenResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDACRFAtten(
+      ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::GetDACRFAttenRequest* /*request*/, ::silicon_based::GetDACRFAttenResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithCallbackMethod_SetADCRFAtten : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetADCRFAtten() {
-      ::grpc::Service::MarkMethodCallback(19,
+      ::grpc::Service::MarkMethodCallback(21,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::SetADCRFAttenRequest, ::silicon_based::ParamResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::SetADCRFAttenRequest* request, ::silicon_based::ParamResponse* response) { return this->SetADCRFAtten(context, request, response); }));}
     void SetMessageAllocatorFor_SetADCRFAtten(
         ::grpc::MessageAllocator< ::silicon_based::SetADCRFAttenRequest, ::silicon_based::ParamResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(19);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(21);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::SetADCRFAttenRequest, ::silicon_based::ParamResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1581,18 +1767,45 @@ class QACMDService final {
       ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::SetADCRFAttenRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithCallbackMethod_GetADCRFAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetADCRFAtten() {
+      ::grpc::Service::MarkMethodCallback(22,
+          new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::GetADCRFAttenRequest, ::silicon_based::GetADCRFAttenResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::silicon_based::GetADCRFAttenRequest* request, ::silicon_based::GetADCRFAttenResponse* response) { return this->GetADCRFAtten(context, request, response); }));}
+    void SetMessageAllocatorFor_GetADCRFAtten(
+        ::grpc::MessageAllocator< ::silicon_based::GetADCRFAttenRequest, ::silicon_based::GetADCRFAttenResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(22);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::GetADCRFAttenRequest, ::silicon_based::GetADCRFAttenResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetADCRFAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetADCRFAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::GetADCRFAttenRequest* /*request*/, ::silicon_based::GetADCRFAttenResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetADCRFAtten(
+      ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::GetADCRFAttenRequest* /*request*/, ::silicon_based::GetADCRFAttenResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithCallbackMethod_GetSampleState : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetSampleState() {
-      ::grpc::Service::MarkMethodCallback(20,
+      ::grpc::Service::MarkMethodCallback(23,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::GetSampleStateRequest, ::silicon_based::ParamResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::GetSampleStateRequest* request, ::silicon_based::ParamResponse* response) { return this->GetSampleState(context, request, response); }));}
     void SetMessageAllocatorFor_GetSampleState(
         ::grpc::MessageAllocator< ::silicon_based::GetSampleStateRequest, ::silicon_based::ParamResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(20);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(23);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::GetSampleStateRequest, ::silicon_based::ParamResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1613,13 +1826,13 @@ class QACMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetDemodeState() {
-      ::grpc::Service::MarkMethodCallback(21,
+      ::grpc::Service::MarkMethodCallback(24,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::GetDemodeStateRequest, ::silicon_based::ParamResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::GetDemodeStateRequest* request, ::silicon_based::ParamResponse* response) { return this->GetDemodeState(context, request, response); }));}
     void SetMessageAllocatorFor_GetDemodeState(
         ::grpc::MessageAllocator< ::silicon_based::GetDemodeStateRequest, ::silicon_based::ParamResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(21);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(24);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::GetDemodeStateRequest, ::silicon_based::ParamResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1634,7 +1847,7 @@ class QACMDService final {
     virtual ::grpc::ServerUnaryReactor* GetDemodeState(
       ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::GetDemodeStateRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SetTrigSour<WithCallbackMethod_SetSoftTrig<WithCallbackMethod_SetDACDDSConfig<WithCallbackMethod_GetDACDDSConfig<WithCallbackMethod_SetDACPlayParam<WithCallbackMethod_GetDACPlayParam<WithCallbackMethod_SetDACStartStop<WithCallbackMethod_GetDACStartStop<WithCallbackMethod_SetSampleParam<WithCallbackMethod_GetSampleParam<WithCallbackMethod_SetSampleStartStop<WithCallbackMethod_GetSampleStartStop<WithCallbackMethod_SetADCConfig<WithCallbackMethod_GetADCConfig<WithCallbackMethod_SetADCPlayParam<WithCallbackMethod_GetADCPlayParam<WithCallbackMethod_SetADCStartStop<WithCallbackMethod_GetADCStartStop<WithCallbackMethod_SetDACRFAtten<WithCallbackMethod_SetADCRFAtten<WithCallbackMethod_GetSampleState<WithCallbackMethod_GetDemodeState<Service > > > > > > > > > > > > > > > > > > > > > > CallbackService;
+  typedef WithCallbackMethod_SetTrigSour<WithCallbackMethod_SetSoftTrig<WithCallbackMethod_SetDACDDSConfig<WithCallbackMethod_GetDACDDSConfig<WithCallbackMethod_SetDACPlayParam<WithCallbackMethod_GetDACPlayParam<WithCallbackMethod_SetDACStartStop<WithCallbackMethod_GetDACStartStop<WithCallbackMethod_SetSampleParam<WithCallbackMethod_GetSampleParam<WithCallbackMethod_SetSampleStartStop<WithCallbackMethod_GetSampleStartStop<WithCallbackMethod_SetADCConfig<WithCallbackMethod_GetADCConfig<WithCallbackMethod_SetADCPlayParam<WithCallbackMethod_GetADCPlayParam<WithCallbackMethod_SetADCStartStop<WithCallbackMethod_GetADCStartStop<WithCallbackMethod_SetDigitalAtten<WithCallbackMethod_SetDACRFAtten<WithCallbackMethod_GetDACRFAtten<WithCallbackMethod_SetADCRFAtten<WithCallbackMethod_GetADCRFAtten<WithCallbackMethod_GetSampleState<WithCallbackMethod_GetDemodeState<Service > > > > > > > > > > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SetTrigSour : public BaseClass {
@@ -1943,12 +2156,29 @@ class QACMDService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_SetDigitalAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SetDigitalAtten() {
+      ::grpc::Service::MarkMethodGeneric(18);
+    }
+    ~WithGenericMethod_SetDigitalAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetDigitalAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::SetDigitalAttenRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_SetDACRFAtten : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetDACRFAtten() {
-      ::grpc::Service::MarkMethodGeneric(18);
+      ::grpc::Service::MarkMethodGeneric(19);
     }
     ~WithGenericMethod_SetDACRFAtten() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1960,12 +2190,29 @@ class QACMDService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_GetDACRFAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetDACRFAtten() {
+      ::grpc::Service::MarkMethodGeneric(20);
+    }
+    ~WithGenericMethod_GetDACRFAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDACRFAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::GetDACRFAttenRequest* /*request*/, ::silicon_based::GetDACRFAttenResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_SetADCRFAtten : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetADCRFAtten() {
-      ::grpc::Service::MarkMethodGeneric(19);
+      ::grpc::Service::MarkMethodGeneric(21);
     }
     ~WithGenericMethod_SetADCRFAtten() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1977,12 +2224,29 @@ class QACMDService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_GetADCRFAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetADCRFAtten() {
+      ::grpc::Service::MarkMethodGeneric(22);
+    }
+    ~WithGenericMethod_GetADCRFAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetADCRFAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::GetADCRFAttenRequest* /*request*/, ::silicon_based::GetADCRFAttenResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_GetSampleState : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetSampleState() {
-      ::grpc::Service::MarkMethodGeneric(20);
+      ::grpc::Service::MarkMethodGeneric(23);
     }
     ~WithGenericMethod_GetSampleState() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1999,7 +2263,7 @@ class QACMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetDemodeState() {
-      ::grpc::Service::MarkMethodGeneric(21);
+      ::grpc::Service::MarkMethodGeneric(24);
     }
     ~WithGenericMethod_GetDemodeState() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2371,12 +2635,32 @@ class QACMDService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_SetDigitalAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SetDigitalAtten() {
+      ::grpc::Service::MarkMethodRaw(18);
+    }
+    ~WithRawMethod_SetDigitalAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetDigitalAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::SetDigitalAttenRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetDigitalAtten(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_SetDACRFAtten : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetDACRFAtten() {
-      ::grpc::Service::MarkMethodRaw(18);
+      ::grpc::Service::MarkMethodRaw(19);
     }
     ~WithRawMethod_SetDACRFAtten() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2387,7 +2671,27 @@ class QACMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetDACRFAtten(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(18, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetDACRFAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetDACRFAtten() {
+      ::grpc::Service::MarkMethodRaw(20);
+    }
+    ~WithRawMethod_GetDACRFAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDACRFAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::GetDACRFAttenRequest* /*request*/, ::silicon_based::GetDACRFAttenResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetDACRFAtten(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2396,7 +2700,7 @@ class QACMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetADCRFAtten() {
-      ::grpc::Service::MarkMethodRaw(19);
+      ::grpc::Service::MarkMethodRaw(21);
     }
     ~WithRawMethod_SetADCRFAtten() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2407,7 +2711,27 @@ class QACMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetADCRFAtten(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(19, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetADCRFAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetADCRFAtten() {
+      ::grpc::Service::MarkMethodRaw(22);
+    }
+    ~WithRawMethod_GetADCRFAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetADCRFAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::GetADCRFAttenRequest* /*request*/, ::silicon_based::GetADCRFAttenResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetADCRFAtten(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2416,7 +2740,7 @@ class QACMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetSampleState() {
-      ::grpc::Service::MarkMethodRaw(20);
+      ::grpc::Service::MarkMethodRaw(23);
     }
     ~WithRawMethod_GetSampleState() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2427,7 +2751,7 @@ class QACMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetSampleState(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(20, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2436,7 +2760,7 @@ class QACMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetDemodeState() {
-      ::grpc::Service::MarkMethodRaw(21);
+      ::grpc::Service::MarkMethodRaw(24);
     }
     ~WithRawMethod_GetDemodeState() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2447,7 +2771,7 @@ class QACMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetDemodeState(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(21, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2847,12 +3171,34 @@ class QACMDService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_SetDigitalAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SetDigitalAtten() {
+      ::grpc::Service::MarkMethodRawCallback(18,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetDigitalAtten(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SetDigitalAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetDigitalAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::SetDigitalAttenRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetDigitalAtten(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_SetDACRFAtten : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetDACRFAtten() {
-      ::grpc::Service::MarkMethodRawCallback(18,
+      ::grpc::Service::MarkMethodRawCallback(19,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetDACRFAtten(context, request, response); }));
@@ -2869,12 +3215,34 @@ class QACMDService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_GetDACRFAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetDACRFAtten() {
+      ::grpc::Service::MarkMethodRawCallback(20,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDACRFAtten(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetDACRFAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetDACRFAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::GetDACRFAttenRequest* /*request*/, ::silicon_based::GetDACRFAttenResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetDACRFAtten(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_SetADCRFAtten : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetADCRFAtten() {
-      ::grpc::Service::MarkMethodRawCallback(19,
+      ::grpc::Service::MarkMethodRawCallback(21,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetADCRFAtten(context, request, response); }));
@@ -2891,12 +3259,34 @@ class QACMDService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_GetADCRFAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetADCRFAtten() {
+      ::grpc::Service::MarkMethodRawCallback(22,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetADCRFAtten(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetADCRFAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetADCRFAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::GetADCRFAttenRequest* /*request*/, ::silicon_based::GetADCRFAttenResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetADCRFAtten(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_GetSampleState : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetSampleState() {
-      ::grpc::Service::MarkMethodRawCallback(20,
+      ::grpc::Service::MarkMethodRawCallback(23,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetSampleState(context, request, response); }));
@@ -2918,7 +3308,7 @@ class QACMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetDemodeState() {
-      ::grpc::Service::MarkMethodRawCallback(21,
+      ::grpc::Service::MarkMethodRawCallback(24,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetDemodeState(context, request, response); }));
@@ -3421,12 +3811,39 @@ class QACMDService final {
     virtual ::grpc::Status StreamedGetADCStartStop(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::GetADCStartStopRequest,::silicon_based::GetADCStartStopResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_SetDigitalAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetDigitalAtten() {
+      ::grpc::Service::MarkMethodStreamed(18,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::silicon_based::SetDigitalAttenRequest, ::silicon_based::ParamResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::silicon_based::SetDigitalAttenRequest, ::silicon_based::ParamResponse>* streamer) {
+                       return this->StreamedSetDigitalAtten(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SetDigitalAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SetDigitalAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::SetDigitalAttenRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSetDigitalAtten(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::SetDigitalAttenRequest,::silicon_based::ParamResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_SetDACRFAtten : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetDACRFAtten() {
-      ::grpc::Service::MarkMethodStreamed(18,
+      ::grpc::Service::MarkMethodStreamed(19,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::SetDACRFAttenRequest, ::silicon_based::ParamResponse>(
             [this](::grpc::ServerContext* context,
@@ -3448,12 +3865,39 @@ class QACMDService final {
     virtual ::grpc::Status StreamedSetDACRFAtten(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::SetDACRFAttenRequest,::silicon_based::ParamResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_GetDACRFAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetDACRFAtten() {
+      ::grpc::Service::MarkMethodStreamed(20,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::silicon_based::GetDACRFAttenRequest, ::silicon_based::GetDACRFAttenResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::silicon_based::GetDACRFAttenRequest, ::silicon_based::GetDACRFAttenResponse>* streamer) {
+                       return this->StreamedGetDACRFAtten(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetDACRFAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetDACRFAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::GetDACRFAttenRequest* /*request*/, ::silicon_based::GetDACRFAttenResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetDACRFAtten(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::GetDACRFAttenRequest,::silicon_based::GetDACRFAttenResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_SetADCRFAtten : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetADCRFAtten() {
-      ::grpc::Service::MarkMethodStreamed(19,
+      ::grpc::Service::MarkMethodStreamed(21,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::SetADCRFAttenRequest, ::silicon_based::ParamResponse>(
             [this](::grpc::ServerContext* context,
@@ -3475,12 +3919,39 @@ class QACMDService final {
     virtual ::grpc::Status StreamedSetADCRFAtten(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::SetADCRFAttenRequest,::silicon_based::ParamResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_GetADCRFAtten : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetADCRFAtten() {
+      ::grpc::Service::MarkMethodStreamed(22,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::silicon_based::GetADCRFAttenRequest, ::silicon_based::GetADCRFAttenResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::silicon_based::GetADCRFAttenRequest, ::silicon_based::GetADCRFAttenResponse>* streamer) {
+                       return this->StreamedGetADCRFAtten(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetADCRFAtten() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetADCRFAtten(::grpc::ServerContext* /*context*/, const ::silicon_based::GetADCRFAttenRequest* /*request*/, ::silicon_based::GetADCRFAttenResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetADCRFAtten(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::GetADCRFAttenRequest,::silicon_based::GetADCRFAttenResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_GetSampleState : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetSampleState() {
-      ::grpc::Service::MarkMethodStreamed(20,
+      ::grpc::Service::MarkMethodStreamed(23,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::GetSampleStateRequest, ::silicon_based::ParamResponse>(
             [this](::grpc::ServerContext* context,
@@ -3507,7 +3978,7 @@ class QACMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetDemodeState() {
-      ::grpc::Service::MarkMethodStreamed(21,
+      ::grpc::Service::MarkMethodStreamed(24,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::GetDemodeStateRequest, ::silicon_based::ParamResponse>(
             [this](::grpc::ServerContext* context,
@@ -3528,9 +3999,9 @@ class QACMDService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedGetDemodeState(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::GetDemodeStateRequest,::silicon_based::ParamResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_SetTrigSour<WithStreamedUnaryMethod_SetSoftTrig<WithStreamedUnaryMethod_SetDACDDSConfig<WithStreamedUnaryMethod_GetDACDDSConfig<WithStreamedUnaryMethod_SetDACPlayParam<WithStreamedUnaryMethod_GetDACPlayParam<WithStreamedUnaryMethod_SetDACStartStop<WithStreamedUnaryMethod_GetDACStartStop<WithStreamedUnaryMethod_SetSampleParam<WithStreamedUnaryMethod_GetSampleParam<WithStreamedUnaryMethod_SetSampleStartStop<WithStreamedUnaryMethod_GetSampleStartStop<WithStreamedUnaryMethod_SetADCConfig<WithStreamedUnaryMethod_GetADCConfig<WithStreamedUnaryMethod_SetADCPlayParam<WithStreamedUnaryMethod_GetADCPlayParam<WithStreamedUnaryMethod_SetADCStartStop<WithStreamedUnaryMethod_GetADCStartStop<WithStreamedUnaryMethod_SetDACRFAtten<WithStreamedUnaryMethod_SetADCRFAtten<WithStreamedUnaryMethod_GetSampleState<WithStreamedUnaryMethod_GetDemodeState<Service > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_SetTrigSour<WithStreamedUnaryMethod_SetSoftTrig<WithStreamedUnaryMethod_SetDACDDSConfig<WithStreamedUnaryMethod_GetDACDDSConfig<WithStreamedUnaryMethod_SetDACPlayParam<WithStreamedUnaryMethod_GetDACPlayParam<WithStreamedUnaryMethod_SetDACStartStop<WithStreamedUnaryMethod_GetDACStartStop<WithStreamedUnaryMethod_SetSampleParam<WithStreamedUnaryMethod_GetSampleParam<WithStreamedUnaryMethod_SetSampleStartStop<WithStreamedUnaryMethod_GetSampleStartStop<WithStreamedUnaryMethod_SetADCConfig<WithStreamedUnaryMethod_GetADCConfig<WithStreamedUnaryMethod_SetADCPlayParam<WithStreamedUnaryMethod_GetADCPlayParam<WithStreamedUnaryMethod_SetADCStartStop<WithStreamedUnaryMethod_GetADCStartStop<WithStreamedUnaryMethod_SetDigitalAtten<WithStreamedUnaryMethod_SetDACRFAtten<WithStreamedUnaryMethod_GetDACRFAtten<WithStreamedUnaryMethod_SetADCRFAtten<WithStreamedUnaryMethod_GetADCRFAtten<WithStreamedUnaryMethod_GetSampleState<WithStreamedUnaryMethod_GetDemodeState<Service > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SetTrigSour<WithStreamedUnaryMethod_SetSoftTrig<WithStreamedUnaryMethod_SetDACDDSConfig<WithStreamedUnaryMethod_GetDACDDSConfig<WithStreamedUnaryMethod_SetDACPlayParam<WithStreamedUnaryMethod_GetDACPlayParam<WithStreamedUnaryMethod_SetDACStartStop<WithStreamedUnaryMethod_GetDACStartStop<WithStreamedUnaryMethod_SetSampleParam<WithStreamedUnaryMethod_GetSampleParam<WithStreamedUnaryMethod_SetSampleStartStop<WithStreamedUnaryMethod_GetSampleStartStop<WithStreamedUnaryMethod_SetADCConfig<WithStreamedUnaryMethod_GetADCConfig<WithStreamedUnaryMethod_SetADCPlayParam<WithStreamedUnaryMethod_GetADCPlayParam<WithStreamedUnaryMethod_SetADCStartStop<WithStreamedUnaryMethod_GetADCStartStop<WithStreamedUnaryMethod_SetDACRFAtten<WithStreamedUnaryMethod_SetADCRFAtten<WithStreamedUnaryMethod_GetSampleState<WithStreamedUnaryMethod_GetDemodeState<Service > > > > > > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_SetTrigSour<WithStreamedUnaryMethod_SetSoftTrig<WithStreamedUnaryMethod_SetDACDDSConfig<WithStreamedUnaryMethod_GetDACDDSConfig<WithStreamedUnaryMethod_SetDACPlayParam<WithStreamedUnaryMethod_GetDACPlayParam<WithStreamedUnaryMethod_SetDACStartStop<WithStreamedUnaryMethod_GetDACStartStop<WithStreamedUnaryMethod_SetSampleParam<WithStreamedUnaryMethod_GetSampleParam<WithStreamedUnaryMethod_SetSampleStartStop<WithStreamedUnaryMethod_GetSampleStartStop<WithStreamedUnaryMethod_SetADCConfig<WithStreamedUnaryMethod_GetADCConfig<WithStreamedUnaryMethod_SetADCPlayParam<WithStreamedUnaryMethod_GetADCPlayParam<WithStreamedUnaryMethod_SetADCStartStop<WithStreamedUnaryMethod_GetADCStartStop<WithStreamedUnaryMethod_SetDigitalAtten<WithStreamedUnaryMethod_SetDACRFAtten<WithStreamedUnaryMethod_GetDACRFAtten<WithStreamedUnaryMethod_SetADCRFAtten<WithStreamedUnaryMethod_GetADCRFAtten<WithStreamedUnaryMethod_GetSampleState<WithStreamedUnaryMethod_GetDemodeState<Service > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace silicon_based

@@ -168,7 +168,7 @@ extern "C"
     void start_gain_trig();
 
     void qa_trig_source_init(void);
-
+    void qa_set_digital_atten(uint32_t logical_ch, uint8_t attenVal);
     void qa_set_rf_da_atten(uint32_t logical_ch, float attenVal);
     void qa_set_rf_ad_atten(uint32_t logical_ch, float attenVal);
 #ifdef __cplusplus
