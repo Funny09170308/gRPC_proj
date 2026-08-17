@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "axi_gpio.h"
-#include "../platform_log/platform_log.h"
+#include "../lib/include/platform_log/platform_log.h"
 
 #define GPIO_BASE 516
 void gpio_power_suplly(void)
@@ -25,7 +25,7 @@ int gpio_set_value(int logic_gpio_num, int value)
 
     fprintf(f, "%d", value ? 1 : 0);
     fclose(f);
-    P_LOG_DEBUG("Set GPIO%d value: %d", global_gpio, value);
+    P_LOG_MONITOR("Set GPIO%d value: %d", global_gpio, value);
     return 0;
 }
 

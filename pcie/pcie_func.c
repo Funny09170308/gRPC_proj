@@ -7,7 +7,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include "../device_info.h"
-#include "../platform_log/platform_log.h"
+#include "../lib/include/platform_log/platform_log.h"
 
 static xdmaDevContext_t s_xdmaDevContx[CHIP_NUM] = {
     {.m_devUserSpaceName = "/dev/xdma0_user",
@@ -341,24 +341,24 @@ int pcie_dev_init(void)
         {
             return -1;
         }
-        P_LOG_INFO("Card %d read value: %#x", i, dev_type);
+        P_LOG_INITIAL("Card %d read value: %#x", i, dev_type);
         g_pcie_board_info.items[i].chip_id = i;
         if (dev_type == DEV_TYPE_AWG)
         {
             g_pcie_board_info.items[i].dev_type = DEV_TYPE_AWG;
-            P_LOG_INFO("Card %d type: %#x", i, g_pcie_board_info.items[i].dev_type);
+            P_LOG_INITIAL("Card %d type: %#x", i, g_pcie_board_info.items[i].dev_type);
         }
         else if (dev_type == DEV_TYPE_QA_4G)
         {
             g_pcie_board_info.qa_sub_type[i] = 4;
             g_pcie_board_info.items[i].dev_type = DEV_TYPE_QA;
-            P_LOG_INFO("Card %d type: %#x, subtype = %d", i, g_pcie_board_info.items[i].dev_type, g_pcie_board_info.qa_sub_type[i]);
+            P_LOG_INITIAL("Card %d type: %#x, subtype = %d", i, g_pcie_board_info.items[i].dev_type, g_pcie_board_info.qa_sub_type[i]);
         }
         else if (dev_type == DEV_TYPE_QA_8G)
         {
             g_pcie_board_info.qa_sub_type[i] = 8;
             g_pcie_board_info.items[i].dev_type = DEV_TYPE_QA;
-            P_LOG_INFO("Card %d type: %#x, subtype = %d", i, g_pcie_board_info.items[i].dev_type, g_pcie_board_info.qa_sub_type[i]);
+            P_LOG_INITIAL("Card %d type: %#x, subtype = %d", i, g_pcie_board_info.items[i].dev_type, g_pcie_board_info.qa_sub_type[i]);
         }
         else
         {
@@ -369,7 +369,7 @@ int pcie_dev_init(void)
     build_awg_map(&g_pcie_board_info);
     build_qa_map(&g_pcie_board_info);
 
-    P_LOG_DEBUG("board_num=%d, awg_board_num=%d, qa_board_num=%d, awg_ch_num=%d, qa_in_ch_num=%d, qa_out_ch_num=%d",
+    P_LOG_MONITOR("board_num=%d, awg_board_num=%d, qa_board_num=%d, awg_ch_num=%d, qa_in_ch_num=%d, qa_out_ch_num=%d",
                 g_pcie_board_info.board_num,
                 g_pcie_board_info.awg_board_num,
                 g_pcie_board_info.qa_board_num,
@@ -497,7 +497,7 @@ int xdma_read_user_space(int chip, uint64_t offset, uint32_t *readVal)
         return -1;
     }
     *readVal = *(uint32_t *)(s_xdmaDevContx[chip].m_user_mmap_addr + offset);
-    P_LOG_REPEAT("PCIE read data: %d(Hex:%#x) from user space addr: %#llx.", *readVal, *readVal, offset);
+    P_LOG_MONITOR("PCIE read data: %d(Hex:%#x) from user space addr: %#llx.", *readVal, *readVal, offset);
     return 0;
 }
 
@@ -517,7 +517,7 @@ int xdma_write_user_space(int chip, uint64_t offset, uint32_t writeVal)
 
     *(volatile uint32_t *)(s_xdmaDevContx[chip].m_user_mmap_addr + offset) = writeVal;
 
-    P_LOG_REPEAT("PCIE write data: %u(Hex:%#x) to user space addr: %#llx.",
+    P_LOG_MONITOR("PCIE write data: %u(Hex:%#x) to user space addr: %#llx.",
                  writeVal, writeVal, offset);
 
     return 0;
@@ -536,7 +536,7 @@ int dma_write_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
     {
         P_LOG_ERROR("PCIe DMA write data to device %s failed!", s_xdmaDevContx[chip].m_devH2CSpaceName);
     }
-    P_LOG_REPEAT("PCIe DMA write data to device %s succeed!...%d", s_xdmaDevContx[chip].m_devH2CSpaceName, rc);
+    P_LOG_MONITOR("PCIe DMA write data to device %s succeed!...%d", s_xdmaDevContx[chip].m_devH2CSpaceName, rc);
     return 0;
 }
 
@@ -546,7 +546,7 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
     {
         return -1;
     }
-    P_LOG_REPEAT("PCIe chip %d DMA access addr %#llx, read bytes: %d.", chip, address, bytes);
+    P_LOG_MONITOR("PCIe chip %d DMA access addr %#llx, read bytes: %d.", chip, address, bytes);
     uint64_t size = bytes;
     int index = 0, int_num, rem_num, count = 0;
     int_num = size / DMA_ONCE_SIZE_MAX;
@@ -560,7 +560,7 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
                                 DMA_ONCE_SIZE_MAX,
                                 address + index * DMA_ONCE_SIZE_MAX);
         memcpy(buffer + index * DMA_ONCE_SIZE_MAX, s_xdmaDevContx[chip].m_pbuffer, DMA_ONCE_SIZE_MAX);
-        P_LOG_REPEAT("DMA read index: %d, read count: %d", index, count);
+        P_LOG_MONITOR("DMA read index: %d, read count: %d", index, count);
     }
     memset(s_xdmaDevContx[chip].m_pbuffer, 0x00, rem_num);
     count += read_to_buffer(s_xdmaDevContx[chip].m_devC2HSpaceName,
@@ -569,10 +569,10 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
                             rem_num,
                             address + index * DMA_ONCE_SIZE_MAX);
     memcpy(buffer + index * DMA_ONCE_SIZE_MAX, s_xdmaDevContx[chip].m_pbuffer, rem_num);
-    P_LOG_REPEAT("DMA total read count: %d", count);
+    P_LOG_MONITOR("DMA total read count: %d", count);
     if (count < 0)
         P_LOG_ERROR("PCIe DMA read data from device %s failed!", s_xdmaDevContx[chip].m_devC2HSpaceName);
-        P_LOG_REPEAT("PCIe DMA Read count: %d, expect: %d.", count, bytes);
+        P_LOG_MONITOR("PCIe DMA Read count: %d, expect: %d.", count, bytes);
     return count;
 }
 

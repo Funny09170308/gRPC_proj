@@ -1,7 +1,7 @@
 #include "i2c_func.h"
 #include "i2c_reg_config.h"
 #include "../axi_gpio/axi_gpio.h"
-#include "../platform_log/platform_log.h"
+#include "../lib/include/platform_log/platform_log.h"
 
 #include <fcntl.h>
 

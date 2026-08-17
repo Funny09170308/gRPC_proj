@@ -21,7 +21,7 @@
 #include "../axi_gpio/axi_gpio.h"
 #include "../i2c/io_expand/max7300.h"
 #include "../axi_device/axi_dev_drv.h"
-#include "../platform_log/platform_log.h"
+#include "../lib/include/platform_log/platform_log.h"
 
 /// @brief 设备信息
 static systemConfig_t *s_sysConfig;
@@ -408,7 +408,7 @@ void temp_monitor(void)
 #define QA_TEMP_OFFSET 0x00010000 + (1 << 2)
     s_boardInfo = get_pcie_board_info();
     float kernel_temp = read_temperature();
-    P_LOG_REPEAT("Kernel temp: %.2f", kernel_temp);
+    P_LOG_MONITOR("Kernel temp: %.2f", kernel_temp);
     if (kernel_temp >= TEMPERATURE_WALL)
     {
         cut_off_slave_power();
@@ -420,7 +420,7 @@ void temp_monitor(void)
     {
         value = common_pcie_user_reg_data_get(i, AWG_TEMP_OFFSET);
         float slave_temp = value * 507.5921310 / pow(2, 16) - 279.42657680;
-        P_LOG_REPEAT("AWG%d temp: %.2f", (i + 1), slave_temp);
+        P_LOG_MONITOR("AWG%d temp: %.2f", (i + 1), slave_temp);
         if (slave_temp >= TEMPERATURE_WALL)
         {
             cut_off_slave_power();
@@ -436,7 +436,7 @@ void temp_monitor(void)
     {
         value = common_pcie_user_reg_data_get(i, QA_TEMP_OFFSET);
         float slave_temp = value * 507.5921310 / pow(2, 16) - 279.42657680;
-        P_LOG_REPEAT("QA%d temp: %.2f", (i + 1), slave_temp);
+        P_LOG_MONITOR("QA%d temp: %.2f", (i + 1), slave_temp);
         if (slave_temp >= TEMPERATURE_WALL)
         {
             cut_off_slave_power();

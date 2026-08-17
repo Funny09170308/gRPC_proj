@@ -1,6 +1,6 @@
 #include "spi_func.h"
 #include "lmk04828_drv.h"
-#include "../platform_log/platform_log.h"
+#include "../lib/include/platform_log/platform_log.h"
 
 #include <stdio.h>
 #include <fcntl.h>

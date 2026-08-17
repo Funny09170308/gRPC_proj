@@ -2,7 +2,7 @@
 #include "assert.h"
 #include "param_mgr.h"
 #include "../public/public.h"
-#include "../platform_log/platform_log.h"
+#include "../lib/include/platform_log/platform_log.h"
 
 static systemConfig_t g_deviceCfg;
 
@@ -200,29 +200,29 @@ void device_info_init(void)
 		snprintf(g_deviceCfg.version, sizeof(g_deviceCfg.version), "%s", CURRENT_SOFTWARE_VERSION);
 	}
 	// 上电设置IP
-	P_LOG_INFO("g_deviceCfg.dhcpen = %d", g_deviceCfg.dhcpen);
+	P_LOG_INITIAL("g_deviceCfg.dhcpen = %d", g_deviceCfg.dhcpen);
 	if (g_deviceCfg.dhcpen == 0)
 	{
-		P_LOG_INFO("DHCP enable = %d, set static IP.", g_deviceCfg.dhcpen);
+		P_LOG_INITIAL("DHCP enable = %d, set static IP.", g_deviceCfg.dhcpen);
 		set_static_ip(g_deviceCfg.interface, g_deviceCfg.ip, g_deviceCfg.gw, g_deviceCfg.mask, g_deviceCfg.mac);
 	}
 	else if (g_deviceCfg.dhcpen == 1)
 	{
-		P_LOG_INFO("DHCP enable = %d, set DHCP.", g_deviceCfg.dhcpen);
+		P_LOG_INITIAL("DHCP enable = %d, set DHCP.", g_deviceCfg.dhcpen);
 		start_dhcp_ip();
 	}
 	sleep(1);
-	P_LOG_INFO("************************************************");
-	P_LOG_INFO("*    Device Interface: %s", g_deviceCfg.interface);
-	P_LOG_INFO("*                DHCP: %s", ((g_deviceCfg.dhcpen == 0) ? "DISABLE" : "ENABLE"));
-	P_LOG_INFO("*    static Device IP: %s", g_deviceCfg.ip);
-	P_LOG_INFO("*         Device Mask: %s", g_deviceCfg.mask);
-	P_LOG_INFO("*           Device GW: %s", g_deviceCfg.gw);
-	P_LOG_INFO("*          Device MAC: %s", g_deviceCfg.mac);
-	P_LOG_INFO("*              Vender: %s", g_deviceCfg.vendors);
-	P_LOG_INFO("*               Model: %s", g_deviceCfg.model);
-	P_LOG_INFO("*                  SN: %s", g_deviceCfg.serial);
-	P_LOG_INFO("*        Software Ver: %s", g_deviceCfg.version);
-	P_LOG_INFO("************************************************");
+	P_LOG_INITIAL("************************************************");
+	P_LOG_INITIAL("*    Device Interface: %s", g_deviceCfg.interface);
+	P_LOG_INITIAL("*                DHCP: %s", ((g_deviceCfg.dhcpen == 0) ? "DISABLE" : "ENABLE"));
+	P_LOG_INITIAL("*    static Device IP: %s", g_deviceCfg.ip);
+	P_LOG_INITIAL("*         Device Mask: %s", g_deviceCfg.mask);
+	P_LOG_INITIAL("*           Device GW: %s", g_deviceCfg.gw);
+	P_LOG_INITIAL("*          Device MAC: %s", g_deviceCfg.mac);
+	P_LOG_INITIAL("*              Vender: %s", g_deviceCfg.vendors);
+	P_LOG_INITIAL("*               Model: %s", g_deviceCfg.model);
+	P_LOG_INITIAL("*                  SN: %s", g_deviceCfg.serial);
+	P_LOG_INITIAL("*        Software Ver: %s", g_deviceCfg.version);
+	P_LOG_INITIAL("************************************************");
 	fflush(stdout);
 }

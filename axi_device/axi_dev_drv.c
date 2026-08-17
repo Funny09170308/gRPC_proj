@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <sys/mman.h>
 #include "axi_dev_drv.h"
-#include "../platform_log/platform_log.h"
+#include "../lib/include/platform_log/platform_log.h"
 
 int axi_device_init(axiDevice_t *dev, const char *name, uint64_t phys_base, uint64_t map_size)
 {

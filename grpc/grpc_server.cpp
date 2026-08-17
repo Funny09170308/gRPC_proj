@@ -5,7 +5,7 @@
 #include "../pcie/common_func.h"
 #include "../param_mgr/param_mgr.h"
 #include "../pcie/lnawg/lnawg_func.h"
-#include "../platform_log/platform_log.h"
+#include "../lib/include/platform_log/platform_log.h"
 #include <string>
 #include <grpcpp/grpcpp.h>
 
@@ -218,7 +218,7 @@ Status CommonCMDServiceImpl::StreamDataSet(ServerContext *context,
                                            ServerReader<SetStreamDataRequest> *reader,
                                            SetStreamResult *response)
 {
-    P_LOG_REPEAT("Client connect the stream port: StreamDataSet");
+    P_LOG_MONITOR("Client connect the stream port: StreamDataSet");
 
     uint32_t chip = 0;
     uint32_t streamID = 0;
@@ -272,7 +272,7 @@ Status CommonCMDServiceImpl::StreamDataSet(ServerContext *context,
                     startAddr, currentPackBytes);
     }
 
-    P_LOG_REPEAT("StreamDataSet All packs deploy succeed! %u", totalResvBytes);
+    P_LOG_MONITOR("StreamDataSet All packs deploy succeed! %u", totalResvBytes);
     response->set_resvtotal(totalResvBytes);
     return Status::OK;
 }

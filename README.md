@@ -39,8 +39,8 @@
 <!-- - [优化内容1] -->
 <!-- - [优化内容2] -->
 - [V0.2.0]
-- [使用gRPC替代VXI-11的通信结构] -
-- [P_LOG日志添加P_LOG_REPEAT属性] - 循环、重复打印可使用此选项，方便关闭大量打印数据调试
+- [使用gRPC替代VXI-11的通信结构]
+- [P_LOG日志使用静态库代替]
 - [V0.2.1]
 - [更新为25.2版本编译工具链]
 - [gRPC版本更新为V1.71.0]
@@ -53,7 +53,6 @@
 ## 目录结构
 ```
 project
-├── platform_log    # print log
 ├── grpc            # grpc
 ├── proto_gen       # proto_gen
 └── README.md       # README

@@ -43,11 +43,13 @@ SYSROOT = /opt/petalinux/2025.2/aarch64/sysroots/cortexa72-cortexa53-amd-linux
 # -------------------------------
 CFLAGS   = --sysroot=$(SYSROOT) -Wall -Wextra -O2 \
            -I$(INCLUDE_SCPI) -I$(INCLUDE_TIRPC) -I$(INCLUDE_GRPC) \
+		   -I./lib/platform_log \
            -MMD -MF $(@:.o=.d)
 
 # gRPC 1.54.0 要求 C++17，必须显式指定
 CXXFLAGS = --sysroot=$(SYSROOT) -Wall -Wextra -std=c++17 -O2 \
            -I$(INCLUDE_SCPI) -I$(INCLUDE_TIRPC) -I$(INCLUDE_GRPC) \
+		   -I./lib/platform_log \
            -MMD -MF $(@:.o=.d)
 
 # -------------------------------
@@ -101,6 +103,7 @@ LDFLAGS += $(UTF8_STATIC_LIBS)
 LDFLAGS += $(OTHER_GRPC_DEPS)
 LDFLAGS += $(ABSL_STATIC_LIBS)
 LDFLAGS += $(SYS_LIBS)
+LDFLAGS += -L./lib -lplatform_log_static
 LDFLAGS += -Wl,--end-group
 
 # -------------------------------

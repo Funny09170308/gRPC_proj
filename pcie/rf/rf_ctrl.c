@@ -1,6 +1,6 @@
 #include "rf_ctrl.h"
 #include "../common_func.h"
-#include "../../platform_log/platform_log.h"
+#include "../../lib/include/platform_log/platform_log.h"
 
 uint32_t build_reg_value(uint8_t chSel, uint8_t chEn, uint8_t LESel, uint8_t ATTEN)
 {

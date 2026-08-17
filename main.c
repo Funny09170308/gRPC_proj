@@ -10,15 +10,16 @@
 #include "./spi_dev/spi2_test.h"
 #include "./param_mgr/param_mgr.h"
 #include "./spi_dev/lmk04828_drv.h"
-#include "./platform_log/platform_log.h"
+#include "./lib/include/platform_log/platform_log.h"
 
 int main(void)
 {
     setbuf(stdout, NULL);
 
     plog_init(
-        // P_LOG_LEVEL_REPEAT |
         // P_LOG_LEVEL_DEBUG |
+        P_LOG_LEVEL_INITIAL |
+        // P_LOG_LEVEL_MONITOR |
         P_LOG_LEVEL_INFO |
         P_LOG_LEVEL_WARNING |
         P_LOG_LEVEL_ERROR |
