@@ -2,6 +2,8 @@
 #define __PCIE_FUNC_H__
 
 #include <stdint.h>
+#include "./qa/qa_func.h"
+#include "./lnawg/lnawg_func.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -12,14 +14,15 @@ extern "C"
 #define XDMA_MAP_SIZE 0x40000
 
 #define BOARD_NUM_MAX 4
-#define AWG_CH_MAX 8
-#define QA_IN_CH_MAX 16
-#define QA_OUT_CH_MAX 16
+#define AWG_CH_MAX BOARD_NUM_MAX * C_LNAWG_CHANNEL_NUM
+#define QA_IN_CH_MAX BOARD_NUM_MAX * CARD_LOCAL_IN_CH_NUM
+#define QA_OUT_CH_MAX BOARD_NUM_MAX * CARD_LOCAL_OUT_CH_NUM
 
     typedef enum
     {
         DEV_TYPE_NONE = 0,
         DEV_TYPE_AWG = 0x000000F0,
+        DEV_TYPE_AWG_4CH = 0x000000F4,
         DEV_TYPE_QA = 0x000000F1,
         DEV_TYPE_QA_4G = 0x00000042,
         DEV_TYPE_QA_8G = 0x00000081,

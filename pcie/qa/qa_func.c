@@ -14,7 +14,7 @@ void QAConfigRegisterInit(void)
     s_QAUserRegs.m_trigger_mode = C_USER_SPACE_CONFIG_OFFSET + 1 * 4;
     s_QAUserRegs.m_trigger_source = C_USER_SPACE_CONFIG_OFFSET + 3 * 4;
     uint8_t index = 0;
-    for (uint8_t u8ChIndex = 0; u8ChIndex < CARD_LOCAL_CH_NUM; ++u8ChIndex)
+    for (uint8_t u8ChIndex = 0; u8ChIndex < CARD_LOCAL_OUT_CH_NUM; ++u8ChIndex)
     {
         // DAC参数寄存器配置
         for (index = 0; index < SIGNAL_MODULE_NUM; ++index)
@@ -40,40 +40,6 @@ void QAConfigRegisterInit(void)
         P_LOG_DEBUG("Channel %d DAC DAC_CFG_REG addr-m_dac_play_mode = %#x", u8ChIndex, s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_play_mode);
         s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_start_play = C_USER_SPACE_CONFIG_OFFSET + (DAC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x000B) * 4;
         P_LOG_DEBUG("Channel %d DAC DAC_CFG_REG addr-m_dac_start_play = %#x", u8ChIndex, s_QAUserRegs.m_DAC_config_reg[u8ChIndex].m_dac_start_play);
-
-        // 解模参数寄存器配置
-        for (index = 0; index < SIGNAL_MODULE_NUM; ++index)
-        {
-            s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_en[index] = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0000 + index * 0x10) * 4;
-            P_LOG_DEBUG("Channel %d ADC ch %d ADC_CFG_REG addr-m_adc_en = %#x", u8ChIndex, index, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_en[index]);
-            s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_freq[index] = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0001 + index * 0x10) * 4;
-            P_LOG_DEBUG("Channel %d ADC ch %d ADC_CFG_REG addr-m_adc_freq = %#x", u8ChIndex, index, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_freq[index]);
-            s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_phase[index] = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0004 + index * 0x10) * 4;
-            P_LOG_DEBUG("Channel %d ADC ch %d ADC_CFG_REG addr-m_adc_phase = %#x", u8ChIndex, index, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_phase[index]);
-        }
-
-        s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_data_len = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0005) * 4;
-        P_LOG_DEBUG("Channel %d ADC ADC_CFG_REG addr-m_adc_data_len = %#x", u8ChIndex, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_data_len);
-        s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_play_times = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0006) * 4;
-        P_LOG_DEBUG("Channel %d ADC ADC_CFG_REG addr-m_adc_play_times = %#x", u8ChIndex, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_play_times);
-        s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_play_delay = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0007) * 4;
-        P_LOG_DEBUG("Channel %d ADC ADC_CFG_REG addr-m_adc_play_delay = %#x", u8ChIndex, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_play_delay);
-        s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_play_mode = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0008) * 4;
-        P_LOG_DEBUG("Channel %d ADC ADC_CFG_REG addr-m_adc_play_mode = %#x", u8ChIndex, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_play_mode);
-        s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_start_play = C_USER_SPACE_CONFIG_OFFSET + (ADC_CONFIG_BASE + u8ChIndex * 0x0100 + 0x0009) * 4;
-        P_LOG_DEBUG("Channel %d ADC ADC_CFG_REG addr-m_adc_start_play = %#x", u8ChIndex, s_QAUserRegs.m_ADC_config_reg[u8ChIndex].m_adc_start_play);
-
-        // 直采参数寄存器配置
-        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_start = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0010 + 0x0000) * 4;
-        P_LOG_DEBUG("Channel %d sample sample_CFG_REG addr-m_sample_start = %#x", u8ChIndex, s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_start);
-        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_mode = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0010 + 0x0001) * 4;
-        P_LOG_DEBUG("Channel %d sample sample_CFG_REG addr-m_sample_mode = %#x", u8ChIndex, s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_mode);
-        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_length = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0010 + 0x0002) * 4;
-        P_LOG_DEBUG("Channel %d sample sample_CFG_REG addr-m_sample_length = %#x", u8ChIndex, s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_length);
-        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_delay = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0010 + 0x0003) * 4;
-        P_LOG_DEBUG("Channel %d sample sample_CFG_REG addr-m_sample_delay = %#x", u8ChIndex, s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_delay);
-        s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_num = C_USER_SPACE_CONFIG_OFFSET + (ADC_SAMPLE_BASE + u8ChIndex * 0x0010 + 0x0004) * 4;
-        P_LOG_DEBUG("Channel %d sample sample_CFG_REG addr-m_sample_num = %#x", u8ChIndex, s_QAUserRegs.m_sample_config_reg[u8ChIndex].m_sample_num);
     }
 
     s_QAUserRegs.m_device_id = C_USER_SPACE_CONFIG_OFFSET + (SYSTEM_CONFIG_BASE + 0x0000) * 4;
@@ -81,23 +47,15 @@ void QAConfigRegisterInit(void)
     s_QAUserRegs.m_adc_corr_status = C_USER_SPACE_CONFIG_OFFSET + STATUS_BASE + 0x0001 * 4;
     s_QAUserRegs.m_dac_play_status = C_USER_SPACE_CONFIG_OFFSET + STATUS_BASE + 0x0002 * 4;
 
-    s_QAUserRegs.m_adc_data_save_base[0] = 0x1cc0000000;
-    s_QAUserRegs.m_adc_data_save_base[1] = 0x1cc2000000;
-    s_QAUserRegs.m_adc_data_save_base[2] = 0x1cc4000000;
-    s_QAUserRegs.m_adc_data_save_base[3] = 0x1cc6000000;
-    s_QAUserRegs.m_adc_decision_res_base[0] = 0x1cc1000000;
-    s_QAUserRegs.m_adc_decision_res_base[1] = 0x1cc3000000;
-    s_QAUserRegs.m_adc_decision_res_base[2] = 0x1cc5000000;
-    s_QAUserRegs.m_adc_decision_res_base[3] = 0x1cc7000000;
-    s_QAUserRegs.m_dac_ram_base[0] = 0x1cca000000;
-    s_QAUserRegs.m_dac_ram_base[1] = 0x1ccb000000;
-    s_QAUserRegs.m_dac_ram_base[2] = 0x1ccc000000;
-    s_QAUserRegs.m_dac_ram_base[3] = 0x1ccd000000;
+    s_QAUserRegs.m_dac_ram_base[0] = 0x1cc0000000;
+    s_QAUserRegs.m_dac_ram_base[1] = 0x1cc1000000;
+    s_QAUserRegs.m_dac_ram_base[2] = 0x1cc2000000;
+    s_QAUserRegs.m_dac_ram_base[3] = 0x1cc3000000;
 
-    s_QAUserRegs.m_adc_ddr_base[0] = 0x1c80000000;
-    s_QAUserRegs.m_adc_ddr_base[1] = 0x1cc0000000;
-    s_QAUserRegs.m_adc_ddr_base[2] = 0x1ce0000000;
-    s_QAUserRegs.m_adc_ddr_base[3] = 0x1d10000000;
+    s_QAUserRegs.m_dac_ram_base[4] = 0x1cc4000000;
+    s_QAUserRegs.m_dac_ram_base[5] = 0x1cc5000000;
+    s_QAUserRegs.m_dac_ram_base[6] = 0x1cc6000000;
+    s_QAUserRegs.m_dac_ram_base[7] = 0x1cc7000000;
 
     /*
     for (index = 0; index < SIGNAL_MODULE_NUM; ++index)
@@ -153,6 +111,18 @@ int dac_localch_to_phych(uint32_t localch)
         break;
     case 4:
         phych = 3;
+        break;
+    case 5:
+        phych = 4;
+        break;
+    case 6:
+        phych = 5;
+        break;
+    case 7:
+        phych = 6;
+        break;
+    case 8:
+        phych = 7;
         break;
     default:
         P_LOG_ERROR("no suppurt ch: %d\r\n", localch);
@@ -267,261 +237,6 @@ void qa_dac_play_param(uint32_t logical_ch, DACDDSPlayParam_t param)
     xdma_write_user_space(chip_id, s_QAUserRegs.m_DAC_config_reg[phych].m_dac_play_mode, param.m_play_mode);
 }
 
-void qa_sample_start_stop(uint32_t logical_ch, uint32_t en)
-{
-    uint8_t chip_id, local_ch;
-    get_qa_in_route(logical_ch, &chip_id, &local_ch);
-    P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
-
-    int phych;
-    P_LOG_DEBUG("QA: Set chip: %d sample ch: %d enable status: %d", chip_id, local_ch, en);
-
-    phych = adc_localch_to_phych(local_ch);
-
-    en = (en == 1) ? 1 : 0;
-
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_sample_config_reg[phych].m_sample_start, en);
-}
-
-void qa_sample_config(uint32_t logical_ch, SampleConfigReg_t config)
-{
-    PcieBoardInfo *board_info = get_pcie_board_info();
-    uint8_t chip_id, local_ch;
-    get_qa_in_route(logical_ch, &chip_id, &local_ch);
-    P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
-
-    int phych;
-
-    P_LOG_DEBUG("QA: Set chip: %d dac ch: %d sample config.", chip_id, local_ch);
-    P_LOG_DEBUG("sample_length: %d.", config.m_sample_length);
-    P_LOG_DEBUG("sample_delay: %d.", config.m_sample_delay);
-    P_LOG_DEBUG("sample_num: %d.", config.m_sample_num);
-
-    phych = adc_localch_to_phych(local_ch);
-    if (board_info->qa_sub_type[chip_id] == 4) // 4G板卡采样长度
-    {
-        config.m_sample_length = config.m_sample_length / 8;
-    }
-    else if (board_info->qa_sub_type[chip_id] == 8) // 8G板卡采样长度
-    {
-        config.m_sample_length = config.m_sample_length / 16;
-    }
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_sample_config_reg[phych].m_sample_mode, 1);
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_sample_config_reg[phych].m_sample_length, config.m_sample_length);
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_sample_config_reg[phych].m_sample_delay, config.m_sample_delay);
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_sample_config_reg[phych].m_sample_num, config.m_sample_num);
-}
-
-void qa_adc_start_stop_play(uint32_t logical_ch, uint32_t en)
-{
-    uint8_t chip_id, local_ch;
-    get_qa_in_route(logical_ch, &chip_id, &local_ch);
-    P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
-
-    int phych;
-
-    P_LOG_DEBUG("QA: Set chip: %d adc ch: %d enable status: %d", chip_id, local_ch, en);
-    phych = adc_localch_to_phych(local_ch);
-
-    en = (en == 1) ? 1 : 0;
-
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_start_play, en);
-    if (en)
-    {
-        start_gain_trig();
-    }
-}
-
-void qa_adc_config(uint32_t logical_ch, uint32_t index, ADCConfig_t config)
-{
-    uint8_t chip_id, local_ch;
-    get_qa_in_route(logical_ch, &chip_id, &local_ch);
-    P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
-
-    int phych;
-
-    P_LOG_DEBUG("QA: Set chip: %d adc ch: %d adc config.", chip_id, local_ch);
-    uint32_t freq_word, phase_word;
-    qa_adc_start_stop_play(logical_ch, 0);
-    freq_word = (uint32_t)(config.m_adc_freq / 2000e6 * pow(2, 25));
-    phase_word = (uint32_t)(config.m_adc_phase / 180 * pow(2, 25));
-
-    P_LOG_DEBUG("freq: %.f value: %d(%#x) write to adc index: %d", config.m_adc_freq, freq_word, freq_word, index);
-    P_LOG_DEBUG("phase: %.f value: %d(%#x) write to adc index: %d", config.m_adc_phase, phase_word, phase_word, index);
-
-    phych = adc_localch_to_phych(local_ch);
-
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_freq[index], freq_word);
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_phase[index], phase_word);
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_en[index], 0);
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_en[index], 1);
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_en[index], 0);
-}
-
-void qa_adc_play_param(uint32_t logical_ch, ADCPlayParam_t param)
-{
-    uint8_t chip_id, local_ch;
-    get_qa_in_route(logical_ch, &chip_id, &local_ch);
-    P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
-
-    int phych;
-    param.m_adc_data_len = (uint32_t)(param.m_adc_data_len / 8);
-    P_LOG_DEBUG("QA: Set chip: %d adc ch: %d adc play param.", chip_id, local_ch);
-    P_LOG_DEBUG("adc_data_len: %d.", param.m_adc_data_len);
-    P_LOG_DEBUG("adc_play_times: %d.", param.m_adc_play_times);
-    P_LOG_DEBUG("adc_play_delay: %d.", param.m_adc_play_delay);
-    P_LOG_DEBUG("adc_play_mode: %d.", param.m_adc_play_mode);
-
-    phych = adc_localch_to_phych(local_ch);
-
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_data_len, param.m_adc_data_len);
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_play_times, param.m_adc_play_times);
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_play_delay, param.m_adc_play_delay);
-    xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_play_mode, param.m_adc_play_mode);
-}
-
-int qa_get_sample_data(uint32_t logical_ch, uint64_t getLength, uint8_t *buffer)
-{
-    uint8_t chip_id, local_ch;
-    get_qa_in_route(logical_ch, &chip_id, &local_ch);
-    P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
-
-    if (buffer == NULL)
-    {
-        return -2;
-    }
-    int rtn = -1, count = 10000;
-    uint32_t readVal = 0;
-    do
-    {
-        rtn = xdma_read_user_space(chip_id, s_QAUserRegs.m_adc_mem_status, readVal);
-        if ((readVal & 0x03) == 0x3)
-        {
-            P_LOG_DEBUG("Sampling finished, exit waiting.");
-            break;
-        }
-    } while (count--);
-    if (count <= 0 || rtn != 0)
-    {
-        P_LOG_ERROR("Wait for adc memry status overtime!");
-        return -3;
-    }
-    dma_read_data(chip_id, s_QAUserRegs.m_adc_data_save_base[local_ch], getLength, buffer);
-}
-
-int qa_get_sample_state(uint32_t logical_ch)
-{
-    int ret;
-    int count = 10000;
-    uint32_t readVal = 0;
-    uint8_t chip_id = 0;
-    uint8_t local_ch = 0;
-
-    ret = get_qa_in_route(logical_ch, &chip_id, &local_ch);
-
-    if (ret != 0)
-    {
-        P_LOG_ERROR("get_qa_in_route failed, logical_ch=%u\n", logical_ch);
-        return -1;
-    }
-
-    P_LOG_DEBUG("logical_ch=%u, chip_id=%u, local_ch=%u\n",
-                logical_ch, chip_id, local_ch);
-
-    while (count-- > 0)
-    {
-        ret = xdma_read_user_space(chip_id, s_QAUserRegs.m_adc_mem_status, &readVal);
-        if (ret != 0)
-        {
-            P_LOG_ERROR("xdma_read_user_space failed, chip_id=%u\n", chip_id);
-            return -1;
-        }
-
-        if ((readVal & 0x03) == 0x03)
-        {
-            P_LOG_DEBUG("Sampling finished\n");
-            return 0;
-        }
-
-        usleep(100);
-    }
-
-    P_LOG_ERROR("Sampling wait timeout, logical_ch=%u, chip_id=%u\n",
-                logical_ch, chip_id);
-    return -1;
-}
-
-int qa_get_demo_state(uint32_t logical_ch)
-{
-    int ret;
-    int count = 10000;
-    uint32_t readVal = 0;
-    uint8_t chip_id = 0;
-    uint8_t local_ch = 0;
-
-    ret = get_qa_in_route(logical_ch, &chip_id, &local_ch);
-
-    if (ret != 0)
-    {
-        P_LOG_ERROR("get_qa_in_route failed, logical_ch=%u\n", logical_ch);
-        return -1;
-    }
-
-    P_LOG_DEBUG("logical_ch=%u, chip_id=%u, local_ch=%u\n",
-                logical_ch, chip_id, local_ch);
-
-    while (count-- > 0)
-    {
-        ret = xdma_read_user_space(chip_id, s_QAUserRegs.m_adc_corr_status, &readVal);
-        if (ret != 0)
-        {
-            P_LOG_ERROR("xdma_read_user_space failed, chip_id=%u\n", chip_id);
-            return -1;
-        }
-
-        if ((readVal & 0x03) == 0x03)
-        {
-            P_LOG_DEBUG("demo finished\n");
-            return 0;
-        }
-
-        usleep(100);
-    }
-
-    P_LOG_ERROR("demo wait timeout, logical_ch=%u, chip_id=%u\n", logical_ch, chip_id);
-
-    return -1;
-}
-
-int qa_get_ddr_data(uint32_t logical_ch, uint64_t getLength, uint8_t *buffer)
-{
-    uint8_t chip_id, local_ch;
-    get_qa_in_route(logical_ch, &chip_id, &local_ch);
-    P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
-
-    if (buffer == NULL)
-    {
-        return -2;
-    }
-    int rtn = -1, count = 10000;
-    uint32_t readVal = 0;
-    do
-    {
-        rtn = xdma_read_user_space(chip_id, s_QAUserRegs.m_adc_corr_status, readVal);
-        if ((readVal & 0x03) == 0x3)
-        {
-            P_LOG_DEBUG("DDR data analize finished, exit waiting.");
-            break;
-        }
-    } while (count--);
-    if (count <= 0 || rtn != 0)
-    {
-        P_LOG_ERROR("Wait for adc corr status overtime!");
-        return -3;
-    }
-    dma_read_data(chip_id, s_QAUserRegs.m_adc_decision_res_base[local_ch], getLength * 16 * 16, buffer);
-}
-
 void qa_soft_trig_signal(uint32_t logical_ch)
 {
     int ret;
@@ -577,11 +292,11 @@ uint8_t reverse8bit(uint8_t data)
 void qa_set_rf_da_atten(uint32_t logical_ch, float attenVal)
 {
     uint8_t chip_id, local_ch;
-    logical_ch = 5 - logical_ch;
+    logical_ch = logical_ch;
     get_qa_out_route(logical_ch, &chip_id, &local_ch);
     P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
     int phych;
-    phych = adc_localch_to_phych(local_ch);
+    phych = dac_localch_to_phych(local_ch);
     uint8_t setAttenVal = (uint8_t)(attenVal / C_ATTEN_STEP);
     P_LOG_DEBUG("Set atten total value:%d", setAttenVal);
     uint8_t setStage1AttenVal = C_ATTEN_SET_MIN_VAL;

@@ -6,13 +6,19 @@
 
 // 通道数
 #define C_LNAWG_CH_DDS_NUM 4
-#define C_LNAWG_CHANNEL_NUM 2
+#define C_LNAWG_CHANNEL_NUM 4
 
 #define C_AWG_REG_BASE_ADDR 0x10000
 #define C_AWG_CH_MODE_AWG 1
 #define C_AWG_CH_MODE_DDS 2
 #define C_AWG_CH_MODE_CHIRP_OUT 3
 #define C_AWG_CH_MODE_PARAM_WAVE 4 // 参数化波形
+
+#define C_SYSTEM_BASE_ADDR 0x000
+#define C_DDS_BASE_ADDR 0x200
+#define C_DAC_BASE_ADDR 0x600
+#define C_FB_BASE_ADDR 0xA00
+
 
 typedef enum
 {
@@ -166,8 +172,39 @@ extern "C"
         uint32_t m_delt_x_addr[C_LNAWG_CH_DDS_NUM];
     } DDSAddrMap_t;
 
-    LocalParam *get_local_param_instance();
+    typedef struct
+    {
+        uint32_t m_fb_en;
+        uint32_t m_rx_idelay_tapout;
+        uint32_t m_rx_fb_res;
+        uint32_t m_rx_clear;
+        uint32_t m_rx_idealy_tapin;
+        uint32_t m_fb_en_1;
+        uint32_t m_fb_en_2;
+        uint32_t m_fb_en_3;
+    } feedbackConfig_t;
+    typedef struct
+    {
+        uint32_t m_device_id;
+        uint32_t m_start_sync;
+        uint32_t m_start_dac_config;
+        uint32_t m_dac_output_rst;
+        uint32_t m_temp;
+        uint32_t m_ext_source;
+        uint32_t m_ch_mode[C_LNAWG_CHANNEL_NUM];
+        uint32_t m_ch_en[C_LNAWG_CHANNEL_NUM];
+        uint32_t m_ch_seq_cnt[C_LNAWG_CHANNEL_NUM];
+        uint32_t m_ch_loop_cnt[C_LNAWG_CHANNEL_NUM];
+        uint32_t m_switch_flag[C_LNAWG_CHANNEL_NUM];
+        DDSAddrMap_t m_ch_dds_config[C_LNAWG_CHANNEL_NUM];
+        uint32_t m_ch_offset[C_LNAWG_CHANNEL_NUM];
+        uint32_t m_ch_range[C_LNAWG_CHANNEL_NUM];
+        feedbackConfig_t m_fb_config;
+        uint32_t m_ch_wave_base_addr[C_LNAWG_CHANNEL_NUM];
+    } AWGUserReg_t;
 
+    LocalParam *get_local_param_instance();
+    void AWGConfigRegisterInit(void);
     void set_awg_ch_run(int32_t logical_ch, int32_t state);
     uint32_t get_awg_ch_run(int32_t logical_ch);
 

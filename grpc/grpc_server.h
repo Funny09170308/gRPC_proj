@@ -201,45 +201,9 @@ public: // QA function
     Status GetDACStartStop(ServerContext *context,
                            const GetDACStartStopRequest *request,
                            GetDACStartStopResponse *response) override;
-    Status SetSampleParam(ServerContext *context,
-                          const SetSampleParamRequest *request,
-                          ParamResponse *response) override;
-    Status GetSampleParam(ServerContext *context,
-                          const GetSampleParamRequest *request,
-                          GetSampleParamResponse *response) override;
-    Status SetSampleStartStop(ServerContext *context,
-                              const SetSampleStartStopRequest *request,
-                              ParamResponse *response) override;
-    Status GetSampleStartStop(ServerContext *context,
-                              const GetSampleStartStopRequest *request,
-                              GetSampleStartStopResponse *response) override;
-    Status SetADCConfig(ServerContext *context,
-                        const SetADCConfigRequest *request,
-                        ParamResponse *response) override;
-    Status GetADCConfig(ServerContext *context,
-                        const GetADCConfigRequest *request,
-                        GetADCConfigResponse *response) override;
-    Status SetADCPlayParam(ServerContext *context,
-                           const SetADCPlayParamRequest *request,
-                           ParamResponse *response) override;
-    Status GetADCPlayParam(ServerContext *context,
-                           const GetADCPlayParamRequest *request,
-                           GetADCPlayParamResponse *response) override;
-    Status SetADCStartStop(ServerContext *context,
-                           const SetADCStartStopRequest *request,
-                           ParamResponse *response) override;
-    Status GetADCStartStop(ServerContext *context,
-                           const GetADCStartStopRequest *request,
-                           GetADCStartStopResponse *response) override;
-    Status GetSampleState(ServerContext *context,
-                          const GetSampleStateRequest *request,
-                          ParamResponse *response) override;
-    Status GetDemodeState(ServerContext *context,
-                          const GetDemodeStateRequest *request,
-                          ParamResponse *response) override;
     Status SetDigitalAtten(ServerContext *context,
-                         const SetDigitalAttenRequest *request,
-                         ParamResponse *response) override;
+                           const SetDigitalAttenRequest *request,
+                           ParamResponse *response) override;
     Status SetADCRFAtten(ServerContext *context,
                          const SetADCRFAttenRequest *request,
                          ParamResponse *response) override;
