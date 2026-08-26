@@ -29,6 +29,7 @@ service QACMDService {
     rpc GetDACRFAtten(GetDACRFAttenRequest) returns (GetDACRFAttenResponse);
     rpc SetADCRFAtten(SetADCRFAttenRequest) returns (ParamResponse);
     rpc GetADCRFAtten(GetADCRFAttenRequest) returns (GetADCRFAttenResponse);
+    rpc SetVerifyAtten(SetVerifyAttenRequest) returns (ParamResponse);
 
     rpc GetSampleState(GetSampleStateRequest) returns (ParamResponse);
     rpc GetDemodeState(GetDemodeStateRequest) returns (ParamResponse);
@@ -179,4 +180,10 @@ message GetADCRFAttenResponse {
 message SetADCRFAttenRequest {
     uint32 logicCh = 1;
     float attenVal = 2;
+}
+
+message SetVerifyAttenRequest {
+    uint32 logicCh = 1;
+    float freqOut = 2;
+    float amp = 3;
 }

@@ -158,6 +158,9 @@ extern SetSoftTrigRequestDefaultTypeInternal _SetSoftTrigRequest_default_instanc
 class SetTrigSourRequest;
 struct SetTrigSourRequestDefaultTypeInternal;
 extern SetTrigSourRequestDefaultTypeInternal _SetTrigSourRequest_default_instance_;
+class SetVerifyAttenRequest;
+struct SetVerifyAttenRequestDefaultTypeInternal;
+extern SetVerifyAttenRequestDefaultTypeInternal _SetVerifyAttenRequest_default_instance_;
 }  // namespace silicon_based
 namespace google {
 namespace protobuf {
@@ -169,6 +172,221 @@ namespace silicon_based {
 // ===================================================================
 
 
+// -------------------------------------------------------------------
+
+class SetVerifyAttenRequest final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.SetVerifyAttenRequest) */ {
+ public:
+  inline SetVerifyAttenRequest() : SetVerifyAttenRequest(nullptr) {}
+  ~SetVerifyAttenRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SetVerifyAttenRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SetVerifyAttenRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SetVerifyAttenRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SetVerifyAttenRequest(const SetVerifyAttenRequest& from) : SetVerifyAttenRequest(nullptr, from) {}
+  inline SetVerifyAttenRequest(SetVerifyAttenRequest&& from) noexcept
+      : SetVerifyAttenRequest(nullptr, std::move(from)) {}
+  inline SetVerifyAttenRequest& operator=(const SetVerifyAttenRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetVerifyAttenRequest& operator=(SetVerifyAttenRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetVerifyAttenRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetVerifyAttenRequest* internal_default_instance() {
+    return reinterpret_cast<const SetVerifyAttenRequest*>(
+        &_SetVerifyAttenRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 35;
+  friend void swap(SetVerifyAttenRequest& a, SetVerifyAttenRequest& b) { a.Swap(&b); }
+  inline void Swap(SetVerifyAttenRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetVerifyAttenRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetVerifyAttenRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SetVerifyAttenRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SetVerifyAttenRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SetVerifyAttenRequest& from) { SetVerifyAttenRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SetVerifyAttenRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.SetVerifyAttenRequest"; }
+
+ protected:
+  explicit SetVerifyAttenRequest(::google::protobuf::Arena* arena);
+  SetVerifyAttenRequest(::google::protobuf::Arena* arena, const SetVerifyAttenRequest& from);
+  SetVerifyAttenRequest(::google::protobuf::Arena* arena, SetVerifyAttenRequest&& from) noexcept
+      : SetVerifyAttenRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kLogicChFieldNumber = 1,
+    kFreqOutFieldNumber = 2,
+    kAmpFieldNumber = 3,
+  };
+  // uint32 logicCh = 1;
+  void clear_logicch() ;
+  ::uint32_t logicch() const;
+  void set_logicch(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_logicch() const;
+  void _internal_set_logicch(::uint32_t value);
+
+  public:
+  // float freqOut = 2;
+  void clear_freqout() ;
+  float freqout() const;
+  void set_freqout(float value);
+
+  private:
+  float _internal_freqout() const;
+  void _internal_set_freqout(float value);
+
+  public:
+  // float amp = 3;
+  void clear_amp() ;
+  float amp() const;
+  void set_amp(float value);
+
+  private:
+  float _internal_amp() const;
+  void _internal_set_amp(float value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.SetVerifyAttenRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 3, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SetVerifyAttenRequest& from_msg);
+    ::uint32_t logicch_;
+    float freqout_;
+    float amp_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_qa_5fcmd_2eproto;
+};
 // -------------------------------------------------------------------
 
 class SetTrigSourRequest final
@@ -9154,6 +9372,76 @@ inline float SetADCRFAttenRequest::_internal_attenval() const {
 inline void SetADCRFAttenRequest::_internal_set_attenval(float value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.attenval_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SetVerifyAttenRequest
+
+// uint32 logicCh = 1;
+inline void SetVerifyAttenRequest::clear_logicch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logicch_ = 0u;
+}
+inline ::uint32_t SetVerifyAttenRequest::logicch() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SetVerifyAttenRequest.logicCh)
+  return _internal_logicch();
+}
+inline void SetVerifyAttenRequest::set_logicch(::uint32_t value) {
+  _internal_set_logicch(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SetVerifyAttenRequest.logicCh)
+}
+inline ::uint32_t SetVerifyAttenRequest::_internal_logicch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.logicch_;
+}
+inline void SetVerifyAttenRequest::_internal_set_logicch(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logicch_ = value;
+}
+
+// float freqOut = 2;
+inline void SetVerifyAttenRequest::clear_freqout() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.freqout_ = 0;
+}
+inline float SetVerifyAttenRequest::freqout() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SetVerifyAttenRequest.freqOut)
+  return _internal_freqout();
+}
+inline void SetVerifyAttenRequest::set_freqout(float value) {
+  _internal_set_freqout(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SetVerifyAttenRequest.freqOut)
+}
+inline float SetVerifyAttenRequest::_internal_freqout() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.freqout_;
+}
+inline void SetVerifyAttenRequest::_internal_set_freqout(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.freqout_ = value;
+}
+
+// float amp = 3;
+inline void SetVerifyAttenRequest::clear_amp() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.amp_ = 0;
+}
+inline float SetVerifyAttenRequest::amp() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SetVerifyAttenRequest.amp)
+  return _internal_amp();
+}
+inline void SetVerifyAttenRequest::set_amp(float value) {
+  _internal_set_amp(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SetVerifyAttenRequest.amp)
+}
+inline float SetVerifyAttenRequest::_internal_amp() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.amp_;
+}
+inline void SetVerifyAttenRequest::_internal_set_amp(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.amp_ = value;
 }
 
 #ifdef __GNUC__

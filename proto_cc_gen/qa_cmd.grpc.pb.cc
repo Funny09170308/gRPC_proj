@@ -45,6 +45,7 @@ static const char* QACMDService_method_names[] = {
   "/silicon_based.QACMDService/GetDACRFAtten",
   "/silicon_based.QACMDService/SetADCRFAtten",
   "/silicon_based.QACMDService/GetADCRFAtten",
+  "/silicon_based.QACMDService/SetVerifyAtten",
   "/silicon_based.QACMDService/GetSampleState",
   "/silicon_based.QACMDService/GetDemodeState",
 };
@@ -79,8 +80,9 @@ QACMDService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   , rpcmethod_GetDACRFAtten_(QACMDService_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SetADCRFAtten_(QACMDService_method_names[21], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetADCRFAtten_(QACMDService_method_names[22], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetSampleState_(QACMDService_method_names[23], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetDemodeState_(QACMDService_method_names[24], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetVerifyAtten_(QACMDService_method_names[23], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSampleState_(QACMDService_method_names[24], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetDemodeState_(QACMDService_method_names[25], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status QACMDService::Stub::SetTrigSour(::grpc::ClientContext* context, const ::silicon_based::SetTrigSourRequest& request, ::silicon_based::ParamResponse* response) {
@@ -612,6 +614,29 @@ void QACMDService::Stub::async::GetADCRFAtten(::grpc::ClientContext* context, co
   return result;
 }
 
+::grpc::Status QACMDService::Stub::SetVerifyAtten(::grpc::ClientContext* context, const ::silicon_based::SetVerifyAttenRequest& request, ::silicon_based::ParamResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::SetVerifyAttenRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetVerifyAtten_, context, request, response);
+}
+
+void QACMDService::Stub::async::SetVerifyAtten(::grpc::ClientContext* context, const ::silicon_based::SetVerifyAttenRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::SetVerifyAttenRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetVerifyAtten_, context, request, response, std::move(f));
+}
+
+void QACMDService::Stub::async::SetVerifyAtten(::grpc::ClientContext* context, const ::silicon_based::SetVerifyAttenRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetVerifyAtten_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* QACMDService::Stub::PrepareAsyncSetVerifyAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetVerifyAttenRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::ParamResponse, ::silicon_based::SetVerifyAttenRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetVerifyAtten_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* QACMDService::Stub::AsyncSetVerifyAttenRaw(::grpc::ClientContext* context, const ::silicon_based::SetVerifyAttenRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSetVerifyAttenRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 ::grpc::Status QACMDService::Stub::GetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::silicon_based::ParamResponse* response) {
   return ::grpc::internal::BlockingUnaryCall< ::silicon_based::GetSampleStateRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetSampleState_, context, request, response);
 }
@@ -892,6 +917,16 @@ QACMDService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       QACMDService_method_names[23],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< QACMDService::Service, ::silicon_based::SetVerifyAttenRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](QACMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::SetVerifyAttenRequest* req,
+             ::silicon_based::ParamResponse* resp) {
+               return service->SetVerifyAtten(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      QACMDService_method_names[24],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< QACMDService::Service, ::silicon_based::GetSampleStateRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](QACMDService::Service* service,
              ::grpc::ServerContext* ctx,
@@ -900,7 +935,7 @@ QACMDService::Service::Service() {
                return service->GetSampleState(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      QACMDService_method_names[24],
+      QACMDService_method_names[25],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< QACMDService::Service, ::silicon_based::GetDemodeStateRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](QACMDService::Service* service,
@@ -1069,6 +1104,13 @@ QACMDService::Service::~Service() {
 }
 
 ::grpc::Status QACMDService::Service::GetADCRFAtten(::grpc::ServerContext* context, const ::silicon_based::GetADCRFAttenRequest* request, ::silicon_based::GetADCRFAttenResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status QACMDService::Service::SetVerifyAtten(::grpc::ServerContext* context, const ::silicon_based::SetVerifyAttenRequest* request, ::silicon_based::ParamResponse* response) {
   (void) context;
   (void) request;
   (void) response;

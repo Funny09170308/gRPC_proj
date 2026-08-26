@@ -5,6 +5,7 @@
 #include "../pcie/common_func.h"
 #include "../param_mgr/param_mgr.h"
 #include "../pcie/lnawg/lnawg_func.h"
+#include "../pcie/qa/qa_output_calibration.h"
 #include "../lib/include/platform_log/platform_log.h"
 #include <string>
 #include <grpcpp/grpcpp.h>
@@ -935,5 +936,19 @@ Status QACMDServiceImpl::SetDACRFAtten(ServerContext *context,
     float attenVal = request->attenval();
     P_LOG_DEBUG("SetDACRFAtten: Set DAC atten value...%d, %f.", ch, attenVal);
     qa_set_rf_da_atten(ch, attenVal);
+    return Status::OK;
+}
+
+Status QACMDServiceImpl::SetVerifyAtten(ServerContext *context,
+                                        const SetVerifyAttenRequest *request,
+                                        ParamResponse *response)
+{
+    uint32_t ch = request->logicch();
+    float freqOut = request->freqout();
+    float amp = request->amp();
+    float attenVal = 0.0f;
+    P_LOG_DEBUG("SetVerifyAtten: Set verify atten value...%d, %f, %f.", ch, freqOut, amp);
+    qa_output_calibration_set(ch, freqOut, amp, &attenVal);
+    P_LOG_DEBUG("SetVerifyAtten: Calculated atten value...%d, %f.", ch, attenVal);
     return Status::OK;
 }

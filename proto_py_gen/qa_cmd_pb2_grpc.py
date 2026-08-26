@@ -131,6 +131,11 @@ class QACMDServiceStub(object):
                 request_serializer=qa__cmd__pb2.GetADCRFAttenRequest.SerializeToString,
                 response_deserializer=qa__cmd__pb2.GetADCRFAttenResponse.FromString,
                 _registered_method=True)
+        self.SetVerifyAtten = channel.unary_unary(
+                '/silicon_based.QACMDService/SetVerifyAtten',
+                request_serializer=qa__cmd__pb2.SetVerifyAttenRequest.SerializeToString,
+                response_deserializer=common__cmd__pb2.ParamResponse.FromString,
+                _registered_method=True)
         self.GetSampleState = channel.unary_unary(
                 '/silicon_based.QACMDService/GetSampleState',
                 request_serializer=qa__cmd__pb2.GetSampleStateRequest.SerializeToString,
@@ -285,6 +290,12 @@ class QACMDServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetVerifyAtten(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def GetSampleState(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -414,6 +425,11 @@ def add_QACMDServiceServicer_to_server(servicer, server):
                     servicer.GetADCRFAtten,
                     request_deserializer=qa__cmd__pb2.GetADCRFAttenRequest.FromString,
                     response_serializer=qa__cmd__pb2.GetADCRFAttenResponse.SerializeToString,
+            ),
+            'SetVerifyAtten': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetVerifyAtten,
+                    request_deserializer=qa__cmd__pb2.SetVerifyAttenRequest.FromString,
+                    response_serializer=common__cmd__pb2.ParamResponse.SerializeToString,
             ),
             'GetSampleState': grpc.unary_unary_rpc_method_handler(
                     servicer.GetSampleState,
@@ -1048,6 +1064,33 @@ class QACMDService(object):
             '/silicon_based.QACMDService/GetADCRFAtten',
             qa__cmd__pb2.GetADCRFAttenRequest.SerializeToString,
             qa__cmd__pb2.GetADCRFAttenResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SetVerifyAtten(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetVerifyAtten',
+            qa__cmd__pb2.SetVerifyAttenRequest.SerializeToString,
+            common__cmd__pb2.ParamResponse.FromString,
             options,
             channel_credentials,
             insecure,

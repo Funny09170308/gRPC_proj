@@ -6,6 +6,7 @@
 #include "./application/app.h"
 #include "./pcie/pcie_func.h"
 #include "./pcie/qa/qa_func.h"
+#include "./pcie/qa/qa_output_calibration.h"
 #include "./axi_gpio/axi_gpio.h"
 #include "./spi_dev/spi2_test.h"
 #include "./param_mgr/param_mgr.h"
@@ -61,6 +62,8 @@ int main(void)
     sleep(5);
     rf_pwr_supply();
     slave_card_detect();
+    /* Load per-channel QA output calibration tables from the executable CWD. */
+    qa_output_calibration_init(QA_OUTPUT_CAL_DEFAULT_DIR);
     task_creat();
     while (1)
     {

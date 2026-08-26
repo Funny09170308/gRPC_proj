@@ -246,6 +246,9 @@ public: // QA function
     Status SetDACRFAtten(ServerContext *context,
                          const SetDACRFAttenRequest *request,
                          ParamResponse *response) override;
+    Status SetVerifyAtten(ServerContext *context,
+                          const SetVerifyAttenRequest *request,
+                          ParamResponse *response) override;
 };
 
 #ifdef __cplusplus
