@@ -262,10 +262,12 @@ size_t qa_output_calibration_point_count(uint32_t logical_ch)
                : 0U;
 }
 
-int qa_output_calibration_lookup(uint32_t logical_ch,
-                                 double frequency_hz,
-                                 double output_power_dbm,
-                                 float *attenuation_db)
+static int calibration_lookup_with_reference_atten(
+    uint32_t logical_ch,
+    double frequency_hz,
+    double output_power_dbm,
+    double reference_attenuation_db,
+    float *attenuation_db)
 {
     QAOutputCalTable *table;
     double frequency_mhz;
@@ -310,8 +312,8 @@ int qa_output_calibration_lookup(uint32_t logical_ch,
         }
     }
 
-    /* Actual output = calibrated zero-attenuation power - attenuation. */
-    attenuation = calibrated_power - output_power_dbm;
+    attenuation = calibrated_power + reference_attenuation_db -
+                  output_power_dbm;
     attenuation = floor(attenuation / C_ATTEN_STEP + 0.5) * C_ATTEN_STEP;
     if (attenuation < 0.0)
         return -3; /* Requested power is higher than this channel can produce. */
@@ -321,15 +323,45 @@ int qa_output_calibration_lookup(uint32_t logical_ch,
     return 0;
 }
 
+int qa_output_calibration_lookup(uint32_t logical_ch,
+                                 double frequency_hz,
+                                 double output_power_dbm,
+                                 float *attenuation_db)
+{
+    /* Preserve the old hardware setting when user power changes 8 -> 10 dBm. */
+    return calibration_lookup_with_reference_atten(
+        logical_ch, frequency_hz, output_power_dbm,
+        QA_OUTPUT_CAL_POWER_OFFSET_DB, attenuation_db);
+}
+
 int qa_output_calibration_set(uint32_t logical_ch,
                               double frequency_hz,
                               double output_power_dbm,
                               float *applied_attenuation_db)
 {
-    float attenuation;
+    float attenuation = 0.0f;
     int result = qa_output_calibration_lookup(logical_ch, frequency_hz,
                                               output_power_dbm, &attenuation);
     P_LOG_DEBUG("qa_output_calibration_set: logical_ch=%u, frequency_hz=%f, output_power_dbm=%f, attenuation=%f, result=%d",
+                logical_ch, frequency_hz, output_power_dbm, attenuation, result);
+    if (result != 0)
+        return result;
+    qa_set_rf_da_atten(logical_ch, attenuation);
+    if (applied_attenuation_db != NULL)
+        *applied_attenuation_db = attenuation;
+    return 0;
+}
+
+int qa_output_calibration_set_zero_atten_reference(
+    uint32_t logical_ch,
+    double frequency_hz,
+    double output_power_dbm,
+    float *applied_attenuation_db)
+{
+    float attenuation = 0.0f;
+    int result = calibration_lookup_with_reference_atten(
+        logical_ch, frequency_hz, output_power_dbm, 0.0, &attenuation);
+    P_LOG_DEBUG("qa_output_calibration_set_zero_atten_reference: logical_ch=%u, frequency_hz=%f, output_power_dbm=%f, attenuation=%f, result=%d",
                 logical_ch, frequency_hz, output_power_dbm, attenuation, result);
     if (result != 0)
         return result;

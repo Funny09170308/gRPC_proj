@@ -11,6 +11,9 @@ extern "C"
 
 #define QA_OUTPUT_CAL_DEFAULT_DIR "/root/app/verify_param"
 
+/* User-facing power scale correction: old 8 dBm command measured 10 dBm. */
+#define QA_OUTPUT_CAL_POWER_OFFSET_DB 2.0
+
     /*
      * Load the newest Baseband_Output_CH<n>*.csv for every output channel.
      * Call once during program startup, after the PCIe board has been detected.
@@ -44,6 +47,16 @@ extern "C"
                                   double frequency_hz,
                                   double output_power_dbm,
                                   float *applied_attenuation_db);
+
+    /*
+     * Use this interface for CSV files measured with DAC RF attenuation
+     * explicitly set to 0 dB. No legacy 2 dB power-scale offset is applied.
+     */
+    int qa_output_calibration_set_zero_atten_reference(
+        uint32_t logical_ch,
+        double frequency_hz,
+        double output_power_dbm,
+        float *applied_attenuation_db);
 
 #ifdef __cplusplus
 }
