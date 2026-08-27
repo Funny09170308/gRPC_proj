@@ -158,6 +158,21 @@ extern SegmentCountGetResponseDefaultTypeInternal _SegmentCountGetResponse_defau
 class SegmentCountSetRequest;
 struct SegmentCountSetRequestDefaultTypeInternal;
 extern SegmentCountSetRequestDefaultTypeInternal _SegmentCountSetRequest_default_instance_;
+class SignalVerifyParamGetRequest;
+struct SignalVerifyParamGetRequestDefaultTypeInternal;
+extern SignalVerifyParamGetRequestDefaultTypeInternal _SignalVerifyParamGetRequest_default_instance_;
+class SignalVerifyParamGetResponse;
+struct SignalVerifyParamGetResponseDefaultTypeInternal;
+extern SignalVerifyParamGetResponseDefaultTypeInternal _SignalVerifyParamGetResponse_default_instance_;
+class VerifyParamGetRequest;
+struct VerifyParamGetRequestDefaultTypeInternal;
+extern VerifyParamGetRequestDefaultTypeInternal _VerifyParamGetRequest_default_instance_;
+class VerifyParamGetResponse;
+struct VerifyParamGetResponseDefaultTypeInternal;
+extern VerifyParamGetResponseDefaultTypeInternal _VerifyParamGetResponse_default_instance_;
+class VerifyParamSetRequest;
+struct VerifyParamSetRequestDefaultTypeInternal;
+extern VerifyParamSetRequestDefaultTypeInternal _VerifyParamSetRequest_default_instance_;
 }  // namespace silicon_based
 namespace google {
 namespace protobuf {
@@ -169,6 +184,1101 @@ namespace silicon_based {
 // ===================================================================
 
 
+// -------------------------------------------------------------------
+
+class VerifyParamSetRequest final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.VerifyParamSetRequest) */ {
+ public:
+  inline VerifyParamSetRequest() : VerifyParamSetRequest(nullptr) {}
+  ~VerifyParamSetRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(VerifyParamSetRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(VerifyParamSetRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR VerifyParamSetRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline VerifyParamSetRequest(const VerifyParamSetRequest& from) : VerifyParamSetRequest(nullptr, from) {}
+  inline VerifyParamSetRequest(VerifyParamSetRequest&& from) noexcept
+      : VerifyParamSetRequest(nullptr, std::move(from)) {}
+  inline VerifyParamSetRequest& operator=(const VerifyParamSetRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline VerifyParamSetRequest& operator=(VerifyParamSetRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const VerifyParamSetRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const VerifyParamSetRequest* internal_default_instance() {
+    return reinterpret_cast<const VerifyParamSetRequest*>(
+        &_VerifyParamSetRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 35;
+  friend void swap(VerifyParamSetRequest& a, VerifyParamSetRequest& b) { a.Swap(&b); }
+  inline void Swap(VerifyParamSetRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(VerifyParamSetRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  VerifyParamSetRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<VerifyParamSetRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const VerifyParamSetRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const VerifyParamSetRequest& from) { VerifyParamSetRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(VerifyParamSetRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.VerifyParamSetRequest"; }
+
+ protected:
+  explicit VerifyParamSetRequest(::google::protobuf::Arena* arena);
+  VerifyParamSetRequest(::google::protobuf::Arena* arena, const VerifyParamSetRequest& from);
+  VerifyParamSetRequest(::google::protobuf::Arena* arena, VerifyParamSetRequest&& from) noexcept
+      : VerifyParamSetRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kChannelVerifyFieldNumber = 2,
+    kChannelKParamFieldNumber = 3,
+    kChannelBParamFieldNumber = 4,
+    kLogicalChFieldNumber = 1,
+  };
+  // repeated string channelVerify = 2;
+  int channelverify_size() const;
+  private:
+  int _internal_channelverify_size() const;
+
+  public:
+  void clear_channelverify() ;
+  const std::string& channelverify(int index) const;
+  std::string* mutable_channelverify(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_channelverify(int index, Arg_&& value, Args_... args);
+  std::string* add_channelverify();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_channelverify(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& channelverify() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_channelverify();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_channelverify() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_channelverify();
+
+  public:
+  // repeated float channelKParam = 3;
+  int channelkparam_size() const;
+  private:
+  int _internal_channelkparam_size() const;
+
+  public:
+  void clear_channelkparam() ;
+  float channelkparam(int index) const;
+  void set_channelkparam(int index, float value);
+  void add_channelkparam(float value);
+  const ::google::protobuf::RepeatedField<float>& channelkparam() const;
+  ::google::protobuf::RepeatedField<float>* mutable_channelkparam();
+
+  private:
+  const ::google::protobuf::RepeatedField<float>& _internal_channelkparam() const;
+  ::google::protobuf::RepeatedField<float>* _internal_mutable_channelkparam();
+
+  public:
+  // repeated float channelBParam = 4;
+  int channelbparam_size() const;
+  private:
+  int _internal_channelbparam_size() const;
+
+  public:
+  void clear_channelbparam() ;
+  float channelbparam(int index) const;
+  void set_channelbparam(int index, float value);
+  void add_channelbparam(float value);
+  const ::google::protobuf::RepeatedField<float>& channelbparam() const;
+  ::google::protobuf::RepeatedField<float>* mutable_channelbparam();
+
+  private:
+  const ::google::protobuf::RepeatedField<float>& _internal_channelbparam() const;
+  ::google::protobuf::RepeatedField<float>* _internal_mutable_channelbparam();
+
+  public:
+  // uint32 logical_ch = 1;
+  void clear_logical_ch() ;
+  ::uint32_t logical_ch() const;
+  void set_logical_ch(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_logical_ch() const;
+  void _internal_set_logical_ch(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.VerifyParamSetRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 4, 0,
+      57, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const VerifyParamSetRequest& from_msg);
+    ::google::protobuf::RepeatedPtrField<std::string> channelverify_;
+    ::google::protobuf::RepeatedField<float> channelkparam_;
+    ::google::protobuf::RepeatedField<float> channelbparam_;
+    ::uint32_t logical_ch_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lnawg_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
+class VerifyParamGetResponse final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.VerifyParamGetResponse) */ {
+ public:
+  inline VerifyParamGetResponse() : VerifyParamGetResponse(nullptr) {}
+  ~VerifyParamGetResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(VerifyParamGetResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(VerifyParamGetResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR VerifyParamGetResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline VerifyParamGetResponse(const VerifyParamGetResponse& from) : VerifyParamGetResponse(nullptr, from) {}
+  inline VerifyParamGetResponse(VerifyParamGetResponse&& from) noexcept
+      : VerifyParamGetResponse(nullptr, std::move(from)) {}
+  inline VerifyParamGetResponse& operator=(const VerifyParamGetResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline VerifyParamGetResponse& operator=(VerifyParamGetResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const VerifyParamGetResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const VerifyParamGetResponse* internal_default_instance() {
+    return reinterpret_cast<const VerifyParamGetResponse*>(
+        &_VerifyParamGetResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 37;
+  friend void swap(VerifyParamGetResponse& a, VerifyParamGetResponse& b) { a.Swap(&b); }
+  inline void Swap(VerifyParamGetResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(VerifyParamGetResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  VerifyParamGetResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<VerifyParamGetResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const VerifyParamGetResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const VerifyParamGetResponse& from) { VerifyParamGetResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(VerifyParamGetResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.VerifyParamGetResponse"; }
+
+ protected:
+  explicit VerifyParamGetResponse(::google::protobuf::Arena* arena);
+  VerifyParamGetResponse(::google::protobuf::Arena* arena, const VerifyParamGetResponse& from);
+  VerifyParamGetResponse(::google::protobuf::Arena* arena, VerifyParamGetResponse&& from) noexcept
+      : VerifyParamGetResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kChannelVerifyFieldNumber = 1,
+    kChannelKParamFieldNumber = 2,
+    kChannelBParamFieldNumber = 3,
+  };
+  // repeated string channelVerify = 1;
+  int channelverify_size() const;
+  private:
+  int _internal_channelverify_size() const;
+
+  public:
+  void clear_channelverify() ;
+  const std::string& channelverify(int index) const;
+  std::string* mutable_channelverify(int index);
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_channelverify(int index, Arg_&& value, Args_... args);
+  std::string* add_channelverify();
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void add_channelverify(Arg_&& value, Args_... args);
+  const ::google::protobuf::RepeatedPtrField<std::string>& channelverify() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* mutable_channelverify();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_channelverify() const;
+  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_channelverify();
+
+  public:
+  // repeated float channelKParam = 2;
+  int channelkparam_size() const;
+  private:
+  int _internal_channelkparam_size() const;
+
+  public:
+  void clear_channelkparam() ;
+  float channelkparam(int index) const;
+  void set_channelkparam(int index, float value);
+  void add_channelkparam(float value);
+  const ::google::protobuf::RepeatedField<float>& channelkparam() const;
+  ::google::protobuf::RepeatedField<float>* mutable_channelkparam();
+
+  private:
+  const ::google::protobuf::RepeatedField<float>& _internal_channelkparam() const;
+  ::google::protobuf::RepeatedField<float>* _internal_mutable_channelkparam();
+
+  public:
+  // repeated float channelBParam = 3;
+  int channelbparam_size() const;
+  private:
+  int _internal_channelbparam_size() const;
+
+  public:
+  void clear_channelbparam() ;
+  float channelbparam(int index) const;
+  void set_channelbparam(int index, float value);
+  void add_channelbparam(float value);
+  const ::google::protobuf::RepeatedField<float>& channelbparam() const;
+  ::google::protobuf::RepeatedField<float>* mutable_channelbparam();
+
+  private:
+  const ::google::protobuf::RepeatedField<float>& _internal_channelbparam() const;
+  ::google::protobuf::RepeatedField<float>* _internal_mutable_channelbparam();
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.VerifyParamGetResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 3, 0,
+      58, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const VerifyParamGetResponse& from_msg);
+    ::google::protobuf::RepeatedPtrField<std::string> channelverify_;
+    ::google::protobuf::RepeatedField<float> channelkparam_;
+    ::google::protobuf::RepeatedField<float> channelbparam_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lnawg_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
+class VerifyParamGetRequest final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.VerifyParamGetRequest) */ {
+ public:
+  inline VerifyParamGetRequest() : VerifyParamGetRequest(nullptr) {}
+  ~VerifyParamGetRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(VerifyParamGetRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(VerifyParamGetRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR VerifyParamGetRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline VerifyParamGetRequest(const VerifyParamGetRequest& from) : VerifyParamGetRequest(nullptr, from) {}
+  inline VerifyParamGetRequest(VerifyParamGetRequest&& from) noexcept
+      : VerifyParamGetRequest(nullptr, std::move(from)) {}
+  inline VerifyParamGetRequest& operator=(const VerifyParamGetRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline VerifyParamGetRequest& operator=(VerifyParamGetRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const VerifyParamGetRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const VerifyParamGetRequest* internal_default_instance() {
+    return reinterpret_cast<const VerifyParamGetRequest*>(
+        &_VerifyParamGetRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 36;
+  friend void swap(VerifyParamGetRequest& a, VerifyParamGetRequest& b) { a.Swap(&b); }
+  inline void Swap(VerifyParamGetRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(VerifyParamGetRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  VerifyParamGetRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<VerifyParamGetRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const VerifyParamGetRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const VerifyParamGetRequest& from) { VerifyParamGetRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(VerifyParamGetRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.VerifyParamGetRequest"; }
+
+ protected:
+  explicit VerifyParamGetRequest(::google::protobuf::Arena* arena);
+  VerifyParamGetRequest(::google::protobuf::Arena* arena, const VerifyParamGetRequest& from);
+  VerifyParamGetRequest(::google::protobuf::Arena* arena, VerifyParamGetRequest&& from) noexcept
+      : VerifyParamGetRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kLogicalChFieldNumber = 1,
+  };
+  // uint32 logical_ch = 1;
+  void clear_logical_ch() ;
+  ::uint32_t logical_ch() const;
+  void set_logical_ch(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_logical_ch() const;
+  void _internal_set_logical_ch(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.VerifyParamGetRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const VerifyParamGetRequest& from_msg);
+    ::uint32_t logical_ch_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lnawg_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SignalVerifyParamGetResponse final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.SignalVerifyParamGetResponse) */ {
+ public:
+  inline SignalVerifyParamGetResponse() : SignalVerifyParamGetResponse(nullptr) {}
+  ~SignalVerifyParamGetResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SignalVerifyParamGetResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SignalVerifyParamGetResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SignalVerifyParamGetResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SignalVerifyParamGetResponse(const SignalVerifyParamGetResponse& from) : SignalVerifyParamGetResponse(nullptr, from) {}
+  inline SignalVerifyParamGetResponse(SignalVerifyParamGetResponse&& from) noexcept
+      : SignalVerifyParamGetResponse(nullptr, std::move(from)) {}
+  inline SignalVerifyParamGetResponse& operator=(const SignalVerifyParamGetResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SignalVerifyParamGetResponse& operator=(SignalVerifyParamGetResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SignalVerifyParamGetResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SignalVerifyParamGetResponse* internal_default_instance() {
+    return reinterpret_cast<const SignalVerifyParamGetResponse*>(
+        &_SignalVerifyParamGetResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 39;
+  friend void swap(SignalVerifyParamGetResponse& a, SignalVerifyParamGetResponse& b) { a.Swap(&b); }
+  inline void Swap(SignalVerifyParamGetResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SignalVerifyParamGetResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SignalVerifyParamGetResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SignalVerifyParamGetResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SignalVerifyParamGetResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SignalVerifyParamGetResponse& from) { SignalVerifyParamGetResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SignalVerifyParamGetResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.SignalVerifyParamGetResponse"; }
+
+ protected:
+  explicit SignalVerifyParamGetResponse(::google::protobuf::Arena* arena);
+  SignalVerifyParamGetResponse(::google::protobuf::Arena* arena, const SignalVerifyParamGetResponse& from);
+  SignalVerifyParamGetResponse(::google::protobuf::Arena* arena, SignalVerifyParamGetResponse&& from) noexcept
+      : SignalVerifyParamGetResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kChannelKParamFieldNumber = 1,
+    kChannelBParamFieldNumber = 2,
+  };
+  // float channelKParam = 1;
+  void clear_channelkparam() ;
+  float channelkparam() const;
+  void set_channelkparam(float value);
+
+  private:
+  float _internal_channelkparam() const;
+  void _internal_set_channelkparam(float value);
+
+  public:
+  // float channelBParam = 2;
+  void clear_channelbparam() ;
+  float channelbparam() const;
+  void set_channelbparam(float value);
+
+  private:
+  float _internal_channelbparam() const;
+  void _internal_set_channelbparam(float value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.SignalVerifyParamGetResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SignalVerifyParamGetResponse& from_msg);
+    float channelkparam_;
+    float channelbparam_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lnawg_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SignalVerifyParamGetRequest final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.SignalVerifyParamGetRequest) */ {
+ public:
+  inline SignalVerifyParamGetRequest() : SignalVerifyParamGetRequest(nullptr) {}
+  ~SignalVerifyParamGetRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SignalVerifyParamGetRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SignalVerifyParamGetRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SignalVerifyParamGetRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SignalVerifyParamGetRequest(const SignalVerifyParamGetRequest& from) : SignalVerifyParamGetRequest(nullptr, from) {}
+  inline SignalVerifyParamGetRequest(SignalVerifyParamGetRequest&& from) noexcept
+      : SignalVerifyParamGetRequest(nullptr, std::move(from)) {}
+  inline SignalVerifyParamGetRequest& operator=(const SignalVerifyParamGetRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SignalVerifyParamGetRequest& operator=(SignalVerifyParamGetRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SignalVerifyParamGetRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SignalVerifyParamGetRequest* internal_default_instance() {
+    return reinterpret_cast<const SignalVerifyParamGetRequest*>(
+        &_SignalVerifyParamGetRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 38;
+  friend void swap(SignalVerifyParamGetRequest& a, SignalVerifyParamGetRequest& b) { a.Swap(&b); }
+  inline void Swap(SignalVerifyParamGetRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SignalVerifyParamGetRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SignalVerifyParamGetRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SignalVerifyParamGetRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SignalVerifyParamGetRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SignalVerifyParamGetRequest& from) { SignalVerifyParamGetRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SignalVerifyParamGetRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.SignalVerifyParamGetRequest"; }
+
+ protected:
+  explicit SignalVerifyParamGetRequest(::google::protobuf::Arena* arena);
+  SignalVerifyParamGetRequest(::google::protobuf::Arena* arena, const SignalVerifyParamGetRequest& from);
+  SignalVerifyParamGetRequest(::google::protobuf::Arena* arena, SignalVerifyParamGetRequest&& from) noexcept
+      : SignalVerifyParamGetRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kLogicalChFieldNumber = 1,
+    kChRangeFieldNumber = 2,
+  };
+  // uint32 logical_ch = 1;
+  void clear_logical_ch() ;
+  ::uint32_t logical_ch() const;
+  void set_logical_ch(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_logical_ch() const;
+  void _internal_set_logical_ch(::uint32_t value);
+
+  public:
+  // uint32 chRange = 2;
+  void clear_chrange() ;
+  ::uint32_t chrange() const;
+  void set_chrange(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_chrange() const;
+  void _internal_set_chrange(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.SignalVerifyParamGetRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SignalVerifyParamGetRequest& from_msg);
+    ::uint32_t logical_ch_;
+    ::uint32_t chrange_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_lnawg_5fcmd_2eproto;
+};
 // -------------------------------------------------------------------
 
 class SegmentCountSetRequest final
@@ -8911,6 +10021,466 @@ inline ::uint32_t FeadbackEnableGetRespone::_internal_enable() const {
 inline void FeadbackEnableGetRespone::_internal_set_enable(::uint32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.enable_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// VerifyParamSetRequest
+
+// uint32 logical_ch = 1;
+inline void VerifyParamSetRequest::clear_logical_ch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logical_ch_ = 0u;
+}
+inline ::uint32_t VerifyParamSetRequest::logical_ch() const {
+  // @@protoc_insertion_point(field_get:silicon_based.VerifyParamSetRequest.logical_ch)
+  return _internal_logical_ch();
+}
+inline void VerifyParamSetRequest::set_logical_ch(::uint32_t value) {
+  _internal_set_logical_ch(value);
+  // @@protoc_insertion_point(field_set:silicon_based.VerifyParamSetRequest.logical_ch)
+}
+inline ::uint32_t VerifyParamSetRequest::_internal_logical_ch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.logical_ch_;
+}
+inline void VerifyParamSetRequest::_internal_set_logical_ch(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logical_ch_ = value;
+}
+
+// repeated string channelVerify = 2;
+inline int VerifyParamSetRequest::_internal_channelverify_size() const {
+  return _internal_channelverify().size();
+}
+inline int VerifyParamSetRequest::channelverify_size() const {
+  return _internal_channelverify_size();
+}
+inline void VerifyParamSetRequest::clear_channelverify() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channelverify_.Clear();
+}
+inline std::string* VerifyParamSetRequest::add_channelverify() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_channelverify()->Add();
+  // @@protoc_insertion_point(field_add_mutable:silicon_based.VerifyParamSetRequest.channelVerify)
+  return _s;
+}
+inline const std::string& VerifyParamSetRequest::channelverify(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:silicon_based.VerifyParamSetRequest.channelVerify)
+  return _internal_channelverify().Get(index);
+}
+inline std::string* VerifyParamSetRequest::mutable_channelverify(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:silicon_based.VerifyParamSetRequest.channelVerify)
+  return _internal_mutable_channelverify()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void VerifyParamSetRequest::set_channelverify(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_channelverify()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:silicon_based.VerifyParamSetRequest.channelVerify)
+}
+template <typename Arg_, typename... Args_>
+inline void VerifyParamSetRequest::add_channelverify(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_channelverify(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:silicon_based.VerifyParamSetRequest.channelVerify)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+VerifyParamSetRequest::channelverify() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:silicon_based.VerifyParamSetRequest.channelVerify)
+  return _internal_channelverify();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+VerifyParamSetRequest::mutable_channelverify() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:silicon_based.VerifyParamSetRequest.channelVerify)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_channelverify();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+VerifyParamSetRequest::_internal_channelverify() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.channelverify_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+VerifyParamSetRequest::_internal_mutable_channelverify() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.channelverify_;
+}
+
+// repeated float channelKParam = 3;
+inline int VerifyParamSetRequest::_internal_channelkparam_size() const {
+  return _internal_channelkparam().size();
+}
+inline int VerifyParamSetRequest::channelkparam_size() const {
+  return _internal_channelkparam_size();
+}
+inline void VerifyParamSetRequest::clear_channelkparam() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channelkparam_.Clear();
+}
+inline float VerifyParamSetRequest::channelkparam(int index) const {
+  // @@protoc_insertion_point(field_get:silicon_based.VerifyParamSetRequest.channelKParam)
+  return _internal_channelkparam().Get(index);
+}
+inline void VerifyParamSetRequest::set_channelkparam(int index, float value) {
+  _internal_mutable_channelkparam()->Set(index, value);
+  // @@protoc_insertion_point(field_set:silicon_based.VerifyParamSetRequest.channelKParam)
+}
+inline void VerifyParamSetRequest::add_channelkparam(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _internal_mutable_channelkparam()->Add(value);
+  // @@protoc_insertion_point(field_add:silicon_based.VerifyParamSetRequest.channelKParam)
+}
+inline const ::google::protobuf::RepeatedField<float>& VerifyParamSetRequest::channelkparam() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:silicon_based.VerifyParamSetRequest.channelKParam)
+  return _internal_channelkparam();
+}
+inline ::google::protobuf::RepeatedField<float>* VerifyParamSetRequest::mutable_channelkparam()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:silicon_based.VerifyParamSetRequest.channelKParam)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_channelkparam();
+}
+inline const ::google::protobuf::RepeatedField<float>&
+VerifyParamSetRequest::_internal_channelkparam() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.channelkparam_;
+}
+inline ::google::protobuf::RepeatedField<float>* VerifyParamSetRequest::_internal_mutable_channelkparam() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.channelkparam_;
+}
+
+// repeated float channelBParam = 4;
+inline int VerifyParamSetRequest::_internal_channelbparam_size() const {
+  return _internal_channelbparam().size();
+}
+inline int VerifyParamSetRequest::channelbparam_size() const {
+  return _internal_channelbparam_size();
+}
+inline void VerifyParamSetRequest::clear_channelbparam() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channelbparam_.Clear();
+}
+inline float VerifyParamSetRequest::channelbparam(int index) const {
+  // @@protoc_insertion_point(field_get:silicon_based.VerifyParamSetRequest.channelBParam)
+  return _internal_channelbparam().Get(index);
+}
+inline void VerifyParamSetRequest::set_channelbparam(int index, float value) {
+  _internal_mutable_channelbparam()->Set(index, value);
+  // @@protoc_insertion_point(field_set:silicon_based.VerifyParamSetRequest.channelBParam)
+}
+inline void VerifyParamSetRequest::add_channelbparam(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _internal_mutable_channelbparam()->Add(value);
+  // @@protoc_insertion_point(field_add:silicon_based.VerifyParamSetRequest.channelBParam)
+}
+inline const ::google::protobuf::RepeatedField<float>& VerifyParamSetRequest::channelbparam() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:silicon_based.VerifyParamSetRequest.channelBParam)
+  return _internal_channelbparam();
+}
+inline ::google::protobuf::RepeatedField<float>* VerifyParamSetRequest::mutable_channelbparam()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:silicon_based.VerifyParamSetRequest.channelBParam)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_channelbparam();
+}
+inline const ::google::protobuf::RepeatedField<float>&
+VerifyParamSetRequest::_internal_channelbparam() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.channelbparam_;
+}
+inline ::google::protobuf::RepeatedField<float>* VerifyParamSetRequest::_internal_mutable_channelbparam() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.channelbparam_;
+}
+
+// -------------------------------------------------------------------
+
+// VerifyParamGetRequest
+
+// uint32 logical_ch = 1;
+inline void VerifyParamGetRequest::clear_logical_ch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logical_ch_ = 0u;
+}
+inline ::uint32_t VerifyParamGetRequest::logical_ch() const {
+  // @@protoc_insertion_point(field_get:silicon_based.VerifyParamGetRequest.logical_ch)
+  return _internal_logical_ch();
+}
+inline void VerifyParamGetRequest::set_logical_ch(::uint32_t value) {
+  _internal_set_logical_ch(value);
+  // @@protoc_insertion_point(field_set:silicon_based.VerifyParamGetRequest.logical_ch)
+}
+inline ::uint32_t VerifyParamGetRequest::_internal_logical_ch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.logical_ch_;
+}
+inline void VerifyParamGetRequest::_internal_set_logical_ch(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logical_ch_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// VerifyParamGetResponse
+
+// repeated string channelVerify = 1;
+inline int VerifyParamGetResponse::_internal_channelverify_size() const {
+  return _internal_channelverify().size();
+}
+inline int VerifyParamGetResponse::channelverify_size() const {
+  return _internal_channelverify_size();
+}
+inline void VerifyParamGetResponse::clear_channelverify() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channelverify_.Clear();
+}
+inline std::string* VerifyParamGetResponse::add_channelverify() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  std::string* _s = _internal_mutable_channelverify()->Add();
+  // @@protoc_insertion_point(field_add_mutable:silicon_based.VerifyParamGetResponse.channelVerify)
+  return _s;
+}
+inline const std::string& VerifyParamGetResponse::channelverify(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:silicon_based.VerifyParamGetResponse.channelVerify)
+  return _internal_channelverify().Get(index);
+}
+inline std::string* VerifyParamGetResponse::mutable_channelverify(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:silicon_based.VerifyParamGetResponse.channelVerify)
+  return _internal_mutable_channelverify()->Mutable(index);
+}
+template <typename Arg_, typename... Args_>
+inline void VerifyParamGetResponse::set_channelverify(int index, Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::AssignToString(
+      *_internal_mutable_channelverify()->Mutable(index),
+      std::forward<Arg_>(value), args... );
+  // @@protoc_insertion_point(field_set:silicon_based.VerifyParamGetResponse.channelVerify)
+}
+template <typename Arg_, typename... Args_>
+inline void VerifyParamGetResponse::add_channelverify(Arg_&& value, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_channelverify(),
+                               std::forward<Arg_>(value),
+                               args... );
+  // @@protoc_insertion_point(field_add:silicon_based.VerifyParamGetResponse.channelVerify)
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+VerifyParamGetResponse::channelverify() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:silicon_based.VerifyParamGetResponse.channelVerify)
+  return _internal_channelverify();
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+VerifyParamGetResponse::mutable_channelverify() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:silicon_based.VerifyParamGetResponse.channelVerify)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_channelverify();
+}
+inline const ::google::protobuf::RepeatedPtrField<std::string>&
+VerifyParamGetResponse::_internal_channelverify() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.channelverify_;
+}
+inline ::google::protobuf::RepeatedPtrField<std::string>*
+VerifyParamGetResponse::_internal_mutable_channelverify() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.channelverify_;
+}
+
+// repeated float channelKParam = 2;
+inline int VerifyParamGetResponse::_internal_channelkparam_size() const {
+  return _internal_channelkparam().size();
+}
+inline int VerifyParamGetResponse::channelkparam_size() const {
+  return _internal_channelkparam_size();
+}
+inline void VerifyParamGetResponse::clear_channelkparam() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channelkparam_.Clear();
+}
+inline float VerifyParamGetResponse::channelkparam(int index) const {
+  // @@protoc_insertion_point(field_get:silicon_based.VerifyParamGetResponse.channelKParam)
+  return _internal_channelkparam().Get(index);
+}
+inline void VerifyParamGetResponse::set_channelkparam(int index, float value) {
+  _internal_mutable_channelkparam()->Set(index, value);
+  // @@protoc_insertion_point(field_set:silicon_based.VerifyParamGetResponse.channelKParam)
+}
+inline void VerifyParamGetResponse::add_channelkparam(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _internal_mutable_channelkparam()->Add(value);
+  // @@protoc_insertion_point(field_add:silicon_based.VerifyParamGetResponse.channelKParam)
+}
+inline const ::google::protobuf::RepeatedField<float>& VerifyParamGetResponse::channelkparam() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:silicon_based.VerifyParamGetResponse.channelKParam)
+  return _internal_channelkparam();
+}
+inline ::google::protobuf::RepeatedField<float>* VerifyParamGetResponse::mutable_channelkparam()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:silicon_based.VerifyParamGetResponse.channelKParam)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_channelkparam();
+}
+inline const ::google::protobuf::RepeatedField<float>&
+VerifyParamGetResponse::_internal_channelkparam() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.channelkparam_;
+}
+inline ::google::protobuf::RepeatedField<float>* VerifyParamGetResponse::_internal_mutable_channelkparam() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.channelkparam_;
+}
+
+// repeated float channelBParam = 3;
+inline int VerifyParamGetResponse::_internal_channelbparam_size() const {
+  return _internal_channelbparam().size();
+}
+inline int VerifyParamGetResponse::channelbparam_size() const {
+  return _internal_channelbparam_size();
+}
+inline void VerifyParamGetResponse::clear_channelbparam() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channelbparam_.Clear();
+}
+inline float VerifyParamGetResponse::channelbparam(int index) const {
+  // @@protoc_insertion_point(field_get:silicon_based.VerifyParamGetResponse.channelBParam)
+  return _internal_channelbparam().Get(index);
+}
+inline void VerifyParamGetResponse::set_channelbparam(int index, float value) {
+  _internal_mutable_channelbparam()->Set(index, value);
+  // @@protoc_insertion_point(field_set:silicon_based.VerifyParamGetResponse.channelBParam)
+}
+inline void VerifyParamGetResponse::add_channelbparam(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _internal_mutable_channelbparam()->Add(value);
+  // @@protoc_insertion_point(field_add:silicon_based.VerifyParamGetResponse.channelBParam)
+}
+inline const ::google::protobuf::RepeatedField<float>& VerifyParamGetResponse::channelbparam() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:silicon_based.VerifyParamGetResponse.channelBParam)
+  return _internal_channelbparam();
+}
+inline ::google::protobuf::RepeatedField<float>* VerifyParamGetResponse::mutable_channelbparam()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:silicon_based.VerifyParamGetResponse.channelBParam)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_channelbparam();
+}
+inline const ::google::protobuf::RepeatedField<float>&
+VerifyParamGetResponse::_internal_channelbparam() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.channelbparam_;
+}
+inline ::google::protobuf::RepeatedField<float>* VerifyParamGetResponse::_internal_mutable_channelbparam() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.channelbparam_;
+}
+
+// -------------------------------------------------------------------
+
+// SignalVerifyParamGetRequest
+
+// uint32 logical_ch = 1;
+inline void SignalVerifyParamGetRequest::clear_logical_ch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logical_ch_ = 0u;
+}
+inline ::uint32_t SignalVerifyParamGetRequest::logical_ch() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SignalVerifyParamGetRequest.logical_ch)
+  return _internal_logical_ch();
+}
+inline void SignalVerifyParamGetRequest::set_logical_ch(::uint32_t value) {
+  _internal_set_logical_ch(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SignalVerifyParamGetRequest.logical_ch)
+}
+inline ::uint32_t SignalVerifyParamGetRequest::_internal_logical_ch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.logical_ch_;
+}
+inline void SignalVerifyParamGetRequest::_internal_set_logical_ch(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logical_ch_ = value;
+}
+
+// uint32 chRange = 2;
+inline void SignalVerifyParamGetRequest::clear_chrange() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chrange_ = 0u;
+}
+inline ::uint32_t SignalVerifyParamGetRequest::chrange() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SignalVerifyParamGetRequest.chRange)
+  return _internal_chrange();
+}
+inline void SignalVerifyParamGetRequest::set_chrange(::uint32_t value) {
+  _internal_set_chrange(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SignalVerifyParamGetRequest.chRange)
+}
+inline ::uint32_t SignalVerifyParamGetRequest::_internal_chrange() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.chrange_;
+}
+inline void SignalVerifyParamGetRequest::_internal_set_chrange(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.chrange_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SignalVerifyParamGetResponse
+
+// float channelKParam = 1;
+inline void SignalVerifyParamGetResponse::clear_channelkparam() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channelkparam_ = 0;
+}
+inline float SignalVerifyParamGetResponse::channelkparam() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SignalVerifyParamGetResponse.channelKParam)
+  return _internal_channelkparam();
+}
+inline void SignalVerifyParamGetResponse::set_channelkparam(float value) {
+  _internal_set_channelkparam(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SignalVerifyParamGetResponse.channelKParam)
+}
+inline float SignalVerifyParamGetResponse::_internal_channelkparam() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.channelkparam_;
+}
+inline void SignalVerifyParamGetResponse::_internal_set_channelkparam(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channelkparam_ = value;
+}
+
+// float channelBParam = 2;
+inline void SignalVerifyParamGetResponse::clear_channelbparam() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channelbparam_ = 0;
+}
+inline float SignalVerifyParamGetResponse::channelbparam() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SignalVerifyParamGetResponse.channelBParam)
+  return _internal_channelbparam();
+}
+inline void SignalVerifyParamGetResponse::set_channelbparam(float value) {
+  _internal_set_channelbparam(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SignalVerifyParamGetResponse.channelBParam)
+}
+inline float SignalVerifyParamGetResponse::_internal_channelbparam() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.channelbparam_;
+}
+inline void SignalVerifyParamGetResponse::_internal_set_channelbparam(float value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.channelbparam_ = value;
 }
 
 #ifdef __GNUC__

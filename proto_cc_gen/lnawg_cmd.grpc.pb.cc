@@ -44,6 +44,9 @@ static const char* LNAWGCMDService_method_names[] = {
   "/silicon_based.LNAWGCMDService/GetChirpOutParam",
   "/silicon_based.LNAWGCMDService/SetDDSEnable",
   "/silicon_based.LNAWGCMDService/GetDDSEnable",
+  "/silicon_based.LNAWGCMDService/SetAllVerifyParam",
+  "/silicon_based.LNAWGCMDService/GetAllVerifyParam",
+  "/silicon_based.LNAWGCMDService/GetSignalVerifyParam",
   "/silicon_based.LNAWGCMDService/SetFeadbackEnable",
   "/silicon_based.LNAWGCMDService/GetFeadbackEnable",
 };
@@ -77,8 +80,11 @@ LNAWGCMDService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& ch
   , rpcmethod_GetChirpOutParam_(LNAWGCMDService_method_names[19], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_SetDDSEnable_(LNAWGCMDService_method_names[20], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetDDSEnable_(LNAWGCMDService_method_names[21], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_SetFeadbackEnable_(LNAWGCMDService_method_names[22], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GetFeadbackEnable_(LNAWGCMDService_method_names[23], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetAllVerifyParam_(LNAWGCMDService_method_names[22], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetAllVerifyParam_(LNAWGCMDService_method_names[23], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetSignalVerifyParam_(LNAWGCMDService_method_names[24], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SetFeadbackEnable_(LNAWGCMDService_method_names[25], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetFeadbackEnable_(LNAWGCMDService_method_names[26], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status LNAWGCMDService::Stub::SetMode(::grpc::ClientContext* context, const ::silicon_based::ModeSetRequest& request, ::silicon_based::ParamResponse* response) {
@@ -587,6 +593,75 @@ void LNAWGCMDService::Stub::async::GetDDSEnable(::grpc::ClientContext* context, 
   return result;
 }
 
+::grpc::Status LNAWGCMDService::Stub::SetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest& request, ::silicon_based::ParamResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::VerifyParamSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetAllVerifyParam_, context, request, response);
+}
+
+void LNAWGCMDService::Stub::async::SetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::VerifyParamSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetAllVerifyParam_, context, request, response, std::move(f));
+}
+
+void LNAWGCMDService::Stub::async::SetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SetAllVerifyParam_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* LNAWGCMDService::Stub::PrepareAsyncSetAllVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::ParamResponse, ::silicon_based::VerifyParamSetRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SetAllVerifyParam_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* LNAWGCMDService::Stub::AsyncSetAllVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSetAllVerifyParamRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status LNAWGCMDService::Stub::GetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest& request, ::silicon_based::VerifyParamGetResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::VerifyParamGetRequest, ::silicon_based::VerifyParamGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetAllVerifyParam_, context, request, response);
+}
+
+void LNAWGCMDService::Stub::async::GetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest* request, ::silicon_based::VerifyParamGetResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::VerifyParamGetRequest, ::silicon_based::VerifyParamGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetAllVerifyParam_, context, request, response, std::move(f));
+}
+
+void LNAWGCMDService::Stub::async::GetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest* request, ::silicon_based::VerifyParamGetResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetAllVerifyParam_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::VerifyParamGetResponse>* LNAWGCMDService::Stub::PrepareAsyncGetAllVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::VerifyParamGetResponse, ::silicon_based::VerifyParamGetRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetAllVerifyParam_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::VerifyParamGetResponse>* LNAWGCMDService::Stub::AsyncGetAllVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetAllVerifyParamRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status LNAWGCMDService::Stub::GetSignalVerifyParam(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest& request, ::silicon_based::SignalVerifyParamGetResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::silicon_based::SignalVerifyParamGetRequest, ::silicon_based::SignalVerifyParamGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetSignalVerifyParam_, context, request, response);
+}
+
+void LNAWGCMDService::Stub::async::GetSignalVerifyParam(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest* request, ::silicon_based::SignalVerifyParamGetResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::silicon_based::SignalVerifyParamGetRequest, ::silicon_based::SignalVerifyParamGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetSignalVerifyParam_, context, request, response, std::move(f));
+}
+
+void LNAWGCMDService::Stub::async::GetSignalVerifyParam(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest* request, ::silicon_based::SignalVerifyParamGetResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetSignalVerifyParam_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::SignalVerifyParamGetResponse>* LNAWGCMDService::Stub::PrepareAsyncGetSignalVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::silicon_based::SignalVerifyParamGetResponse, ::silicon_based::SignalVerifyParamGetRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetSignalVerifyParam_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::silicon_based::SignalVerifyParamGetResponse>* LNAWGCMDService::Stub::AsyncGetSignalVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetSignalVerifyParamRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 ::grpc::Status LNAWGCMDService::Stub::SetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest& request, ::silicon_based::ParamResponse* response) {
   return ::grpc::internal::BlockingUnaryCall< ::silicon_based::FeadbackEnableSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SetFeadbackEnable_, context, request, response);
 }
@@ -857,6 +932,36 @@ LNAWGCMDService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LNAWGCMDService_method_names[22],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::VerifyParamSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](LNAWGCMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::VerifyParamSetRequest* req,
+             ::silicon_based::ParamResponse* resp) {
+               return service->SetAllVerifyParam(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LNAWGCMDService_method_names[23],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::VerifyParamGetRequest, ::silicon_based::VerifyParamGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](LNAWGCMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::VerifyParamGetRequest* req,
+             ::silicon_based::VerifyParamGetResponse* resp) {
+               return service->GetAllVerifyParam(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LNAWGCMDService_method_names[24],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::SignalVerifyParamGetRequest, ::silicon_based::SignalVerifyParamGetResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](LNAWGCMDService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::silicon_based::SignalVerifyParamGetRequest* req,
+             ::silicon_based::SignalVerifyParamGetResponse* resp) {
+               return service->GetSignalVerifyParam(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      LNAWGCMDService_method_names[25],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::FeadbackEnableSetRequest, ::silicon_based::ParamResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
              ::grpc::ServerContext* ctx,
@@ -865,7 +970,7 @@ LNAWGCMDService::Service::Service() {
                return service->SetFeadbackEnable(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LNAWGCMDService_method_names[23],
+      LNAWGCMDService_method_names[26],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< LNAWGCMDService::Service, ::silicon_based::FeadbackEnableGetRequest, ::silicon_based::FeadbackEnableGetRespone, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](LNAWGCMDService::Service* service,
@@ -1027,6 +1132,27 @@ LNAWGCMDService::Service::~Service() {
 }
 
 ::grpc::Status LNAWGCMDService::Service::GetDDSEnable(::grpc::ServerContext* context, const ::silicon_based::DDSEnableGetRequest* request, ::silicon_based::DDSEnableGetResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LNAWGCMDService::Service::SetAllVerifyParam(::grpc::ServerContext* context, const ::silicon_based::VerifyParamSetRequest* request, ::silicon_based::ParamResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LNAWGCMDService::Service::GetAllVerifyParam(::grpc::ServerContext* context, const ::silicon_based::VerifyParamGetRequest* request, ::silicon_based::VerifyParamGetResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status LNAWGCMDService::Service::GetSignalVerifyParam(::grpc::ServerContext* context, const ::silicon_based::SignalVerifyParamGetRequest* request, ::silicon_based::SignalVerifyParamGetResponse* response) {
   (void) context;
   (void) request;
   (void) response;

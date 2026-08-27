@@ -6,6 +6,7 @@
 #include "./application/app.h"
 #include "./pcie/pcie_func.h"
 #include "./pcie/qa/qa_func.h"
+#include "./pcie/lnawg/lnawg_verify_param.h"
 #include "./axi_gpio/axi_gpio.h"
 #include "./spi_dev/spi2_test.h"
 #include "./param_mgr/param_mgr.h"
@@ -27,6 +28,8 @@ int main(void)
     clock_sync();
     // 设备参数初始化
     device_info_init();
+    /* Load all LNAWG direct/3V calibration coefficients into memory. */
+    lnawg_verify_param_init();
     // 子卡空间初始化
 
 #define USE_FSBL_PCIE

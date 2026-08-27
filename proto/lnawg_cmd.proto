@@ -39,6 +39,11 @@ service LNAWGCMDService {
     rpc SetDDSEnable(DDSEnableSetRequest) returns (ParamResponse);
     rpc GetDDSEnable(DDSEnableGetRequest) returns (DDSEnableGetResponse);
 
+    rpc SetAllVerifyParam(VerifyParamSetRequest) returns (ParamResponse);
+    rpc GetAllVerifyParam(VerifyParamGetRequest) returns (VerifyParamGetResponse);
+
+    rpc GetSignalVerifyParam(SignalVerifyParamGetRequest) returns (SignalVerifyParamGetResponse);
+
     rpc SetFeadbackEnable(FeadbackEnableSetRequest) returns (ParamResponse);
     rpc GetFeadbackEnable(FeadbackEnableGetRequest) returns (FeadbackEnableGetRespone);
 }
@@ -216,3 +221,30 @@ message FeadbackEnableGetRequest {
 message FeadbackEnableGetRespone {
     uint32 enable = 1;
 }
+
+message VerifyParamSetRequest {
+    uint32 logical_ch = 1;
+    repeated string channelVerify = 2;
+    repeated float channelKParam = 3;
+    repeated float channelBParam = 4;
+}
+
+message VerifyParamGetRequest { 
+    uint32 logical_ch = 1;
+};
+
+message VerifyParamGetResponse {
+    repeated string channelVerify = 1;
+    repeated float channelKParam = 2;
+    repeated float channelBParam = 3;
+};
+
+message SignalVerifyParamGetRequest {
+    uint32 logical_ch = 1;
+    uint32 chRange = 2;
+};
+
+message SignalVerifyParamGetResponse {
+    float channelKParam = 1;
+    float channelBParam = 2;
+};

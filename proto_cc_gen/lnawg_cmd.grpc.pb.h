@@ -191,6 +191,27 @@ class LNAWGCMDService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::DDSEnableGetResponse>> PrepareAsyncGetDDSEnable(::grpc::ClientContext* context, const ::silicon_based::DDSEnableGetRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::DDSEnableGetResponse>>(PrepareAsyncGetDDSEnableRaw(context, request, cq));
     }
+    virtual ::grpc::Status SetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest& request, ::silicon_based::ParamResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> AsyncSetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(AsyncSetAllVerifyParamRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> PrepareAsyncSetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(PrepareAsyncSetAllVerifyParamRaw(context, request, cq));
+    }
+    virtual ::grpc::Status GetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest& request, ::silicon_based::VerifyParamGetResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::VerifyParamGetResponse>> AsyncGetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::VerifyParamGetResponse>>(AsyncGetAllVerifyParamRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::VerifyParamGetResponse>> PrepareAsyncGetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::VerifyParamGetResponse>>(PrepareAsyncGetAllVerifyParamRaw(context, request, cq));
+    }
+    virtual ::grpc::Status GetSignalVerifyParam(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest& request, ::silicon_based::SignalVerifyParamGetResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::SignalVerifyParamGetResponse>> AsyncGetSignalVerifyParam(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::SignalVerifyParamGetResponse>>(AsyncGetSignalVerifyParamRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::SignalVerifyParamGetResponse>> PrepareAsyncGetSignalVerifyParam(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::SignalVerifyParamGetResponse>>(PrepareAsyncGetSignalVerifyParamRaw(context, request, cq));
+    }
     virtual ::grpc::Status SetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest& request, ::silicon_based::ParamResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> AsyncSetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(AsyncSetFeadbackEnableRaw(context, request, cq));
@@ -252,6 +273,12 @@ class LNAWGCMDService final {
       virtual void SetDDSEnable(::grpc::ClientContext* context, const ::silicon_based::DDSEnableSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetDDSEnable(::grpc::ClientContext* context, const ::silicon_based::DDSEnableGetRequest* request, ::silicon_based::DDSEnableGetResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetDDSEnable(::grpc::ClientContext* context, const ::silicon_based::DDSEnableGetRequest* request, ::silicon_based::DDSEnableGetResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest* request, ::silicon_based::VerifyParamGetResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest* request, ::silicon_based::VerifyParamGetResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetSignalVerifyParam(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest* request, ::silicon_based::SignalVerifyParamGetResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetSignalVerifyParam(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest* request, ::silicon_based::SignalVerifyParamGetResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void SetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableGetRequest* request, ::silicon_based::FeadbackEnableGetRespone* response, std::function<void(::grpc::Status)>) = 0;
@@ -305,6 +332,12 @@ class LNAWGCMDService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncSetDDSEnableRaw(::grpc::ClientContext* context, const ::silicon_based::DDSEnableSetRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::DDSEnableGetResponse>* AsyncGetDDSEnableRaw(::grpc::ClientContext* context, const ::silicon_based::DDSEnableGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::DDSEnableGetResponse>* PrepareAsyncGetDDSEnableRaw(::grpc::ClientContext* context, const ::silicon_based::DDSEnableGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* AsyncSetAllVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncSetAllVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::VerifyParamGetResponse>* AsyncGetAllVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::VerifyParamGetResponse>* PrepareAsyncGetAllVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::SignalVerifyParamGetResponse>* AsyncGetSignalVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::SignalVerifyParamGetResponse>* PrepareAsyncGetSignalVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* AsyncSetFeadbackEnableRaw(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncSetFeadbackEnableRaw(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::FeadbackEnableGetRespone>* AsyncGetFeadbackEnableRaw(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableGetRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -467,6 +500,27 @@ class LNAWGCMDService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::DDSEnableGetResponse>> PrepareAsyncGetDDSEnable(::grpc::ClientContext* context, const ::silicon_based::DDSEnableGetRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::DDSEnableGetResponse>>(PrepareAsyncGetDDSEnableRaw(context, request, cq));
     }
+    ::grpc::Status SetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest& request, ::silicon_based::ParamResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> AsyncSetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(AsyncSetAllVerifyParamRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> PrepareAsyncSetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(PrepareAsyncSetAllVerifyParamRaw(context, request, cq));
+    }
+    ::grpc::Status GetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest& request, ::silicon_based::VerifyParamGetResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::VerifyParamGetResponse>> AsyncGetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::VerifyParamGetResponse>>(AsyncGetAllVerifyParamRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::VerifyParamGetResponse>> PrepareAsyncGetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::VerifyParamGetResponse>>(PrepareAsyncGetAllVerifyParamRaw(context, request, cq));
+    }
+    ::grpc::Status GetSignalVerifyParam(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest& request, ::silicon_based::SignalVerifyParamGetResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::SignalVerifyParamGetResponse>> AsyncGetSignalVerifyParam(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::SignalVerifyParamGetResponse>>(AsyncGetSignalVerifyParamRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::SignalVerifyParamGetResponse>> PrepareAsyncGetSignalVerifyParam(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::SignalVerifyParamGetResponse>>(PrepareAsyncGetSignalVerifyParamRaw(context, request, cq));
+    }
     ::grpc::Status SetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest& request, ::silicon_based::ParamResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> AsyncSetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(AsyncSetFeadbackEnableRaw(context, request, cq));
@@ -528,6 +582,12 @@ class LNAWGCMDService final {
       void SetDDSEnable(::grpc::ClientContext* context, const ::silicon_based::DDSEnableSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetDDSEnable(::grpc::ClientContext* context, const ::silicon_based::DDSEnableGetRequest* request, ::silicon_based::DDSEnableGetResponse* response, std::function<void(::grpc::Status)>) override;
       void GetDDSEnable(::grpc::ClientContext* context, const ::silicon_based::DDSEnableGetRequest* request, ::silicon_based::DDSEnableGetResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) override;
+      void SetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest* request, ::silicon_based::VerifyParamGetResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetAllVerifyParam(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest* request, ::silicon_based::VerifyParamGetResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetSignalVerifyParam(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest* request, ::silicon_based::SignalVerifyParamGetResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetSignalVerifyParam(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest* request, ::silicon_based::SignalVerifyParamGetResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void SetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) override;
       void SetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetFeadbackEnable(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableGetRequest* request, ::silicon_based::FeadbackEnableGetRespone* response, std::function<void(::grpc::Status)>) override;
@@ -587,6 +647,12 @@ class LNAWGCMDService final {
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncSetDDSEnableRaw(::grpc::ClientContext* context, const ::silicon_based::DDSEnableSetRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::DDSEnableGetResponse>* AsyncGetDDSEnableRaw(::grpc::ClientContext* context, const ::silicon_based::DDSEnableGetRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::DDSEnableGetResponse>* PrepareAsyncGetDDSEnableRaw(::grpc::ClientContext* context, const ::silicon_based::DDSEnableGetRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* AsyncSetAllVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncSetAllVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::VerifyParamSetRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::VerifyParamGetResponse>* AsyncGetAllVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::VerifyParamGetResponse>* PrepareAsyncGetAllVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::VerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::SignalVerifyParamGetResponse>* AsyncGetSignalVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::SignalVerifyParamGetResponse>* PrepareAsyncGetSignalVerifyParamRaw(::grpc::ClientContext* context, const ::silicon_based::SignalVerifyParamGetRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* AsyncSetFeadbackEnableRaw(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncSetFeadbackEnableRaw(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableSetRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::FeadbackEnableGetRespone>* AsyncGetFeadbackEnableRaw(::grpc::ClientContext* context, const ::silicon_based::FeadbackEnableGetRequest& request, ::grpc::CompletionQueue* cq) override;
@@ -613,6 +679,9 @@ class LNAWGCMDService final {
     const ::grpc::internal::RpcMethod rpcmethod_GetChirpOutParam_;
     const ::grpc::internal::RpcMethod rpcmethod_SetDDSEnable_;
     const ::grpc::internal::RpcMethod rpcmethod_GetDDSEnable_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetAllVerifyParam_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetAllVerifyParam_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetSignalVerifyParam_;
     const ::grpc::internal::RpcMethod rpcmethod_SetFeadbackEnable_;
     const ::grpc::internal::RpcMethod rpcmethod_GetFeadbackEnable_;
   };
@@ -644,6 +713,9 @@ class LNAWGCMDService final {
     virtual ::grpc::Status GetChirpOutParam(::grpc::ServerContext* context, const ::silicon_based::ChirpOutParamGetRequest* request, ::silicon_based::ChirpOutParamGetResponse* response);
     virtual ::grpc::Status SetDDSEnable(::grpc::ServerContext* context, const ::silicon_based::DDSEnableSetRequest* request, ::silicon_based::ParamResponse* response);
     virtual ::grpc::Status GetDDSEnable(::grpc::ServerContext* context, const ::silicon_based::DDSEnableGetRequest* request, ::silicon_based::DDSEnableGetResponse* response);
+    virtual ::grpc::Status SetAllVerifyParam(::grpc::ServerContext* context, const ::silicon_based::VerifyParamSetRequest* request, ::silicon_based::ParamResponse* response);
+    virtual ::grpc::Status GetAllVerifyParam(::grpc::ServerContext* context, const ::silicon_based::VerifyParamGetRequest* request, ::silicon_based::VerifyParamGetResponse* response);
+    virtual ::grpc::Status GetSignalVerifyParam(::grpc::ServerContext* context, const ::silicon_based::SignalVerifyParamGetRequest* request, ::silicon_based::SignalVerifyParamGetResponse* response);
     virtual ::grpc::Status SetFeadbackEnable(::grpc::ServerContext* context, const ::silicon_based::FeadbackEnableSetRequest* request, ::silicon_based::ParamResponse* response);
     virtual ::grpc::Status GetFeadbackEnable(::grpc::ServerContext* context, const ::silicon_based::FeadbackEnableGetRequest* request, ::silicon_based::FeadbackEnableGetRespone* response);
   };
@@ -1088,12 +1160,72 @@ class LNAWGCMDService final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_SetAllVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SetAllVerifyParam() {
+      ::grpc::Service::MarkMethodAsync(22);
+    }
+    ~WithAsyncMethod_SetAllVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetAllVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::VerifyParamSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetAllVerifyParam(::grpc::ServerContext* context, ::silicon_based::VerifyParamSetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetAllVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetAllVerifyParam() {
+      ::grpc::Service::MarkMethodAsync(23);
+    }
+    ~WithAsyncMethod_GetAllVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetAllVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::VerifyParamGetRequest* /*request*/, ::silicon_based::VerifyParamGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetAllVerifyParam(::grpc::ServerContext* context, ::silicon_based::VerifyParamGetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::VerifyParamGetResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetSignalVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetSignalVerifyParam() {
+      ::grpc::Service::MarkMethodAsync(24);
+    }
+    ~WithAsyncMethod_GetSignalVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetSignalVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::SignalVerifyParamGetRequest* /*request*/, ::silicon_based::SignalVerifyParamGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetSignalVerifyParam(::grpc::ServerContext* context, ::silicon_based::SignalVerifyParamGetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::SignalVerifyParamGetResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_SetFeadbackEnable : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_SetFeadbackEnable() {
-      ::grpc::Service::MarkMethodAsync(22);
+      ::grpc::Service::MarkMethodAsync(25);
     }
     ~WithAsyncMethod_SetFeadbackEnable() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1104,7 +1236,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetFeadbackEnable(::grpc::ServerContext* context, ::silicon_based::FeadbackEnableSetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1113,7 +1245,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_GetFeadbackEnable() {
-      ::grpc::Service::MarkMethodAsync(23);
+      ::grpc::Service::MarkMethodAsync(26);
     }
     ~WithAsyncMethod_GetFeadbackEnable() override {
       BaseClassMustBeDerivedFromService(this);
@@ -1124,10 +1256,10 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetFeadbackEnable(::grpc::ServerContext* context, ::silicon_based::FeadbackEnableGetRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::FeadbackEnableGetRespone>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SetMode<WithAsyncMethod_GetMode<WithAsyncMethod_SetRun<WithAsyncMethod_GetRun<WithAsyncMethod_SetExtSource<WithAsyncMethod_GetExtSource<WithAsyncMethod_SetOutRange<WithAsyncMethod_GetOutRange<WithAsyncMethod_SetRange<WithAsyncMethod_GetRange<WithAsyncMethod_SetOffset<WithAsyncMethod_GetOffset<WithAsyncMethod_SetSegmentCount<WithAsyncMethod_GetSegmentCount<WithAsyncMethod_SetLoopCount<WithAsyncMethod_GetLoopCount<WithAsyncMethod_SetDDSParam<WithAsyncMethod_GetDDSParam<WithAsyncMethod_SetChirpOutParam<WithAsyncMethod_GetChirpOutParam<WithAsyncMethod_SetDDSEnable<WithAsyncMethod_GetDDSEnable<WithAsyncMethod_SetFeadbackEnable<WithAsyncMethod_GetFeadbackEnable<Service > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
+  typedef WithAsyncMethod_SetMode<WithAsyncMethod_GetMode<WithAsyncMethod_SetRun<WithAsyncMethod_GetRun<WithAsyncMethod_SetExtSource<WithAsyncMethod_GetExtSource<WithAsyncMethod_SetOutRange<WithAsyncMethod_GetOutRange<WithAsyncMethod_SetRange<WithAsyncMethod_GetRange<WithAsyncMethod_SetOffset<WithAsyncMethod_GetOffset<WithAsyncMethod_SetSegmentCount<WithAsyncMethod_GetSegmentCount<WithAsyncMethod_SetLoopCount<WithAsyncMethod_GetLoopCount<WithAsyncMethod_SetDDSParam<WithAsyncMethod_GetDDSParam<WithAsyncMethod_SetChirpOutParam<WithAsyncMethod_GetChirpOutParam<WithAsyncMethod_SetDDSEnable<WithAsyncMethod_GetDDSEnable<WithAsyncMethod_SetAllVerifyParam<WithAsyncMethod_GetAllVerifyParam<WithAsyncMethod_GetSignalVerifyParam<WithAsyncMethod_SetFeadbackEnable<WithAsyncMethod_GetFeadbackEnable<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SetMode : public BaseClass {
    private:
@@ -1723,18 +1855,99 @@ class LNAWGCMDService final {
       ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::DDSEnableGetRequest* /*request*/, ::silicon_based::DDSEnableGetResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithCallbackMethod_SetAllVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SetAllVerifyParam() {
+      ::grpc::Service::MarkMethodCallback(22,
+          new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::VerifyParamSetRequest, ::silicon_based::ParamResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::silicon_based::VerifyParamSetRequest* request, ::silicon_based::ParamResponse* response) { return this->SetAllVerifyParam(context, request, response); }));}
+    void SetMessageAllocatorFor_SetAllVerifyParam(
+        ::grpc::MessageAllocator< ::silicon_based::VerifyParamSetRequest, ::silicon_based::ParamResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(22);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::VerifyParamSetRequest, ::silicon_based::ParamResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SetAllVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetAllVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::VerifyParamSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetAllVerifyParam(
+      ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::VerifyParamSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_GetAllVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetAllVerifyParam() {
+      ::grpc::Service::MarkMethodCallback(23,
+          new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::VerifyParamGetRequest, ::silicon_based::VerifyParamGetResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::silicon_based::VerifyParamGetRequest* request, ::silicon_based::VerifyParamGetResponse* response) { return this->GetAllVerifyParam(context, request, response); }));}
+    void SetMessageAllocatorFor_GetAllVerifyParam(
+        ::grpc::MessageAllocator< ::silicon_based::VerifyParamGetRequest, ::silicon_based::VerifyParamGetResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(23);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::VerifyParamGetRequest, ::silicon_based::VerifyParamGetResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetAllVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetAllVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::VerifyParamGetRequest* /*request*/, ::silicon_based::VerifyParamGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetAllVerifyParam(
+      ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::VerifyParamGetRequest* /*request*/, ::silicon_based::VerifyParamGetResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_GetSignalVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetSignalVerifyParam() {
+      ::grpc::Service::MarkMethodCallback(24,
+          new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::SignalVerifyParamGetRequest, ::silicon_based::SignalVerifyParamGetResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::silicon_based::SignalVerifyParamGetRequest* request, ::silicon_based::SignalVerifyParamGetResponse* response) { return this->GetSignalVerifyParam(context, request, response); }));}
+    void SetMessageAllocatorFor_GetSignalVerifyParam(
+        ::grpc::MessageAllocator< ::silicon_based::SignalVerifyParamGetRequest, ::silicon_based::SignalVerifyParamGetResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(24);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::SignalVerifyParamGetRequest, ::silicon_based::SignalVerifyParamGetResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetSignalVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetSignalVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::SignalVerifyParamGetRequest* /*request*/, ::silicon_based::SignalVerifyParamGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetSignalVerifyParam(
+      ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::SignalVerifyParamGetRequest* /*request*/, ::silicon_based::SignalVerifyParamGetResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithCallbackMethod_SetFeadbackEnable : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_SetFeadbackEnable() {
-      ::grpc::Service::MarkMethodCallback(22,
+      ::grpc::Service::MarkMethodCallback(25,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::FeadbackEnableSetRequest, ::silicon_based::ParamResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::FeadbackEnableSetRequest* request, ::silicon_based::ParamResponse* response) { return this->SetFeadbackEnable(context, request, response); }));}
     void SetMessageAllocatorFor_SetFeadbackEnable(
         ::grpc::MessageAllocator< ::silicon_based::FeadbackEnableSetRequest, ::silicon_based::ParamResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(22);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(25);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::FeadbackEnableSetRequest, ::silicon_based::ParamResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1755,13 +1968,13 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_GetFeadbackEnable() {
-      ::grpc::Service::MarkMethodCallback(23,
+      ::grpc::Service::MarkMethodCallback(26,
           new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::FeadbackEnableGetRequest, ::silicon_based::FeadbackEnableGetRespone>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::silicon_based::FeadbackEnableGetRequest* request, ::silicon_based::FeadbackEnableGetRespone* response) { return this->GetFeadbackEnable(context, request, response); }));}
     void SetMessageAllocatorFor_GetFeadbackEnable(
         ::grpc::MessageAllocator< ::silicon_based::FeadbackEnableGetRequest, ::silicon_based::FeadbackEnableGetRespone>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(23);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(26);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::FeadbackEnableGetRequest, ::silicon_based::FeadbackEnableGetRespone>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -1776,7 +1989,7 @@ class LNAWGCMDService final {
     virtual ::grpc::ServerUnaryReactor* GetFeadbackEnable(
       ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::FeadbackEnableGetRequest* /*request*/, ::silicon_based::FeadbackEnableGetRespone* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SetMode<WithCallbackMethod_GetMode<WithCallbackMethod_SetRun<WithCallbackMethod_GetRun<WithCallbackMethod_SetExtSource<WithCallbackMethod_GetExtSource<WithCallbackMethod_SetOutRange<WithCallbackMethod_GetOutRange<WithCallbackMethod_SetRange<WithCallbackMethod_GetRange<WithCallbackMethod_SetOffset<WithCallbackMethod_GetOffset<WithCallbackMethod_SetSegmentCount<WithCallbackMethod_GetSegmentCount<WithCallbackMethod_SetLoopCount<WithCallbackMethod_GetLoopCount<WithCallbackMethod_SetDDSParam<WithCallbackMethod_GetDDSParam<WithCallbackMethod_SetChirpOutParam<WithCallbackMethod_GetChirpOutParam<WithCallbackMethod_SetDDSEnable<WithCallbackMethod_GetDDSEnable<WithCallbackMethod_SetFeadbackEnable<WithCallbackMethod_GetFeadbackEnable<Service > > > > > > > > > > > > > > > > > > > > > > > > CallbackService;
+  typedef WithCallbackMethod_SetMode<WithCallbackMethod_GetMode<WithCallbackMethod_SetRun<WithCallbackMethod_GetRun<WithCallbackMethod_SetExtSource<WithCallbackMethod_GetExtSource<WithCallbackMethod_SetOutRange<WithCallbackMethod_GetOutRange<WithCallbackMethod_SetRange<WithCallbackMethod_GetRange<WithCallbackMethod_SetOffset<WithCallbackMethod_GetOffset<WithCallbackMethod_SetSegmentCount<WithCallbackMethod_GetSegmentCount<WithCallbackMethod_SetLoopCount<WithCallbackMethod_GetLoopCount<WithCallbackMethod_SetDDSParam<WithCallbackMethod_GetDDSParam<WithCallbackMethod_SetChirpOutParam<WithCallbackMethod_GetChirpOutParam<WithCallbackMethod_SetDDSEnable<WithCallbackMethod_GetDDSEnable<WithCallbackMethod_SetAllVerifyParam<WithCallbackMethod_GetAllVerifyParam<WithCallbackMethod_GetSignalVerifyParam<WithCallbackMethod_SetFeadbackEnable<WithCallbackMethod_GetFeadbackEnable<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SetMode : public BaseClass {
@@ -2153,12 +2366,63 @@ class LNAWGCMDService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_SetAllVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SetAllVerifyParam() {
+      ::grpc::Service::MarkMethodGeneric(22);
+    }
+    ~WithGenericMethod_SetAllVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetAllVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::VerifyParamSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetAllVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetAllVerifyParam() {
+      ::grpc::Service::MarkMethodGeneric(23);
+    }
+    ~WithGenericMethod_GetAllVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetAllVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::VerifyParamGetRequest* /*request*/, ::silicon_based::VerifyParamGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetSignalVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetSignalVerifyParam() {
+      ::grpc::Service::MarkMethodGeneric(24);
+    }
+    ~WithGenericMethod_GetSignalVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetSignalVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::SignalVerifyParamGetRequest* /*request*/, ::silicon_based::SignalVerifyParamGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_SetFeadbackEnable : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_SetFeadbackEnable() {
-      ::grpc::Service::MarkMethodGeneric(22);
+      ::grpc::Service::MarkMethodGeneric(25);
     }
     ~WithGenericMethod_SetFeadbackEnable() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2175,7 +2439,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_GetFeadbackEnable() {
-      ::grpc::Service::MarkMethodGeneric(23);
+      ::grpc::Service::MarkMethodGeneric(26);
     }
     ~WithGenericMethod_GetFeadbackEnable() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2627,12 +2891,72 @@ class LNAWGCMDService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_SetAllVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SetAllVerifyParam() {
+      ::grpc::Service::MarkMethodRaw(22);
+    }
+    ~WithRawMethod_SetAllVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetAllVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::VerifyParamSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetAllVerifyParam(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetAllVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetAllVerifyParam() {
+      ::grpc::Service::MarkMethodRaw(23);
+    }
+    ~WithRawMethod_GetAllVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetAllVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::VerifyParamGetRequest* /*request*/, ::silicon_based::VerifyParamGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetAllVerifyParam(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetSignalVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetSignalVerifyParam() {
+      ::grpc::Service::MarkMethodRaw(24);
+    }
+    ~WithRawMethod_GetSignalVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetSignalVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::SignalVerifyParamGetRequest* /*request*/, ::silicon_based::SignalVerifyParamGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetSignalVerifyParam(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(24, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_SetFeadbackEnable : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_SetFeadbackEnable() {
-      ::grpc::Service::MarkMethodRaw(22);
+      ::grpc::Service::MarkMethodRaw(25);
     }
     ~WithRawMethod_SetFeadbackEnable() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2643,7 +2967,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestSetFeadbackEnable(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(22, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2652,7 +2976,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_GetFeadbackEnable() {
-      ::grpc::Service::MarkMethodRaw(23);
+      ::grpc::Service::MarkMethodRaw(26);
     }
     ~WithRawMethod_GetFeadbackEnable() override {
       BaseClassMustBeDerivedFromService(this);
@@ -2663,7 +2987,7 @@ class LNAWGCMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestGetFeadbackEnable(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(23, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3151,12 +3475,78 @@ class LNAWGCMDService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_SetAllVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SetAllVerifyParam() {
+      ::grpc::Service::MarkMethodRawCallback(22,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetAllVerifyParam(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SetAllVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetAllVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::VerifyParamSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetAllVerifyParam(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetAllVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetAllVerifyParam() {
+      ::grpc::Service::MarkMethodRawCallback(23,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetAllVerifyParam(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetAllVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetAllVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::VerifyParamGetRequest* /*request*/, ::silicon_based::VerifyParamGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetAllVerifyParam(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetSignalVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetSignalVerifyParam() {
+      ::grpc::Service::MarkMethodRawCallback(24,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetSignalVerifyParam(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetSignalVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetSignalVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::SignalVerifyParamGetRequest* /*request*/, ::silicon_based::SignalVerifyParamGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetSignalVerifyParam(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_SetFeadbackEnable : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_SetFeadbackEnable() {
-      ::grpc::Service::MarkMethodRawCallback(22,
+      ::grpc::Service::MarkMethodRawCallback(25,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetFeadbackEnable(context, request, response); }));
@@ -3178,7 +3568,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_GetFeadbackEnable() {
-      ::grpc::Service::MarkMethodRawCallback(23,
+      ::grpc::Service::MarkMethodRawCallback(26,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetFeadbackEnable(context, request, response); }));
@@ -3789,12 +4179,93 @@ class LNAWGCMDService final {
     virtual ::grpc::Status StreamedGetDDSEnable(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::DDSEnableGetRequest,::silicon_based::DDSEnableGetResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_SetAllVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetAllVerifyParam() {
+      ::grpc::Service::MarkMethodStreamed(22,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::silicon_based::VerifyParamSetRequest, ::silicon_based::ParamResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::silicon_based::VerifyParamSetRequest, ::silicon_based::ParamResponse>* streamer) {
+                       return this->StreamedSetAllVerifyParam(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SetAllVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SetAllVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::VerifyParamSetRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSetAllVerifyParam(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::VerifyParamSetRequest,::silicon_based::ParamResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetAllVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetAllVerifyParam() {
+      ::grpc::Service::MarkMethodStreamed(23,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::silicon_based::VerifyParamGetRequest, ::silicon_based::VerifyParamGetResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::silicon_based::VerifyParamGetRequest, ::silicon_based::VerifyParamGetResponse>* streamer) {
+                       return this->StreamedGetAllVerifyParam(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetAllVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetAllVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::VerifyParamGetRequest* /*request*/, ::silicon_based::VerifyParamGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetAllVerifyParam(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::VerifyParamGetRequest,::silicon_based::VerifyParamGetResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetSignalVerifyParam : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetSignalVerifyParam() {
+      ::grpc::Service::MarkMethodStreamed(24,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::silicon_based::SignalVerifyParamGetRequest, ::silicon_based::SignalVerifyParamGetResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::silicon_based::SignalVerifyParamGetRequest, ::silicon_based::SignalVerifyParamGetResponse>* streamer) {
+                       return this->StreamedGetSignalVerifyParam(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetSignalVerifyParam() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetSignalVerifyParam(::grpc::ServerContext* /*context*/, const ::silicon_based::SignalVerifyParamGetRequest* /*request*/, ::silicon_based::SignalVerifyParamGetResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetSignalVerifyParam(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::SignalVerifyParamGetRequest,::silicon_based::SignalVerifyParamGetResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_SetFeadbackEnable : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_SetFeadbackEnable() {
-      ::grpc::Service::MarkMethodStreamed(22,
+      ::grpc::Service::MarkMethodStreamed(25,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::FeadbackEnableSetRequest, ::silicon_based::ParamResponse>(
             [this](::grpc::ServerContext* context,
@@ -3821,7 +4292,7 @@ class LNAWGCMDService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_GetFeadbackEnable() {
-      ::grpc::Service::MarkMethodStreamed(23,
+      ::grpc::Service::MarkMethodStreamed(26,
         new ::grpc::internal::StreamedUnaryHandler<
           ::silicon_based::FeadbackEnableGetRequest, ::silicon_based::FeadbackEnableGetRespone>(
             [this](::grpc::ServerContext* context,
@@ -3842,9 +4313,9 @@ class LNAWGCMDService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedGetFeadbackEnable(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::FeadbackEnableGetRequest,::silicon_based::FeadbackEnableGetRespone>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_SetMode<WithStreamedUnaryMethod_GetMode<WithStreamedUnaryMethod_SetRun<WithStreamedUnaryMethod_GetRun<WithStreamedUnaryMethod_SetExtSource<WithStreamedUnaryMethod_GetExtSource<WithStreamedUnaryMethod_SetOutRange<WithStreamedUnaryMethod_GetOutRange<WithStreamedUnaryMethod_SetRange<WithStreamedUnaryMethod_GetRange<WithStreamedUnaryMethod_SetOffset<WithStreamedUnaryMethod_GetOffset<WithStreamedUnaryMethod_SetSegmentCount<WithStreamedUnaryMethod_GetSegmentCount<WithStreamedUnaryMethod_SetLoopCount<WithStreamedUnaryMethod_GetLoopCount<WithStreamedUnaryMethod_SetDDSParam<WithStreamedUnaryMethod_GetDDSParam<WithStreamedUnaryMethod_SetChirpOutParam<WithStreamedUnaryMethod_GetChirpOutParam<WithStreamedUnaryMethod_SetDDSEnable<WithStreamedUnaryMethod_GetDDSEnable<WithStreamedUnaryMethod_SetFeadbackEnable<WithStreamedUnaryMethod_GetFeadbackEnable<Service > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_SetMode<WithStreamedUnaryMethod_GetMode<WithStreamedUnaryMethod_SetRun<WithStreamedUnaryMethod_GetRun<WithStreamedUnaryMethod_SetExtSource<WithStreamedUnaryMethod_GetExtSource<WithStreamedUnaryMethod_SetOutRange<WithStreamedUnaryMethod_GetOutRange<WithStreamedUnaryMethod_SetRange<WithStreamedUnaryMethod_GetRange<WithStreamedUnaryMethod_SetOffset<WithStreamedUnaryMethod_GetOffset<WithStreamedUnaryMethod_SetSegmentCount<WithStreamedUnaryMethod_GetSegmentCount<WithStreamedUnaryMethod_SetLoopCount<WithStreamedUnaryMethod_GetLoopCount<WithStreamedUnaryMethod_SetDDSParam<WithStreamedUnaryMethod_GetDDSParam<WithStreamedUnaryMethod_SetChirpOutParam<WithStreamedUnaryMethod_GetChirpOutParam<WithStreamedUnaryMethod_SetDDSEnable<WithStreamedUnaryMethod_GetDDSEnable<WithStreamedUnaryMethod_SetAllVerifyParam<WithStreamedUnaryMethod_GetAllVerifyParam<WithStreamedUnaryMethod_GetSignalVerifyParam<WithStreamedUnaryMethod_SetFeadbackEnable<WithStreamedUnaryMethod_GetFeadbackEnable<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SetMode<WithStreamedUnaryMethod_GetMode<WithStreamedUnaryMethod_SetRun<WithStreamedUnaryMethod_GetRun<WithStreamedUnaryMethod_SetExtSource<WithStreamedUnaryMethod_GetExtSource<WithStreamedUnaryMethod_SetOutRange<WithStreamedUnaryMethod_GetOutRange<WithStreamedUnaryMethod_SetRange<WithStreamedUnaryMethod_GetRange<WithStreamedUnaryMethod_SetOffset<WithStreamedUnaryMethod_GetOffset<WithStreamedUnaryMethod_SetSegmentCount<WithStreamedUnaryMethod_GetSegmentCount<WithStreamedUnaryMethod_SetLoopCount<WithStreamedUnaryMethod_GetLoopCount<WithStreamedUnaryMethod_SetDDSParam<WithStreamedUnaryMethod_GetDDSParam<WithStreamedUnaryMethod_SetChirpOutParam<WithStreamedUnaryMethod_GetChirpOutParam<WithStreamedUnaryMethod_SetDDSEnable<WithStreamedUnaryMethod_GetDDSEnable<WithStreamedUnaryMethod_SetFeadbackEnable<WithStreamedUnaryMethod_GetFeadbackEnable<Service > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_SetMode<WithStreamedUnaryMethod_GetMode<WithStreamedUnaryMethod_SetRun<WithStreamedUnaryMethod_GetRun<WithStreamedUnaryMethod_SetExtSource<WithStreamedUnaryMethod_GetExtSource<WithStreamedUnaryMethod_SetOutRange<WithStreamedUnaryMethod_GetOutRange<WithStreamedUnaryMethod_SetRange<WithStreamedUnaryMethod_GetRange<WithStreamedUnaryMethod_SetOffset<WithStreamedUnaryMethod_GetOffset<WithStreamedUnaryMethod_SetSegmentCount<WithStreamedUnaryMethod_GetSegmentCount<WithStreamedUnaryMethod_SetLoopCount<WithStreamedUnaryMethod_GetLoopCount<WithStreamedUnaryMethod_SetDDSParam<WithStreamedUnaryMethod_GetDDSParam<WithStreamedUnaryMethod_SetChirpOutParam<WithStreamedUnaryMethod_GetChirpOutParam<WithStreamedUnaryMethod_SetDDSEnable<WithStreamedUnaryMethod_GetDDSEnable<WithStreamedUnaryMethod_SetAllVerifyParam<WithStreamedUnaryMethod_GetAllVerifyParam<WithStreamedUnaryMethod_GetSignalVerifyParam<WithStreamedUnaryMethod_SetFeadbackEnable<WithStreamedUnaryMethod_GetFeadbackEnable<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace silicon_based

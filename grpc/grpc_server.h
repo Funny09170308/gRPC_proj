@@ -72,6 +72,7 @@ public:
     Status GetRERIOFeadbackTest(ServerContext *context,
                                 const GetRERIOFeadbackTestRequest *request,
                                 GetRERIOFeadbackTestResponse *response) override;
+
 private:
     vector<uint8_t> m_resvBuffer;
 };
@@ -164,6 +165,16 @@ public: // QA function
     Status GetDDSEnable(ServerContext *context,
                         const DDSEnableGetRequest *request,
                         DDSEnableGetResponse *response) override;
+
+    Status SetAllVerifyParam(ServerContext *context,
+                             const VerifyParamSetRequest *request,
+                             ParamResponse *response) override;
+    Status GetAllVerifyParam(ServerContext *context,
+                             const VerifyParamGetRequest *request,
+                             VerifyParamGetResponse *response);
+    Status GetSignalVerifyParam(ServerContext *context,
+                                const SignalVerifyParamGetRequest *request,
+                                SignalVerifyParamGetResponse *response) override;
 
     Status SetFeadbackEnable(ServerContext *context,
                              const FeadbackEnableSetRequest *request,

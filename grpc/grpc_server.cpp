@@ -5,6 +5,7 @@
 #include "../pcie/common_func.h"
 #include "../param_mgr/param_mgr.h"
 #include "../pcie/lnawg/lnawg_func.h"
+#include "../pcie/lnawg/lnawg_verify_param.h"
 #include "../platform_log/platform_log.h"
 #include <string>
 #include <grpcpp/grpcpp.h>
@@ -631,6 +632,48 @@ Status LNAWGCMDServiceImpl::GetDDSEnable(ServerContext *context,
     uint32_t enable = get_awg_dds_enable(request->logical_ch());
     response->set_enable(enable);
     P_LOG_DEBUG("Get awg ch dds enable status, ch:%d, enable:%d", request->logical_ch(), enable);
+    return Status::OK;
+}
+
+Status LNAWGCMDServiceImpl::SetAllVerifyParam(ServerContext *context,
+                                              const VerifyParamSetRequest *request,
+                                              ParamResponse *response)
+{
+    return Status::OK;
+}
+
+Status LNAWGCMDServiceImpl::GetAllVerifyParam(ServerContext *context,
+                                              const VerifyParamGetRequest *request,
+                                              VerifyParamGetResponse *response)
+{
+    return Status::OK;
+}
+
+Status LNAWGCMDServiceImpl::GetSignalVerifyParam(ServerContext *context,
+                                                 const SignalVerifyParamGetRequest *request,
+                                                 SignalVerifyParamGetResponse *response)
+{
+    uint32_t localCh = request->logical_ch();
+    uint32_t chRange = request->chrange();
+    LnawgVerifyRange chOutRange;
+    switch (chRange)
+    {
+    case 0:
+        chOutRange = LNAWG_VERIFY_RANGE_DIRECT;
+        break;
+    case 1:
+        chOutRange = LNAWG_VERIFY_RANGE_3V;
+        break;
+    default:
+        chOutRange = LNAWG_VERIFY_RANGE_DIRECT;
+        break;
+    }
+    P_LOG_DEBUG("Get signal verify param, ch:%d, chOutRange:%d", localCh, chOutRange);
+    double verifyK = 0.0f, verifyB = 0.0f;
+    lnawg_verify_param_get_kb(localCh, chOutRange, &verifyK, &verifyB);
+    P_LOG_DEBUG("Get signal verify param, ch:%d, chOutRange:%d, K:%f, B:%f", localCh, chOutRange, verifyK, verifyB);
+    response->set_channelkparam(verifyK);
+    response->set_channelbparam(verifyB);
     return Status::OK;
 }
 

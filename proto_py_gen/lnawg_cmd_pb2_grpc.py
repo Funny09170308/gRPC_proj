@@ -126,6 +126,21 @@ class LNAWGCMDServiceStub(object):
                 request_serializer=lnawg__cmd__pb2.DDSEnableGetRequest.SerializeToString,
                 response_deserializer=lnawg__cmd__pb2.DDSEnableGetResponse.FromString,
                 _registered_method=True)
+        self.SetAllVerifyParam = channel.unary_unary(
+                '/silicon_based.LNAWGCMDService/SetAllVerifyParam',
+                request_serializer=lnawg__cmd__pb2.VerifyParamSetRequest.SerializeToString,
+                response_deserializer=common__cmd__pb2.ParamResponse.FromString,
+                _registered_method=True)
+        self.GetAllVerifyParam = channel.unary_unary(
+                '/silicon_based.LNAWGCMDService/GetAllVerifyParam',
+                request_serializer=lnawg__cmd__pb2.VerifyParamGetRequest.SerializeToString,
+                response_deserializer=lnawg__cmd__pb2.VerifyParamGetResponse.FromString,
+                _registered_method=True)
+        self.GetSignalVerifyParam = channel.unary_unary(
+                '/silicon_based.LNAWGCMDService/GetSignalVerifyParam',
+                request_serializer=lnawg__cmd__pb2.SignalVerifyParamGetRequest.SerializeToString,
+                response_deserializer=lnawg__cmd__pb2.SignalVerifyParamGetResponse.FromString,
+                _registered_method=True)
         self.SetFeadbackEnable = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/SetFeadbackEnable',
                 request_serializer=lnawg__cmd__pb2.FeadbackEnableSetRequest.SerializeToString,
@@ -274,6 +289,24 @@ class LNAWGCMDServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetAllVerifyParam(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetAllVerifyParam(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetSignalVerifyParam(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def SetFeadbackEnable(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -398,6 +431,21 @@ def add_LNAWGCMDServiceServicer_to_server(servicer, server):
                     servicer.GetDDSEnable,
                     request_deserializer=lnawg__cmd__pb2.DDSEnableGetRequest.FromString,
                     response_serializer=lnawg__cmd__pb2.DDSEnableGetResponse.SerializeToString,
+            ),
+            'SetAllVerifyParam': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetAllVerifyParam,
+                    request_deserializer=lnawg__cmd__pb2.VerifyParamSetRequest.FromString,
+                    response_serializer=common__cmd__pb2.ParamResponse.SerializeToString,
+            ),
+            'GetAllVerifyParam': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetAllVerifyParam,
+                    request_deserializer=lnawg__cmd__pb2.VerifyParamGetRequest.FromString,
+                    response_serializer=lnawg__cmd__pb2.VerifyParamGetResponse.SerializeToString,
+            ),
+            'GetSignalVerifyParam': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetSignalVerifyParam,
+                    request_deserializer=lnawg__cmd__pb2.SignalVerifyParamGetRequest.FromString,
+                    response_serializer=lnawg__cmd__pb2.SignalVerifyParamGetResponse.SerializeToString,
             ),
             'SetFeadbackEnable': grpc.unary_unary_rpc_method_handler(
                     servicer.SetFeadbackEnable,
@@ -1005,6 +1053,87 @@ class LNAWGCMDService(object):
             '/silicon_based.LNAWGCMDService/GetDDSEnable',
             lnawg__cmd__pb2.DDSEnableGetRequest.SerializeToString,
             lnawg__cmd__pb2.DDSEnableGetResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SetAllVerifyParam(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/SetAllVerifyParam',
+            lnawg__cmd__pb2.VerifyParamSetRequest.SerializeToString,
+            common__cmd__pb2.ParamResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetAllVerifyParam(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetAllVerifyParam',
+            lnawg__cmd__pb2.VerifyParamGetRequest.SerializeToString,
+            lnawg__cmd__pb2.VerifyParamGetResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetSignalVerifyParam(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetSignalVerifyParam',
+            lnawg__cmd__pb2.SignalVerifyParamGetRequest.SerializeToString,
+            lnawg__cmd__pb2.SignalVerifyParamGetResponse.FromString,
             options,
             channel_credentials,
             insecure,

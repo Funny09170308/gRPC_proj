@@ -26,6 +26,138 @@ namespace _pbi = ::google::protobuf::internal;
 namespace _fl = ::google::protobuf::internal::field_layout;
 namespace silicon_based {
 
+inline constexpr VerifyParamSetRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : channelverify_{},
+        channelkparam_{},
+        channelbparam_{},
+        logical_ch_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR VerifyParamSetRequest::VerifyParamSetRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct VerifyParamSetRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VerifyParamSetRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VerifyParamSetRequestDefaultTypeInternal() {}
+  union {
+    VerifyParamSetRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VerifyParamSetRequestDefaultTypeInternal _VerifyParamSetRequest_default_instance_;
+
+inline constexpr VerifyParamGetResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : channelverify_{},
+        channelkparam_{},
+        channelbparam_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR VerifyParamGetResponse::VerifyParamGetResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct VerifyParamGetResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VerifyParamGetResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VerifyParamGetResponseDefaultTypeInternal() {}
+  union {
+    VerifyParamGetResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VerifyParamGetResponseDefaultTypeInternal _VerifyParamGetResponse_default_instance_;
+
+inline constexpr VerifyParamGetRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : logical_ch_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR VerifyParamGetRequest::VerifyParamGetRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct VerifyParamGetRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR VerifyParamGetRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~VerifyParamGetRequestDefaultTypeInternal() {}
+  union {
+    VerifyParamGetRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 VerifyParamGetRequestDefaultTypeInternal _VerifyParamGetRequest_default_instance_;
+
+inline constexpr SignalVerifyParamGetResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : channelkparam_{0},
+        channelbparam_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SignalVerifyParamGetResponse::SignalVerifyParamGetResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SignalVerifyParamGetResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SignalVerifyParamGetResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SignalVerifyParamGetResponseDefaultTypeInternal() {}
+  union {
+    SignalVerifyParamGetResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SignalVerifyParamGetResponseDefaultTypeInternal _SignalVerifyParamGetResponse_default_instance_;
+
+inline constexpr SignalVerifyParamGetRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : logical_ch_{0u},
+        chrange_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SignalVerifyParamGetRequest::SignalVerifyParamGetRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SignalVerifyParamGetRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SignalVerifyParamGetRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SignalVerifyParamGetRequestDefaultTypeInternal() {}
+  union {
+    SignalVerifyParamGetRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SignalVerifyParamGetRequestDefaultTypeInternal _SignalVerifyParamGetRequest_default_instance_;
+
 inline constexpr SegmentCountSetRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : logical_ch_{0u},
@@ -1277,6 +1409,58 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::silicon_based::FeadbackEnableGetRespone, _impl_.enable_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::VerifyParamSetRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::silicon_based::VerifyParamSetRequest, _impl_.logical_ch_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::VerifyParamSetRequest, _impl_.channelverify_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::VerifyParamSetRequest, _impl_.channelkparam_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::VerifyParamSetRequest, _impl_.channelbparam_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::VerifyParamGetRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::silicon_based::VerifyParamGetRequest, _impl_.logical_ch_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::VerifyParamGetResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::silicon_based::VerifyParamGetResponse, _impl_.channelverify_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::VerifyParamGetResponse, _impl_.channelkparam_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::VerifyParamGetResponse, _impl_.channelbparam_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SignalVerifyParamGetRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SignalVerifyParamGetRequest, _impl_.logical_ch_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SignalVerifyParamGetRequest, _impl_.chrange_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SignalVerifyParamGetResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SignalVerifyParamGetResponse, _impl_.channelkparam_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SignalVerifyParamGetResponse, _impl_.channelbparam_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -1316,6 +1500,11 @@ static const ::_pbi::MigrationSchema
         {317, -1, -1, sizeof(::silicon_based::FeadbackEnableSetRequest)},
         {327, -1, -1, sizeof(::silicon_based::FeadbackEnableGetRequest)},
         {336, -1, -1, sizeof(::silicon_based::FeadbackEnableGetRespone)},
+        {345, -1, -1, sizeof(::silicon_based::VerifyParamSetRequest)},
+        {357, -1, -1, sizeof(::silicon_based::VerifyParamGetRequest)},
+        {366, -1, -1, sizeof(::silicon_based::VerifyParamGetResponse)},
+        {377, -1, -1, sizeof(::silicon_based::SignalVerifyParamGetRequest)},
+        {387, -1, -1, sizeof(::silicon_based::SignalVerifyParamGetResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::silicon_based::_ModeSetRequest_default_instance_._instance,
@@ -1353,6 +1542,11 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::silicon_based::_FeadbackEnableSetRequest_default_instance_._instance,
     &::silicon_based::_FeadbackEnableGetRequest_default_instance_._instance,
     &::silicon_based::_FeadbackEnableGetRespone_default_instance_._instance,
+    &::silicon_based::_VerifyParamSetRequest_default_instance_._instance,
+    &::silicon_based::_VerifyParamGetRequest_default_instance_._instance,
+    &::silicon_based::_VerifyParamGetResponse_default_instance_._instance,
+    &::silicon_based::_SignalVerifyParamGetRequest_default_instance_._instance,
+    &::silicon_based::_SignalVerifyParamGetResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_lnawg_5fcmd_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -1405,7 +1599,17 @@ const char descriptor_table_protodef_lnawg_5fcmd_2eproto[] ABSL_ATTRIBUTE_SECTIO
     "\">\n\030FeadbackEnableSetRequest\022\022\n\nlogical_"
     "ch\030\001 \001(\r\022\016\n\006enable\030\002 \001(\r\".\n\030FeadbackEnab"
     "leGetRequest\022\022\n\nlogical_ch\030\001 \001(\r\"*\n\030Fead"
-    "backEnableGetRespone\022\016\n\006enable\030\001 \001(\r2\343\017\n"
+    "backEnableGetRespone\022\016\n\006enable\030\001 \001(\r\"p\n\025"
+    "VerifyParamSetRequest\022\022\n\nlogical_ch\030\001 \001("
+    "\r\022\025\n\rchannelVerify\030\002 \003(\t\022\025\n\rchannelKPara"
+    "m\030\003 \003(\002\022\025\n\rchannelBParam\030\004 \003(\002\"+\n\025Verify"
+    "ParamGetRequest\022\022\n\nlogical_ch\030\001 \001(\r\"]\n\026V"
+    "erifyParamGetResponse\022\025\n\rchannelVerify\030\001"
+    " \003(\t\022\025\n\rchannelKParam\030\002 \003(\002\022\025\n\rchannelBP"
+    "aram\030\003 \003(\002\"B\n\033SignalVerifyParamGetReques"
+    "t\022\022\n\nlogical_ch\030\001 \001(\r\022\017\n\007chRange\030\002 \001(\r\"L"
+    "\n\034SignalVerifyParamGetResponse\022\025\n\rchanne"
+    "lKParam\030\001 \001(\002\022\025\n\rchannelBParam\030\002 \001(\0022\217\022\n"
     "\017LNAWGCMDService\022F\n\007SetMode\022\035.silicon_ba"
     "sed.ModeSetRequest\032\034.silicon_based.Param"
     "Response\022H\n\007GetMode\022\035.silicon_based.Mode"
@@ -1451,12 +1655,20 @@ const char descriptor_table_protodef_lnawg_5fcmd_2eproto[] ABSL_ATTRIBUTE_SECTIO
     "ased.DDSEnableSetRequest\032\034.silicon_based"
     ".ParamResponse\022W\n\014GetDDSEnable\022\".silicon"
     "_based.DDSEnableGetRequest\032#.silicon_bas"
-    "ed.DDSEnableGetResponse\022Z\n\021SetFeadbackEn"
-    "able\022\'.silicon_based.FeadbackEnableSetRe"
-    "quest\032\034.silicon_based.ParamResponse\022e\n\021G"
-    "etFeadbackEnable\022\'.silicon_based.Feadbac"
-    "kEnableGetRequest\032\'.silicon_based.Feadba"
-    "ckEnableGetResponeb\006proto3"
+    "ed.DDSEnableGetResponse\022W\n\021SetAllVerifyP"
+    "aram\022$.silicon_based.VerifyParamSetReque"
+    "st\032\034.silicon_based.ParamResponse\022`\n\021GetA"
+    "llVerifyParam\022$.silicon_based.VerifyPara"
+    "mGetRequest\032%.silicon_based.VerifyParamG"
+    "etResponse\022o\n\024GetSignalVerifyParam\022*.sil"
+    "icon_based.SignalVerifyParamGetRequest\032+"
+    ".silicon_based.SignalVerifyParamGetRespo"
+    "nse\022Z\n\021SetFeadbackEnable\022\'.silicon_based"
+    ".FeadbackEnableSetRequest\032\034.silicon_base"
+    "d.ParamResponse\022e\n\021GetFeadbackEnable\022\'.s"
+    "ilicon_based.FeadbackEnableGetRequest\032\'."
+    "silicon_based.FeadbackEnableGetResponeb\006"
+    "proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_lnawg_5fcmd_2eproto_deps[1] =
     {
@@ -1466,13 +1678,13 @@ static ::absl::once_flag descriptor_table_lnawg_5fcmd_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_lnawg_5fcmd_2eproto = {
     false,
     false,
-    4026,
+    4726,
     descriptor_table_protodef_lnawg_5fcmd_2eproto,
     "lnawg_cmd.proto",
     &descriptor_table_lnawg_5fcmd_2eproto_once,
     descriptor_table_lnawg_5fcmd_2eproto_deps,
     1,
-    35,
+    40,
     schemas,
     file_default_instances,
     TableStruct_lnawg_5fcmd_2eproto::offsets,
@@ -9592,6 +9804,1327 @@ void FeadbackEnableGetRespone::InternalSwap(FeadbackEnableGetRespone* PROTOBUF_R
 }
 
 ::google::protobuf::Metadata FeadbackEnableGetRespone::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class VerifyParamSetRequest::_Internal {
+ public:
+};
+
+VerifyParamSetRequest::VerifyParamSetRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.VerifyParamSetRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE VerifyParamSetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::silicon_based::VerifyParamSetRequest& from_msg)
+      : channelverify_{visibility, arena, from.channelverify_},
+        channelkparam_{visibility, arena, from.channelkparam_},
+        channelbparam_{visibility, arena, from.channelbparam_},
+        _cached_size_{0} {}
+
+VerifyParamSetRequest::VerifyParamSetRequest(
+    ::google::protobuf::Arena* arena,
+    const VerifyParamSetRequest& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  VerifyParamSetRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.logical_ch_ = from._impl_.logical_ch_;
+
+  // @@protoc_insertion_point(copy_constructor:silicon_based.VerifyParamSetRequest)
+}
+inline PROTOBUF_NDEBUG_INLINE VerifyParamSetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : channelverify_{visibility, arena},
+        channelkparam_{visibility, arena},
+        channelbparam_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void VerifyParamSetRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.logical_ch_ = {};
+}
+VerifyParamSetRequest::~VerifyParamSetRequest() {
+  // @@protoc_insertion_point(destructor:silicon_based.VerifyParamSetRequest)
+  SharedDtor(*this);
+}
+inline void VerifyParamSetRequest::SharedDtor(MessageLite& self) {
+  VerifyParamSetRequest& this_ = static_cast<VerifyParamSetRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* VerifyParamSetRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) VerifyParamSetRequest(arena);
+}
+constexpr auto VerifyParamSetRequest::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(VerifyParamSetRequest, _impl_.channelverify_) +
+          decltype(VerifyParamSetRequest::_impl_.channelverify_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(VerifyParamSetRequest, _impl_.channelkparam_) +
+          decltype(VerifyParamSetRequest::_impl_.channelkparam_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(VerifyParamSetRequest, _impl_.channelbparam_) +
+          decltype(VerifyParamSetRequest::_impl_.channelbparam_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(VerifyParamSetRequest), alignof(VerifyParamSetRequest), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&VerifyParamSetRequest::PlacementNew_,
+                                 sizeof(VerifyParamSetRequest),
+                                 alignof(VerifyParamSetRequest));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull VerifyParamSetRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_VerifyParamSetRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &VerifyParamSetRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<VerifyParamSetRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &VerifyParamSetRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<VerifyParamSetRequest>(), &VerifyParamSetRequest::ByteSizeLong,
+            &VerifyParamSetRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(VerifyParamSetRequest, _impl_._cached_size_),
+        false,
+    },
+    &VerifyParamSetRequest::kDescriptorMethods,
+    &descriptor_table_lnawg_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* VerifyParamSetRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 0, 57, 2> VerifyParamSetRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::VerifyParamSetRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // repeated float channelBParam = 4;
+    {::_pbi::TcParser::FastF32P1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(VerifyParamSetRequest, _impl_.channelbparam_)}},
+    // uint32 logical_ch = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(VerifyParamSetRequest, _impl_.logical_ch_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(VerifyParamSetRequest, _impl_.logical_ch_)}},
+    // repeated string channelVerify = 2;
+    {::_pbi::TcParser::FastUR1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(VerifyParamSetRequest, _impl_.channelverify_)}},
+    // repeated float channelKParam = 3;
+    {::_pbi::TcParser::FastF32P1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(VerifyParamSetRequest, _impl_.channelkparam_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 logical_ch = 1;
+    {PROTOBUF_FIELD_OFFSET(VerifyParamSetRequest, _impl_.logical_ch_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // repeated string channelVerify = 2;
+    {PROTOBUF_FIELD_OFFSET(VerifyParamSetRequest, _impl_.channelverify_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+    // repeated float channelKParam = 3;
+    {PROTOBUF_FIELD_OFFSET(VerifyParamSetRequest, _impl_.channelkparam_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kPackedFloat)},
+    // repeated float channelBParam = 4;
+    {PROTOBUF_FIELD_OFFSET(VerifyParamSetRequest, _impl_.channelbparam_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kPackedFloat)},
+  }},
+  // no aux_entries
+  {{
+    "\43\0\15\0\0\0\0\0"
+    "silicon_based.VerifyParamSetRequest"
+    "channelVerify"
+  }},
+};
+
+PROTOBUF_NOINLINE void VerifyParamSetRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.VerifyParamSetRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.channelverify_.Clear();
+  _impl_.channelkparam_.Clear();
+  _impl_.channelbparam_.Clear();
+  _impl_.logical_ch_ = 0u;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* VerifyParamSetRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const VerifyParamSetRequest& this_ = static_cast<const VerifyParamSetRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* VerifyParamSetRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const VerifyParamSetRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:silicon_based.VerifyParamSetRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 logical_ch = 1;
+          if (this_._internal_logical_ch() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_logical_ch(), target);
+          }
+
+          // repeated string channelVerify = 2;
+          for (int i = 0, n = this_._internal_channelverify_size(); i < n; ++i) {
+            const auto& s = this_._internal_channelverify().Get(i);
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "silicon_based.VerifyParamSetRequest.channelVerify");
+            target = stream->WriteString(2, s, target);
+          }
+
+          // repeated float channelKParam = 3;
+          if (this_._internal_channelkparam_size() > 0) {
+            target = stream->WriteFixedPacked(3, this_._internal_channelkparam(), target);
+          }
+
+          // repeated float channelBParam = 4;
+          if (this_._internal_channelbparam_size() > 0) {
+            target = stream->WriteFixedPacked(4, this_._internal_channelbparam(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:silicon_based.VerifyParamSetRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t VerifyParamSetRequest::ByteSizeLong(const MessageLite& base) {
+          const VerifyParamSetRequest& this_ = static_cast<const VerifyParamSetRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t VerifyParamSetRequest::ByteSizeLong() const {
+          const VerifyParamSetRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:silicon_based.VerifyParamSetRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated string channelVerify = 2;
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_channelverify().size());
+              for (int i = 0, n = this_._internal_channelverify().size(); i < n; ++i) {
+                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+                    this_._internal_channelverify().Get(i));
+              }
+            }
+            // repeated float channelKParam = 3;
+            {
+              std::size_t data_size = std::size_t{4} *
+                  ::_pbi::FromIntSize(this_._internal_channelkparam_size());
+              std::size_t tag_size = data_size == 0
+                  ? 0
+                  : 1 + ::_pbi::WireFormatLite::Int32Size(
+                                      static_cast<int32_t>(data_size));
+              total_size += tag_size + data_size;
+            }
+            // repeated float channelBParam = 4;
+            {
+              std::size_t data_size = std::size_t{4} *
+                  ::_pbi::FromIntSize(this_._internal_channelbparam_size());
+              std::size_t tag_size = data_size == 0
+                  ? 0
+                  : 1 + ::_pbi::WireFormatLite::Int32Size(
+                                      static_cast<int32_t>(data_size));
+              total_size += tag_size + data_size;
+            }
+          }
+           {
+            // uint32 logical_ch = 1;
+            if (this_._internal_logical_ch() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_logical_ch());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void VerifyParamSetRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<VerifyParamSetRequest*>(&to_msg);
+  auto& from = static_cast<const VerifyParamSetRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.VerifyParamSetRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_channelverify()->MergeFrom(from._internal_channelverify());
+  _this->_internal_mutable_channelkparam()->MergeFrom(from._internal_channelkparam());
+  _this->_internal_mutable_channelbparam()->MergeFrom(from._internal_channelbparam());
+  if (from._internal_logical_ch() != 0) {
+    _this->_impl_.logical_ch_ = from._impl_.logical_ch_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void VerifyParamSetRequest::CopyFrom(const VerifyParamSetRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.VerifyParamSetRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void VerifyParamSetRequest::InternalSwap(VerifyParamSetRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.channelverify_.InternalSwap(&other->_impl_.channelverify_);
+  _impl_.channelkparam_.InternalSwap(&other->_impl_.channelkparam_);
+  _impl_.channelbparam_.InternalSwap(&other->_impl_.channelbparam_);
+        swap(_impl_.logical_ch_, other->_impl_.logical_ch_);
+}
+
+::google::protobuf::Metadata VerifyParamSetRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class VerifyParamGetRequest::_Internal {
+ public:
+};
+
+VerifyParamGetRequest::VerifyParamGetRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.VerifyParamGetRequest)
+}
+VerifyParamGetRequest::VerifyParamGetRequest(
+    ::google::protobuf::Arena* arena, const VerifyParamGetRequest& from)
+    : VerifyParamGetRequest(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE VerifyParamGetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void VerifyParamGetRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.logical_ch_ = {};
+}
+VerifyParamGetRequest::~VerifyParamGetRequest() {
+  // @@protoc_insertion_point(destructor:silicon_based.VerifyParamGetRequest)
+  SharedDtor(*this);
+}
+inline void VerifyParamGetRequest::SharedDtor(MessageLite& self) {
+  VerifyParamGetRequest& this_ = static_cast<VerifyParamGetRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* VerifyParamGetRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) VerifyParamGetRequest(arena);
+}
+constexpr auto VerifyParamGetRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(VerifyParamGetRequest),
+                                            alignof(VerifyParamGetRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull VerifyParamGetRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_VerifyParamGetRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &VerifyParamGetRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<VerifyParamGetRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &VerifyParamGetRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<VerifyParamGetRequest>(), &VerifyParamGetRequest::ByteSizeLong,
+            &VerifyParamGetRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(VerifyParamGetRequest, _impl_._cached_size_),
+        false,
+    },
+    &VerifyParamGetRequest::kDescriptorMethods,
+    &descriptor_table_lnawg_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* VerifyParamGetRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> VerifyParamGetRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::VerifyParamGetRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // uint32 logical_ch = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(VerifyParamGetRequest, _impl_.logical_ch_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(VerifyParamGetRequest, _impl_.logical_ch_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 logical_ch = 1;
+    {PROTOBUF_FIELD_OFFSET(VerifyParamGetRequest, _impl_.logical_ch_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void VerifyParamGetRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.VerifyParamGetRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.logical_ch_ = 0u;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* VerifyParamGetRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const VerifyParamGetRequest& this_ = static_cast<const VerifyParamGetRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* VerifyParamGetRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const VerifyParamGetRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:silicon_based.VerifyParamGetRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 logical_ch = 1;
+          if (this_._internal_logical_ch() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_logical_ch(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:silicon_based.VerifyParamGetRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t VerifyParamGetRequest::ByteSizeLong(const MessageLite& base) {
+          const VerifyParamGetRequest& this_ = static_cast<const VerifyParamGetRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t VerifyParamGetRequest::ByteSizeLong() const {
+          const VerifyParamGetRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:silicon_based.VerifyParamGetRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // uint32 logical_ch = 1;
+            if (this_._internal_logical_ch() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_logical_ch());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void VerifyParamGetRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<VerifyParamGetRequest*>(&to_msg);
+  auto& from = static_cast<const VerifyParamGetRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.VerifyParamGetRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_logical_ch() != 0) {
+    _this->_impl_.logical_ch_ = from._impl_.logical_ch_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void VerifyParamGetRequest::CopyFrom(const VerifyParamGetRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.VerifyParamGetRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void VerifyParamGetRequest::InternalSwap(VerifyParamGetRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+        swap(_impl_.logical_ch_, other->_impl_.logical_ch_);
+}
+
+::google::protobuf::Metadata VerifyParamGetRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class VerifyParamGetResponse::_Internal {
+ public:
+};
+
+VerifyParamGetResponse::VerifyParamGetResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.VerifyParamGetResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE VerifyParamGetResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::silicon_based::VerifyParamGetResponse& from_msg)
+      : channelverify_{visibility, arena, from.channelverify_},
+        channelkparam_{visibility, arena, from.channelkparam_},
+        channelbparam_{visibility, arena, from.channelbparam_},
+        _cached_size_{0} {}
+
+VerifyParamGetResponse::VerifyParamGetResponse(
+    ::google::protobuf::Arena* arena,
+    const VerifyParamGetResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  VerifyParamGetResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:silicon_based.VerifyParamGetResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE VerifyParamGetResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : channelverify_{visibility, arena},
+        channelkparam_{visibility, arena},
+        channelbparam_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void VerifyParamGetResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+VerifyParamGetResponse::~VerifyParamGetResponse() {
+  // @@protoc_insertion_point(destructor:silicon_based.VerifyParamGetResponse)
+  SharedDtor(*this);
+}
+inline void VerifyParamGetResponse::SharedDtor(MessageLite& self) {
+  VerifyParamGetResponse& this_ = static_cast<VerifyParamGetResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* VerifyParamGetResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) VerifyParamGetResponse(arena);
+}
+constexpr auto VerifyParamGetResponse::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(VerifyParamGetResponse, _impl_.channelverify_) +
+          decltype(VerifyParamGetResponse::_impl_.channelverify_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(VerifyParamGetResponse, _impl_.channelkparam_) +
+          decltype(VerifyParamGetResponse::_impl_.channelkparam_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(VerifyParamGetResponse, _impl_.channelbparam_) +
+          decltype(VerifyParamGetResponse::_impl_.channelbparam_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(VerifyParamGetResponse), alignof(VerifyParamGetResponse), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&VerifyParamGetResponse::PlacementNew_,
+                                 sizeof(VerifyParamGetResponse),
+                                 alignof(VerifyParamGetResponse));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull VerifyParamGetResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_VerifyParamGetResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &VerifyParamGetResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<VerifyParamGetResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &VerifyParamGetResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<VerifyParamGetResponse>(), &VerifyParamGetResponse::ByteSizeLong,
+            &VerifyParamGetResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(VerifyParamGetResponse, _impl_._cached_size_),
+        false,
+    },
+    &VerifyParamGetResponse::kDescriptorMethods,
+    &descriptor_table_lnawg_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* VerifyParamGetResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 58, 2> VerifyParamGetResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::VerifyParamGetResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // repeated string channelVerify = 1;
+    {::_pbi::TcParser::FastUR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(VerifyParamGetResponse, _impl_.channelverify_)}},
+    // repeated float channelKParam = 2;
+    {::_pbi::TcParser::FastF32P1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(VerifyParamGetResponse, _impl_.channelkparam_)}},
+    // repeated float channelBParam = 3;
+    {::_pbi::TcParser::FastF32P1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(VerifyParamGetResponse, _impl_.channelbparam_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated string channelVerify = 1;
+    {PROTOBUF_FIELD_OFFSET(VerifyParamGetResponse, _impl_.channelverify_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+    // repeated float channelKParam = 2;
+    {PROTOBUF_FIELD_OFFSET(VerifyParamGetResponse, _impl_.channelkparam_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kPackedFloat)},
+    // repeated float channelBParam = 3;
+    {PROTOBUF_FIELD_OFFSET(VerifyParamGetResponse, _impl_.channelbparam_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kPackedFloat)},
+  }},
+  // no aux_entries
+  {{
+    "\44\15\0\0\0\0\0\0"
+    "silicon_based.VerifyParamGetResponse"
+    "channelVerify"
+  }},
+};
+
+PROTOBUF_NOINLINE void VerifyParamGetResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.VerifyParamGetResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.channelverify_.Clear();
+  _impl_.channelkparam_.Clear();
+  _impl_.channelbparam_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* VerifyParamGetResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const VerifyParamGetResponse& this_ = static_cast<const VerifyParamGetResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* VerifyParamGetResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const VerifyParamGetResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:silicon_based.VerifyParamGetResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // repeated string channelVerify = 1;
+          for (int i = 0, n = this_._internal_channelverify_size(); i < n; ++i) {
+            const auto& s = this_._internal_channelverify().Get(i);
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "silicon_based.VerifyParamGetResponse.channelVerify");
+            target = stream->WriteString(1, s, target);
+          }
+
+          // repeated float channelKParam = 2;
+          if (this_._internal_channelkparam_size() > 0) {
+            target = stream->WriteFixedPacked(2, this_._internal_channelkparam(), target);
+          }
+
+          // repeated float channelBParam = 3;
+          if (this_._internal_channelbparam_size() > 0) {
+            target = stream->WriteFixedPacked(3, this_._internal_channelbparam(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:silicon_based.VerifyParamGetResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t VerifyParamGetResponse::ByteSizeLong(const MessageLite& base) {
+          const VerifyParamGetResponse& this_ = static_cast<const VerifyParamGetResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t VerifyParamGetResponse::ByteSizeLong() const {
+          const VerifyParamGetResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:silicon_based.VerifyParamGetResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated string channelVerify = 1;
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_channelverify().size());
+              for (int i = 0, n = this_._internal_channelverify().size(); i < n; ++i) {
+                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+                    this_._internal_channelverify().Get(i));
+              }
+            }
+            // repeated float channelKParam = 2;
+            {
+              std::size_t data_size = std::size_t{4} *
+                  ::_pbi::FromIntSize(this_._internal_channelkparam_size());
+              std::size_t tag_size = data_size == 0
+                  ? 0
+                  : 1 + ::_pbi::WireFormatLite::Int32Size(
+                                      static_cast<int32_t>(data_size));
+              total_size += tag_size + data_size;
+            }
+            // repeated float channelBParam = 3;
+            {
+              std::size_t data_size = std::size_t{4} *
+                  ::_pbi::FromIntSize(this_._internal_channelbparam_size());
+              std::size_t tag_size = data_size == 0
+                  ? 0
+                  : 1 + ::_pbi::WireFormatLite::Int32Size(
+                                      static_cast<int32_t>(data_size));
+              total_size += tag_size + data_size;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void VerifyParamGetResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<VerifyParamGetResponse*>(&to_msg);
+  auto& from = static_cast<const VerifyParamGetResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.VerifyParamGetResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_channelverify()->MergeFrom(from._internal_channelverify());
+  _this->_internal_mutable_channelkparam()->MergeFrom(from._internal_channelkparam());
+  _this->_internal_mutable_channelbparam()->MergeFrom(from._internal_channelbparam());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void VerifyParamGetResponse::CopyFrom(const VerifyParamGetResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.VerifyParamGetResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void VerifyParamGetResponse::InternalSwap(VerifyParamGetResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.channelverify_.InternalSwap(&other->_impl_.channelverify_);
+  _impl_.channelkparam_.InternalSwap(&other->_impl_.channelkparam_);
+  _impl_.channelbparam_.InternalSwap(&other->_impl_.channelbparam_);
+}
+
+::google::protobuf::Metadata VerifyParamGetResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SignalVerifyParamGetRequest::_Internal {
+ public:
+};
+
+SignalVerifyParamGetRequest::SignalVerifyParamGetRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.SignalVerifyParamGetRequest)
+}
+SignalVerifyParamGetRequest::SignalVerifyParamGetRequest(
+    ::google::protobuf::Arena* arena, const SignalVerifyParamGetRequest& from)
+    : SignalVerifyParamGetRequest(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE SignalVerifyParamGetRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void SignalVerifyParamGetRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, logical_ch_),
+           0,
+           offsetof(Impl_, chrange_) -
+               offsetof(Impl_, logical_ch_) +
+               sizeof(Impl_::chrange_));
+}
+SignalVerifyParamGetRequest::~SignalVerifyParamGetRequest() {
+  // @@protoc_insertion_point(destructor:silicon_based.SignalVerifyParamGetRequest)
+  SharedDtor(*this);
+}
+inline void SignalVerifyParamGetRequest::SharedDtor(MessageLite& self) {
+  SignalVerifyParamGetRequest& this_ = static_cast<SignalVerifyParamGetRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* SignalVerifyParamGetRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SignalVerifyParamGetRequest(arena);
+}
+constexpr auto SignalVerifyParamGetRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SignalVerifyParamGetRequest),
+                                            alignof(SignalVerifyParamGetRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SignalVerifyParamGetRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SignalVerifyParamGetRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SignalVerifyParamGetRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SignalVerifyParamGetRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SignalVerifyParamGetRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SignalVerifyParamGetRequest>(), &SignalVerifyParamGetRequest::ByteSizeLong,
+            &SignalVerifyParamGetRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetRequest, _impl_._cached_size_),
+        false,
+    },
+    &SignalVerifyParamGetRequest::kDescriptorMethods,
+    &descriptor_table_lnawg_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SignalVerifyParamGetRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2> SignalVerifyParamGetRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::SignalVerifyParamGetRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // uint32 chRange = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SignalVerifyParamGetRequest, _impl_.chrange_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetRequest, _impl_.chrange_)}},
+    // uint32 logical_ch = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SignalVerifyParamGetRequest, _impl_.logical_ch_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetRequest, _impl_.logical_ch_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 logical_ch = 1;
+    {PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetRequest, _impl_.logical_ch_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 chRange = 2;
+    {PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetRequest, _impl_.chrange_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void SignalVerifyParamGetRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.SignalVerifyParamGetRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.logical_ch_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.chrange_) -
+      reinterpret_cast<char*>(&_impl_.logical_ch_)) + sizeof(_impl_.chrange_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SignalVerifyParamGetRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SignalVerifyParamGetRequest& this_ = static_cast<const SignalVerifyParamGetRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SignalVerifyParamGetRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SignalVerifyParamGetRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:silicon_based.SignalVerifyParamGetRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 logical_ch = 1;
+          if (this_._internal_logical_ch() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_logical_ch(), target);
+          }
+
+          // uint32 chRange = 2;
+          if (this_._internal_chrange() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                2, this_._internal_chrange(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:silicon_based.SignalVerifyParamGetRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SignalVerifyParamGetRequest::ByteSizeLong(const MessageLite& base) {
+          const SignalVerifyParamGetRequest& this_ = static_cast<const SignalVerifyParamGetRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SignalVerifyParamGetRequest::ByteSizeLong() const {
+          const SignalVerifyParamGetRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:silicon_based.SignalVerifyParamGetRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // uint32 logical_ch = 1;
+            if (this_._internal_logical_ch() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_logical_ch());
+            }
+            // uint32 chRange = 2;
+            if (this_._internal_chrange() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_chrange());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SignalVerifyParamGetRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SignalVerifyParamGetRequest*>(&to_msg);
+  auto& from = static_cast<const SignalVerifyParamGetRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.SignalVerifyParamGetRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_logical_ch() != 0) {
+    _this->_impl_.logical_ch_ = from._impl_.logical_ch_;
+  }
+  if (from._internal_chrange() != 0) {
+    _this->_impl_.chrange_ = from._impl_.chrange_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SignalVerifyParamGetRequest::CopyFrom(const SignalVerifyParamGetRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.SignalVerifyParamGetRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SignalVerifyParamGetRequest::InternalSwap(SignalVerifyParamGetRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetRequest, _impl_.chrange_)
+      + sizeof(SignalVerifyParamGetRequest::_impl_.chrange_)
+      - PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetRequest, _impl_.logical_ch_)>(
+          reinterpret_cast<char*>(&_impl_.logical_ch_),
+          reinterpret_cast<char*>(&other->_impl_.logical_ch_));
+}
+
+::google::protobuf::Metadata SignalVerifyParamGetRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SignalVerifyParamGetResponse::_Internal {
+ public:
+};
+
+SignalVerifyParamGetResponse::SignalVerifyParamGetResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.SignalVerifyParamGetResponse)
+}
+SignalVerifyParamGetResponse::SignalVerifyParamGetResponse(
+    ::google::protobuf::Arena* arena, const SignalVerifyParamGetResponse& from)
+    : SignalVerifyParamGetResponse(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE SignalVerifyParamGetResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void SignalVerifyParamGetResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, channelkparam_),
+           0,
+           offsetof(Impl_, channelbparam_) -
+               offsetof(Impl_, channelkparam_) +
+               sizeof(Impl_::channelbparam_));
+}
+SignalVerifyParamGetResponse::~SignalVerifyParamGetResponse() {
+  // @@protoc_insertion_point(destructor:silicon_based.SignalVerifyParamGetResponse)
+  SharedDtor(*this);
+}
+inline void SignalVerifyParamGetResponse::SharedDtor(MessageLite& self) {
+  SignalVerifyParamGetResponse& this_ = static_cast<SignalVerifyParamGetResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* SignalVerifyParamGetResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SignalVerifyParamGetResponse(arena);
+}
+constexpr auto SignalVerifyParamGetResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SignalVerifyParamGetResponse),
+                                            alignof(SignalVerifyParamGetResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SignalVerifyParamGetResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SignalVerifyParamGetResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SignalVerifyParamGetResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SignalVerifyParamGetResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SignalVerifyParamGetResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SignalVerifyParamGetResponse>(), &SignalVerifyParamGetResponse::ByteSizeLong,
+            &SignalVerifyParamGetResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetResponse, _impl_._cached_size_),
+        false,
+    },
+    &SignalVerifyParamGetResponse::kDescriptorMethods,
+    &descriptor_table_lnawg_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SignalVerifyParamGetResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2> SignalVerifyParamGetResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::SignalVerifyParamGetResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // float channelBParam = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetResponse, _impl_.channelbparam_)}},
+    // float channelKParam = 1;
+    {::_pbi::TcParser::FastF32S1,
+     {13, 63, 0, PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetResponse, _impl_.channelkparam_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // float channelKParam = 1;
+    {PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetResponse, _impl_.channelkparam_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // float channelBParam = 2;
+    {PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetResponse, _impl_.channelbparam_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void SignalVerifyParamGetResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.SignalVerifyParamGetResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.channelkparam_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.channelbparam_) -
+      reinterpret_cast<char*>(&_impl_.channelkparam_)) + sizeof(_impl_.channelbparam_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SignalVerifyParamGetResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SignalVerifyParamGetResponse& this_ = static_cast<const SignalVerifyParamGetResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SignalVerifyParamGetResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SignalVerifyParamGetResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:silicon_based.SignalVerifyParamGetResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // float channelKParam = 1;
+          if (::absl::bit_cast<::uint32_t>(this_._internal_channelkparam()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                1, this_._internal_channelkparam(), target);
+          }
+
+          // float channelBParam = 2;
+          if (::absl::bit_cast<::uint32_t>(this_._internal_channelbparam()) != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteFloatToArray(
+                2, this_._internal_channelbparam(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:silicon_based.SignalVerifyParamGetResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SignalVerifyParamGetResponse::ByteSizeLong(const MessageLite& base) {
+          const SignalVerifyParamGetResponse& this_ = static_cast<const SignalVerifyParamGetResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SignalVerifyParamGetResponse::ByteSizeLong() const {
+          const SignalVerifyParamGetResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:silicon_based.SignalVerifyParamGetResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // float channelKParam = 1;
+            if (::absl::bit_cast<::uint32_t>(this_._internal_channelkparam()) != 0) {
+              total_size += 5;
+            }
+            // float channelBParam = 2;
+            if (::absl::bit_cast<::uint32_t>(this_._internal_channelbparam()) != 0) {
+              total_size += 5;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SignalVerifyParamGetResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SignalVerifyParamGetResponse*>(&to_msg);
+  auto& from = static_cast<const SignalVerifyParamGetResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.SignalVerifyParamGetResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (::absl::bit_cast<::uint32_t>(from._internal_channelkparam()) != 0) {
+    _this->_impl_.channelkparam_ = from._impl_.channelkparam_;
+  }
+  if (::absl::bit_cast<::uint32_t>(from._internal_channelbparam()) != 0) {
+    _this->_impl_.channelbparam_ = from._impl_.channelbparam_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SignalVerifyParamGetResponse::CopyFrom(const SignalVerifyParamGetResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.SignalVerifyParamGetResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SignalVerifyParamGetResponse::InternalSwap(SignalVerifyParamGetResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetResponse, _impl_.channelbparam_)
+      + sizeof(SignalVerifyParamGetResponse::_impl_.channelbparam_)
+      - PROTOBUF_FIELD_OFFSET(SignalVerifyParamGetResponse, _impl_.channelkparam_)>(
+          reinterpret_cast<char*>(&_impl_.channelkparam_),
+          reinterpret_cast<char*>(&other->_impl_.channelkparam_));
+}
+
+::google::protobuf::Metadata SignalVerifyParamGetResponse::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)
