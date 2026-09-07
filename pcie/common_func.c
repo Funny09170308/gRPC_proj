@@ -368,28 +368,45 @@ void status_led_ctrl(uint8_t ok)
 #define RERIO_KERNEL_TEMP_PATH "/sys/bus/iio/devices/iio:device0/in_temp8_raw" // Temp_FPD PS主域
 #define RERIO_FPGA_TEMP_PATH "/sys/bus/iio/devices/iio:device0/in_temp20_raw"  // Temp_PL FPGA
 
+// 读取iio raw温度，成功返回温度；失败返回 -999.0f
 float read_temperature(void)
 {
     FILE *fp;
     int raw;
+    int ret;
+    int retry = 2; // 失败重试2次
 
-    fp = fopen(RERIO_KERNEL_TEMP_PATH, "r");
-    if (fp == NULL)
+    while (retry-- > 0)
     {
-        perror("Failed to open temperature file");
-        return -1.0f;
+        fp = fopen(RERIO_KERNEL_TEMP_PATH, "r");
+        if (fp == NULL)
+        {
+            perror("open temp file fail");
+            usleep(5000);
+            continue;
+        }
+
+        ret = fscanf(fp, "%d", &raw);
+        fclose(fp);
+
+        if (ret == 1)
+        {
+            return ((raw * 509.314f) / 65536.0f) - 280.23f;
+        }
+        P_LOG_WARNING("fscanf temp raw failed ret=%d, retry=%d", ret, retry);
+        usleep(5000);
     }
-
-    fscanf(fp, "%d", &raw);
-    fclose(fp);
-
-    // ZynqMP�¶�ת����ʽ
-    return ((raw * 509.314f) / 65536.0f) - 280.23f;
+    P_LOG_ERROR("read kernel temp all retry failed");
+    return -999.0f;
 }
 
 void cut_off_slave_power(void)
 {
-    int gpios[] = {427, 428, 429, 430};
+#define slave_pwr_0 GPIO_BASE + EMIO_CHIP_OFFSET + 15
+#define slave_pwr_1 GPIO_BASE + EMIO_CHIP_OFFSET + 16
+#define slave_pwr_2 GPIO_BASE + EMIO_CHIP_OFFSET + 17
+#define slave_pwr_3 GPIO_BASE + EMIO_CHIP_OFFSET + 18
+    int gpios[] = {slave_pwr_0, slave_pwr_1, slave_pwr_2, slave_pwr_3};
     int i;
 
     for (i = 0; i < sizeof(gpios) / sizeof(gpios[0]); i++)
@@ -404,47 +421,65 @@ PcieBoardInfo *s_boardInfo;
 
 void temp_monitor(void)
 {
-#define AWG_TEMP_OFFSET 0x00010000 + (100 << 2)
-#define QA_TEMP_OFFSET 0x00010000 + (1 << 2)
+#define AWG_TEMP_OFFSET (0x00010000 + (7 << 2))
+#define QA_TEMP_OFFSET (0x00010000 + (1 << 2))
     s_boardInfo = get_pcie_board_info();
     float kernel_temp = read_temperature();
-    P_LOG_MONITOR("Kernel temp: %.2f", kernel_temp);
-    if (kernel_temp >= TEMPERATURE_WALL)
+
+    // 读取异常，直接跳过本次判断，不要拿垃圾值做过温保护！
+    if (kernel_temp < -100.0f)
     {
-        cut_off_slave_power();
-        status_led_ctrl(0);
-        P_LOG_ERROR("Temperature too high! Kernel temp: %.2f", kernel_temp);
+        P_LOG_ERROR("Read kernel temperature read error, skip check");
     }
-    uint32_t value;
-    for (uint8_t i = 0; i < s_boardInfo->awg_board_num; ++i)
+    else
     {
-        value = common_pcie_user_reg_data_get(i, AWG_TEMP_OFFSET);
-        float slave_temp = value * 507.5921310 / pow(2, 16) - 279.42657680;
-        P_LOG_MONITOR("AWG%d temp: %.2f", (i + 1), slave_temp);
-        if (slave_temp >= TEMPERATURE_WALL)
+        P_LOG_MONITOR("Kernel temp: %.2f", kernel_temp);
+        if (kernel_temp >= TEMPERATURE_WALL)
         {
             cut_off_slave_power();
             status_led_ctrl(0);
-            P_LOG_ERROR("Temperature too high! Kernel temp: %.2f", slave_temp);
-            while (1)
+            P_LOG_ERROR("Temperature too high! Kernel temp: %.2f", kernel_temp);
+        }
+    }
+
+    uint32_t value;
+    /* AWG 温度巡检 */
+    for (uint8_t i = 0; i < s_boardInfo->board_num; ++i)
+    {
+        if (s_boardInfo->items[i].dev_type == DEV_TYPE_AWG ||
+            s_boardInfo->items[i].dev_type == DEV_TYPE_AWG_4CH)
+        {
+            value = common_pcie_user_reg_data_get(i, AWG_TEMP_OFFSET);
+            float slave_temp = value * 507.5921310f / 65536.0f - 279.42657680f;
+            P_LOG_MONITOR("AWG%d temp: %.2f", (i + 1), slave_temp);
+            if (slave_temp >= TEMPERATURE_WALL)
             {
-                // 当温度过高时，直接进入死循环，等待人工干预重启设备
+                cut_off_slave_power();
+                status_led_ctrl(0);
+                P_LOG_ERROR("Temperature too high! AWG%d temp: %.2f", (i + 1), slave_temp);
+                while (1)
+                {
+                }
             }
         }
     }
-    for (uint8_t i = 0; i < s_boardInfo->qa_board_num; ++i)
+
+    /* QA 温度巡检 */
+    for (uint8_t i = 0; i < s_boardInfo->board_num; ++i)
     {
-        value = common_pcie_user_reg_data_get(i, QA_TEMP_OFFSET);
-        float slave_temp = value * 507.5921310 / pow(2, 16) - 279.42657680;
-        P_LOG_MONITOR("QA%d temp: %.2f", (i + 1), slave_temp);
-        if (slave_temp >= TEMPERATURE_WALL)
+        if (s_boardInfo->items[i].dev_type == DEV_TYPE_QA)
         {
-            cut_off_slave_power();
-            status_led_ctrl(0);
-            P_LOG_ERROR("Temperature too high! QA%d temp: %.2f", (i + 1), slave_temp);
-            while (1)
+            value = common_pcie_user_reg_data_get(i, QA_TEMP_OFFSET);
+            float slave_temp = value * 507.5921310f / 65536.0f - 279.42657680f;
+            P_LOG_MONITOR("QA%d temp: %.2f", (i + 1), slave_temp);
+            if (slave_temp >= TEMPERATURE_WALL)
             {
-                // 当温度过高时，直接进入死循环，等待人工干预重启设备
+                cut_off_slave_power();
+                status_led_ctrl(0);
+                P_LOG_ERROR("Temperature too high! QA%d temp: %.2f", (i + 1), slave_temp);
+                while (1)
+                {
+                }
             }
         }
     }

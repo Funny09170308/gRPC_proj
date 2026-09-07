@@ -19,28 +19,44 @@ void AWGConfigRegisterInit(void)
 	for (chIndex = 0; chIndex < C_LNAWG_CHANNEL_NUM; ++chIndex)
 	{
 		// AWG波形参数
-		s_AWGUserReg.m_ch_mode[chIndex] = C_AWG_REG_BASE_ADDR + (C_SYSTEM_BASE_ADDR + (chIndex * 0x10) + 0x0) * 4;
-		s_AWGUserReg.m_ch_en[chIndex] = C_AWG_REG_BASE_ADDR + (C_SYSTEM_BASE_ADDR + (chIndex * 0x10) + 0x1) * 4;
-		s_AWGUserReg.m_ch_seq_cnt[chIndex] = C_AWG_REG_BASE_ADDR + (C_SYSTEM_BASE_ADDR + (chIndex * 0x10) + 0x2) * 4;
-		s_AWGUserReg.m_ch_loop_cnt[chIndex] = C_AWG_REG_BASE_ADDR + (C_SYSTEM_BASE_ADDR + (chIndex * 0x10) + 0x3) * 4;
-		s_AWGUserReg.m_switch_flag[chIndex] = C_AWG_REG_BASE_ADDR + (C_SYSTEM_BASE_ADDR + (chIndex * 0x10) + 0x4) * 4;
-		s_AWGUserReg.m_ch_range[chIndex] = C_AWG_REG_BASE_ADDR + (C_SYSTEM_BASE_ADDR + (chIndex * 0x10) + 0x5) * 4;
-		s_AWGUserReg.m_ch_offset[chIndex] = C_AWG_REG_BASE_ADDR + (C_SYSTEM_BASE_ADDR + (chIndex * 0x10) + 0x8) * 4;
+		s_AWGUserReg.m_ch_mode[chIndex] = C_AWG_REG_BASE_ADDR + (C_DAC_BASE_ADDR + (chIndex * 0x10) + 0x0) * 4;
+		P_LOG_DEBUG("Channel %d addr-m_ch_mode = %#x", chIndex, s_AWGUserReg.m_ch_mode[chIndex]);
+		s_AWGUserReg.m_ch_en[chIndex] = C_AWG_REG_BASE_ADDR + (C_DAC_BASE_ADDR + (chIndex * 0x10) + 0x1) * 4;
+		P_LOG_DEBUG("Channel %d addr-m_ch_en = %#x", chIndex, s_AWGUserReg.m_ch_en[chIndex]);
+		s_AWGUserReg.m_ch_seq_cnt[chIndex] = C_AWG_REG_BASE_ADDR + (C_DAC_BASE_ADDR + (chIndex * 0x10) + 0x2) * 4;
+		P_LOG_DEBUG("Channel %d addr-m_ch_seq_cnt = %#x", chIndex, s_AWGUserReg.m_ch_seq_cnt[chIndex]);
+		s_AWGUserReg.m_ch_loop_cnt[chIndex] = C_AWG_REG_BASE_ADDR + (C_DAC_BASE_ADDR + (chIndex * 0x10) + 0x3) * 4;
+		P_LOG_DEBUG("Channel %d addr-m_ch_loop_cnt = %#x", chIndex, s_AWGUserReg.m_ch_loop_cnt[chIndex]);
+		s_AWGUserReg.m_switch_flag[chIndex] = C_AWG_REG_BASE_ADDR + (C_DAC_BASE_ADDR + (chIndex * 0x10) + 0x4) * 4;
+		P_LOG_DEBUG("Channel %d addr-m_switch_flag = %#x", chIndex, s_AWGUserReg.m_switch_flag[chIndex]);
+		s_AWGUserReg.m_ch_range[chIndex] = C_AWG_REG_BASE_ADDR + (C_DAC_BASE_ADDR + (chIndex * 0x10) + 0x5) * 4;
+		P_LOG_DEBUG("Channel %d addr-m_ch_range = %#x", chIndex, s_AWGUserReg.m_ch_range[chIndex]);
+		s_AWGUserReg.m_ch_offset[chIndex] = C_AWG_REG_BASE_ADDR + (C_DAC_BASE_ADDR + (chIndex * 0x10) + 0x8) * 4;
+		P_LOG_DEBUG("Channel %d addr-m_ch_offset = %#x", chIndex, s_AWGUserReg.m_ch_offset[chIndex]);
 
-		s_AWGUserReg.m_ch_dds_config[chIndex].m_en = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (chIndex * 0x10) + 0x8) * 4;
+		s_AWGUserReg.m_ch_dds_config[chIndex].m_en = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (chIndex * 0x100) + 0x00) * 4;
 		for (DDSConfigIndex = 0; DDSConfigIndex < C_LNAWG_CH_DDS_NUM; ++DDSConfigIndex)
 		{
-			s_AWGUserReg.m_ch_dds_config[chIndex].m_freq_addr[DDSConfigIndex] = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (DDSConfigIndex * 0x10) + 0x1) * 4;
-			s_AWGUserReg.m_ch_dds_config[chIndex].m_phase_addr[DDSConfigIndex] = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (DDSConfigIndex * 0x10) + 0x2) * 4;
-			s_AWGUserReg.m_ch_dds_config[chIndex].m_amp_addr[DDSConfigIndex] = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (DDSConfigIndex * 0x10) + 0x3) * 4;
-			s_AWGUserReg.m_ch_dds_config[chIndex].m_len_addr[DDSConfigIndex] = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (DDSConfigIndex * 0x10) + 0x4) * 4;
-			s_AWGUserReg.m_ch_dds_config[chIndex].m_trig_delay_addr[DDSConfigIndex] = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (DDSConfigIndex * 0x10) + 0x5) * 4;
-			s_AWGUserReg.m_ch_dds_config[chIndex].m_delt_x_addr[DDSConfigIndex] = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (DDSConfigIndex * 0x10) + 0x6) * 4;
+			s_AWGUserReg.m_ch_dds_config[chIndex].m_freq_addr[DDSConfigIndex] = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (chIndex * 0x100) + (DDSConfigIndex * 0x10) + 0x1) * 4;
+			P_LOG_DEBUG("Channel %d DDS %d addr-m_freq_addr = %#x", chIndex, DDSConfigIndex, s_AWGUserReg.m_ch_dds_config[chIndex].m_freq_addr[DDSConfigIndex]);
+			s_AWGUserReg.m_ch_dds_config[chIndex].m_phase_addr[DDSConfigIndex] = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (chIndex * 0x100) + (DDSConfigIndex * 0x10) + 0x2) * 4;
+			P_LOG_DEBUG("Channel %d DDS %d addr-m_phase_addr = %#x", chIndex, DDSConfigIndex, s_AWGUserReg.m_ch_dds_config[chIndex].m_phase_addr[DDSConfigIndex]);
+			s_AWGUserReg.m_ch_dds_config[chIndex].m_amp_addr[DDSConfigIndex] = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (chIndex * 0x100) + (DDSConfigIndex * 0x10) + 0x3) * 4;
+			P_LOG_DEBUG("Channel %d DDS %d addr-m_amp_addr = %#x", chIndex, DDSConfigIndex, s_AWGUserReg.m_ch_dds_config[chIndex].m_amp_addr[DDSConfigIndex]);
+			s_AWGUserReg.m_ch_dds_config[chIndex].m_len_addr[DDSConfigIndex] = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (chIndex * 0x100) + (DDSConfigIndex * 0x10) + 0x4) * 4;
+			P_LOG_DEBUG("Channel %d DDS %d addr-m_len_addr = %#x", chIndex, DDSConfigIndex, s_AWGUserReg.m_ch_dds_config[chIndex].m_len_addr[DDSConfigIndex]);
+			s_AWGUserReg.m_ch_dds_config[chIndex].m_trig_delay_addr[DDSConfigIndex] = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (chIndex * 0x100) + (DDSConfigIndex * 0x10) + 0x5) * 4;
+			P_LOG_DEBUG("Channel %d DDS %d addr-m_trig_delay_addr = %#x", chIndex, DDSConfigIndex, s_AWGUserReg.m_ch_dds_config[chIndex].m_trig_delay_addr[DDSConfigIndex]);
+			s_AWGUserReg.m_ch_dds_config[chIndex].m_delt_x_addr[DDSConfigIndex] = C_AWG_REG_BASE_ADDR + (C_DDS_BASE_ADDR + (chIndex * 0x100) + (DDSConfigIndex * 0x10) + 0x6) * 4;
+			P_LOG_DEBUG("Channel %d DDS %d addr-m_delt_x_addr = %#x", chIndex, DDSConfigIndex, s_AWGUserReg.m_ch_dds_config[chIndex].m_delt_x_addr[DDSConfigIndex]);
 		}
+		// 反馈配置地址
+		s_AWGUserReg.m_fb_config[chIndex].m_fb_en = C_AWG_REG_BASE_ADDR + (C_FB_BASE_ADDR + (chIndex * 0x10) + 0x00) * 4;
+		s_AWGUserReg.m_fb_config[chIndex].m_rx_idelay_tapout = C_AWG_REG_BASE_ADDR + (C_FB_BASE_ADDR + (chIndex * 0x10) + 0x01) * 4;
+		s_AWGUserReg.m_fb_config[chIndex].m_rx_fb_res = C_AWG_REG_BASE_ADDR + (C_FB_BASE_ADDR + (chIndex * 0x10) + 0x02) * 4;
+		s_AWGUserReg.m_fb_config[chIndex].m_rx_clear = C_AWG_REG_BASE_ADDR + (C_FB_BASE_ADDR + (chIndex * 0x10) + 0x03) * 4;
+		s_AWGUserReg.m_fb_config[chIndex].m_rx_idealy_tapin = C_AWG_REG_BASE_ADDR + (C_FB_BASE_ADDR + (chIndex * 0x10) + 0x04) * 4;
 	}
-
-	// 反馈配置地址
-	s_AWGUserReg.m_fb_config.m_fb_en = C_FB_BASE_ADDR;
 
 	// 波形下载基地址
 	s_AWGUserReg.m_ch_wave_base_addr[0] = 0x1800000000;
@@ -48,29 +64,6 @@ void AWGConfigRegisterInit(void)
 	s_AWGUserReg.m_ch_wave_base_addr[2] = 0x1900000000;
 	s_AWGUserReg.m_ch_wave_base_addr[3] = 0x1980000000;
 }
-
-static DDSAddrMap_t s_ddsAddrMapCtx[C_LNAWG_CHANNEL_NUM] = {
-	[0] = {
-		.m_en = DDS_0_EN,
-		.m_mode = CHANNEL_0_MODE,
-		.m_len_addr = {DDS_0_PART_1_LEN, DDS_0_PART_2_LEN, DDS_0_PART_3_LEN, DDS_0_PART_4_LEN},
-		.m_trig_delay_addr = {DDS_0_PART_1_TRIG_DELAY, DDS_0_PART_2_TRIG_DELAY, DDS_0_PART_3_TRIG_DELAY, DDS_0_PART_4_TRIG_DELAY},
-		.m_freq_addr = {DDS_0_PART_1_FREQUENCE, DDS_0_PART_2_FREQUENCE, DDS_0_PART_3_FREQUENCE, DDS_0_PART_4_FREQUENCE},
-		.m_phase_addr = {DDS_0_PART_1_PHASE, DDS_0_PART_2_PHASE, DDS_0_PART_3_PHASE, DDS_0_PART_4_PHASE},
-		.m_amp_addr = {DDS_0_PART_1_AMP, DDS_0_PART_2_AMP, DDS_0_PART_3_AMP, DDS_0_PART_4_AMP},
-		.m_delt_x_addr = {DDS_0_PART_1_DELT_X, DDS_0_PART_2_DELT_X, DDS_0_PART_3_DELT_X, DDS_0_PART_4_DELT_X},
-	},
-	[1] = {
-		.m_en = DDS_1_EN,
-		.m_mode = CHANNEL_1_MODE,
-		.m_len_addr = {DDS_1_PART_1_LEN, DDS_1_PART_2_LEN, DDS_1_PART_3_LEN, DDS_1_PART_4_LEN},
-		.m_trig_delay_addr = {DDS_1_PART_1_TRIG_DELAY, DDS_1_PART_2_TRIG_DELAY, DDS_1_PART_3_TRIG_DELAY, DDS_1_PART_4_TRIG_DELAY},
-		.m_freq_addr = {DDS_1_PART_1_FREQUENCE, DDS_1_PART_2_FREQUENCE, DDS_1_PART_3_FREQUENCE, DDS_1_PART_4_FREQUENCE},
-		.m_phase_addr = {DDS_1_PART_1_PHASE, DDS_1_PART_2_PHASE, DDS_1_PART_3_PHASE, DDS_1_PART_4_PHASE},
-		.m_amp_addr = {DDS_1_PART_1_AMP, DDS_1_PART_2_AMP, DDS_1_PART_3_AMP, DDS_1_PART_4_AMP},
-		.m_delt_x_addr = {DDS_1_PART_1_DELT_X, DDS_1_PART_2_DELT_X, DDS_1_PART_3_DELT_X, DDS_1_PART_4_DELT_X},
-	},
-};
 
 LocalParam gLocalParam;
 
@@ -269,45 +262,34 @@ void set_awg_ch_out_range(int32_t logical_ch, int32_t range)
 	if (range == E_RANGE_DIRECT)
 	{
 		xdma_write_user_space(chip_id, s_AWGUserReg.m_switch_flag[local_ch - 1], 1);
-
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b0000100);
-		usleep(20000);
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b0000010);
-		usleep(20000);
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b0100000);
-		usleep(20000);
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b0000000);
+		usleep(20);
+		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b100101);
+		usleep(300000);
+		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0);
+		usleep(20);
 		xdma_write_user_space(chip_id, s_AWGUserReg.m_switch_flag[local_ch - 1], 0);
 	}
 	else if (range == E_RANGE_3V)
 	{
 		xdma_write_user_space(chip_id, s_AWGUserReg.m_switch_flag[local_ch - 1], 1);
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b0000001);
-		usleep(20000);
+		usleep(20);
+		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b1010110);
+		usleep(300000);
 		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b1000000);
-		usleep(20000);
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b1001000);
-		usleep(20000);
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b1100000);
-		usleep(20000);
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b1000000);
+		usleep(20);
 		xdma_write_user_space(chip_id, s_AWGUserReg.m_switch_flag[local_ch - 1], 0);
 	}
 	else if (range == E_RANGE_HIGH_Z)
 	{
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_switch_flag[local_ch - 1], 1);
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b0100101);
-		usleep(20000);
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b0000000);
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_switch_flag[local_ch - 1], 0);
+		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b100110);
+		usleep(300000);
+		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0);
 	}
 	else if (range == E_RANGE_GND)
 	{
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_switch_flag[local_ch - 1], 1);
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b0010101);
-		usleep(20000);
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b0000000);
-		xdma_write_user_space(chip_id, s_AWGUserReg.m_switch_flag[local_ch - 1], 0);
+		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0b001000);
+		usleep(300000);
+		xdma_write_user_space(chip_id, s_AWGUserReg.m_ch_range[local_ch - 1], 0);
 	}
 	else
 	{
@@ -587,7 +569,7 @@ void set_awg_feadback_enable(int32_t logical_ch, uint32_t enable)
 	uint8_t local_ch; // 通道数
 
 	get_awg_route(logical_ch, &chip_id, &local_ch);
-	xdma_write_user_space(chip_id, s_AWGUserReg.m_fb_config.m_fb_en, enable);
+	xdma_write_user_space(chip_id, s_AWGUserReg.m_fb_config[local_ch - 1].m_fb_en, enable);
 }
 
 uint32_t get_awg_feadback_enable(int32_t logical_ch)
@@ -598,6 +580,6 @@ uint32_t get_awg_feadback_enable(int32_t logical_ch)
 	get_awg_route(logical_ch, &chip_id, &local_ch);
 
 	uint32_t enable;
-	xdma_read_user_space(chip_id, s_AWGUserReg.m_fb_config.m_fb_en, &enable);
+	xdma_read_user_space(chip_id, s_AWGUserReg.m_fb_config[local_ch - 1].m_fb_en, &enable);
 	return enable;
 }

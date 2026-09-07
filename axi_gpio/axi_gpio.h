@@ -1,6 +1,7 @@
 #ifndef __AXI_GPIO_H__
 #define __AXI_GPIO_H__
 
+#define GPIO_BASE 516
 #define EMIO_CHIP_OFFSET 78
 
 #define PCIE_PS_RST 43

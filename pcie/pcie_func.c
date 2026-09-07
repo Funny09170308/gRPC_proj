@@ -117,7 +117,6 @@ int get_subcard_count(void)
     return count;
 }
 
-
 static int get_awg_base_ch_by_index(int awg_count, int index)
 {
     static const int awg_base_1[1] = {1};
@@ -188,7 +187,7 @@ static void build_awg_map(PcieBoardInfo *info)
         {
             awg_chip_list[awg_index++] = info->items[i].chip_id;
         }
-        if (info->items[i].dev_type == DEV_TYPE_AWG_4CH)
+        else if (info->items[i].dev_type == DEV_TYPE_AWG_4CH)
         {
             awg_chip_list[awg_index++] = info->items[i].chip_id;
         }
@@ -208,7 +207,7 @@ static void build_awg_map(PcieBoardInfo *info)
         }
 
         /* AWG4CH */
-        for (uint8_t j = 0; j < CARD_LOCAL_IN_CH_NUM; ++j)
+        for (uint8_t j = 0; j < C_LNAWG_CHANNEL_NUM; ++j)
         {
             info->awg_map[base_ch + j].chip_id = chip;
             info->awg_map[base_ch + j].local_ch = j + 1;
@@ -335,13 +334,13 @@ int pcie_dev_init(void)
     build_awg_map(&g_pcie_board_info);
     build_qa_map(&g_pcie_board_info);
 
-    P_LOG_MONITOR("board_num=%d, awg_board_num=%d, qa_board_num=%d, awg_ch_num=%d, qa_in_ch_num=%d, qa_out_ch_num=%d",
-                  g_pcie_board_info.board_num,
-                  g_pcie_board_info.awg_board_num,
-                  g_pcie_board_info.qa_board_num,
-                  g_pcie_board_info.awg_ch_num,
-                  g_pcie_board_info.qa_in_ch_num,
-                  g_pcie_board_info.qa_out_ch_num);
+    P_LOG_DEBUG("board_num=%d, awg_board_num=%d, qa_board_num=%d, awg_ch_num=%d, qa_in_ch_num=%d, qa_out_ch_num=%d",
+                g_pcie_board_info.board_num,
+                g_pcie_board_info.awg_board_num,
+                g_pcie_board_info.qa_board_num,
+                g_pcie_board_info.awg_ch_num,
+                g_pcie_board_info.qa_in_ch_num,
+                g_pcie_board_info.qa_out_ch_num);
 
     for (i = 0; i < g_pcie_board_info.board_num; i++)
     {
@@ -407,7 +406,7 @@ int get_awg_route(int logical_ch, uint8_t *chip_id, uint8_t *local_ch)
 
     *chip_id = g_pcie_board_info.awg_map[logical_ch].chip_id;
     *local_ch = g_pcie_board_info.awg_map[logical_ch].local_ch;
-
+    P_LOG_DEBUG("Analize AWG logic_ch: %d to board: %d local_ch: %d", logical_ch, *chip_id, *local_ch);
     return 0;
 }
 
@@ -425,7 +424,7 @@ int get_qa_in_route(int logical_ch, uint8_t *chip_id, uint8_t *local_ch)
 
     *chip_id = g_pcie_board_info.qa_in_map[logical_ch].chip_id;
     *local_ch = g_pcie_board_info.qa_in_map[logical_ch].local_ch;
-
+    P_LOG_DEBUG("Analize QA IN CH logic_ch: %d to board: %d local_ch: %d", logical_ch, *chip_id, *local_ch);
     return 0;
 }
 
@@ -443,7 +442,7 @@ int get_qa_out_route(int logical_ch, uint8_t *chip_id, uint8_t *local_ch)
 
     *chip_id = g_pcie_board_info.qa_out_map[logical_ch].chip_id;
     *local_ch = g_pcie_board_info.qa_out_map[logical_ch].local_ch;
-
+    P_LOG_DEBUG("Analize QA OUT CH logic_ch: %d to board: %d local_ch: %d", logical_ch, *chip_id, *local_ch);
     return 0;
 }
 
@@ -463,7 +462,8 @@ int xdma_read_user_space(int chip, uint64_t offset, uint32_t *readVal)
         return -1;
     }
     *readVal = *(uint32_t *)(s_xdmaDevContx[chip].m_user_mmap_addr + offset);
-    P_LOG_MONITOR("PCIE read data: %d(Hex:%#x) from user space addr: %#llx.", *readVal, *readVal, offset);
+    P_LOG_DEBUG("PCIE read chip %d data: %d(Hex:%#x) from user space addr: %#llx.",
+                chip, *readVal, *readVal, offset);
     return 0;
 }
 
@@ -483,8 +483,8 @@ int xdma_write_user_space(int chip, uint64_t offset, uint32_t writeVal)
 
     *(volatile uint32_t *)(s_xdmaDevContx[chip].m_user_mmap_addr + offset) = writeVal;
 
-    P_LOG_MONITOR("PCIE write data: %u(Hex:%#x) to user space addr: %#llx.",
-                  writeVal, writeVal, offset);
+    P_LOG_DEBUG("PCIE write chip %d data: %u(Hex:%#x) to user space addr: %#llx.",
+                chip, writeVal, writeVal, offset);
 
     return 0;
 }
@@ -492,7 +492,7 @@ int xdma_write_user_space(int chip, uint64_t offset, uint32_t writeVal)
 int dma_write_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
 {
     memcpy(s_xdmaDevContx[chip].m_pbuffer, buffer, bytes); // 拷贝用户数据到 DMA 缓冲区
-    P_LOG_DEBUG("s_xdmaDevContx[chip].m_h2c_fd = %d.", s_xdmaDevContx[chip].m_h2c_fd);
+    P_LOG_DEBUG("s_xdmaDevContx[%d].m_h2c_fd = %d.", chip, s_xdmaDevContx[chip].m_h2c_fd);
     size_t rc = write_from_buffer(s_xdmaDevContx[chip].m_devH2CSpaceName,
                                   s_xdmaDevContx[chip].m_h2c_fd,
                                   s_xdmaDevContx[chip].m_pbuffer,
@@ -500,9 +500,9 @@ int dma_write_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
                                   address);
     if (rc < 0)
     {
-        P_LOG_ERROR("PCIe DMA write data to device %s failed!", s_xdmaDevContx[chip].m_devH2CSpaceName);
+        P_LOG_ERROR("PCIe DMA write chip:%d data to device %s failed!", chip, s_xdmaDevContx[chip].m_devH2CSpaceName);
     }
-    P_LOG_MONITOR("PCIe DMA write data to device %s succeed!...%d", s_xdmaDevContx[chip].m_devH2CSpaceName, rc);
+    P_LOG_DEBUG("PCIe DMA write chip:%d data to device %s succeed!...%d", chip, s_xdmaDevContx[chip].m_devH2CSpaceName, rc);
     return 0;
 }
 
@@ -512,7 +512,7 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
     {
         return -1;
     }
-    P_LOG_MONITOR("PCIe chip %d DMA access addr %#llx, read bytes: %d.", chip, address, bytes);
+    P_LOG_DEBUG("PCIe chip %d DMA access addr %#llx, read bytes: %d.", chip, address, bytes);
     uint64_t size = bytes;
     int index = 0, int_num, rem_num, count = 0;
     int_num = size / DMA_ONCE_SIZE_MAX;
@@ -526,7 +526,7 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
                                 DMA_ONCE_SIZE_MAX,
                                 address + index * DMA_ONCE_SIZE_MAX);
         memcpy(buffer + index * DMA_ONCE_SIZE_MAX, s_xdmaDevContx[chip].m_pbuffer, DMA_ONCE_SIZE_MAX);
-        P_LOG_MONITOR("DMA read index: %d, read count: %d", index, count);
+        P_LOG_DEBUG("DMA read index: %d, read count: %d", index, count);
     }
     memset(s_xdmaDevContx[chip].m_pbuffer, 0x00, rem_num);
     count += read_to_buffer(s_xdmaDevContx[chip].m_devC2HSpaceName,
@@ -535,16 +535,16 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
                             rem_num,
                             address + index * DMA_ONCE_SIZE_MAX);
     memcpy(buffer + index * DMA_ONCE_SIZE_MAX, s_xdmaDevContx[chip].m_pbuffer, rem_num);
-    P_LOG_MONITOR("DMA total read count: %d", count);
+    P_LOG_DEBUG("DMA total read count: %d", count);
     if (count < 0)
         P_LOG_ERROR("PCIe DMA read data from device %s failed!", s_xdmaDevContx[chip].m_devC2HSpaceName);
-    P_LOG_MONITOR("PCIe DMA Read count: %d, expect: %d.", count, bytes);
+    P_LOG_DEBUG("PCIe DMA Read count: %d, expect: %d.", count, bytes);
     return count;
 }
 
 void chip_dac_sync_init(uint32_t chip)
 {
-#define DAC_SYNC_OFFSET 0x101 << 2
+#define DAC_SYNC_OFFSET (0x10000 + (0x2 << 2))
     xdma_write_user_space(chip, DAC_SYNC_OFFSET, 0);
     usleep(10);
     xdma_write_user_space(chip, DAC_SYNC_OFFSET, 1);
@@ -554,16 +554,17 @@ void chip_dac_sync_init(uint32_t chip)
 
 void sync_init(void)
 {
-    for (uint8_t i = 0; i < g_pcie_board_info.awg_board_num; ++i)
+#define DAC_SYNC_START (0x10000 + (0x2 << 2))
+    for (uint8_t i = 0; i < g_pcie_board_info.board_num; ++i)
     {
-        xdma_write_user_space(i, 0x10000 + (103 << 2), 1);
+        xdma_write_user_space(i, DAC_SYNC_START, 1);
         P_LOG_DEBUG("Init chip %d dac sync.", i);
     }
 }
 
 void dac_sync_init(void)
 {
-    for (uint8_t i = 0; i < g_pcie_board_info.awg_board_num; ++i)
+    for (uint8_t i = 0; i < g_pcie_board_info.board_num; ++i)
     {
         chip_dac_sync_init(i);
         P_LOG_DEBUG("Init chip %d dac sync.", i);

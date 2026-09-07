@@ -245,15 +245,17 @@ Status CommonCMDServiceImpl::StreamDataSet(ServerContext *context,
         {
             if (streamID == DEVICE_TYPE_LNAWG)
             {
+                P_LOG_DEBUG("Stream set request type: LNAWG...%#x", streamID);
                 get_awg_route(chip, &subid, &local_ch);
             }
             else if (streamID == DEVICE_TYPE_QA)
             {
+                P_LOG_DEBUG("Stream set request type: LNQA...%#x", streamID);
                 get_qa_out_route(chip, &subid, &local_ch);
             }
             route_inited = true;
         }
-
+        P_LOG_DEBUG("DMA write to device: %d, addr: %#llx", subid, startAddr);
         int ret = dma_write_data(
             subid,
             startAddr,
@@ -292,7 +294,7 @@ Status CommonCMDServiceImpl::StreamDataGet(ServerContext *context,
     }
     else if (streamID == DEVICE_TYPE_QA)
     {
-        get_qa_in_route(logicCh, &subid, &local_ch);
+        get_qa_out_route(logicCh, &subid, &local_ch);
     }
 
     P_LOG_DEBUG("StreamDataGet: logic_ch = %d, chip=%u, startAddr=0x%llx, requestLen=%u",

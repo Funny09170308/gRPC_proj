@@ -32,96 +32,6 @@ typedef enum
 extern "C"
 {
 #endif
-    typedef enum
-    {
-        CHANNEL_1_MODE = C_AWG_REG_BASE_ADDR + (1 * 4),
-        CHANNEL_0_MODE = C_AWG_REG_BASE_ADDR + (2 * 4),
-
-        CHANNEL_1_OUTPUT_EN = C_AWG_REG_BASE_ADDR + (3 * 4),
-        CHANNEL_0_OUTPUT_EN = C_AWG_REG_BASE_ADDR + (4 * 4),
-
-        CHANNEL_1_SEQUENCE_CNT = C_AWG_REG_BASE_ADDR + (5 * 4),
-        CHANNEL_0_SEQUENCE_CNT = C_AWG_REG_BASE_ADDR + (6 * 4),
-
-        CHANNEL_1_LOOP_CNT = C_AWG_REG_BASE_ADDR + (7 * 4),
-        CHANNEL_0_LOOP_CNT = C_AWG_REG_BASE_ADDR + (8 * 4),
-
-        DDS_1_EN = C_AWG_REG_BASE_ADDR + (9 * 4),
-        DDS_1_PART_1_FREQUENCE = C_AWG_REG_BASE_ADDR + (10 * 4),
-        DDS_1_PART_2_FREQUENCE = C_AWG_REG_BASE_ADDR + (11 * 4),
-        DDS_1_PART_3_FREQUENCE = C_AWG_REG_BASE_ADDR + (12 * 4),
-        DDS_1_PART_4_FREQUENCE = C_AWG_REG_BASE_ADDR + (13 * 4),
-
-        DDS_1_PART_1_PHASE = C_AWG_REG_BASE_ADDR + (14 * 4),
-        DDS_1_PART_2_PHASE = C_AWG_REG_BASE_ADDR + (15 * 4),
-        DDS_1_PART_3_PHASE = C_AWG_REG_BASE_ADDR + (16 * 4),
-        DDS_1_PART_4_PHASE = C_AWG_REG_BASE_ADDR + (17 * 4),
-
-        DDS_1_PART_1_AMP = C_AWG_REG_BASE_ADDR + (18 * 4),
-        DDS_1_PART_2_AMP = C_AWG_REG_BASE_ADDR + (19 * 4),
-        DDS_1_PART_3_AMP = C_AWG_REG_BASE_ADDR + (20 * 4),
-        DDS_1_PART_4_AMP = C_AWG_REG_BASE_ADDR + (21 * 4),
-
-        DDS_0_EN = C_AWG_REG_BASE_ADDR + (22 * 4),
-        DDS_0_PART_1_FREQUENCE = C_AWG_REG_BASE_ADDR + (23 * 4),
-        DDS_0_PART_2_FREQUENCE = C_AWG_REG_BASE_ADDR + (24 * 4),
-        DDS_0_PART_3_FREQUENCE = C_AWG_REG_BASE_ADDR + (25 * 4),
-        DDS_0_PART_4_FREQUENCE = C_AWG_REG_BASE_ADDR + (26 * 4),
-
-        DDS_0_PART_1_PHASE = C_AWG_REG_BASE_ADDR + (27 * 4),
-        DDS_0_PART_2_PHASE = C_AWG_REG_BASE_ADDR + (28 * 4),
-        DDS_0_PART_3_PHASE = C_AWG_REG_BASE_ADDR + (29 * 4),
-        DDS_0_PART_4_PHASE = C_AWG_REG_BASE_ADDR + (30 * 4),
-
-        DDS_0_PART_1_AMP = C_AWG_REG_BASE_ADDR + (31 * 4),
-        DDS_0_PART_2_AMP = C_AWG_REG_BASE_ADDR + (32 * 4),
-        DDS_0_PART_3_AMP = C_AWG_REG_BASE_ADDR + (33 * 4),
-        DDS_0_PART_4_AMP = C_AWG_REG_BASE_ADDR + (34 * 4),
-
-        CHANNEL_1_OFFSET_SET = C_AWG_REG_BASE_ADDR + (35 * 4),
-        CHANNEL_0_OFFSET_SET = C_AWG_REG_BASE_ADDR + (36 * 4),
-
-        CHANNEL_1_RANGE_SET = C_AWG_REG_BASE_ADDR + (38 * 4),
-        CHANNEL_0_RANGE_SET = C_AWG_REG_BASE_ADDR + (39 * 4),
-
-        DDS_1_PART_1_LEN = C_AWG_REG_BASE_ADDR + (40 * 4),
-        DDS_1_PART_2_LEN = C_AWG_REG_BASE_ADDR + (41 * 4),
-        DDS_1_PART_3_LEN = C_AWG_REG_BASE_ADDR + (42 * 4),
-        DDS_1_PART_4_LEN = C_AWG_REG_BASE_ADDR + (43 * 4),
-
-        DDS_1_PART_1_TRIG_DELAY = C_AWG_REG_BASE_ADDR + (44 * 4),
-        DDS_1_PART_2_TRIG_DELAY = C_AWG_REG_BASE_ADDR + (45 * 4),
-        DDS_1_PART_3_TRIG_DELAY = C_AWG_REG_BASE_ADDR + (46 * 4),
-        DDS_1_PART_4_TRIG_DELAY = C_AWG_REG_BASE_ADDR + (47 * 4),
-
-        DDS_0_PART_1_LEN = C_AWG_REG_BASE_ADDR + (48 * 4),
-        DDS_0_PART_2_LEN = C_AWG_REG_BASE_ADDR + (49 * 4),
-        DDS_0_PART_3_LEN = C_AWG_REG_BASE_ADDR + (50 * 4),
-        DDS_0_PART_4_LEN = C_AWG_REG_BASE_ADDR + (51 * 4),
-
-        DDS_0_PART_1_TRIG_DELAY = C_AWG_REG_BASE_ADDR + (52 * 4),
-        DDS_0_PART_2_TRIG_DELAY = C_AWG_REG_BASE_ADDR + (53 * 4),
-        DDS_0_PART_3_TRIG_DELAY = C_AWG_REG_BASE_ADDR + (54 * 4),
-        DDS_0_PART_4_TRIG_DELAY = C_AWG_REG_BASE_ADDR + (55 * 4),
-
-        CHANNEL_0AND1_EXT_SOURCE = C_AWG_REG_BASE_ADDR + (56 * 4),
-
-        DDS_1_PART_1_DELT_X = C_AWG_REG_BASE_ADDR + (57 * 4),
-        DDS_1_PART_2_DELT_X = C_AWG_REG_BASE_ADDR + (58 * 4),
-        DDS_1_PART_3_DELT_X = C_AWG_REG_BASE_ADDR + (59 * 4),
-        DDS_1_PART_4_DELT_X = C_AWG_REG_BASE_ADDR + (60 * 4),
-
-        DDS_0_PART_1_DELT_X = C_AWG_REG_BASE_ADDR + (61 * 4),
-        DDS_0_PART_2_DELT_X = C_AWG_REG_BASE_ADDR + (62 * 4),
-        DDS_0_PART_3_DELT_X = C_AWG_REG_BASE_ADDR + (63 * 4),
-        DDS_0_PART_4_DELT_X = C_AWG_REG_BASE_ADDR + (64 * 4),
-
-        E_CH0_RANGE_SWITCH_LATCH = C_AWG_REG_BASE_ADDR + (70 * 4),
-        E_CH1_RANGE_SWITCH_LATCH = C_AWG_REG_BASE_ADDR + (71 * 4),
-
-        FEEDBACK_CHANNEL_1_ENABLE = C_AWG_REG_BASE_ADDR + (108 * 4),
-        FEEDBACK_CHANNEL_0_ENABLE = C_AWG_REG_BASE_ADDR + (109 * 4),
-    } AWGConfigRegOffset_t;
 
     typedef struct _DEV_TRIG_CTRL
     {
@@ -179,9 +89,6 @@ extern "C"
         uint32_t m_rx_fb_res;
         uint32_t m_rx_clear;
         uint32_t m_rx_idealy_tapin;
-        uint32_t m_fb_en_1;
-        uint32_t m_fb_en_2;
-        uint32_t m_fb_en_3;
     } feedbackConfig_t;
     typedef struct
     {
@@ -199,7 +106,7 @@ extern "C"
         DDSAddrMap_t m_ch_dds_config[C_LNAWG_CHANNEL_NUM];
         uint32_t m_ch_offset[C_LNAWG_CHANNEL_NUM];
         uint32_t m_ch_range[C_LNAWG_CHANNEL_NUM];
-        feedbackConfig_t m_fb_config;
+        feedbackConfig_t m_fb_config[C_LNAWG_CHANNEL_NUM];
         uint32_t m_ch_wave_base_addr[C_LNAWG_CHANNEL_NUM];
     } AWGUserReg_t;
 
