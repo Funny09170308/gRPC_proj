@@ -11,13 +11,6 @@
 
 void printhex(void *buffer, int size, int linecnt);
 
-int get_alpha_to_reg(uint64_t *alpha_high, uint64_t *alpha_low, double tau);
-
-int sync_filter_params(uint32_t fin, uint32_t *M1, uint32_t *M2, uint32_t *Nm);
-
-char *skip_prefix(char *str);
-void trim_trailing_whitespace(char *str);
-
 void set_static_ip(const char *interface, const char *ip, const char *gateway, const char *netmask, const char *mac);
 int start_dhcp_ip(void);
 void get_mac_address_ifconfig(const char *instance, char *mac_out);
