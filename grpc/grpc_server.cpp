@@ -6,6 +6,7 @@
 #include "../param_mgr/param_mgr.h"
 #include "../pcie/lnawg/lnawg_func.h"
 #include "../platform_log/platform_log.h"
+#include "../public/public.h"
 #include <string>
 #include <grpcpp/grpcpp.h>
 
@@ -115,6 +116,7 @@ Status CommonCMDServiceImpl::SetNetCfgAddr(ServerContext *context,
                 ipAddr.c_str(),
                 gateWay.c_str(),
                 macAddr.c_str());
+    set_static_ip("end0", ipAddr.c_str(), gateWay.c_str(), "255.255.255.0", macAddr.c_str());
     response->set_success(true);
     return Status::OK;
 }
@@ -177,7 +179,7 @@ Status CommonCMDServiceImpl::StreamDataSet(ServerContext *context,
                                            ServerReader<SetStreamDataRequest> *reader,
                                            SetStreamResult *response)
 {
-    P_LOG_DEBUG("Client connect the stream port: StreamDataSet");
+    P_LOG_REPEAT("Client connect the stream port: StreamDataSet");
 
     uint32_t chip = 0;
     uint32_t streamID = 0;
@@ -231,7 +233,7 @@ Status CommonCMDServiceImpl::StreamDataSet(ServerContext *context,
                     startAddr, currentPackBytes);
     }
 
-    P_LOG_DEBUG("StreamDataSet All packs deploy succeed! %u", totalResvBytes);
+    P_LOG_REPEAT("StreamDataSet All packs deploy succeed! %u", totalResvBytes);
     response->set_resvtotal(totalResvBytes);
     return Status::OK;
 }
@@ -254,7 +256,7 @@ Status CommonCMDServiceImpl::StreamDataGet(ServerContext *context,
         get_qa_in_route(logicCh, &subid, &local_ch);
     }
 
-    P_LOG_DEBUG("StreamDataGet: logic_ch = %d, chip=%u, startAddr=0x%llx, requestLen=%u",
+    P_LOG_INFO("StreamDataGet: logic_ch = %d, chip=%u, startAddr=0x%llx, requestLen=%u",
                logicCh, subid, (unsigned long long)startAddr, requestLen);
 
     // 边界检查
@@ -297,7 +299,7 @@ Status CommonCMDServiceImpl::StreamDataGet(ServerContext *context,
         remainingLen -= currentPackBytes;
         currentPackage++;
     }
-    P_LOG_DEBUG("StreamDataGet: All %u packages sent successfully, total bytes=%u",
+    P_LOG_INFO("StreamDataGet: All %u packages sent successfully, total bytes=%u",
                totalPackages, requestLen);
     return Status::OK;
 }
@@ -590,6 +592,7 @@ Status LNAWGCMDServiceImpl::GetDDSEnable(ServerContext *context,
     P_LOG_DEBUG("Get awg ch dds enable status, ch:%d, enable:%d", request->logical_ch(), enable);
     return Status::OK;
 }
+
 
 Status QACMDServiceImpl::SetTrigSour(ServerContext *context,
                                      const SetTrigSourRequest *request,
