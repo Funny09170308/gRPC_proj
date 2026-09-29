@@ -544,7 +544,7 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
 
 void chip_dac_sync_init(uint32_t chip)
 {
-#define DAC_SYNC_OFFSET (0x10000 + (0x2 << 2))
+#define DAC_SYNC_OFFSET (0x10000 + (0x1 << 2))
     xdma_write_user_space(chip, DAC_SYNC_OFFSET, 0);
     usleep(10);
     xdma_write_user_space(chip, DAC_SYNC_OFFSET, 1);
