@@ -649,9 +649,9 @@ void set_awg_dds_config(int32_t logical_ch, DDSConfigParam_t config)
 	int8_t chip_id;
 	int8_t local_ch;
 
-	uint32_t freq_val = (uint32_t)config.m_freq / 2e9 * pow(2, 32);
-	uint32_t phase_val = (uint32_t)config.m_phase / 360 * pow(2, 32);
-	uint32_t amp_val = (uint32_t)65535 * config.m_amp;
+	uint32_t freq_val = (uint32_t)(config.m_freq / 2e9 * pow(2, 32));
+	uint32_t phase_val = (uint32_t)(config.m_phase / 360 * pow(2, 32));
+	uint32_t amp_val = (uint32_t)(65535 * config.m_amp);
 	uint32_t set_index = config.m_index;
 	// TODO:delay/len必须>16, 且是16的整数倍
 	P_LOG_DEBUG("set_awg_dds_config: logical_ch=%d, freq=%.2f, phase=%.2f, amp=%.2f, index=%d\r\n",
@@ -721,7 +721,7 @@ void set_chirp_out_param(int32_t logical_ch, ChirpOutParam_t config)
 	uint32_t freq_end_val = (uint32_t)(config.m_freq_end / 2.4e9 * pow(2, 32));
 	uint32_t delt_x_val = (freq_end_val - freq_start_val) / config.m_len;
 	uint32_t phase_val = (uint32_t)(config.m_phase / 360 * pow(2, 32));
-	uint32_t amp_val = (uint32_t)65535 * config.m_amp;
+	uint32_t amp_val = (uint32_t)(65535 * config.m_amp);
 	uint32_t set_index = config.m_index;
 	P_LOG_DEBUG(
 		"freq_start_val: %d(0x%08x), freq_end_val: %d(0x%08x), phase_val: %d(0x%08x), amp_val: %d(0x%08x), len: %d(0x%08x),"

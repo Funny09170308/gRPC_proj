@@ -12,7 +12,7 @@
 void printhex(void *buffer, int size, int linecnt);
 
 void set_static_ip(const char *interface, const char *ip, const char *gateway, const char *netmask, const char *mac);
-int start_dhcp_ip(void);
+void start_dhcp_ip(const char *interface, const char *mac);
 void get_mac_address_ifconfig(const char *instance, char *mac_out);
 void print_binary_u8(uint8_t data);
 

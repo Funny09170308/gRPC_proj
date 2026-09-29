@@ -209,7 +209,7 @@ void device_info_init(void)
 	else if (g_deviceCfg.dhcpen == 1)
 	{
 		P_LOG_INFO("DHCP enable = %d, set DHCP.", g_deviceCfg.dhcpen);
-		start_dhcp_ip();
+		// start_dhcp_ip();
 	}
 	sleep(1);
 	P_LOG_INFO("************************************************");

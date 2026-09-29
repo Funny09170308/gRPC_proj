@@ -78,7 +78,7 @@ void set_static_ip(const char *interface, const char *ip, const char *gateway, c
     }
     else
     {
-        P_LOG_WARN("unsupport netmask %s, fallback /24", netmask);
+        P_LOG_WARNING("unsupport netmask %s, fallback /24", netmask);
         fprintf(fp, "Address=%s/24\n", ip);
     }
     fprintf(fp, "Gateway=%s\n", gateway);
