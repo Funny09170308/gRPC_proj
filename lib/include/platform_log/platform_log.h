@@ -5,11 +5,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include <pthread.h>
 #include <unistd.h>
 #include <sys/types.h>
 
-#define P_LOG_VERSION "0.2.0"
+#define P_LOG_VERSION "0.2.1"
 
 #ifdef __cplusplus
 extern "C"
@@ -18,18 +17,13 @@ extern "C"
 
 // 必须确保每个等级对应1个独立位，无重叠
 #define P_LOG_LEVEL_DEBUG (1 << 0)   // 0x01
-#define P_LOG_LEVEL_INFO (1 << 1)    // 0x02
-#define P_LOG_LEVEL_WARNING (1 << 2) // 0x04
-#define P_LOG_LEVEL_ERROR (1 << 3)   // 0x08
-#define P_LOG_LEVEL_FATAL (1 << 4)   // 0x10
-#define P_LOG_LEVEL_REPEAT (1 << 5)  // 0x20
-#define P_LOG_LEVEL_NUM 6            // 等级数量
-
-    typedef struct
-    {
-        uint8_t bit;   // 等级对应的位标识
-        uint8_t *name; // 等级名称
-    } logLevelMap_t;
+#define P_LOG_LEVEL_INITIAL (1 << 1) // 0x02
+#define P_LOG_LEVEL_MONITOR (1 << 2) // 0x04
+#define P_LOG_LEVEL_INFO (1 << 3)    // 0x08
+#define P_LOG_LEVEL_WARNING (1 << 4) // 0x10
+#define P_LOG_LEVEL_ERROR (1 << 5)   // 0x20
+#define P_LOG_LEVEL_FATAL (1 << 6)   // 0x40
+#define P_LOG_LEVEL_NUM 7            // 等级数量
 
     // 初始化日志系统（设置默认等级）
     void plog_init(uint8_t level);
@@ -45,11 +39,12 @@ extern "C"
 
 // 日志打印宏（自动填充文件名和行号）
 #define P_LOG_DEBUG(fmt, ...) _log_print(P_LOG_LEVEL_DEBUG, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
+#define P_LOG_INITIAL(fmt, ...) _log_print(P_LOG_LEVEL_INITIAL, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
+#define P_LOG_MONITOR(fmt, ...) _log_print(P_LOG_LEVEL_MONITOR, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
 #define P_LOG_INFO(fmt, ...) _log_print(P_LOG_LEVEL_INFO, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
 #define P_LOG_WARNING(fmt, ...) _log_print(P_LOG_LEVEL_WARNING, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
 #define P_LOG_ERROR(fmt, ...) _log_print(P_LOG_LEVEL_ERROR, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
 #define P_LOG_FATAL(fmt, ...) _log_print(P_LOG_LEVEL_FATAL, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
-#define P_LOG_REPEAT(fmt, ...) _log_print(P_LOG_LEVEL_REPEAT, __FILE__, __LINE__, fmt, ##__VA_ARGS__)
 
 #ifdef __cplusplus
 }

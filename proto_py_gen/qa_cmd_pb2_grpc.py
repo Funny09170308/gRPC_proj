@@ -20,102 +20,102 @@ class QACMDServiceStub(object):
                 '/silicon_based.QACMDService/SetTrigSour',
                 request_serializer=qa__cmd__pb2.SetTrigSourRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.SetSoftTrig = channel.unary_unary(
                 '/silicon_based.QACMDService/SetSoftTrig',
                 request_serializer=qa__cmd__pb2.SetSoftTrigRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.SetDACDDSConfig = channel.unary_unary(
                 '/silicon_based.QACMDService/SetDACDDSConfig',
                 request_serializer=qa__cmd__pb2.SetDACDDSConfigRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetDACDDSConfig = channel.unary_unary(
                 '/silicon_based.QACMDService/GetDACDDSConfig',
                 request_serializer=qa__cmd__pb2.GetDACDDSConfigRequest.SerializeToString,
                 response_deserializer=qa__cmd__pb2.GetDACDDSConfigResponse.FromString,
-                )
+                _registered_method=True)
         self.SetDACPlayParam = channel.unary_unary(
                 '/silicon_based.QACMDService/SetDACPlayParam',
                 request_serializer=qa__cmd__pb2.SetDACPlayParamRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetDACPlayParam = channel.unary_unary(
                 '/silicon_based.QACMDService/GetDACPlayParam',
                 request_serializer=qa__cmd__pb2.GetDACPlayParamRequest.SerializeToString,
                 response_deserializer=qa__cmd__pb2.GetDACPlayParamResponse.FromString,
-                )
+                _registered_method=True)
         self.SetDACStartStop = channel.unary_unary(
                 '/silicon_based.QACMDService/SetDACStartStop',
                 request_serializer=qa__cmd__pb2.SetDACStartStopRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetDACStartStop = channel.unary_unary(
                 '/silicon_based.QACMDService/GetDACStartStop',
                 request_serializer=qa__cmd__pb2.GetDACStartStopRequest.SerializeToString,
                 response_deserializer=qa__cmd__pb2.GetDACStartStopResponse.FromString,
-                )
+                _registered_method=True)
         self.SetSampleParam = channel.unary_unary(
                 '/silicon_based.QACMDService/SetSampleParam',
                 request_serializer=qa__cmd__pb2.SetSampleParamRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetSampleParam = channel.unary_unary(
                 '/silicon_based.QACMDService/GetSampleParam',
                 request_serializer=qa__cmd__pb2.GetSampleParamRequest.SerializeToString,
                 response_deserializer=qa__cmd__pb2.GetSampleParamResponse.FromString,
-                )
+                _registered_method=True)
         self.SetSampleStartStop = channel.unary_unary(
                 '/silicon_based.QACMDService/SetSampleStartStop',
                 request_serializer=qa__cmd__pb2.SetSampleStartStopRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetSampleStartStop = channel.unary_unary(
                 '/silicon_based.QACMDService/GetSampleStartStop',
                 request_serializer=qa__cmd__pb2.GetSampleStartStopRequest.SerializeToString,
                 response_deserializer=qa__cmd__pb2.GetSampleStartStopResponse.FromString,
-                )
+                _registered_method=True)
         self.SetADCConfig = channel.unary_unary(
                 '/silicon_based.QACMDService/SetADCConfig',
                 request_serializer=qa__cmd__pb2.SetADCConfigRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetADCConfig = channel.unary_unary(
                 '/silicon_based.QACMDService/GetADCConfig',
                 request_serializer=qa__cmd__pb2.GetADCConfigRequest.SerializeToString,
                 response_deserializer=qa__cmd__pb2.GetADCConfigResponse.FromString,
-                )
+                _registered_method=True)
         self.SetADCPlayParam = channel.unary_unary(
                 '/silicon_based.QACMDService/SetADCPlayParam',
                 request_serializer=qa__cmd__pb2.SetADCPlayParamRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetADCPlayParam = channel.unary_unary(
                 '/silicon_based.QACMDService/GetADCPlayParam',
                 request_serializer=qa__cmd__pb2.GetADCPlayParamRequest.SerializeToString,
                 response_deserializer=qa__cmd__pb2.GetADCPlayParamResponse.FromString,
-                )
+                _registered_method=True)
         self.SetADCStartStop = channel.unary_unary(
                 '/silicon_based.QACMDService/SetADCStartStop',
                 request_serializer=qa__cmd__pb2.SetADCStartStopRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetADCStartStop = channel.unary_unary(
                 '/silicon_based.QACMDService/GetADCStartStop',
                 request_serializer=qa__cmd__pb2.GetADCStartStopRequest.SerializeToString,
                 response_deserializer=qa__cmd__pb2.GetADCStartStopResponse.FromString,
-                )
+                _registered_method=True)
         self.GetSampleState = channel.unary_unary(
                 '/silicon_based.QACMDService/GetSampleState',
                 request_serializer=qa__cmd__pb2.GetSampleStateRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetDemodeState = channel.unary_unary(
                 '/silicon_based.QACMDService/GetDemodeState',
                 request_serializer=qa__cmd__pb2.GetDemodeStateRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
 
 
 class QACMDServiceServicer(object):
@@ -349,6 +349,7 @@ def add_QACMDServiceServicer_to_server(servicer, server):
     generic_handler = grpc.method_handlers_generic_handler(
             'silicon_based.QACMDService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('silicon_based.QACMDService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -367,11 +368,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/SetTrigSour',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetTrigSour',
             qa__cmd__pb2.SetTrigSourRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetSoftTrig(request,
@@ -384,11 +395,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/SetSoftTrig',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetSoftTrig',
             qa__cmd__pb2.SetSoftTrigRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetDACDDSConfig(request,
@@ -401,11 +422,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/SetDACDDSConfig',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetDACDDSConfig',
             qa__cmd__pb2.SetDACDDSConfigRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetDACDDSConfig(request,
@@ -418,11 +449,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/GetDACDDSConfig',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/GetDACDDSConfig',
             qa__cmd__pb2.GetDACDDSConfigRequest.SerializeToString,
             qa__cmd__pb2.GetDACDDSConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetDACPlayParam(request,
@@ -435,11 +476,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/SetDACPlayParam',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetDACPlayParam',
             qa__cmd__pb2.SetDACPlayParamRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetDACPlayParam(request,
@@ -452,11 +503,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/GetDACPlayParam',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/GetDACPlayParam',
             qa__cmd__pb2.GetDACPlayParamRequest.SerializeToString,
             qa__cmd__pb2.GetDACPlayParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetDACStartStop(request,
@@ -469,11 +530,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/SetDACStartStop',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetDACStartStop',
             qa__cmd__pb2.SetDACStartStopRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetDACStartStop(request,
@@ -486,11 +557,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/GetDACStartStop',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/GetDACStartStop',
             qa__cmd__pb2.GetDACStartStopRequest.SerializeToString,
             qa__cmd__pb2.GetDACStartStopResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetSampleParam(request,
@@ -503,11 +584,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/SetSampleParam',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetSampleParam',
             qa__cmd__pb2.SetSampleParamRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetSampleParam(request,
@@ -520,11 +611,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/GetSampleParam',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/GetSampleParam',
             qa__cmd__pb2.GetSampleParamRequest.SerializeToString,
             qa__cmd__pb2.GetSampleParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetSampleStartStop(request,
@@ -537,11 +638,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/SetSampleStartStop',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetSampleStartStop',
             qa__cmd__pb2.SetSampleStartStopRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetSampleStartStop(request,
@@ -554,11 +665,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/GetSampleStartStop',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/GetSampleStartStop',
             qa__cmd__pb2.GetSampleStartStopRequest.SerializeToString,
             qa__cmd__pb2.GetSampleStartStopResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetADCConfig(request,
@@ -571,11 +692,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/SetADCConfig',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetADCConfig',
             qa__cmd__pb2.SetADCConfigRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetADCConfig(request,
@@ -588,11 +719,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/GetADCConfig',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/GetADCConfig',
             qa__cmd__pb2.GetADCConfigRequest.SerializeToString,
             qa__cmd__pb2.GetADCConfigResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetADCPlayParam(request,
@@ -605,11 +746,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/SetADCPlayParam',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetADCPlayParam',
             qa__cmd__pb2.SetADCPlayParamRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetADCPlayParam(request,
@@ -622,11 +773,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/GetADCPlayParam',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/GetADCPlayParam',
             qa__cmd__pb2.GetADCPlayParamRequest.SerializeToString,
             qa__cmd__pb2.GetADCPlayParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetADCStartStop(request,
@@ -639,11 +800,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/SetADCStartStop',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetADCStartStop',
             qa__cmd__pb2.SetADCStartStopRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetADCStartStop(request,
@@ -656,11 +827,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/GetADCStartStop',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/GetADCStartStop',
             qa__cmd__pb2.GetADCStartStopRequest.SerializeToString,
             qa__cmd__pb2.GetADCStartStopResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetSampleState(request,
@@ -673,11 +854,21 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/GetSampleState',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/GetSampleState',
             qa__cmd__pb2.GetSampleStateRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetDemodeState(request,
@@ -690,8 +881,18 @@ class QACMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.QACMDService/GetDemodeState',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/GetDemodeState',
             qa__cmd__pb2.GetDemodeStateRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)

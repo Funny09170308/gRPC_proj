@@ -20,102 +20,102 @@ class LNAWGCMDServiceStub(object):
                 '/silicon_based.LNAWGCMDService/SetMode',
                 request_serializer=lnawg__cmd__pb2.ModeSetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetMode = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/GetMode',
                 request_serializer=lnawg__cmd__pb2.ModeGetRequest.SerializeToString,
                 response_deserializer=lnawg__cmd__pb2.ModeGetResponse.FromString,
-                )
+                _registered_method=True)
         self.SetRun = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/SetRun',
                 request_serializer=lnawg__cmd__pb2.RunSetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetRun = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/GetRun',
                 request_serializer=lnawg__cmd__pb2.RunGetRequest.SerializeToString,
                 response_deserializer=lnawg__cmd__pb2.RunGetResponse.FromString,
-                )
+                _registered_method=True)
         self.SetExtSource = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/SetExtSource',
                 request_serializer=lnawg__cmd__pb2.ExtSourceSetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetExtSource = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/GetExtSource',
                 request_serializer=lnawg__cmd__pb2.ExtSourceGetRequest.SerializeToString,
                 response_deserializer=lnawg__cmd__pb2.ExtSourceGetResponse.FromString,
-                )
+                _registered_method=True)
         self.SetRange = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/SetRange',
                 request_serializer=lnawg__cmd__pb2.RangeSetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetRange = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/GetRange',
                 request_serializer=lnawg__cmd__pb2.RangeGetRequest.SerializeToString,
                 response_deserializer=lnawg__cmd__pb2.RangeGetResponse.FromString,
-                )
+                _registered_method=True)
         self.SetOffset = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/SetOffset',
                 request_serializer=lnawg__cmd__pb2.OffsetSetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetOffset = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/GetOffset',
                 request_serializer=lnawg__cmd__pb2.OffsetGetRequest.SerializeToString,
                 response_deserializer=lnawg__cmd__pb2.OffsetGetResponse.FromString,
-                )
+                _registered_method=True)
         self.SetSegmentCount = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/SetSegmentCount',
                 request_serializer=lnawg__cmd__pb2.SegmentCountSetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetSegmentCount = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/GetSegmentCount',
                 request_serializer=lnawg__cmd__pb2.SegmentCountGetRequest.SerializeToString,
                 response_deserializer=lnawg__cmd__pb2.SegmentCountGetResponse.FromString,
-                )
+                _registered_method=True)
         self.SetLoopCount = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/SetLoopCount',
                 request_serializer=lnawg__cmd__pb2.LoopCountSetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetLoopCount = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/GetLoopCount',
                 request_serializer=lnawg__cmd__pb2.LoopCountGetRequest.SerializeToString,
                 response_deserializer=lnawg__cmd__pb2.LoopCountGetResponse.FromString,
-                )
+                _registered_method=True)
         self.SetDDSParam = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/SetDDSParam',
                 request_serializer=lnawg__cmd__pb2.DDSParamSetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetDDSParam = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/GetDDSParam',
                 request_serializer=lnawg__cmd__pb2.DDSParamGetRequest.SerializeToString,
                 response_deserializer=lnawg__cmd__pb2.DDSParamGetResponse.FromString,
-                )
+                _registered_method=True)
         self.SetChirpOutParam = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/SetChirpOutParam',
                 request_serializer=lnawg__cmd__pb2.ChirpOutParamSetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetChirpOutParam = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/GetChirpOutParam',
                 request_serializer=lnawg__cmd__pb2.ChirpOutParamGetRequest.SerializeToString,
                 response_deserializer=lnawg__cmd__pb2.ChirpOutParamGetResponse.FromString,
-                )
+                _registered_method=True)
         self.SetDDSEnable = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/SetDDSEnable',
                 request_serializer=lnawg__cmd__pb2.DDSEnableSetRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
-                )
+                _registered_method=True)
         self.GetDDSEnable = channel.unary_unary(
                 '/silicon_based.LNAWGCMDService/GetDDSEnable',
                 request_serializer=lnawg__cmd__pb2.DDSEnableGetRequest.SerializeToString,
                 response_deserializer=lnawg__cmd__pb2.DDSEnableGetResponse.FromString,
-                )
+                _registered_method=True)
 
 
 class LNAWGCMDServiceServicer(object):
@@ -349,6 +349,7 @@ def add_LNAWGCMDServiceServicer_to_server(servicer, server):
     generic_handler = grpc.method_handlers_generic_handler(
             'silicon_based.LNAWGCMDService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
+    server.add_registered_method_handlers('silicon_based.LNAWGCMDService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -367,11 +368,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/SetMode',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/SetMode',
             lnawg__cmd__pb2.ModeSetRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetMode(request,
@@ -384,11 +395,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/GetMode',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetMode',
             lnawg__cmd__pb2.ModeGetRequest.SerializeToString,
             lnawg__cmd__pb2.ModeGetResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetRun(request,
@@ -401,11 +422,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/SetRun',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/SetRun',
             lnawg__cmd__pb2.RunSetRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetRun(request,
@@ -418,11 +449,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/GetRun',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetRun',
             lnawg__cmd__pb2.RunGetRequest.SerializeToString,
             lnawg__cmd__pb2.RunGetResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetExtSource(request,
@@ -435,11 +476,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/SetExtSource',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/SetExtSource',
             lnawg__cmd__pb2.ExtSourceSetRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetExtSource(request,
@@ -452,11 +503,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/GetExtSource',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetExtSource',
             lnawg__cmd__pb2.ExtSourceGetRequest.SerializeToString,
             lnawg__cmd__pb2.ExtSourceGetResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetRange(request,
@@ -469,11 +530,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/SetRange',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/SetRange',
             lnawg__cmd__pb2.RangeSetRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetRange(request,
@@ -486,11 +557,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/GetRange',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetRange',
             lnawg__cmd__pb2.RangeGetRequest.SerializeToString,
             lnawg__cmd__pb2.RangeGetResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetOffset(request,
@@ -503,11 +584,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/SetOffset',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/SetOffset',
             lnawg__cmd__pb2.OffsetSetRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetOffset(request,
@@ -520,11 +611,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/GetOffset',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetOffset',
             lnawg__cmd__pb2.OffsetGetRequest.SerializeToString,
             lnawg__cmd__pb2.OffsetGetResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetSegmentCount(request,
@@ -537,11 +638,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/SetSegmentCount',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/SetSegmentCount',
             lnawg__cmd__pb2.SegmentCountSetRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetSegmentCount(request,
@@ -554,11 +665,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/GetSegmentCount',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetSegmentCount',
             lnawg__cmd__pb2.SegmentCountGetRequest.SerializeToString,
             lnawg__cmd__pb2.SegmentCountGetResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetLoopCount(request,
@@ -571,11 +692,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/SetLoopCount',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/SetLoopCount',
             lnawg__cmd__pb2.LoopCountSetRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetLoopCount(request,
@@ -588,11 +719,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/GetLoopCount',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetLoopCount',
             lnawg__cmd__pb2.LoopCountGetRequest.SerializeToString,
             lnawg__cmd__pb2.LoopCountGetResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetDDSParam(request,
@@ -605,11 +746,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/SetDDSParam',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/SetDDSParam',
             lnawg__cmd__pb2.DDSParamSetRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetDDSParam(request,
@@ -622,11 +773,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/GetDDSParam',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetDDSParam',
             lnawg__cmd__pb2.DDSParamGetRequest.SerializeToString,
             lnawg__cmd__pb2.DDSParamGetResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetChirpOutParam(request,
@@ -639,11 +800,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/SetChirpOutParam',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/SetChirpOutParam',
             lnawg__cmd__pb2.ChirpOutParamSetRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetChirpOutParam(request,
@@ -656,11 +827,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/GetChirpOutParam',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetChirpOutParam',
             lnawg__cmd__pb2.ChirpOutParamGetRequest.SerializeToString,
             lnawg__cmd__pb2.ChirpOutParamGetResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def SetDDSEnable(request,
@@ -673,11 +854,21 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/SetDDSEnable',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/SetDDSEnable',
             lnawg__cmd__pb2.DDSEnableSetRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetDDSEnable(request,
@@ -690,8 +881,18 @@ class LNAWGCMDService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/silicon_based.LNAWGCMDService/GetDDSEnable',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.LNAWGCMDService/GetDDSEnable',
             lnawg__cmd__pb2.DDSEnableGetRequest.SerializeToString,
             lnawg__cmd__pb2.DDSEnableGetResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
