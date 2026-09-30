@@ -32,16 +32,6 @@ extern "C"
     typedef enum
     {
         E_FAN_SPEED_CTRL = 0 * 4, // max:1600
-        E_LED_01_CTRL = 6 * 4,    // staus(OK:green)
-        E_LED_02_CTRL = 10 * 4,   // ch status(on/off)
-        E_LED_03_CTRL = 5 * 4,    // ch status(on/off)
-        E_LED_04_CTRL = 4 * 4,    // ch status(on/off)
-        E_LED_05_CTRL = 3 * 4,    // ch status(on/off)
-        E_LED_06_CTRL = 7 * 4,    // error
-        E_LED_07_CTRL = 8 * 4,    // lnawg ch staus(on/off)
-        E_LED_08_CTRL = 9 * 4,    // lnawg ch staus(on/off)
-        E_LED_09_CTRL = 2 * 4,    // lnawg ch staus(on/off)
-        E_LED_10_CTRL = 1 * 4,    // lnawg ch staus(on/off)
     } publicPerReg_t;
 
     typedef enum

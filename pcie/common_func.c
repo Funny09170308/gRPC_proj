@@ -17,6 +17,8 @@
 #include "../pcie/pcie_func.h"
 #include "../application/app.h"
 #include "../axi_gpio/axi_gpio.h"
+#include "../i2c/io_expand/max7300.h"
+#include "../i2c/i2c_func.h"
 #include "../axi_device/axi_dev_drv.h"
 #include "../platform_log/platform_log.h"
 
@@ -27,25 +29,25 @@ static axiDevice_t s_axiChipAddrCtx[CHIP_NUM] = {};
 static axiDevice_t s_publicPeripherlAddrCtx = {};
 
 uint8_t s_QALEDOffset[8] = {
-    LED_08_CTRL,
-    LED_03_CTRL,
-    LED_02_CTRL,
-    LED_07_CTRL,
-    LED_09_CTRL,
-    LED_05_CTRL,
-    LED_04_CTRL,
-    LED_10_CTRL,
+    E_LED_01_CTRL,
+    E_LED_02_CTRL,
+    E_LED_03_CTRL,
+    E_LED_04_CTRL,
+    E_LED_05_CTRL,
+    E_LED_06_CTRL,
+    E_LED_07_CTRL,
+    E_LED_08_CTRL,
 };
 
 uint8_t s_AWGLEDOffset[8] = {
-    LED_02_CTRL,
-    LED_03_CTRL,
-    LED_04_CTRL,
-    LED_05_CTRL,
-    LED_07_CTRL,
-    LED_08_CTRL,
-    LED_09_CTRL,
-    LED_10_CTRL,
+    E_LED_01_CTRL,
+    E_LED_02_CTRL,
+    E_LED_03_CTRL,
+    E_LED_04_CTRL,
+    E_LED_05_CTRL,
+    E_LED_06_CTRL,
+    E_LED_07_CTRL,
+    E_LED_08_CTRL,
 };
 
 void public_dev_init(void)
@@ -263,7 +265,7 @@ void rerioTriggerSourceSet(uint32_t source)
 
 void LED_control(uint8_t offset, uint32_t status)
 {
-    common_reg_data_set(PUBLIC_PERIPHERAL_BASEAADDR + offset, status);
+    max7300_set_led_color(C_AXI_I2C_0_PATH, E_MAX7300_LED_CTRL_ADDR, offset, status);
 }
 
 void status_led_ctrl(uint8_t ok)
@@ -278,17 +280,17 @@ void status_led_ctrl(uint8_t ok)
             if (strncmp(entry->d_name, "xdma", 4) == 0)
             {
                 closedir(dir);
-                LED_control(LED_01_CTRL, LED_GREEN);
+                LED_control(E_LED_A, LED_GREEN);
                 return;
             }
         }
-        LED_control(LED_01_CTRL, LED_GREEN | LED_RED);
+        LED_control(E_LED_A, LED_GREEN | LED_RED);
         closedir(dir);
         return;
     }
     else
     {
-        LED_control(LED_01_CTRL, LED_RED);
+        LED_control(E_LED_A, LED_RED);
         return;
     }
 }
