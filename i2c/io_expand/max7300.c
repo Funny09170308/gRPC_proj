@@ -181,48 +181,24 @@ int max7300_set_led_color(const char *i2cDevPath, uint8_t slaveAddr, uint8_t led
     }
 
     ports = &s_ledPortMap[led];
-    uint8_t port = 0;
-    uint8_t slave = MAX7300_SLAVE_ADDR;
-    if (ports->red_port > C_CHIP_1_PORT_NUM)
-    {
-        port = ports->red_port - C_CHIP_1_PORT_NUM;
-        slave = MAX7300_SLAVE_ADDR_1;
-    }
-    else
-    {
-        port = ports->red_port;
-        slave = MAX7300_SLAVE_ADDR;
-    }
-    ret = max7300_set_single_io(i2cDevPath, slave, port, (color & 0x02) ? 1 : 0);
-    if (ret != 0)
-    {
-        return ret;
-    }
-    if (ports->green_port > C_CHIP_1_PORT_NUM)
-    {
-        port = ports->green_port - C_CHIP_1_PORT_NUM;
-        slave = MAX7300_SLAVE_ADDR_1;
-    }
-    else
-    {
-        port = ports->green_port;
-        slave = MAX7300_SLAVE_ADDR;
-    }
-    ret = max7300_set_single_io(i2cDevPath, port, slave, (color & 0x01) ? 1 : 0);
+
+    ret = max7300_set_single_io(i2cDevPath, slaveAddr, ports->red_port, (color & 0x02) ? 1 : 0);
     if (ret != 0)
     {
         return ret;
     }
 
-    if (ports->blue_port > C_CHIP_1_PORT_NUM)
+    ret = max7300_set_single_io(i2cDevPath, slaveAddr, ports->green_port, (color & 0x01) ? 1 : 0);
+    if (ret != 0)
     {
-        port = ports->blue_port - C_CHIP_1_PORT_NUM;
-        slave = MAX7300_SLAVE_ADDR_1;
+        return ret;
     }
-    else
+
+    /* LEDA/LEDB have no blue channel; port 0 is the map's sentinel value. */
+    if (ports->blue_port == 0)
     {
-        port = ports->blue_port;
-        slave = MAX7300_SLAVE_ADDR;
+        return 0;
     }
-    return max7300_set_single_io(i2cDevPath, port, slave, (color & 0x04) ? 1 : 0);
+
+    return max7300_set_single_io(i2cDevPath, slaveAddr, ports->blue_port, (color & 0x04) ? 1 : 0);
 }

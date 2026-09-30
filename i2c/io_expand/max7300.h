@@ -29,11 +29,6 @@ typedef enum
 #define MAX7300_IO_INPUT 0
 #define MAX7300_IO_OUTPUT 1
 
-#define C_LED_NUM 16 + 2
-#define C_CHIP_1_PORT_NUM 17
-#define MAX7300_SLAVE_ADDR 0x40U
-#define MAX7300_SLAVE_ADDR_1 0x41U
-
 #define LED_OFF 0x07
 #define LED_GREEN 0x06
 #define LED_RED 0x05
@@ -42,18 +37,11 @@ typedef enum
 #define LED_MAGENTA (LED_RED & LED_BLUE)
 #define LED_CYAN (LED_GREEN & LED_BLUE)
 #define LED_WHITE (LED_RED & LED_GREEN & LED_BLUE)
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 
 int max7300_init_all_output_high(const char *i2cDevPath, uint8_t slaveAddr);
 int max7300_set_all_io_level(const char *i2cDevPath, uint8_t slaveAddr, uint8_t level);
 int max7300_set_all_io_direction(const char *i2cDevPath, uint8_t slaveAddr, uint8_t direction);
 int max7300_set_single_io(const char *i2cDevPath, uint8_t slaveAddr, uint8_t port, uint8_t level);
 int max7300_set_led_color(const char *i2cDevPath, uint8_t slaveAddr, uint8_t led, uint8_t color);
-#ifdef __cplusplus
-}
-#endif
+
 #endif

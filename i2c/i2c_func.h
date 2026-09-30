@@ -10,7 +10,6 @@
 #define C_AXI_I2C_0_PATH "/dev/i2c-2"
 typedef enum {
     E_MAX7300_LED_CTRL_ADDR = 0x40,
-    E_MAX7300_LED_CTRL_ADDR_1 = 0x41,
 } eAXII2CSlaveEnum_t;
 
 int write_reg_var(int fd, uint8_t slave,
