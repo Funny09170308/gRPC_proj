@@ -13,10 +13,21 @@ typedef enum
     E_LED_06_CTRL = 5,
     E_LED_07_CTRL = 6,
     E_LED_08_CTRL = 7,
-    E_LED_A = 8,
-    E_LED_B = 9,
+    E_LED_09_CTRL = 8,
+    E_LED_10_CTRL = 9,
+    E_LED_11_CTRL = 10,
+    E_LED_12_CTRL = 11,
+    E_LED_13_CTRL = 12,
+    E_LED_14_CTRL = 13,
+    E_LED_15_CTRL = 14,
+    E_LED_16_CTRL = 15,
+    E_LED_A = 16,
+    E_LED_B = 17,
 } eI2CLEDSequenct_t;
-
+#define C_LED_NUM 16 + 2
+#define C_CHIP_1_PORT_NUM 31
+#define MAX7300_SLAVE_ADDR 0x40U
+#define MAX7300_SLAVE_ADDR_1 0x41U
 #define C_PORT_CONFG_START_ADDR 0x09
 
 #define C_SIGNAL_PORT_CTRL_START_ADDR 0x24

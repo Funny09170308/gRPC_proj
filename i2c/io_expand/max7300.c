@@ -1,6 +1,6 @@
 #include "max7300.h"
 #include "../i2c_func.h"
-
+#include "../../lib/include/platform_log/platform_log.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <string.h>
@@ -14,16 +14,24 @@ typedef struct
 } max7300LEDPort_t;
 
 static const max7300LEDPort_t s_ledPortMap[] = {
-    {7, 29, 28},  /* LED1: CH01 */
-    {24, 6, 25},  /* LED2: CH02 */
-    {22, 15, 23}, /* LED3: CH03 */
-    {14, 10, 11}, /* LED4: CH04 */
-    {5, 31, 30},  /* LED5: CH05 */
-    {21, 4, 12},  /* LED6: CH06 */
-    {19, 18, 20}, /* LED7: CH07 */
-    {17, 16, 13}, /* LED8: CH08 */
-    {26, 27, 0},  /* LEDA: CH0A */
-    {9, 8, 0},    /* LEDB: CH0B */
+    {23 + 31, 21 + 31, 18 + 31}, // 1
+    {19 + 31, 17 + 31, 20 + 31}, // 2
+    {27 + 31, 21, 26 + 31},      // 3
+    {23, 24, 20},                // 4
+    {26, 27, 25},                // 5
+    {28, 6, 22},                 // 6
+    {18, 17, 19},                // 7
+    {16, 14, 15},                // 8
+    {14 + 31, 11 + 31, 16 + 31}, // 9
+    {13 + 31, 9 + 31, 10 + 31},  // 10
+    {8 + 27, 13, 12 + 27},       // 11
+    {7, 29, 11},                 // 12
+    {5, 31, 30},                 // 13
+    {10, 6 + 31, 4},             // 14
+    {12, 29 + 31, 9},            // 15
+    {4 + 31, 5 + 31, 8},         // 16
+    {22 + 31, 25 + 31, 24 + 31}, // status
+    {7 + 31, 15 + 31, 28 + 31},  // err
 };
 
 static int max7300_write_reg(const char *i2cDevPath, uint8_t slaveAddr, uint8_t cmd, const uint8_t *tx_buf, uint8_t length)
@@ -181,24 +189,54 @@ int max7300_set_led_color(const char *i2cDevPath, uint8_t slaveAddr, uint8_t led
     }
 
     ports = &s_ledPortMap[led];
-
-    ret = max7300_set_single_io(i2cDevPath, slaveAddr, ports->red_port, (color & 0x02) ? 1 : 0);
+    uint8_t port = 0;
+    uint8_t slave = MAX7300_SLAVE_ADDR;
+    if (ports->red_port > C_CHIP_1_PORT_NUM)
+    {
+        port = ports->red_port - C_CHIP_1_PORT_NUM;
+        slave = MAX7300_SLAVE_ADDR_1;
+    }
+    else
+    {
+        port = ports->red_port;
+        slave = MAX7300_SLAVE_ADDR;
+    }
+    P_LOG_DEBUG("ports: R = %d, G = %d, B = %d, slave addr: %x\r\n",
+                ports->red_port, ports->green_port, ports->blue_port, slave);
+    P_LOG_DEBUG("calc red port: %d, slave addr: %x\r\n", port, slave);
+    ret = max7300_set_single_io(i2cDevPath, slave, port, (color & 0x02) ? 1 : 0);
     if (ret != 0)
     {
         return ret;
     }
 
-    ret = max7300_set_single_io(i2cDevPath, slaveAddr, ports->green_port, (color & 0x01) ? 1 : 0);
+    if (ports->green_port > C_CHIP_1_PORT_NUM)
+    {
+        port = ports->green_port - C_CHIP_1_PORT_NUM;
+        slave = MAX7300_SLAVE_ADDR_1;
+    }
+    else
+    {
+        port = ports->green_port;
+        slave = MAX7300_SLAVE_ADDR;
+    }
+    P_LOG_DEBUG("calc green port: %d, slave addr: %x\r\n", port, slave);
+    ret = max7300_set_single_io(i2cDevPath, slave, port, (color & 0x01) ? 1 : 0);
     if (ret != 0)
     {
         return ret;
     }
 
-    /* LEDA/LEDB have no blue channel; port 0 is the map's sentinel value. */
-    if (ports->blue_port == 0)
+    if (ports->blue_port > C_CHIP_1_PORT_NUM)
     {
-        return 0;
+        port = ports->blue_port - C_CHIP_1_PORT_NUM;
+        slave = MAX7300_SLAVE_ADDR_1;
     }
-
-    return max7300_set_single_io(i2cDevPath, slaveAddr, ports->blue_port, (color & 0x04) ? 1 : 0);
+    else
+    {
+        port = ports->blue_port;
+        slave = MAX7300_SLAVE_ADDR;
+    }
+    P_LOG_DEBUG("calc blue port: %d, slave addr: %x\r\n", port, slave);
+    return max7300_set_single_io(i2cDevPath, slave, port, (color & 0x04) ? 1 : 0);
 }

@@ -29,7 +29,7 @@ static systemConfig_t *s_sysConfig;
 static axiDevice_t s_axiChipAddrCtx[CHIP_NUM] = {};
 static axiDevice_t s_publicPeripherlAddrCtx = {};
 static axiDevice_t s_rfPeripherlAddrCtx = {};
-uint8_t s_QALEDOffset[8] = {
+uint8_t s_QALEDOffset[12] = {
     E_LED_01_CTRL,
     E_LED_02_CTRL,
     E_LED_03_CTRL,
@@ -38,9 +38,13 @@ uint8_t s_QALEDOffset[8] = {
     E_LED_06_CTRL,
     E_LED_07_CTRL,
     E_LED_08_CTRL,
+    E_LED_09_CTRL,
+    E_LED_10_CTRL,
+    E_LED_11_CTRL,
+    E_LED_12_CTRL,
 };
 
-uint8_t s_AWGLEDOffset[8] = {
+uint8_t s_AWGLEDOffset[12] = {
     E_LED_01_CTRL,
     E_LED_02_CTRL,
     E_LED_03_CTRL,
@@ -49,6 +53,10 @@ uint8_t s_AWGLEDOffset[8] = {
     E_LED_06_CTRL,
     E_LED_07_CTRL,
     E_LED_08_CTRL,
+    E_LED_09_CTRL,
+    E_LED_10_CTRL,
+    E_LED_11_CTRL,
+    E_LED_12_CTRL,
 };
 
 void public_dev_init(void)
