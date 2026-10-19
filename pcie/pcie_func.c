@@ -540,38 +540,60 @@ int dma_write_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
 
 int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
 {
-    if (buffer == NULL)
-    {
+    if (buffer == NULL || chip >= CHIP_NUM)
         return -1;
-    }
-    P_LOG_DEBUG("PCIe chip %d DMA access addr %#llx, read bytes: %d.", chip, address, bytes);
+    P_LOG_MONITOR("PCIe chip %d DMA access addr %#llx, read bytes: %llu.",
+                  chip, address, (unsigned long long)bytes);
+
     uint64_t size = bytes;
-    int index = 0, int_num, rem_num, count = 0;
-    int_num = size / DMA_ONCE_SIZE_MAX;
-    rem_num = size % DMA_ONCE_SIZE_MAX;
-    for (int index = 0; index < int_num; index++)
+    int int_num = (int)(size / DMA_ONCE_SIZE_MAX);
+    int rem_num = (int)(size % DMA_ONCE_SIZE_MAX);
+    int total = 0;
+    int index;
+
+    for (index = 0; index < int_num; index++)
     {
+        ssize_t rc;
         memset(s_xdmaDevContx[chip].m_pbuffer, 0x00, DMA_ONCE_SIZE_MAX);
-        count += read_to_buffer(s_xdmaDevContx[chip].m_devC2HSpaceName,
-                                s_xdmaDevContx[chip].m_c2h_fd,
-                                s_xdmaDevContx[chip].m_pbuffer,
-                                DMA_ONCE_SIZE_MAX,
-                                address + index * DMA_ONCE_SIZE_MAX);
-        memcpy(buffer + index * DMA_ONCE_SIZE_MAX, s_xdmaDevContx[chip].m_pbuffer, DMA_ONCE_SIZE_MAX);
-        P_LOG_DEBUG("DMA read index: %d, read count: %d", index, count);
+        rc = read_to_buffer(s_xdmaDevContx[chip].m_devC2HSpaceName,
+                            s_xdmaDevContx[chip].m_c2h_fd,
+                            s_xdmaDevContx[chip].m_pbuffer,
+                            DMA_ONCE_SIZE_MAX,
+                            address + (uint64_t)index * DMA_ONCE_SIZE_MAX);
+        if (rc != (ssize_t)DMA_ONCE_SIZE_MAX) /* ① 逐块检查返回值 */
+        {
+            P_LOG_ERROR("DMA block %d read failed: rc=%ld expect=%d addr=0x%llx",
+                        index, (long)rc, DMA_ONCE_SIZE_MAX,
+                        (unsigned long long)(address + (uint64_t)index * DMA_ONCE_SIZE_MAX));
+            return -1; /* 失败即中止，不再静默输出全 0 */
+        }
+        memcpy(buffer + (uint64_t)index * DMA_ONCE_SIZE_MAX,
+               s_xdmaDevContx[chip].m_pbuffer, DMA_ONCE_SIZE_MAX);
+        total += (int)rc;
+        P_LOG_MONITOR("DMA read index: %d, read count: %d", index, total);
     }
-    memset(s_xdmaDevContx[chip].m_pbuffer, 0x00, rem_num);
-    count += read_to_buffer(s_xdmaDevContx[chip].m_devC2HSpaceName,
+
+    if (rem_num > 0) /* ② 余数块：index 用循环结束后的值 */
+    {
+        ssize_t rc;
+        memset(s_xdmaDevContx[chip].m_pbuffer, 0x00, rem_num);
+        rc = read_to_buffer(s_xdmaDevContx[chip].m_devC2HSpaceName,
                             s_xdmaDevContx[chip].m_c2h_fd,
                             s_xdmaDevContx[chip].m_pbuffer,
                             rem_num,
-                            address + index * DMA_ONCE_SIZE_MAX);
-    memcpy(buffer + index * DMA_ONCE_SIZE_MAX, s_xdmaDevContx[chip].m_pbuffer, rem_num);
-    P_LOG_DEBUG("DMA total read count: %d", count);
-    if (count < 0)
-        P_LOG_ERROR("PCIe DMA read data from device %s failed!", s_xdmaDevContx[chip].m_devC2HSpaceName);
-    P_LOG_DEBUG("PCIe DMA Read count: %d, expect: %d.", count, bytes);
-    return count;
+                            address + (uint64_t)index * DMA_ONCE_SIZE_MAX);
+        if (rc != rem_num)
+        {
+            P_LOG_ERROR("DMA tail read failed: rc=%ld expect=%d", (long)rc, rem_num);
+            return -1;
+        }
+        memcpy(buffer + (uint64_t)index * DMA_ONCE_SIZE_MAX,
+               s_xdmaDevContx[chip].m_pbuffer, rem_num);
+        total += (int)rc;
+    }
+
+    P_LOG_MONITOR("DMA total read count: %d, expect: %llu.", total, (unsigned long long)bytes);
+    return (total == (int)size) ? total : -1; /* ③ 总量兜底校验 */
 }
 
 void chip_dac_sync_init(uint32_t chip)

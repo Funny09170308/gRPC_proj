@@ -75,7 +75,7 @@ extern "C"
         ChannelRoute qa_out_map[QA_OUT_CH_MAX + 1]; /* QA OUT逻辑通道从1开始 */
     } PcieBoardInfo;
 #define PCIE_DEVICE_NAME_MAX_LENGTH 32
-#define DMA_ONCE_SIZE_MAX (1 * 1024 * 1024)
+#define DMA_ONCE_SIZE_MAX (5 * 1024 * 1024)
     typedef struct
     {
 
