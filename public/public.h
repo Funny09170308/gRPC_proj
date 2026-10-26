@@ -27,4 +27,17 @@ int sys_gpio_export(int gpio_num);
 int sys_gpio_set_direction(int gpio_num, const char *direction);
 int sys_gpio_set_value(int gpio_num, int value);
 
+
+#define C_OVERLAY_NET_CONFIG_PATH "/etc/systemd/network"
+
+/**
+ * @brief Set the static ip networkctl object
+ *
+ * @param interface network phy interface, default"end0"
+ * @param ip set ip
+ * @param netmask set netmask default "255.255.255.0"
+ * @return NONE
+ */
+void set_static_ip_networkctl(const char *interface, const char *ip,  const char *gateway, const char *netmask, const char *mac);
+int set_dhcp_ip_networkctl(const char *interface,  const char *mac);
 #endif
