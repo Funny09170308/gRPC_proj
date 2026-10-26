@@ -542,7 +542,7 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
 {
     if (buffer == NULL || chip >= CHIP_NUM)
         return -1;
-    P_LOG_MONITOR("PCIe chip %d DMA access addr %#llx, read bytes: %llu.",
+    P_LOG_DEBUG("PCIe chip %d DMA access addr %#llx, read bytes: %llu.",
                   chip, address, (unsigned long long)bytes);
 
     uint64_t size = bytes;
@@ -570,7 +570,7 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
         memcpy(buffer + (uint64_t)index * DMA_ONCE_SIZE_MAX,
                s_xdmaDevContx[chip].m_pbuffer, DMA_ONCE_SIZE_MAX);
         total += (int)rc;
-        P_LOG_MONITOR("DMA read index: %d, read count: %d", index, total);
+        P_LOG_DEBUG("DMA read index: %d, read count: %d", index, total);
     }
 
     if (rem_num > 0) /* ② 余数块：index 用循环结束后的值 */
@@ -592,7 +592,7 @@ int dma_read_data(int chip, uint64_t address, uint64_t bytes, uint8_t *buffer)
         total += (int)rc;
     }
 
-    P_LOG_MONITOR("DMA total read count: %d, expect: %llu.", total, (unsigned long long)bytes);
+    P_LOG_DEBUG("DMA total read count: %d, expect: %llu.", total, (unsigned long long)bytes);
     return (total == (int)size) ? total : -1; /* ③ 总量兜底校验 */
 }
 

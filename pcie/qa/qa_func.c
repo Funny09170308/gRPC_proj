@@ -139,13 +139,21 @@ int dac_localch_to_phych(uint32_t localch)
     int phych;
 
     //[CH3]:FPGA-CH1 [CH2]:FPGA-CH2
-    if (localch == 3)
+    if (localch == 1)
     {
         phych = 0;
     }
     else if (localch == 2)
     {
         phych = 1;
+    }
+    else if (localch == 3)
+    {
+        phych = 2;
+    }
+    else if (localch == 4)
+    {
+        phych = 3;
     }
     else
     {
@@ -160,13 +168,21 @@ int adc_localch_to_phych(uint32_t localch)
     int phych;
 
     //[CH4]:FPGA-CH1 [CH1]:FPGA-CH2
-    if (localch == 4)
+    if (localch == 1)
     {
         phych = 0;
     }
-    else if (localch == 1)
+    else if (localch == 2)
     {
         phych = 1;
+    }
+    else if (localch == 3)
+    {
+        phych = 2;
+    }
+    else if (localch == 4)
+    {
+        phych = 3;
     }
     else
     {
@@ -209,7 +225,7 @@ void qa_dac_dds_config(uint32_t logical_ch, uint32_t index, DACDDSConfig_t confi
 
     qa_dac_start_stop_play(logical_ch, 0); // 停止输出
 
-    freq_word = (uint32_t)(config.m_DAC_freq / 4000e6 * pow(2, 25));
+    freq_word = (uint32_t)(config.m_DAC_freq / 8000e6 * pow(2, 25));
     phase_word = (uint32_t)(config.m_DAC_Phase / 180 * pow(2, 25));
     amp_word = (uint32_t)(config.m_DAC_AMP * pow(2, 32));
 
@@ -334,7 +350,7 @@ void qa_adc_config(uint32_t logical_ch, uint32_t index, ADCConfig_t config)
     P_LOG_DEBUG("QA: Set chip: %d adc ch: %d adc config.", chip_id, local_ch);
     uint32_t freq_word, phase_word;
     qa_adc_start_stop_play(logical_ch, 0);
-    freq_word = (uint32_t)(config.m_adc_freq / 2000e6 * pow(2, 25));
+    freq_word = (uint32_t)(config.m_adc_freq / 4000e6 * pow(2, 25));
     phase_word = (uint32_t)(config.m_adc_phase / 180 * pow(2, 25));
 
     P_LOG_DEBUG("freq: %.f value: %d(%#x) write to adc index: %d", config.m_adc_freq, freq_word, freq_word, index);
@@ -363,7 +379,7 @@ void qa_adc_play_param(uint32_t logical_ch, ADCPlayParam_t param)
     P_LOG_DEBUG("adc_play_mode: %d.", param.m_adc_play_mode);
 
     phych = adc_localch_to_phych(local_ch);
-
+    param.m_adc_data_len = (uint32_t)(param.m_adc_data_len / 16);
     xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_data_len, param.m_adc_data_len);
     xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_play_times, param.m_adc_play_times);
     xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_play_delay, param.m_adc_play_delay);

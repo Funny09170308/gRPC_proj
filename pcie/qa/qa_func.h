@@ -3,8 +3,8 @@
 
 #include <stdint.h>
 #include "../common_func.h"
-#define CARD_LOCAL_CH_NUM 2
-#define SIGNAL_MODULE_NUM 16
+#define CARD_LOCAL_CH_NUM 4
+#define SIGNAL_MODULE_NUM 4
 
 // ============ XDMA-user space偏移地址 ============//
 #define SYSTEM_CONFIG_BASE 0x0000
