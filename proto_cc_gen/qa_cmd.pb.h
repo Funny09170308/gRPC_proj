@@ -146,6 +146,9 @@ extern SetDACStartStopRequestDefaultTypeInternal _SetDACStartStopRequest_default
 class SetDigitalAttenRequest;
 struct SetDigitalAttenRequestDefaultTypeInternal;
 extern SetDigitalAttenRequestDefaultTypeInternal _SetDigitalAttenRequest_default_instance_;
+class SetInternelDelayTickRequest;
+struct SetInternelDelayTickRequestDefaultTypeInternal;
+extern SetInternelDelayTickRequestDefaultTypeInternal _SetInternelDelayTickRequest_default_instance_;
 class SetSampleParamRequest;
 struct SetSampleParamRequestDefaultTypeInternal;
 extern SetSampleParamRequestDefaultTypeInternal _SetSampleParamRequest_default_instance_;
@@ -1205,6 +1208,221 @@ class SetSampleParamRequest final
     ::uint32_t samplelength_;
     ::uint32_t sampledelay_;
     ::uint32_t samplenum_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_qa_5fcmd_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SetInternelDelayTickRequest final
+    : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:silicon_based.SetInternelDelayTickRequest) */ {
+ public:
+  inline SetInternelDelayTickRequest() : SetInternelDelayTickRequest(nullptr) {}
+  ~SetInternelDelayTickRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(SetInternelDelayTickRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(SetInternelDelayTickRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR SetInternelDelayTickRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline SetInternelDelayTickRequest(const SetInternelDelayTickRequest& from) : SetInternelDelayTickRequest(nullptr, from) {}
+  inline SetInternelDelayTickRequest(SetInternelDelayTickRequest&& from) noexcept
+      : SetInternelDelayTickRequest(nullptr, std::move(from)) {}
+  inline SetInternelDelayTickRequest& operator=(const SetInternelDelayTickRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SetInternelDelayTickRequest& operator=(SetInternelDelayTickRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SetInternelDelayTickRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SetInternelDelayTickRequest* internal_default_instance() {
+    return reinterpret_cast<const SetInternelDelayTickRequest*>(
+        &_SetInternelDelayTickRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 36;
+  friend void swap(SetInternelDelayTickRequest& a, SetInternelDelayTickRequest& b) { a.Swap(&b); }
+  inline void Swap(SetInternelDelayTickRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SetInternelDelayTickRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SetInternelDelayTickRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<SetInternelDelayTickRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const SetInternelDelayTickRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const SetInternelDelayTickRequest& from) { SetInternelDelayTickRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(SetInternelDelayTickRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "silicon_based.SetInternelDelayTickRequest"; }
+
+ protected:
+  explicit SetInternelDelayTickRequest(::google::protobuf::Arena* arena);
+  SetInternelDelayTickRequest(::google::protobuf::Arena* arena, const SetInternelDelayTickRequest& from);
+  SetInternelDelayTickRequest(::google::protobuf::Arena* arena, SetInternelDelayTickRequest&& from) noexcept
+      : SetInternelDelayTickRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kLogicChFieldNumber = 1,
+    kADCDelayTickFieldNumber = 2,
+    kDACDelayTickFieldNumber = 3,
+  };
+  // uint32 logicCh = 1;
+  void clear_logicch() ;
+  ::uint32_t logicch() const;
+  void set_logicch(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_logicch() const;
+  void _internal_set_logicch(::uint32_t value);
+
+  public:
+  // uint32 ADCDelayTick = 2;
+  void clear_adcdelaytick() ;
+  ::uint32_t adcdelaytick() const;
+  void set_adcdelaytick(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_adcdelaytick() const;
+  void _internal_set_adcdelaytick(::uint32_t value);
+
+  public:
+  // uint32 DACDelayTick = 3;
+  void clear_dacdelaytick() ;
+  ::uint32_t dacdelaytick() const;
+  void set_dacdelaytick(::uint32_t value);
+
+  private:
+  ::uint32_t _internal_dacdelaytick() const;
+  void _internal_set_dacdelaytick(::uint32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:silicon_based.SetInternelDelayTickRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 3, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const SetInternelDelayTickRequest& from_msg);
+    ::uint32_t logicch_;
+    ::uint32_t adcdelaytick_;
+    ::uint32_t dacdelaytick_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -9442,6 +9660,76 @@ inline float SetVerifyAttenRequest::_internal_amp() const {
 inline void SetVerifyAttenRequest::_internal_set_amp(float value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.amp_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SetInternelDelayTickRequest
+
+// uint32 logicCh = 1;
+inline void SetInternelDelayTickRequest::clear_logicch() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logicch_ = 0u;
+}
+inline ::uint32_t SetInternelDelayTickRequest::logicch() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SetInternelDelayTickRequest.logicCh)
+  return _internal_logicch();
+}
+inline void SetInternelDelayTickRequest::set_logicch(::uint32_t value) {
+  _internal_set_logicch(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SetInternelDelayTickRequest.logicCh)
+}
+inline ::uint32_t SetInternelDelayTickRequest::_internal_logicch() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.logicch_;
+}
+inline void SetInternelDelayTickRequest::_internal_set_logicch(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.logicch_ = value;
+}
+
+// uint32 ADCDelayTick = 2;
+inline void SetInternelDelayTickRequest::clear_adcdelaytick() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.adcdelaytick_ = 0u;
+}
+inline ::uint32_t SetInternelDelayTickRequest::adcdelaytick() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SetInternelDelayTickRequest.ADCDelayTick)
+  return _internal_adcdelaytick();
+}
+inline void SetInternelDelayTickRequest::set_adcdelaytick(::uint32_t value) {
+  _internal_set_adcdelaytick(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SetInternelDelayTickRequest.ADCDelayTick)
+}
+inline ::uint32_t SetInternelDelayTickRequest::_internal_adcdelaytick() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.adcdelaytick_;
+}
+inline void SetInternelDelayTickRequest::_internal_set_adcdelaytick(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.adcdelaytick_ = value;
+}
+
+// uint32 DACDelayTick = 3;
+inline void SetInternelDelayTickRequest::clear_dacdelaytick() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.dacdelaytick_ = 0u;
+}
+inline ::uint32_t SetInternelDelayTickRequest::dacdelaytick() const {
+  // @@protoc_insertion_point(field_get:silicon_based.SetInternelDelayTickRequest.DACDelayTick)
+  return _internal_dacdelaytick();
+}
+inline void SetInternelDelayTickRequest::set_dacdelaytick(::uint32_t value) {
+  _internal_set_dacdelaytick(value);
+  // @@protoc_insertion_point(field_set:silicon_based.SetInternelDelayTickRequest.DACDelayTick)
+}
+inline ::uint32_t SetInternelDelayTickRequest::_internal_dacdelaytick() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.dacdelaytick_;
+}
+inline void SetInternelDelayTickRequest::_internal_set_dacdelaytick(::uint32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.dacdelaytick_ = value;
 }
 
 #ifdef __GNUC__

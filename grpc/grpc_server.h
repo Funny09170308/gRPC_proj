@@ -238,8 +238,8 @@ public: // QA function
                           const GetDemodeStateRequest *request,
                           ParamResponse *response) override;
     Status SetDigitalAtten(ServerContext *context,
-                         const SetDigitalAttenRequest *request,
-                         ParamResponse *response) override;
+                           const SetDigitalAttenRequest *request,
+                           ParamResponse *response) override;
     Status SetADCRFAtten(ServerContext *context,
                          const SetADCRFAttenRequest *request,
                          ParamResponse *response) override;
@@ -249,6 +249,9 @@ public: // QA function
     Status SetVerifyAtten(ServerContext *context,
                           const SetVerifyAttenRequest *request,
                           ParamResponse *response) override;
+    Status SetInternelDelayTick(ServerContext *context,
+                                const SetInternelDelayTickRequest *request,
+                                ParamResponse *response) override;
 };
 
 #ifdef __cplusplus

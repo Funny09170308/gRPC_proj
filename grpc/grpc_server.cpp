@@ -959,3 +959,15 @@ Status QACMDServiceImpl::SetVerifyAtten(ServerContext *context,
     P_LOG_DEBUG("SetVerifyAtten: Calculated atten value...%d, %f.", ch, attenVal);
     return Status::OK;
 }
+
+Status QACMDServiceImpl::SetInternelDelayTick(ServerContext *context,
+                                              const SetInternelDelayTickRequest *request,
+                                              ParamResponse *response)
+{
+    uint32_t ch = request->logicch();
+    uint32_t ADCDelayTick = request->adcdelaytick();
+    uint32_t DACDelayTick = request->dacdelaytick();
+    P_LOG_DEBUG("SetInternelDelayTick: Set internel delay tick...%d, %d, %d.", ch, ADCDelayTick, DACDelayTick);
+    qa_set_internel_delay(ch, ADCDelayTick, DACDelayTick);
+    return Status::OK;
+}

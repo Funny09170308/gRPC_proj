@@ -158,6 +158,33 @@ struct SetSampleParamRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetSampleParamRequestDefaultTypeInternal _SetSampleParamRequest_default_instance_;
 
+inline constexpr SetInternelDelayTickRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : logicch_{0u},
+        adcdelaytick_{0u},
+        dacdelaytick_{0u},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR SetInternelDelayTickRequest::SetInternelDelayTickRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct SetInternelDelayTickRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SetInternelDelayTickRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SetInternelDelayTickRequestDefaultTypeInternal() {}
+  union {
+    SetInternelDelayTickRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SetInternelDelayTickRequestDefaultTypeInternal _SetInternelDelayTickRequest_default_instance_;
+
 inline constexpr SetDigitalAttenRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : logicch_{0u},
@@ -1333,6 +1360,17 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::silicon_based::SetVerifyAttenRequest, _impl_.logicch_),
         PROTOBUF_FIELD_OFFSET(::silicon_based::SetVerifyAttenRequest, _impl_.freqout_),
         PROTOBUF_FIELD_OFFSET(::silicon_based::SetVerifyAttenRequest, _impl_.amp_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetInternelDelayTickRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetInternelDelayTickRequest, _impl_.logicch_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetInternelDelayTickRequest, _impl_.adcdelaytick_),
+        PROTOBUF_FIELD_OFFSET(::silicon_based::SetInternelDelayTickRequest, _impl_.dacdelaytick_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -1373,6 +1411,7 @@ static const ::_pbi::MigrationSchema
         {332, -1, -1, sizeof(::silicon_based::GetADCRFAttenResponse)},
         {341, -1, -1, sizeof(::silicon_based::SetADCRFAttenRequest)},
         {351, -1, -1, sizeof(::silicon_based::SetVerifyAttenRequest)},
+        {362, -1, -1, sizeof(::silicon_based::SetInternelDelayTickRequest)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::silicon_based::_SetTrigSourRequest_default_instance_._instance,
@@ -1411,6 +1450,7 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::silicon_based::_GetADCRFAttenResponse_default_instance_._instance,
     &::silicon_based::_SetADCRFAttenRequest_default_instance_._instance,
     &::silicon_based::_SetVerifyAttenRequest_default_instance_._instance,
+    &::silicon_based::_SetInternelDelayTickRequest_default_instance_._instance,
 };
 const char descriptor_table_protodef_qa_5fcmd_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -1470,66 +1510,71 @@ const char descriptor_table_protodef_qa_5fcmd_2eproto[] ABSL_ATTRIBUTE_SECTION_V
     "se\022\020\n\010attenVal\030\001 \001(\002\"9\n\024SetADCRFAttenReq"
     "uest\022\017\n\007logicCh\030\001 \001(\r\022\020\n\010attenVal\030\002 \001(\002\""
     "F\n\025SetVerifyAttenRequest\022\017\n\007logicCh\030\001 \001("
-    "\r\022\017\n\007freqOut\030\002 \001(\002\022\013\n\003amp\030\003 \001(\0022\263\022\n\014QACM"
-    "DService\022N\n\013SetTrigSour\022!.silicon_based."
-    "SetTrigSourRequest\032\034.silicon_based.Param"
-    "Response\022N\n\013SetSoftTrig\022!.silicon_based."
-    "SetSoftTrigRequest\032\034.silicon_based.Param"
-    "Response\022V\n\017SetDACDDSConfig\022%.silicon_ba"
-    "sed.SetDACDDSConfigRequest\032\034.silicon_bas"
-    "ed.ParamResponse\022`\n\017GetDACDDSConfig\022%.si"
-    "licon_based.GetDACDDSConfigRequest\032&.sil"
-    "icon_based.GetDACDDSConfigResponse\022V\n\017Se"
-    "tDACPlayParam\022%.silicon_based.SetDACPlay"
-    "ParamRequest\032\034.silicon_based.ParamRespon"
-    "se\022`\n\017GetDACPlayParam\022%.silicon_based.Ge"
-    "tDACPlayParamRequest\032&.silicon_based.Get"
-    "DACPlayParamResponse\022V\n\017SetDACStartStop\022"
-    "%.silicon_based.SetDACStartStopRequest\032\034"
-    ".silicon_based.ParamResponse\022`\n\017GetDACSt"
-    "artStop\022%.silicon_based.GetDACStartStopR"
-    "equest\032&.silicon_based.GetDACStartStopRe"
-    "sponse\022T\n\016SetSampleParam\022$.silicon_based"
-    ".SetSampleParamRequest\032\034.silicon_based.P"
-    "aramResponse\022]\n\016GetSampleParam\022$.silicon"
-    "_based.GetSampleParamRequest\032%.silicon_b"
-    "ased.GetSampleParamResponse\022\\\n\022SetSample"
-    "StartStop\022(.silicon_based.SetSampleStart"
-    "StopRequest\032\034.silicon_based.ParamRespons"
-    "e\022i\n\022GetSampleStartStop\022(.silicon_based."
-    "GetSampleStartStopRequest\032).silicon_base"
-    "d.GetSampleStartStopResponse\022P\n\014SetADCCo"
-    "nfig\022\".silicon_based.SetADCConfigRequest"
-    "\032\034.silicon_based.ParamResponse\022W\n\014GetADC"
-    "Config\022\".silicon_based.GetADCConfigReque"
-    "st\032#.silicon_based.GetADCConfigResponse\022"
-    "V\n\017SetADCPlayParam\022%.silicon_based.SetAD"
-    "CPlayParamRequest\032\034.silicon_based.ParamR"
-    "esponse\022`\n\017GetADCPlayParam\022%.silicon_bas"
-    "ed.GetADCPlayParamRequest\032&.silicon_base"
-    "d.GetADCPlayParamResponse\022V\n\017SetADCStart"
-    "Stop\022%.silicon_based.SetADCStartStopRequ"
-    "est\032\034.silicon_based.ParamResponse\022`\n\017Get"
-    "ADCStartStop\022%.silicon_based.GetADCStart"
-    "StopRequest\032&.silicon_based.GetADCStartS"
-    "topResponse\022V\n\017SetDigitalAtten\022%.silicon"
-    "_based.SetDigitalAttenRequest\032\034.silicon_"
-    "based.ParamResponse\022R\n\rSetDACRFAtten\022#.s"
-    "ilicon_based.SetDACRFAttenRequest\032\034.sili"
-    "con_based.ParamResponse\022Z\n\rGetDACRFAtten"
-    "\022#.silicon_based.GetDACRFAttenRequest\032$."
-    "silicon_based.GetDACRFAttenResponse\022R\n\rS"
-    "etADCRFAtten\022#.silicon_based.SetADCRFAtt"
-    "enRequest\032\034.silicon_based.ParamResponse\022"
-    "Z\n\rGetADCRFAtten\022#.silicon_based.GetADCR"
-    "FAttenRequest\032$.silicon_based.GetADCRFAt"
-    "tenResponse\022T\n\016SetVerifyAtten\022$.silicon_"
-    "based.SetVerifyAttenRequest\032\034.silicon_ba"
-    "sed.ParamResponse\022T\n\016GetSampleState\022$.si"
-    "licon_based.GetSampleStateRequest\032\034.sili"
-    "con_based.ParamResponse\022T\n\016GetDemodeStat"
-    "e\022$.silicon_based.GetDemodeStateRequest\032"
-    "\034.silicon_based.ParamResponseb\006proto3"
+    "\r\022\017\n\007freqOut\030\002 \001(\002\022\013\n\003amp\030\003 \001(\002\"Z\n\033SetIn"
+    "ternelDelayTickRequest\022\017\n\007logicCh\030\001 \001(\r\022"
+    "\024\n\014ADCDelayTick\030\002 \001(\r\022\024\n\014DACDelayTick\030\003 "
+    "\001(\r2\225\023\n\014QACMDService\022N\n\013SetTrigSour\022!.si"
+    "licon_based.SetTrigSourRequest\032\034.silicon"
+    "_based.ParamResponse\022N\n\013SetSoftTrig\022!.si"
+    "licon_based.SetSoftTrigRequest\032\034.silicon"
+    "_based.ParamResponse\022V\n\017SetDACDDSConfig\022"
+    "%.silicon_based.SetDACDDSConfigRequest\032\034"
+    ".silicon_based.ParamResponse\022`\n\017GetDACDD"
+    "SConfig\022%.silicon_based.GetDACDDSConfigR"
+    "equest\032&.silicon_based.GetDACDDSConfigRe"
+    "sponse\022V\n\017SetDACPlayParam\022%.silicon_base"
+    "d.SetDACPlayParamRequest\032\034.silicon_based"
+    ".ParamResponse\022`\n\017GetDACPlayParam\022%.sili"
+    "con_based.GetDACPlayParamRequest\032&.silic"
+    "on_based.GetDACPlayParamResponse\022V\n\017SetD"
+    "ACStartStop\022%.silicon_based.SetDACStartS"
+    "topRequest\032\034.silicon_based.ParamResponse"
+    "\022`\n\017GetDACStartStop\022%.silicon_based.GetD"
+    "ACStartStopRequest\032&.silicon_based.GetDA"
+    "CStartStopResponse\022T\n\016SetSampleParam\022$.s"
+    "ilicon_based.SetSampleParamRequest\032\034.sil"
+    "icon_based.ParamResponse\022]\n\016GetSamplePar"
+    "am\022$.silicon_based.GetSampleParamRequest"
+    "\032%.silicon_based.GetSampleParamResponse\022"
+    "\\\n\022SetSampleStartStop\022(.silicon_based.Se"
+    "tSampleStartStopRequest\032\034.silicon_based."
+    "ParamResponse\022i\n\022GetSampleStartStop\022(.si"
+    "licon_based.GetSampleStartStopRequest\032)."
+    "silicon_based.GetSampleStartStopResponse"
+    "\022P\n\014SetADCConfig\022\".silicon_based.SetADCC"
+    "onfigRequest\032\034.silicon_based.ParamRespon"
+    "se\022W\n\014GetADCConfig\022\".silicon_based.GetAD"
+    "CConfigRequest\032#.silicon_based.GetADCCon"
+    "figResponse\022V\n\017SetADCPlayParam\022%.silicon"
+    "_based.SetADCPlayParamRequest\032\034.silicon_"
+    "based.ParamResponse\022`\n\017GetADCPlayParam\022%"
+    ".silicon_based.GetADCPlayParamRequest\032&."
+    "silicon_based.GetADCPlayParamResponse\022V\n"
+    "\017SetADCStartStop\022%.silicon_based.SetADCS"
+    "tartStopRequest\032\034.silicon_based.ParamRes"
+    "ponse\022`\n\017GetADCStartStop\022%.silicon_based"
+    ".GetADCStartStopRequest\032&.silicon_based."
+    "GetADCStartStopResponse\022V\n\017SetDigitalAtt"
+    "en\022%.silicon_based.SetDigitalAttenReques"
+    "t\032\034.silicon_based.ParamResponse\022R\n\rSetDA"
+    "CRFAtten\022#.silicon_based.SetDACRFAttenRe"
+    "quest\032\034.silicon_based.ParamResponse\022Z\n\rG"
+    "etDACRFAtten\022#.silicon_based.GetDACRFAtt"
+    "enRequest\032$.silicon_based.GetDACRFAttenR"
+    "esponse\022R\n\rSetADCRFAtten\022#.silicon_based"
+    ".SetADCRFAttenRequest\032\034.silicon_based.Pa"
+    "ramResponse\022Z\n\rGetADCRFAtten\022#.silicon_b"
+    "ased.GetADCRFAttenRequest\032$.silicon_base"
+    "d.GetADCRFAttenResponse\022T\n\016SetVerifyAtte"
+    "n\022$.silicon_based.SetVerifyAttenRequest\032"
+    "\034.silicon_based.ParamResponse\022T\n\016GetSamp"
+    "leState\022$.silicon_based.GetSampleStateRe"
+    "quest\032\034.silicon_based.ParamResponse\022T\n\016G"
+    "etDemodeState\022$.silicon_based.GetDemodeS"
+    "tateRequest\032\034.silicon_based.ParamRespons"
+    "e\022`\n\024SetInternelDelayTick\022*.silicon_base"
+    "d.SetInternelDelayTickRequest\032\034.silicon_"
+    "based.ParamResponseb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_qa_5fcmd_2eproto_deps[1] =
     {
@@ -1539,13 +1584,13 @@ static ::absl::once_flag descriptor_table_qa_5fcmd_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_qa_5fcmd_2eproto = {
     false,
     false,
-    4637,
+    4827,
     descriptor_table_protodef_qa_5fcmd_2eproto,
     "qa_cmd.proto",
     &descriptor_table_qa_5fcmd_2eproto_once,
     descriptor_table_qa_5fcmd_2eproto_deps,
     1,
-    36,
+    37,
     schemas,
     file_default_instances,
     TableStruct_qa_5fcmd_2eproto::offsets,
@@ -10099,6 +10144,269 @@ void SetVerifyAttenRequest::InternalSwap(SetVerifyAttenRequest* PROTOBUF_RESTRIC
 }
 
 ::google::protobuf::Metadata SetVerifyAttenRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class SetInternelDelayTickRequest::_Internal {
+ public:
+};
+
+SetInternelDelayTickRequest::SetInternelDelayTickRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:silicon_based.SetInternelDelayTickRequest)
+}
+SetInternelDelayTickRequest::SetInternelDelayTickRequest(
+    ::google::protobuf::Arena* arena, const SetInternelDelayTickRequest& from)
+    : SetInternelDelayTickRequest(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE SetInternelDelayTickRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void SetInternelDelayTickRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, logicch_),
+           0,
+           offsetof(Impl_, dacdelaytick_) -
+               offsetof(Impl_, logicch_) +
+               sizeof(Impl_::dacdelaytick_));
+}
+SetInternelDelayTickRequest::~SetInternelDelayTickRequest() {
+  // @@protoc_insertion_point(destructor:silicon_based.SetInternelDelayTickRequest)
+  SharedDtor(*this);
+}
+inline void SetInternelDelayTickRequest::SharedDtor(MessageLite& self) {
+  SetInternelDelayTickRequest& this_ = static_cast<SetInternelDelayTickRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* SetInternelDelayTickRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) SetInternelDelayTickRequest(arena);
+}
+constexpr auto SetInternelDelayTickRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(SetInternelDelayTickRequest),
+                                            alignof(SetInternelDelayTickRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull SetInternelDelayTickRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_SetInternelDelayTickRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &SetInternelDelayTickRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<SetInternelDelayTickRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &SetInternelDelayTickRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<SetInternelDelayTickRequest>(), &SetInternelDelayTickRequest::ByteSizeLong,
+            &SetInternelDelayTickRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(SetInternelDelayTickRequest, _impl_._cached_size_),
+        false,
+    },
+    &SetInternelDelayTickRequest::kDescriptorMethods,
+    &descriptor_table_qa_5fcmd_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* SetInternelDelayTickRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 0, 2> SetInternelDelayTickRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::silicon_based::SetInternelDelayTickRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // uint32 logicCh = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SetInternelDelayTickRequest, _impl_.logicch_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(SetInternelDelayTickRequest, _impl_.logicch_)}},
+    // uint32 ADCDelayTick = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SetInternelDelayTickRequest, _impl_.adcdelaytick_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(SetInternelDelayTickRequest, _impl_.adcdelaytick_)}},
+    // uint32 DACDelayTick = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(SetInternelDelayTickRequest, _impl_.dacdelaytick_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(SetInternelDelayTickRequest, _impl_.dacdelaytick_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 logicCh = 1;
+    {PROTOBUF_FIELD_OFFSET(SetInternelDelayTickRequest, _impl_.logicch_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 ADCDelayTick = 2;
+    {PROTOBUF_FIELD_OFFSET(SetInternelDelayTickRequest, _impl_.adcdelaytick_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 DACDelayTick = 3;
+    {PROTOBUF_FIELD_OFFSET(SetInternelDelayTickRequest, _impl_.dacdelaytick_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void SetInternelDelayTickRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:silicon_based.SetInternelDelayTickRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.logicch_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.dacdelaytick_) -
+      reinterpret_cast<char*>(&_impl_.logicch_)) + sizeof(_impl_.dacdelaytick_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* SetInternelDelayTickRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const SetInternelDelayTickRequest& this_ = static_cast<const SetInternelDelayTickRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* SetInternelDelayTickRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const SetInternelDelayTickRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:silicon_based.SetInternelDelayTickRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint32 logicCh = 1;
+          if (this_._internal_logicch() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                1, this_._internal_logicch(), target);
+          }
+
+          // uint32 ADCDelayTick = 2;
+          if (this_._internal_adcdelaytick() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                2, this_._internal_adcdelaytick(), target);
+          }
+
+          // uint32 DACDelayTick = 3;
+          if (this_._internal_dacdelaytick() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+                3, this_._internal_dacdelaytick(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:silicon_based.SetInternelDelayTickRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t SetInternelDelayTickRequest::ByteSizeLong(const MessageLite& base) {
+          const SetInternelDelayTickRequest& this_ = static_cast<const SetInternelDelayTickRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t SetInternelDelayTickRequest::ByteSizeLong() const {
+          const SetInternelDelayTickRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:silicon_based.SetInternelDelayTickRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // uint32 logicCh = 1;
+            if (this_._internal_logicch() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_logicch());
+            }
+            // uint32 ADCDelayTick = 2;
+            if (this_._internal_adcdelaytick() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_adcdelaytick());
+            }
+            // uint32 DACDelayTick = 3;
+            if (this_._internal_dacdelaytick() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
+                  this_._internal_dacdelaytick());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void SetInternelDelayTickRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<SetInternelDelayTickRequest*>(&to_msg);
+  auto& from = static_cast<const SetInternelDelayTickRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:silicon_based.SetInternelDelayTickRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_logicch() != 0) {
+    _this->_impl_.logicch_ = from._impl_.logicch_;
+  }
+  if (from._internal_adcdelaytick() != 0) {
+    _this->_impl_.adcdelaytick_ = from._impl_.adcdelaytick_;
+  }
+  if (from._internal_dacdelaytick() != 0) {
+    _this->_impl_.dacdelaytick_ = from._impl_.dacdelaytick_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SetInternelDelayTickRequest::CopyFrom(const SetInternelDelayTickRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:silicon_based.SetInternelDelayTickRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void SetInternelDelayTickRequest::InternalSwap(SetInternelDelayTickRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SetInternelDelayTickRequest, _impl_.dacdelaytick_)
+      + sizeof(SetInternelDelayTickRequest::_impl_.dacdelaytick_)
+      - PROTOBUF_FIELD_OFFSET(SetInternelDelayTickRequest, _impl_.logicch_)>(
+          reinterpret_cast<char*>(&_impl_.logicch_),
+          reinterpret_cast<char*>(&other->_impl_.logicch_));
+}
+
+::google::protobuf::Metadata SetInternelDelayTickRequest::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

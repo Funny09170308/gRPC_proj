@@ -699,3 +699,20 @@ void qa_set_digital_atten(uint32_t logical_ch, uint8_t attenVal)
     P_LOG_DEBUG("Write digital atten value: %d to channel %d, reg value%#x", attenVal, phych, regVal);
     xdma_write_user_space(chip_id, C_USER_SPACE_CONFIG_OFFSET + (4 * 4), regVal);
 }
+
+void qa_set_internel_delay(uint32_t logical_ch, uint32_t ad_delay_tick, uint32_t da_delay_tick)
+{
+    #define C_MAX_DAC_DELAY_TICK 70
+    uint8_t chip_id, local_ch;
+    get_qa_in_route(logical_ch, &chip_id, &local_ch);
+    P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
+    int phych;
+    phych = adc_localch_to_phych(local_ch) + 4;
+    if (da_delay_tick > C_MAX_DAC_DELAY_TICK)
+    {
+        da_delay_tick = C_MAX_DAC_DELAY_TICK;
+    }
+    P_LOG_DEBUG("Write chip %d channel %d internel ADC delay tick:%d, DAC delay tick:%d", chip_id, phych, ad_delay_tick, da_delay_tick);
+    xdma_write_user_space(chip_id, s_QAUserRegs.m_adc_trig_delay_tick, ad_delay_tick);
+    xdma_write_user_space(chip_id, s_QAUserRegs.m_dac_trig_delay_tick, da_delay_tick);
+}

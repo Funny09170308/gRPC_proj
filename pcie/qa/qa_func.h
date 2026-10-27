@@ -94,6 +94,8 @@ extern "C"
         uint32_t m_soft_trig;
         uint32_t m_trigger_mode;
         uint32_t m_trigger_source;
+        uint32_t m_adc_trig_delay_tick;
+        uint32_t m_dac_trig_delay_tick;
         uint32_t m_temperature;
         DACConfigReg_t m_DAC_config_reg[CARD_LOCAL_CH_NUM];
         ADCConfigReg_t m_ADC_config_reg[CARD_LOCAL_CH_NUM];
@@ -176,6 +178,7 @@ extern "C"
     void qa_set_digital_atten(uint32_t logical_ch, uint8_t attenVal);
     void qa_set_rf_da_atten(uint32_t logical_ch, float attenVal);
     void qa_set_rf_ad_atten(uint32_t logical_ch, float attenVal);
+    void qa_set_internel_delay(uint32_t logical_ch, uint32_t ad_delay_tick, uint32_t da_delay_tick);
 #ifdef __cplusplus
 }
 #endif

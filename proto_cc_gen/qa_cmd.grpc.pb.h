@@ -219,6 +219,13 @@ class QACMDService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> PrepareAsyncGetDemodeState(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(PrepareAsyncGetDemodeStateRaw(context, request, cq));
     }
+    virtual ::grpc::Status SetInternelDelayTick(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest& request, ::silicon_based::ParamResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> AsyncSetInternelDelayTick(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(AsyncSetInternelDelayTickRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>> PrepareAsyncSetInternelDelayTick(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>>(PrepareAsyncSetInternelDelayTickRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -274,6 +281,8 @@ class QACMDService final {
       virtual void GetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetDemodeState(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetDemodeState(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SetInternelDelayTick(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SetInternelDelayTick(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -331,6 +340,8 @@ class QACMDService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncGetSampleStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* AsyncGetDemodeStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncGetDemodeStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* AsyncSetInternelDelayTickRaw(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::silicon_based::ParamResponse>* PrepareAsyncSetInternelDelayTickRaw(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -517,6 +528,13 @@ class QACMDService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> PrepareAsyncGetDemodeState(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(PrepareAsyncGetDemodeStateRaw(context, request, cq));
     }
+    ::grpc::Status SetInternelDelayTick(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest& request, ::silicon_based::ParamResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> AsyncSetInternelDelayTick(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(AsyncSetInternelDelayTickRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>> PrepareAsyncSetInternelDelayTick(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>>(PrepareAsyncSetInternelDelayTickRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -572,6 +590,8 @@ class QACMDService final {
       void GetSampleState(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void GetDemodeState(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) override;
       void GetDemodeState(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SetInternelDelayTick(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest* request, ::silicon_based::ParamResponse* response, std::function<void(::grpc::Status)>) override;
+      void SetInternelDelayTick(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest* request, ::silicon_based::ParamResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -635,6 +655,8 @@ class QACMDService final {
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncGetSampleStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetSampleStateRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* AsyncGetDemodeStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncGetDemodeStateRaw(::grpc::ClientContext* context, const ::silicon_based::GetDemodeStateRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* AsyncSetInternelDelayTickRaw(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::silicon_based::ParamResponse>* PrepareAsyncSetInternelDelayTickRaw(::grpc::ClientContext* context, const ::silicon_based::SetInternelDelayTickRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SetTrigSour_;
     const ::grpc::internal::RpcMethod rpcmethod_SetSoftTrig_;
     const ::grpc::internal::RpcMethod rpcmethod_SetDACDDSConfig_;
@@ -661,6 +683,7 @@ class QACMDService final {
     const ::grpc::internal::RpcMethod rpcmethod_SetVerifyAtten_;
     const ::grpc::internal::RpcMethod rpcmethod_GetSampleState_;
     const ::grpc::internal::RpcMethod rpcmethod_GetDemodeState_;
+    const ::grpc::internal::RpcMethod rpcmethod_SetInternelDelayTick_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -694,6 +717,7 @@ class QACMDService final {
     virtual ::grpc::Status SetVerifyAtten(::grpc::ServerContext* context, const ::silicon_based::SetVerifyAttenRequest* request, ::silicon_based::ParamResponse* response);
     virtual ::grpc::Status GetSampleState(::grpc::ServerContext* context, const ::silicon_based::GetSampleStateRequest* request, ::silicon_based::ParamResponse* response);
     virtual ::grpc::Status GetDemodeState(::grpc::ServerContext* context, const ::silicon_based::GetDemodeStateRequest* request, ::silicon_based::ParamResponse* response);
+    virtual ::grpc::Status SetInternelDelayTick(::grpc::ServerContext* context, const ::silicon_based::SetInternelDelayTickRequest* request, ::silicon_based::ParamResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_SetTrigSour : public BaseClass {
@@ -1215,7 +1239,27 @@ class QACMDService final {
       ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SetTrigSour<WithAsyncMethod_SetSoftTrig<WithAsyncMethod_SetDACDDSConfig<WithAsyncMethod_GetDACDDSConfig<WithAsyncMethod_SetDACPlayParam<WithAsyncMethod_GetDACPlayParam<WithAsyncMethod_SetDACStartStop<WithAsyncMethod_GetDACStartStop<WithAsyncMethod_SetSampleParam<WithAsyncMethod_GetSampleParam<WithAsyncMethod_SetSampleStartStop<WithAsyncMethod_GetSampleStartStop<WithAsyncMethod_SetADCConfig<WithAsyncMethod_GetADCConfig<WithAsyncMethod_SetADCPlayParam<WithAsyncMethod_GetADCPlayParam<WithAsyncMethod_SetADCStartStop<WithAsyncMethod_GetADCStartStop<WithAsyncMethod_SetDigitalAtten<WithAsyncMethod_SetDACRFAtten<WithAsyncMethod_GetDACRFAtten<WithAsyncMethod_SetADCRFAtten<WithAsyncMethod_GetADCRFAtten<WithAsyncMethod_SetVerifyAtten<WithAsyncMethod_GetSampleState<WithAsyncMethod_GetDemodeState<Service > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_SetInternelDelayTick : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SetInternelDelayTick() {
+      ::grpc::Service::MarkMethodAsync(26);
+    }
+    ~WithAsyncMethod_SetInternelDelayTick() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetInternelDelayTick(::grpc::ServerContext* /*context*/, const ::silicon_based::SetInternelDelayTickRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetInternelDelayTick(::grpc::ServerContext* context, ::silicon_based::SetInternelDelayTickRequest* request, ::grpc::ServerAsyncResponseWriter< ::silicon_based::ParamResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_SetTrigSour<WithAsyncMethod_SetSoftTrig<WithAsyncMethod_SetDACDDSConfig<WithAsyncMethod_GetDACDDSConfig<WithAsyncMethod_SetDACPlayParam<WithAsyncMethod_GetDACPlayParam<WithAsyncMethod_SetDACStartStop<WithAsyncMethod_GetDACStartStop<WithAsyncMethod_SetSampleParam<WithAsyncMethod_GetSampleParam<WithAsyncMethod_SetSampleStartStop<WithAsyncMethod_GetSampleStartStop<WithAsyncMethod_SetADCConfig<WithAsyncMethod_GetADCConfig<WithAsyncMethod_SetADCPlayParam<WithAsyncMethod_GetADCPlayParam<WithAsyncMethod_SetADCStartStop<WithAsyncMethod_GetADCStartStop<WithAsyncMethod_SetDigitalAtten<WithAsyncMethod_SetDACRFAtten<WithAsyncMethod_GetDACRFAtten<WithAsyncMethod_SetADCRFAtten<WithAsyncMethod_GetADCRFAtten<WithAsyncMethod_SetVerifyAtten<WithAsyncMethod_GetSampleState<WithAsyncMethod_GetDemodeState<WithAsyncMethod_SetInternelDelayTick<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SetTrigSour : public BaseClass {
    private:
@@ -1918,7 +1962,34 @@ class QACMDService final {
     virtual ::grpc::ServerUnaryReactor* GetDemodeState(
       ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::GetDemodeStateRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SetTrigSour<WithCallbackMethod_SetSoftTrig<WithCallbackMethod_SetDACDDSConfig<WithCallbackMethod_GetDACDDSConfig<WithCallbackMethod_SetDACPlayParam<WithCallbackMethod_GetDACPlayParam<WithCallbackMethod_SetDACStartStop<WithCallbackMethod_GetDACStartStop<WithCallbackMethod_SetSampleParam<WithCallbackMethod_GetSampleParam<WithCallbackMethod_SetSampleStartStop<WithCallbackMethod_GetSampleStartStop<WithCallbackMethod_SetADCConfig<WithCallbackMethod_GetADCConfig<WithCallbackMethod_SetADCPlayParam<WithCallbackMethod_GetADCPlayParam<WithCallbackMethod_SetADCStartStop<WithCallbackMethod_GetADCStartStop<WithCallbackMethod_SetDigitalAtten<WithCallbackMethod_SetDACRFAtten<WithCallbackMethod_GetDACRFAtten<WithCallbackMethod_SetADCRFAtten<WithCallbackMethod_GetADCRFAtten<WithCallbackMethod_SetVerifyAtten<WithCallbackMethod_GetSampleState<WithCallbackMethod_GetDemodeState<Service > > > > > > > > > > > > > > > > > > > > > > > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_SetInternelDelayTick : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SetInternelDelayTick() {
+      ::grpc::Service::MarkMethodCallback(26,
+          new ::grpc::internal::CallbackUnaryHandler< ::silicon_based::SetInternelDelayTickRequest, ::silicon_based::ParamResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::silicon_based::SetInternelDelayTickRequest* request, ::silicon_based::ParamResponse* response) { return this->SetInternelDelayTick(context, request, response); }));}
+    void SetMessageAllocatorFor_SetInternelDelayTick(
+        ::grpc::MessageAllocator< ::silicon_based::SetInternelDelayTickRequest, ::silicon_based::ParamResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(26);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::silicon_based::SetInternelDelayTickRequest, ::silicon_based::ParamResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SetInternelDelayTick() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetInternelDelayTick(::grpc::ServerContext* /*context*/, const ::silicon_based::SetInternelDelayTickRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetInternelDelayTick(
+      ::grpc::CallbackServerContext* /*context*/, const ::silicon_based::SetInternelDelayTickRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_SetTrigSour<WithCallbackMethod_SetSoftTrig<WithCallbackMethod_SetDACDDSConfig<WithCallbackMethod_GetDACDDSConfig<WithCallbackMethod_SetDACPlayParam<WithCallbackMethod_GetDACPlayParam<WithCallbackMethod_SetDACStartStop<WithCallbackMethod_GetDACStartStop<WithCallbackMethod_SetSampleParam<WithCallbackMethod_GetSampleParam<WithCallbackMethod_SetSampleStartStop<WithCallbackMethod_GetSampleStartStop<WithCallbackMethod_SetADCConfig<WithCallbackMethod_GetADCConfig<WithCallbackMethod_SetADCPlayParam<WithCallbackMethod_GetADCPlayParam<WithCallbackMethod_SetADCStartStop<WithCallbackMethod_GetADCStartStop<WithCallbackMethod_SetDigitalAtten<WithCallbackMethod_SetDACRFAtten<WithCallbackMethod_GetDACRFAtten<WithCallbackMethod_SetADCRFAtten<WithCallbackMethod_GetADCRFAtten<WithCallbackMethod_SetVerifyAtten<WithCallbackMethod_GetSampleState<WithCallbackMethod_GetDemodeState<WithCallbackMethod_SetInternelDelayTick<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SetTrigSour : public BaseClass {
@@ -2358,6 +2429,23 @@ class QACMDService final {
     }
     // disable synchronous version of this method
     ::grpc::Status GetDemodeState(::grpc::ServerContext* /*context*/, const ::silicon_based::GetDemodeStateRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SetInternelDelayTick : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SetInternelDelayTick() {
+      ::grpc::Service::MarkMethodGeneric(26);
+    }
+    ~WithGenericMethod_SetInternelDelayTick() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetInternelDelayTick(::grpc::ServerContext* /*context*/, const ::silicon_based::SetInternelDelayTickRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -2880,6 +2968,26 @@ class QACMDService final {
     }
     void RequestGetDemodeState(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(25, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SetInternelDelayTick : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SetInternelDelayTick() {
+      ::grpc::Service::MarkMethodRaw(26);
+    }
+    ~WithRawMethod_SetInternelDelayTick() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetInternelDelayTick(::grpc::ServerContext* /*context*/, const ::silicon_based::SetInternelDelayTickRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSetInternelDelayTick(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(26, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -3452,6 +3560,28 @@ class QACMDService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* GetDemodeState(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SetInternelDelayTick : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SetInternelDelayTick() {
+      ::grpc::Service::MarkMethodRawCallback(26,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SetInternelDelayTick(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SetInternelDelayTick() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SetInternelDelayTick(::grpc::ServerContext* /*context*/, const ::silicon_based::SetInternelDelayTickRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SetInternelDelayTick(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -4156,9 +4286,36 @@ class QACMDService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedGetDemodeState(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::GetDemodeStateRequest,::silicon_based::ParamResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_SetTrigSour<WithStreamedUnaryMethod_SetSoftTrig<WithStreamedUnaryMethod_SetDACDDSConfig<WithStreamedUnaryMethod_GetDACDDSConfig<WithStreamedUnaryMethod_SetDACPlayParam<WithStreamedUnaryMethod_GetDACPlayParam<WithStreamedUnaryMethod_SetDACStartStop<WithStreamedUnaryMethod_GetDACStartStop<WithStreamedUnaryMethod_SetSampleParam<WithStreamedUnaryMethod_GetSampleParam<WithStreamedUnaryMethod_SetSampleStartStop<WithStreamedUnaryMethod_GetSampleStartStop<WithStreamedUnaryMethod_SetADCConfig<WithStreamedUnaryMethod_GetADCConfig<WithStreamedUnaryMethod_SetADCPlayParam<WithStreamedUnaryMethod_GetADCPlayParam<WithStreamedUnaryMethod_SetADCStartStop<WithStreamedUnaryMethod_GetADCStartStop<WithStreamedUnaryMethod_SetDigitalAtten<WithStreamedUnaryMethod_SetDACRFAtten<WithStreamedUnaryMethod_GetDACRFAtten<WithStreamedUnaryMethod_SetADCRFAtten<WithStreamedUnaryMethod_GetADCRFAtten<WithStreamedUnaryMethod_SetVerifyAtten<WithStreamedUnaryMethod_GetSampleState<WithStreamedUnaryMethod_GetDemodeState<Service > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SetInternelDelayTick : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SetInternelDelayTick() {
+      ::grpc::Service::MarkMethodStreamed(26,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::silicon_based::SetInternelDelayTickRequest, ::silicon_based::ParamResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::silicon_based::SetInternelDelayTickRequest, ::silicon_based::ParamResponse>* streamer) {
+                       return this->StreamedSetInternelDelayTick(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SetInternelDelayTick() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SetInternelDelayTick(::grpc::ServerContext* /*context*/, const ::silicon_based::SetInternelDelayTickRequest* /*request*/, ::silicon_based::ParamResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSetInternelDelayTick(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::silicon_based::SetInternelDelayTickRequest,::silicon_based::ParamResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_SetTrigSour<WithStreamedUnaryMethod_SetSoftTrig<WithStreamedUnaryMethod_SetDACDDSConfig<WithStreamedUnaryMethod_GetDACDDSConfig<WithStreamedUnaryMethod_SetDACPlayParam<WithStreamedUnaryMethod_GetDACPlayParam<WithStreamedUnaryMethod_SetDACStartStop<WithStreamedUnaryMethod_GetDACStartStop<WithStreamedUnaryMethod_SetSampleParam<WithStreamedUnaryMethod_GetSampleParam<WithStreamedUnaryMethod_SetSampleStartStop<WithStreamedUnaryMethod_GetSampleStartStop<WithStreamedUnaryMethod_SetADCConfig<WithStreamedUnaryMethod_GetADCConfig<WithStreamedUnaryMethod_SetADCPlayParam<WithStreamedUnaryMethod_GetADCPlayParam<WithStreamedUnaryMethod_SetADCStartStop<WithStreamedUnaryMethod_GetADCStartStop<WithStreamedUnaryMethod_SetDigitalAtten<WithStreamedUnaryMethod_SetDACRFAtten<WithStreamedUnaryMethod_GetDACRFAtten<WithStreamedUnaryMethod_SetADCRFAtten<WithStreamedUnaryMethod_GetADCRFAtten<WithStreamedUnaryMethod_SetVerifyAtten<WithStreamedUnaryMethod_GetSampleState<WithStreamedUnaryMethod_GetDemodeState<WithStreamedUnaryMethod_SetInternelDelayTick<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SetTrigSour<WithStreamedUnaryMethod_SetSoftTrig<WithStreamedUnaryMethod_SetDACDDSConfig<WithStreamedUnaryMethod_GetDACDDSConfig<WithStreamedUnaryMethod_SetDACPlayParam<WithStreamedUnaryMethod_GetDACPlayParam<WithStreamedUnaryMethod_SetDACStartStop<WithStreamedUnaryMethod_GetDACStartStop<WithStreamedUnaryMethod_SetSampleParam<WithStreamedUnaryMethod_GetSampleParam<WithStreamedUnaryMethod_SetSampleStartStop<WithStreamedUnaryMethod_GetSampleStartStop<WithStreamedUnaryMethod_SetADCConfig<WithStreamedUnaryMethod_GetADCConfig<WithStreamedUnaryMethod_SetADCPlayParam<WithStreamedUnaryMethod_GetADCPlayParam<WithStreamedUnaryMethod_SetADCStartStop<WithStreamedUnaryMethod_GetADCStartStop<WithStreamedUnaryMethod_SetDigitalAtten<WithStreamedUnaryMethod_SetDACRFAtten<WithStreamedUnaryMethod_GetDACRFAtten<WithStreamedUnaryMethod_SetADCRFAtten<WithStreamedUnaryMethod_GetADCRFAtten<WithStreamedUnaryMethod_SetVerifyAtten<WithStreamedUnaryMethod_GetSampleState<WithStreamedUnaryMethod_GetDemodeState<Service > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_SetTrigSour<WithStreamedUnaryMethod_SetSoftTrig<WithStreamedUnaryMethod_SetDACDDSConfig<WithStreamedUnaryMethod_GetDACDDSConfig<WithStreamedUnaryMethod_SetDACPlayParam<WithStreamedUnaryMethod_GetDACPlayParam<WithStreamedUnaryMethod_SetDACStartStop<WithStreamedUnaryMethod_GetDACStartStop<WithStreamedUnaryMethod_SetSampleParam<WithStreamedUnaryMethod_GetSampleParam<WithStreamedUnaryMethod_SetSampleStartStop<WithStreamedUnaryMethod_GetSampleStartStop<WithStreamedUnaryMethod_SetADCConfig<WithStreamedUnaryMethod_GetADCConfig<WithStreamedUnaryMethod_SetADCPlayParam<WithStreamedUnaryMethod_GetADCPlayParam<WithStreamedUnaryMethod_SetADCStartStop<WithStreamedUnaryMethod_GetADCStartStop<WithStreamedUnaryMethod_SetDigitalAtten<WithStreamedUnaryMethod_SetDACRFAtten<WithStreamedUnaryMethod_GetDACRFAtten<WithStreamedUnaryMethod_SetADCRFAtten<WithStreamedUnaryMethod_GetADCRFAtten<WithStreamedUnaryMethod_SetVerifyAtten<WithStreamedUnaryMethod_GetSampleState<WithStreamedUnaryMethod_GetDemodeState<WithStreamedUnaryMethod_SetInternelDelayTick<Service > > > > > > > > > > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace silicon_based

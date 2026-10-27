@@ -146,6 +146,11 @@ class QACMDServiceStub(object):
                 request_serializer=qa__cmd__pb2.GetDemodeStateRequest.SerializeToString,
                 response_deserializer=common__cmd__pb2.ParamResponse.FromString,
                 _registered_method=True)
+        self.SetInternelDelayTick = channel.unary_unary(
+                '/silicon_based.QACMDService/SetInternelDelayTick',
+                request_serializer=qa__cmd__pb2.SetInternelDelayTickRequest.SerializeToString,
+                response_deserializer=common__cmd__pb2.ParamResponse.FromString,
+                _registered_method=True)
 
 
 class QACMDServiceServicer(object):
@@ -308,6 +313,12 @@ class QACMDServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetInternelDelayTick(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_QACMDServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -439,6 +450,11 @@ def add_QACMDServiceServicer_to_server(servicer, server):
             'GetDemodeState': grpc.unary_unary_rpc_method_handler(
                     servicer.GetDemodeState,
                     request_deserializer=qa__cmd__pb2.GetDemodeStateRequest.FromString,
+                    response_serializer=common__cmd__pb2.ParamResponse.SerializeToString,
+            ),
+            'SetInternelDelayTick': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetInternelDelayTick,
+                    request_deserializer=qa__cmd__pb2.SetInternelDelayTickRequest.FromString,
                     response_serializer=common__cmd__pb2.ParamResponse.SerializeToString,
             ),
     }
@@ -1144,6 +1160,33 @@ class QACMDService(object):
             target,
             '/silicon_based.QACMDService/GetDemodeState',
             qa__cmd__pb2.GetDemodeStateRequest.SerializeToString,
+            common__cmd__pb2.ParamResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SetInternelDelayTick(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/silicon_based.QACMDService/SetInternelDelayTick',
+            qa__cmd__pb2.SetInternelDelayTickRequest.SerializeToString,
             common__cmd__pb2.ParamResponse.FromString,
             options,
             channel_credentials,
