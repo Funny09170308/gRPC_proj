@@ -7,10 +7,15 @@
 #define SIGNAL_MODULE_NUM 16
 
 // ============ XDMA-user space偏移地址 ============//
-#define SYSTEM_CONFIG_BASE 0x0000
-#define DAC_CONFIG_BASE 0x0400
-#define ADC_CONFIG_BASE 0x0800
-#define ADC_SAMPLE_BASE 0x0C00
+#define SYSTEM_CONFIG_BASE 0x0000 * 4
+#define DAC1_CONFIG_BASE 0x0400 * 4
+#define DAC2_CONFIG_BASE 0x0500 * 4
+
+#define ADC1_CONFIG_BASE 0x0800 * 4
+#define ADC2_CONFIG_BASE 0x0900 * 4
+
+#define ADC1_SAMPLE_BASE 0x0C00 * 4
+#define ADC2_SAMPLE_BASE 0x0C10 * 4
 
 #define STATUS_BASE 0x1000 * 4
 #define ADC1_RES_BASE 0x1200 * 4
