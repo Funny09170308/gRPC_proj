@@ -372,7 +372,7 @@ void qa_adc_play_param(uint32_t logical_ch, ADCPlayParam_t param)
     P_LOG_DEBUG("adc_play_mode: %d.", param.m_adc_play_mode);
 
     phych = adc_localch_to_phych(local_ch);
-
+    param.m_adc_data_len = (uint32_t)(param.m_adc_data_len / 8);
     xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_data_len, param.m_adc_data_len);
     xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_play_times, param.m_adc_play_times);
     xdma_write_user_space(chip_id, s_QAUserRegs.m_ADC_config_reg[phych].m_adc_play_delay, param.m_adc_play_delay);
