@@ -133,6 +133,13 @@ Status CommonCMDServiceImpl::SetNetCfgAddr(ServerContext *context,
                 ipAddr.c_str(),
                 gateWay.c_str(),
                 macAddr.c_str());
+    systemConfig_t *deviceCfg;
+    get_device_config(&deviceCfg);
+    deviceCfg->dhcpen = dhcpEn;
+    memcpy(deviceCfg->ip, ipAddr.c_str(), sizeof(ipAddr));
+    memcpy(deviceCfg->gw, gateWay.c_str(), sizeof(gateWay));
+    memcpy(deviceCfg->mac, macAddr.c_str(), sizeof(macAddr));
+    save_device_config(DEVICE_CONFIG_PATH, deviceCfg);
     response->set_success(true);
     return Status::OK;
 }

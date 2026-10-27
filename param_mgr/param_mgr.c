@@ -204,12 +204,12 @@ void device_info_init(void)
 	if (g_deviceCfg.dhcpen == 0)
 	{
 		P_LOG_INITIAL("DHCP enable = %d, set static IP.", g_deviceCfg.dhcpen);
-		set_static_ip(g_deviceCfg.interface, g_deviceCfg.ip, g_deviceCfg.gw, g_deviceCfg.mask, g_deviceCfg.mac);
+		set_static_ip_networkctl(g_deviceCfg.interface, g_deviceCfg.ip, g_deviceCfg.gw, g_deviceCfg.mask, g_deviceCfg.mac);
 	}
 	else if (g_deviceCfg.dhcpen == 1)
 	{
 		P_LOG_INITIAL("DHCP enable = %d, set DHCP.", g_deviceCfg.dhcpen);
-		start_dhcp_ip();
+		set_dhcp_ip_networkctl(g_deviceCfg.interface, g_deviceCfg.mac);
 	}
 	sleep(1);
 	P_LOG_INITIAL("************************************************");

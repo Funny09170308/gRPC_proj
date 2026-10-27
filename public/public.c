@@ -21,209 +21,6 @@ void printhex(void *buffer, int size, int linecnt)
     printf("\n");
 }
 
-#if 0
-/* çćâćç­ĺŻéâĺčżĺśďźć¨Ąć Python str(double)ďź
- * ç­çĽďźäť 17 ä˝ććć°ĺ­ĺžä¸čŻ %.Ngďźč˝ round-tripďźstrtod==ĺĺźďźĺ°ąćĽĺć´ç­çă
- */
-static void double_to_shortest(char out[64], double x)
-{
-    snprintf(out, 64, "%.17g", x);
-    char cand[64];
-    for (int n = 16; n >= 1; --n)
-    {
-        snprintf(cand, sizeof(cand), "%.*g", n, x);
-        char *endp = NULL;
-        double back = strtod(cand, &endp);
-        if (endp && *endp == '\0' && back == x)
-        {
-            strcpy(out, cand);
-        }
-        else
-        {
-            break;
-        }
-    }
-}
-#endif
-
-#if 0
-/* č§Łćĺčżĺś m[.n][eÂąk] -> ç˛žçĄŽĺć° num/denďźç­äťˇ Decimal(str(alpha))ă
- * čżéĺčŽž alpha >= 0ă
- */
-static void parse_decimal_fraction(const char *s, unsigned __int128 *unum, unsigned __int128 *uden)
-{
-    while (*s == ' ' || *s == '\t')
-        ++s;
-    if (*s == '+')
-        ++s;
-    char buf[128];
-    strncpy(buf, s, sizeof(buf) - 1);
-    buf[sizeof(buf) - 1] = 0;
-
-    char *e = strchr(buf, 'e');
-    if (!e)
-        e = strchr(buf, 'E');
-    int exp10 = 0;
-    if (e)
-    {
-        exp10 = atoi(e + 1);
-        *e = 0;
-    }
-
-    char digits[64];
-    int di = 0;
-    int frac_len = 0;
-    for (const char *p = buf; *p; ++p)
-    {
-        if (*p == '.')
-        {
-            for (const char *q = p + 1; *q; ++q)
-                if (*q >= '0' && *q <= '9')
-                    ++frac_len;
-            continue;
-        }
-        if (*p >= '0' && *p <= '9')
-            digits[di++] = *p;
-    }
-    if (di == 0)
-        digits[di++] = '0';
-    digits[di] = 0;
-
-    long k = (long)frac_len - (long)exp10; // den = 10^k
-    unsigned __int128 num = 0;
-    for (int i = 0; i < di; i++)
-        num = num * 10 + (unsigned)(digits[i] - '0');
-
-    unsigned __int128 den = 1;
-    if (k >= 0)
-    {
-        for (long i = 0; i < k; i++)
-            den *= 10;
-    }
-    else
-    {
-        for (long i = 0; i < -k; i++)
-            num *= 10;
-    }
-
-    *unum = num;
-    *uden = den;
-}
-
-/* čŽĄçŽ Q = int(Decimal(str(alpha)) * 2**96)ă
- * ç¨âäşčżĺśéżé¤ćłâďźQ = floor((num/den)*2^96)ă
- */
-static unsigned __int128 decimal_times_2p96_to_u128(const char *str_alpha)
-{
-    unsigned __int128 num, den;
-    parse_decimal_fraction(str_alpha, &num, &den);
-
-    unsigned __int128 ip = num / den;  // ć´ć°é¨ĺ
-    unsigned __int128 rem = num % den; // ä˝ć°
-    unsigned __int128 Q = ip << 96;    // ip * 2^96
-
-    for (int i = 0; i < 96; i++)
-    {
-        rem <<= 1;
-        unsigned bit = 0;
-        if (rem >= den)
-        {
-            rem -= den;
-            bit = 1;
-        }
-        Q = (Q << 1) | bit;
-    }
-    return Q;
-}
-
-int alpha_to_hi_lo(double alpha, uint64_t *hi, uint64_t *lo)
-{
-    if (!hi || !lo)
-        return -1;
-
-    /* ĺşĺŽä¸ş C ĺşĺä¸éťčŽ¤čĺĽďźéżĺ locale/čĺĽç­çĽĺ˝ąĺč§Łć */
-    setlocale(LC_NUMERIC, "C");
-    fesetround(FE_TONEAREST);
-
-    /* 1) çćä¸ Python ä¸č´çâćç­ĺŻéâĺčżĺś */
-    char s[64];
-    double_to_shortest(s, alpha);
-
-    /* ĺŻéďźć e ćšć EďźĺŞćŻćžç¤şéŁć źďźä¸ĺ˝ąĺć°ĺźďź
-       for (char *p=s; *p; ++p) if (*p=='e') *p='E';
-    */
-
-    /* 2) čŽĄçŽ Q = int(Decimal(str(alpha)) * 2**96) */
-    unsigned __int128 Q = decimal_times_2p96_to_u128(s);
-
-    /* 3) ććéŤ/ä˝ 64 ä˝ */
-    *hi = (uint64_t)(Q >> 64);
-    *lo = (uint64_t)Q;
-    return 0;
-}
-
-
-/**
- * @brief čŽĄçŽä¸éśä˝éćť¤ćł˘ĺ¨çłťć° alpha
- * @param tau ćśé´ĺ¸¸ć°ďźç§ďź
- * @return alpha çłťć°
- */
-double calc_alpha(double tau)
-{
-    // ä¸ Python ä¸č´ďźf_s = 4e6
-    const long double fs_base = 40e6L;    // 40 MHz
-    const long double dn = 10.0L;         // ä¸éć ˇĺ ĺ­
-    const long double f_s = fs_base / dn; // 4 MHz
-    const long double f_c = 1.0L / (2.0L * M_PI * (long double)tau);
-    const long double gama = 2.0L * M_PI * f_c / f_s;
-
-    long double alphaL;
-
-    if (gama > 0.001L)
-    {
-        const long double gama_cos = cosl(gama);
-        // ĺ Python ĺŽĺ¨ä¸č´çčĄ¨čžžĺź
-        alphaL = gama_cos - 1.0L + sqrtl(gama_cos * gama_cos - 4.0L * gama_cos + 3.0L);
-    }
-    else
-    {
-        alphaL = gama / (1.0L + gama);
-    }
-
-    double alpha = (double)alphaL;
-
-    // ćĺ°ä¸¤ç§ć źĺźďźäžżäşčˇ Python ĺŻšćŻ
-    printf("alpha = %.17g (%.17f)\n", alpha, alpha);
-
-    return alpha;
-}
-
-int get_alpha_to_reg(uint64_t *alpha_high, uint64_t *alpha_low, double tau)
-{
-    double alpha;
-    uint64_t alpha_h, alpha_l;
-
-    alpha = calc_alpha(tau);
-
-    if (alpha_to_hi_lo(alpha, &alpha_h, &alpha_l) == 0)
-    { /*ćľčŻä¸éşythonäťŁç çťćä¸č´*/
-        printf("alpha_hi = 0x%llX\n", (unsigned long long)alpha_h);
-        printf("alpha_lo = 0x%016llX\n", (unsigned long long)alpha_l);
-        // çťĺć´ä˝ 128 ä˝ĺĺ­čżĺśďźĺŻéďź
-        printf("alpha128 = 0x%llX%016llX\n", (unsigned long long)alpha_h, (unsigned long long)alpha_l);
-    }
-    else
-    {
-        fprintf(stderr, "alpha_to_hi_lo failed\n");
-    }
-
-    *alpha_high = alpha_h;
-    *alpha_low = alpha_l;
-
-    return 0;
-}
-#endif
-
 int sync_filter_params(uint32_t fin, uint32_t *M1, uint32_t *M2, uint32_t *Nm)
 {
 
@@ -470,7 +267,6 @@ int start_dhcp_ip(void)
     char line[256];
     int dhcp_in_file = 0;
 
-    // 1) ćŁćĽéç˝ŽćäťśćŻĺŚĺˇ˛ä¸ş DHCP
     fp = fopen(config_file, "r");
     if (fp)
     {
@@ -534,7 +330,6 @@ void get_mac_address_ifconfig(const char *instance, char *mac_out)
         return;
     }
 
-    // čŻťĺMACĺ°ĺ
     if (fgets(mac_out, 18, pipe) == NULL)
     {
         pclose(pipe);
@@ -543,7 +338,6 @@ void get_mac_address_ifconfig(const char *instance, char *mac_out)
     }
     pclose(pipe);
 
-    // ĺťé¤ć˘čĄçŹŚ
     mac_out[strcspn(mac_out, "\n")] = '\0';
 }
 
@@ -561,11 +355,6 @@ void print_binary_u8(uint8_t data)
 
 #define GPIO_PATH_MAX 64
 
-/**
- * @brief ľźłöGPIO
- * @param gpio_num GPIOąŕşĹ
- * @return łÉšŚˇľťŘ0ŁŹĘ§°ÜˇľťŘ-1
- */
 int sys_gpio_export(int gpio_num)
 {
     int fd;
@@ -584,22 +373,14 @@ int sys_gpio_export(int gpio_num)
     snprintf(buf, sizeof(buf), "%d", gpio_num);
     if (write(fd, buf, strlen(buf)) < 0)
     {
-        // ČçšűŇŃž­ľźłöŁŹżÉÄÜťáą¨´íŁŹŐâŔďÖť´ňÓĄžŻ¸ć
         perror("Warning: Failed to export GPIO (may already be exported)");
     }
 
     close(fd);
-    // ľČ´ýsysfsÎÄźţ´´˝¨ÍęłÉ
     usleep(10000);
     return 0;
 }
 
-/**
- * @brief ÉčÖĂGPIOˇ˝Ďň
- * @param gpio_num GPIOąŕşĹ
- * @param direction "in" ťň "out"
- * @return łÉšŚˇľťŘ0ŁŹĘ§°ÜˇľťŘ-1
- */
 int sys_gpio_set_direction(int gpio_num, const char *direction)
 {
     int fd;
@@ -624,12 +405,6 @@ int sys_gpio_set_direction(int gpio_num, const char *direction)
     return 0;
 }
 
-/**
- * @brief ÉčÖĂGPIOÖľ
- * @param gpio_num GPIOąŕşĹ
- * @param value 0ťň1
- * @return łÉšŚˇľťŘ0ŁŹĘ§°ÜˇľťŘ-1
- */
 int sys_gpio_set_value(int gpio_num, int value)
 {
     int fd;
@@ -654,4 +429,133 @@ int sys_gpio_set_value(int gpio_num, int value)
 
     close(fd);
     return 0;
+}
+
+void set_static_ip_networkctl(const char *interface, const char *ip,  const char *gateway, const char *netmask, const char *mac)
+{
+    char conf_path[128];
+    char tmp_conf[128];
+    // 系统/user/lib/systemd/network下优先级为80, 大于此值才能够覆盖
+    snprintf(conf_path, sizeof(conf_path), "%s/90-%s.network", C_OVERLAY_NET_CONFIG_PATH, interface);
+    snprintf(tmp_conf, sizeof(tmp_conf), "/tmp/90-%s.network.tmp", interface);
+    FILE *fp = fopen(tmp_conf, "w");
+    if (fp == NULL)
+    {
+        P_LOG_ERROR("open tmp conf file failed %s", tmp_conf);
+        return;
+    }
+    /*
+    systemd-networkd static ip 标准格式
+    [Match]
+    Name=end0
+    [Link]
+    MACAddress=xx:xx:xx:xx:xx:xx
+
+    [Network]
+    Address=192.168.1.100/24
+    Gateway=192.168.1.1
+    */
+    fprintf(fp, "[Match]\n");
+    fprintf(fp, "Name=%s\n", interface);
+    fprintf(fp, "[Link]\n");
+    fprintf(fp, "MACAddress=%s\n\n", mac);
+    fprintf(fp, "[Network]\n");
+    if (strcmp(netmask, "255.255.255.0") == 0)
+    {
+        fprintf(fp, "Address=%s/24\n", ip);
+    }
+    else if (strcmp(netmask, "255.255.0.0") == 0)
+    {
+        fprintf(fp, "Address=%s/16\n", ip);
+    }
+    else if (strcmp(netmask, "255.0.0.0") == 0)
+    {
+        fprintf(fp, "Address=%s/8\n", ip);
+    }
+    else
+    {
+        P_LOG_WARNING("unsupport netmask %s, fallback /24", netmask);
+        fprintf(fp, "Address=%s/24\n", ip);
+    }
+    fprintf(fp, "Gateway=%s\n", gateway);
+    fclose(fp);
+    // 备份原配置
+    char bak_cmd[256];
+    snprintf(bak_cmd, sizeof(bak_cmd), "cp %s %s.bak 2>/dev/null", conf_path, conf_path);
+    system(bak_cmd);
+
+    // 替换正式配置文件
+    if (rename(tmp_conf, conf_path) != 0)
+    {
+        P_LOG_ERROR("rename conf failed %s → %s", tmp_conf, conf_path);
+        remove(tmp_conf);
+        return;
+    }
+
+    // 通知systemd-networkd重载配置，热生效，不需要重启网卡
+    int ret = system("networkctl reload");
+    (void)ret;
+    P_LOG_INFO("systemd-networkd reload done, %s static ip: %s gw:%s", interface, ip, gateway);
+
+    printf("Static IP config for %s completed:\n", interface);
+    printf("  IP: %s\n  Gateway: %s\n  Netmask: %s\n  MAC: %s\n", ip, gateway, netmask, mac);
+}
+
+int set_dhcp_ip_networkctl(const char *interface, const char *mac)
+{
+    char conf_path[128];
+    char tmp_conf[128];
+    // 系统/user/lib/systemd/network下优先级为80, 大于此值才能够覆盖
+    snprintf(conf_path, sizeof(conf_path), "%s/90-%s.network", C_OVERLAY_NET_CONFIG_PATH, interface);
+    snprintf(tmp_conf, sizeof(tmp_conf), "/tmp/90-%s.network.tmp", interface);
+    FILE *fp = fopen(tmp_conf, "w");
+    if (fp == NULL)
+    {
+        P_LOG_ERROR("open tmp conf file failed %s", tmp_conf);
+        return;
+    }
+    /*
+    systemd-networkd static ip 标准格式
+    [Match]
+    Name=end0
+    [Link]
+    MACAddress=xx:xx:xx:xx:xx:xx
+
+    [Network]
+    DHCP=ipv4 // 只跑 DHCPv4
+    DHCP=yes  // ipv4 + ipv6 都开启 DHCP
+
+    [DHCPv4]
+    UseDNS=yes
+    UseRoutes=yes
+    UseNTP=yes
+    #ClientIdentifier=mac  # 用mac作为dhcp client id，部分交换机/服务器需要
+    */
+    fprintf(fp, "[Match]\n");
+    fprintf(fp, "Name=%s\n", interface);
+    fprintf(fp, "[Link]\n");
+    fprintf(fp, "MACAddress=%s\n", mac);
+    fprintf(fp, "[Network]\n");
+    fprintf(fp, "DHCP=ipv4\n");
+    fclose(fp);
+    // 备份原配置
+    char bak_cmd[256];
+    snprintf(bak_cmd, sizeof(bak_cmd), "cp %s %s.bak 2>/dev/null", conf_path, conf_path);
+    system(bak_cmd);
+
+    // 替换正式配置文件
+    if (rename(tmp_conf, conf_path) != 0)
+    {
+        P_LOG_ERROR("rename conf failed %s → %s", tmp_conf, conf_path);
+        remove(tmp_conf);
+        return;
+    }
+
+    // 通知systemd-networkd重载配置，热生效，不需要重启网卡
+    int ret = system("networkctl reload");
+    (void)ret;
+    P_LOG_INFO("systemd-networkd reload done, %s DHCP ip: %s mac:%s", interface, mac);
+
+    printf("DHCP IP config for %s completed:\n", interface);
+    printf("  MAC: %s\n", mac);
 }
