@@ -593,7 +593,6 @@ Status LNAWGCMDServiceImpl::GetDDSEnable(ServerContext *context,
     return Status::OK;
 }
 
-
 Status QACMDServiceImpl::SetTrigSour(ServerContext *context,
                                      const SetTrigSourRequest *request,
                                      ParamResponse *response)
@@ -826,5 +825,16 @@ Status QACMDServiceImpl::GetDemodeState(ServerContext *context,
     {
         response->set_success(true);
     }
+    return Status::OK;
+}
+Status QACMDServiceImpl::SetInternelDelayTick(ServerContext *context,
+                                              const SetInternelDelayTickRequest *request,
+                                              ParamResponse *response)
+{
+    uint32_t ch = request->logicch();
+    uint32_t ADCDelayTick = request->adcdelaytick();
+    uint32_t DACDelayTick = request->dacdelaytick();
+    P_LOG_DEBUG("SetInternelDelayTick: Set internel delay tick...%d, %d, %d.", ch, ADCDelayTick, DACDelayTick);
+    qa_set_internel_delay(ch, ADCDelayTick, DACDelayTick);
     return Status::OK;
 }

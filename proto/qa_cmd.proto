@@ -27,6 +27,8 @@ service QACMDService {
 
     rpc GetSampleState(GetSampleStateRequest) returns (ParamResponse);
     rpc GetDemodeState(GetDemodeStateRequest) returns (ParamResponse);
+
+    rpc SetInternelDelayTick(SetInternelDelayTickRequest) returns (ParamResponse);
 }
 
 message SetTrigSourRequest {
@@ -148,4 +150,9 @@ message GetSampleStateRequest {
 
 message GetDemodeStateRequest {
     uint32 logicCh = 1;
+}
+message SetInternelDelayTickRequest {
+    uint32 logicCh = 1;
+    uint32 ADCDelayTick = 2;
+    uint32 DACDelayTick = 3;
 }

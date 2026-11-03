@@ -218,6 +218,9 @@ public: // QA function
     Status GetDemodeState(ServerContext *context,
                           const GetDemodeStateRequest *request,
                           ParamResponse *response) override;
+    Status SetInternelDelayTick(ServerContext *context,
+                                const SetInternelDelayTickRequest *request,
+                                ParamResponse *response) override;
 };
 
 #ifdef __cplusplus
