@@ -20,7 +20,7 @@
 #include "../i2c/io_expand/max7300.h"
 #include "../i2c/i2c_func.h"
 #include "../axi_device/axi_dev_drv.h"
-#include "../platform_log/platform_log.h"
+#include "../lib/include/platform_log/platform_log.h"
 
 /// @brief 设备信息
 static systemConfig_t *s_sysConfig;
@@ -351,7 +351,7 @@ void temp_monitor(void)
     {
         value = common_pcie_user_reg_data_get(i, AWG_TEMP_OFFSET);
         float slave_temp = value * 507.5921310 / pow(2, 16) - 279.42657680;
-        P_LOG_REPEAT("AWG%d temp: %.2f", (i + 1), slave_temp);
+        P_LOG_MONITOR("AWG%d temp: %.2f", (i + 1), slave_temp);
         if (slave_temp >= TEMPERATURE_WALL)
         {
             cut_off_slave_power();
@@ -367,7 +367,7 @@ void temp_monitor(void)
     {
         value = common_pcie_user_reg_data_get(i, QA_TEMP_OFFSET);
         float slave_temp = value * 507.5921310 / pow(2, 16) - 279.42657680;
-        P_LOG_REPEAT("QA%d temp: %.2f", (i + 1), slave_temp);
+        P_LOG_MONITOR("QA%d temp: %.2f", (i + 1), slave_temp);
         if (slave_temp >= TEMPERATURE_WALL)
         {
             cut_off_slave_power();

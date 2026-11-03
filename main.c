@@ -10,7 +10,7 @@
 #include "./spi_dev/spi2_test.h"
 #include "./param_mgr/param_mgr.h"
 #include "./spi_dev/lmk04828_drv.h"
-#include "./platform_log/platform_log.h"
+#include "./lib/include/platform_log/platform_log.h"
 
 int main(void)
 {

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "axi_gpio.h"
-#include "../platform_log/platform_log.h"
+#include "../lib/include/platform_log/platform_log.h"
 
 #define GPIO334 334
 void gpio_power_suplly(void)

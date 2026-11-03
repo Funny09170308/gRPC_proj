@@ -2,7 +2,7 @@
 #include "assert.h"
 #include "param_mgr.h"
 #include "../public/public.h"
-#include "../platform_log/platform_log.h"
+#include "../lib/include/platform_log/platform_log.h"
 
 static systemConfig_t g_deviceCfg;
 

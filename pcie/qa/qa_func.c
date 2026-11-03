@@ -1,6 +1,6 @@
 #include "qa_func.h"
 #include "../pcie_func.h"
-#include "../../platform_log/platform_log.h"
+#include "../../lib/include/platform_log/platform_log.h"
 #include <unistd.h>
 
 static QAUserReg_t s_QAUserRegs;

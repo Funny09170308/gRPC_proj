@@ -1,7 +1,7 @@
 #include "lnawg_func.h"
 #include "../common_func.h"
 #include "../pcie_func.h"
-#include "../../platform_log/platform_log.h"
+#include "../../lib/include/platform_log/platform_log.h"
 
 #define SOFT_TRIGGER_BASEADDR (0x80050000)
 

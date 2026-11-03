@@ -17,7 +17,7 @@
 #include "../pcie/common_func.h"
 #include "../grpc/grpc_server.h"
 #include "../param_mgr/param_mgr.h"
-#include "../platform_log/platform_log.h"
+#include "../lib/include/platform_log/platform_log.h"
 
 /*
  * 这里故意屏蔽底层 dma_xxx 的返回值差异。

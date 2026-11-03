@@ -1,6 +1,6 @@
 #include "spi2_test.h"
 #include "spi_func.h"
-#include "../platform_log/platform_log.h"
+#include "../lib/include/platform_log/platform_log.h"
 
 #define spi2_dev_path
 #define BUFFER_SIZE1 12
