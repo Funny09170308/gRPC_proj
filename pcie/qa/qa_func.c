@@ -10,6 +10,8 @@ void QAConfigRegisterInit(void)
     s_QAUserRegs.m_soft_trig = C_USER_SPACE_CONFIG_OFFSET + 0 * 4;
     s_QAUserRegs.m_trigger_mode = C_USER_SPACE_CONFIG_OFFSET + 1 * 4;
     s_QAUserRegs.m_trigger_source = C_USER_SPACE_CONFIG_OFFSET + 3 * 4;
+    s_QAUserRegs.m_adc_trig_delay_tick = C_USER_SPACE_CONFIG_OFFSET + 4 * 4;
+    s_QAUserRegs.m_dac_trig_delay_tick = C_USER_SPACE_CONFIG_OFFSET + 5 * 4;
     uint8_t index = 0;
     for (index = 0; index < SIGNAL_MODULE_NUM; ++index)
     {
@@ -149,11 +151,18 @@ int dac_localch_to_phych(uint32_t localch)
     {
         phych = 1;
     }
+    else if (localch == 7)
+    {
+        phych = 2;
+    }
+    else if (localch == 6)
+    {
+        phych = 3;
+    }
     else
     {
         P_LOG_ERROR("no suppurt ch: %d\r\n", localch);
     }
-
     return phych;
 }
 
@@ -169,6 +178,14 @@ int adc_localch_to_phych(uint32_t localch)
     else if (localch == 1)
     {
         phych = 1;
+    }
+    else if (localch == 8)
+    {
+        phych = 2;
+    }
+    else if (localch == 5)
+    {
+        phych = 3;
     }
     else
     {
@@ -211,8 +228,8 @@ void qa_dac_dds_config(uint32_t logical_ch, uint32_t index, DACDDSConfig_t confi
 
     qa_dac_start_stop_play(logical_ch, 0); // 停止输出
 
-    freq_word = (uint32_t)(config.m_DAC_freq / 4000e6 * pow(2, 25));
-    phase_word = (uint32_t)(config.m_DAC_Phase / 180 * pow(2, 25));
+    freq_word = (uint32_t)(config.m_DAC_freq / 8000e6 * pow(2, 25));
+    phase_word = (uint32_t)(config.m_DAC_Phase / 360 * pow(2, 25));
     amp_word = (uint32_t)(config.m_DAC_AMP * pow(2, 32));
 
     P_LOG_DEBUG("freq: %d value: %d(%#x) write to dds index: %d", config.m_DAC_freq, freq_word, freq_word, index);
@@ -250,7 +267,7 @@ void qa_dac_play_param(uint32_t logical_ch, DACDDSPlayParam_t param)
     }
     else if (param.m_play_mode == 3 || param.m_play_mode == 4)
     {
-        param.m_data_len = param.m_data_len / 16;
+        param.m_data_len = param.m_data_len / 32;
         P_LOG_DEBUG("play_mode: %s, write data len: %d.", "DDS", param.m_data_len);
     }
     xdma_write_user_space(chip_id, s_QAUserRegs.m_DAC_config_reg[phych].m_dac_data_len, param.m_data_len);
@@ -336,7 +353,7 @@ void qa_adc_config(uint32_t logical_ch, uint32_t index, ADCConfig_t config)
     P_LOG_DEBUG("QA: Set chip: %d adc ch: %d adc config.", chip_id, local_ch);
     uint32_t freq_word, phase_word;
     qa_adc_start_stop_play(logical_ch, 0);
-    freq_word = (uint32_t)(config.m_adc_freq / 2000e6 * pow(2, 25));
+    freq_word = (uint32_t)(config.m_adc_freq / 4000e6 * pow(2, 25));
     phase_word = (uint32_t)(config.m_adc_phase / 180 * pow(2, 25));
 
     P_LOG_DEBUG("freq: %.f value: %d(%#x) write to adc index: %d", config.m_adc_freq, freq_word, freq_word, index);
@@ -358,7 +375,7 @@ void qa_adc_play_param(uint32_t logical_ch, ADCPlayParam_t param)
     P_LOG_DEBUG("Analize physcial ch: %d, to chip: %d, local ch:%d", logical_ch, chip_id, local_ch);
 
     int phych;
-    param.m_adc_data_len = (uint32_t)(param.m_adc_data_len / 8);
+    param.m_adc_data_len = (uint32_t)(param.m_adc_data_len / 16);
     P_LOG_DEBUG("QA: Set chip: %d adc ch: %d adc play param.", chip_id, local_ch);
     P_LOG_DEBUG("adc_data_len: %d.", param.m_adc_data_len);
     P_LOG_DEBUG("adc_play_times: %d.", param.m_adc_play_times);
